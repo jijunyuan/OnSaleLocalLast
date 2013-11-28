@@ -64,6 +64,10 @@
 #define DEVIVE_TOKEN @"devicetoken"
 
 #define AllFont @"Gotham"
+
+#define All_h1_Size ceil(19.0*1.2)
+#define All_h2_size ceil(18.0*1.2)
+
 #define AllFontSize ceil(17.0*1.2)
 #define AllContentSize ceil(14.0*1.2)
 #define AllContentSmallSize 10.0

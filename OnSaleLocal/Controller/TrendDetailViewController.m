@@ -564,7 +564,7 @@
     desc.text = [self.dic valueForKey:@"title"];
     desc.backgroundColor = [UIColor whiteColor];
     desc.numberOfLines = 0;
-    desc.font = [UIFont fontWithName:AllFont size:AllContentSize];
+    desc.font = [UIFont fontWithName:AllFont size:All_h2_size];
     [self.myScrollView addSubview:desc];
     
     UITextField * textfieldTime = [[UITextField alloc] initWithFrame:CGRectMake(60, height+63, 200, 30)];
@@ -640,7 +640,7 @@
     [self.myScrollView addSubview:shareImg];
     
     UILabel * sharetitleLab = [[UILabel alloc] initWithFrame:CGRectMake(60, height+70, 150, 20)];
-    sharetitleLab.font = [UIFont fontWithName:AllFont size:AllContentSize];
+    sharetitleLab.font = [UIFont fontWithName:AllFont size:AllContentSmallSize];
     sharetitleLab.text = @"Share by";
     sharetitleLab.backgroundColor = [UIColor clearColor];
     [self.myScrollView addSubview:sharetitleLab];
@@ -745,7 +745,7 @@
     UILabel * lab = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 200, 25)];
     lab.text = @"STORE";
     lab.backgroundColor = [UIColor clearColor];
-    lab.font = [UIFont fontWithName:AllFont size:AllFontSize];
+    lab.font = [UIFont fontWithName:AllFont size:AllContentSize];
     [storeView addSubview:lab];
     [self.myScrollView addSubview:storeView];
     
@@ -755,6 +755,7 @@
     
     self.mapSmallView.frame = CGRectMake(5, 0, 310, 120);
     self.L_storename.text = [self.dic valueForKey:@"merchant"];
+    self.L_storename.font = [UIFont fontWithName:AllFont size:AllFontSize];
     //dddd
     UITapGestureRecognizer * atap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMapSafeWayClick:)];
     [self.mapSmallView addGestureRecognizer:atap];
@@ -780,10 +781,13 @@
         adressStr = @"";
     }
     self.L_contact.text = [NSString stringWithFormat:@"%@",iphoneStr];
+    self.L_contact.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.L_down.text = [NSString stringWithFormat:@"%@",merStr];
+     self.L_down.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.L_street.text = [NSString stringWithFormat:@"%@",adressStr];
-    self.IV_contact.layer.borderWidth = 1;
-    self.IV_contact.layer.borderColor = [UIColor grayColor].CGColor;
+    self.L_street.font = [UIFont fontWithName:AllFont size:AllContentSize];
+//    self.IV_contact.layer.borderWidth = 1;
+//    self.IV_contact.layer.borderColor = [UIColor grayColor].CGColor;
     
     NSString * strRes = [NSString stringWithFormat:@"%@",[dic valueForKey:@"liked"]];
     if ([strRes intValue] == 0)
@@ -820,11 +824,25 @@
     l_comment_num.backgroundColor = [UIColor clearColor];
     [bgViewmap addSubview:l_comment_num];
     
-    UITableView * tableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0, 160, 320, 370)];
+    UIButton * buttonCommbit = [UIButton buttonWithType:UIButtonTypeCustom];
+    [buttonCommbit addTarget:self action:@selector(commentClick) forControlEvents:UIControlEventTouchUpInside];
+    buttonCommbit.frame = CGRectMake(5, 160, 310, 34);
+    buttonCommbit.layer.borderWidth = 1;
+    buttonCommbit.layer.borderColor = [UIColor colorWithRed:196.0/233.0 green:196.0/233.0 blue:196.0/233.0 alpha:1.0].CGColor;
+    buttonCommbit.backgroundColor = [UIColor whiteColor];
+    buttonCommbit.layer.cornerRadius = 4;
+    [bgViewmap addSubview:buttonCommbit];
+    
+    
+    UITableView * tableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0, 200, 340, 330)];
+    tableView1.backgroundColor = [UIColor colorWithRed:230.0/256.0 green:230.0/256.0  blue:230.0/256.0  alpha:1.0];
+   // UIView * bgTableView = [[UIView alloc] initWithFrame:tableView1.frame];
+    //bgTableView.backgroundColor = [UIColor colorWithRed:230.0/256.0 green:230.0/256.0  blue:230.0/256.0  alpha:1.0];
+   // tableView1.backgroundView = bgTableView;
     self.TV_tableView = tableView1;
     tableView1.dataSource = self;
     tableView1.delegate = self;
-    tableView1.backgroundColor = bgViewmap.backgroundColor;
+   // tableView1.backgroundColor = bgViewmap.backgroundColor;
     tableView1.separatorStyle = UITableViewCellSeparatorStyleNone;
    // tableView1.separatorColor = [UIColor colorWithRed:196.0/255.0 green:196.0/255.0 blue:196.0/255.0 alpha:1.0];
     [bgViewmap addSubview:tableView1];
@@ -900,7 +918,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:str];
     }
     
-    UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 40, 40)];
+    cell.backgroundColor = [UIColor colorWithRed:230.0/256.0 green:230.0/256.0  blue:230.0/256.0  alpha:1.0];
+    
+    UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 3, 40, 40)];
     NSArray * allkeys = [[[self.dataArr objectAtIndex:indexPath.row] valueForKey:@"user"] allKeys];
     __block BOOL isHave = NO;
     [allkeys enumerateObjectsUsingBlock:^(NSString * obj, NSUInteger idx, BOOL *stop) {
@@ -1068,6 +1088,33 @@
         [alert show];
     }
 }
+
+-(void)commentClick
+{
+    if ([[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_STATUS] isEqualToString:@"1"])
+    {
+        CommentViewController * comment;
+        if (iPhone5)
+        {
+            comment = [[CommentViewController alloc] initWithNibName:@"CommentViewController" bundle:nil];
+        }
+        else
+        {
+            comment = [[CommentViewController alloc] initWithNibName:@"CommentViewController4" bundle:nil];
+        }
+        comment.offerId = [self.dic valueForKey:@"id"];
+        [self.navigationController pushViewController:comment animated:YES];
+    }
+    else
+    {
+        
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Do you want to login？" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+        alert.tag = 1080;
+        [alert show];
+    }
+}
+
+
 -(IBAction)likesClick:(UITapGestureRecognizer *)aTap
 {
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_STATUS] isEqualToString:@"1"])
