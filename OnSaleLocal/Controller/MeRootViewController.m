@@ -264,7 +264,7 @@
         offerView.L_distance.text = [NSString stringWithFormat:@"%.1f m",[[dic1 valueForKey:@"distance"] floatValue]];
         
         NSString * dateStr = [formatter stringFromDate:date];
-        offerView.TF_time.text = [NSString stringWithFormat:@"Expire:%@",dateStr];
+        offerView.TF_time.text = [NSString stringWithFormat:@"Ends %@",dateStr];
         
         if ([[dic1 valueForKey:@"liked"] intValue] == 0)
         {
