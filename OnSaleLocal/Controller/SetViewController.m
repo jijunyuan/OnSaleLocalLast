@@ -414,11 +414,11 @@
     UIImageView * imageView1;
     if (iPhone5)
     {
-        imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 20, 20)]; 
+        imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(20, 12, 20, 20)];
     }
     else
     {
-       imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 7.5, 20, 20)];
+       imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(20, 7.5, 20, 20)];
     }
    
     imageView1.backgroundColor = [UIColor whiteColor];
