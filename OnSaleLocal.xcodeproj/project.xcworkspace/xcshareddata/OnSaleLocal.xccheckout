@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>659CFA92-C20D-402C-9AE2-8A7CC65DF3C1</string>
+	<key>IDESourceControlProjectName</key>
+	<string>OnSaleLocal</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D0002121-CFF3-466A-8CB2-5758FFD68B53</key>
+		<string>https://github.com/jijunyuan/OnSaleLocalLast.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>OnSaleLocal.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D0002121-CFF3-466A-8CB2-5758FFD68B53</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jijunyuan/OnSaleLocalLast.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D0002121-CFF3-466A-8CB2-5758FFD68B53</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D0002121-CFF3-466A-8CB2-5758FFD68B53</string>
+			<key>IDESourceControlWCCName</key>
+			<string>OnSaleLocalLast</string>
+		</dict>
+	</array>
+</dict>
+</plist>
