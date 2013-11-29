@@ -19,8 +19,11 @@
     if (self) {
         
         self.backgroundColor = [UIColor whiteColor];
+        self.clipsToBounds = YES;
         
-        UIImageView * imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake((294-aWeigh)/2.0, 3, aWeigh, aHeigh)];
+        
+        UIImageView * imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake((294-aWeigh)/2.0+3, 3, aWeigh-6, aHeigh)];
+        imageView1.backgroundColor = [UIColor clearColor];
         self.IV_imageview = imageView1;
         [self addSubview:imageView1];
         
@@ -39,9 +42,6 @@
         name.backgroundColor = [UIColor clearColor];
         [self addSubview:name];
         
-       
-        
-        
         UIImageView * adressImage = [[UIImageView alloc] initWithFrame:CGRectMake(190, aHeigh+20, 18, 20)];
         adressImage.image = [UIImage imageNamed:@"location.png"];
         [self addSubview:adressImage];
@@ -54,7 +54,7 @@
         [self addSubview:distanceLab];
 
         
-        UITextField * txtfield = [[UITextField alloc] initWithFrame:CGRectMake(7, aHeigh+60, 280, 25)];
+        UITextField * txtfield = [[UITextField alloc] initWithFrame:CGRectMake(57, aHeigh+60, 180, 25)];
         self.TF_time = txtfield;
         txtfield.userInteractionEnabled = NO;
         txtfield.textAlignment = NSTextAlignmentCenter;
@@ -64,12 +64,12 @@
         txtfield.font = [UIFont fontWithName:AllFont size:AllContentSize-2];
         [self addSubview:txtfield];
         
-        UIImageView * imageView_share = [[UIImageView alloc] initWithFrame:CGRectMake(7, aHeigh+90, 40, 40)];
+        UIImageView * imageView_share = [[UIImageView alloc] initWithFrame:CGRectMake(7, aHeigh+90, 30, 30)];
         imageView_share.image = [UIImage imageNamed:@"share.png"];
         self.IV_share = imageView_share;
         [self addSubview:imageView_share];
         
-        UIImageView * imageView_collect = [[UIImageView alloc] initWithFrame:CGRectMake(120, aHeigh+90, 40, 40)];
+        UIImageView * imageView_collect = [[UIImageView alloc] initWithFrame:CGRectMake(120, aHeigh+90, 30, 30)];
         imageView_collect.image = [UIImage imageNamed:@"like.png"];
         self.IV_collect = imageView_collect;
         [self addSubview:imageView_collect];
@@ -80,7 +80,7 @@
         labLike.font = [UIFont fontWithName:AllFont size:AllContentSize];
         [self addSubview:labLike];
         
-        UIImageView * imageView_call = [[UIImageView alloc] initWithFrame:CGRectMake(257, aHeigh+90, 40, 40)];
+        UIImageView * imageView_call = [[UIImageView alloc] initWithFrame:CGRectMake(257, aHeigh+90, 30, 30)];
         imageView_call.userInteractionEnabled = YES;
         imageView_call.image = [UIImage imageNamed:@"call.png"];
         self.IV_call = imageView_call;
