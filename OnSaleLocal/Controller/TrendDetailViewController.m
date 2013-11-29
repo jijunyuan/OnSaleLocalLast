@@ -478,7 +478,7 @@
         if (request.responseStatusCode == 200)
         {
             self.dataArr = [[reciveData3 objectFromJSONData] valueForKey:@"items"];
-           // NSLog(@"====%@",self.dataArr);
+            NSLog(@"==dataArr==%@",self.dataArr);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.TV_tableView reloadData];
             });
@@ -554,7 +554,7 @@
         weight = 300;
     }
     
-    self.myScrollView.contentSize = CGSizeMake(320, height+870);
+    self.myScrollView.contentSize = CGSizeMake(320, height+820);
     topImage = [[UIImageView alloc] initWithFrame:CGRectMake((320.0-weight)/2.0+10,5,weight,height)];
     NSString * larImageStr = [self.dic valueForKey:@"largeImg"];
     [topImage setImageWithURL:[NSURL URLWithString:larImageStr] placeholderImage:nil];
@@ -834,17 +834,12 @@
     [bgViewmap addSubview:buttonCommbit];
     
     
-    UITableView * tableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0, 200, 340, 330)];
+    UITableView * tableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0, 200, 340, 360)];
     tableView1.backgroundColor = [UIColor colorWithRed:230.0/256.0 green:230.0/256.0  blue:230.0/256.0  alpha:1.0];
-   // UIView * bgTableView = [[UIView alloc] initWithFrame:tableView1.frame];
-    //bgTableView.backgroundColor = [UIColor colorWithRed:230.0/256.0 green:230.0/256.0  blue:230.0/256.0  alpha:1.0];
-   // tableView1.backgroundView = bgTableView;
     self.TV_tableView = tableView1;
     tableView1.dataSource = self;
     tableView1.delegate = self;
-   // tableView1.backgroundColor = bgViewmap.backgroundColor;
     tableView1.separatorStyle = UITableViewCellSeparatorStyleNone;
-   // tableView1.separatorColor = [UIColor colorWithRed:196.0/255.0 green:196.0/255.0 blue:196.0/255.0 alpha:1.0];
     [bgViewmap addSubview:tableView1];
     
 }
@@ -911,11 +906,11 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString * str = @"mark";
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:str];
+   // static NSString * str = @"mark";
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:nil];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:str];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     }
     
     cell.backgroundColor = [UIColor colorWithRed:230.0/256.0 green:230.0/256.0  blue:230.0/256.0  alpha:1.0];
@@ -974,6 +969,19 @@
     lab.numberOfLines = 0;
     lab.font = [UIFont fontWithName:AllFont size:AllContentSize];
     [cell addSubview:lab];
+    
+    // add time
+    NSDateFormatter  * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
+    NSDate * date = [NSDate dateWithTimeIntervalSince1970:([[[self.dataArr objectAtIndex:indexPath.row] valueForKey:@"created"] floatValue]/1000)];
+    NSString * dateStr = [formatter stringFromDate:date];
+    UILabel * lab1 = [[UILabel alloc] initWithFrame:CGRectMake(65, labelsize.height+5, 230, 20)];
+    lab1.text = dateStr;
+    lab1.backgroundColor = [UIColor clearColor];
+    lab1.numberOfLines = 0;
+    lab1.font = [UIFont fontWithName:AllFont size:AllContentSmallSize];
+    [cell addSubview:lab1];
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -1005,7 +1013,7 @@
     
     CGSize labelsize = [result1 sizeWithFont:[UIFont fontWithName:AllFont size:AllContentSize] constrainedToSize:CGSizeMake(200, 2000) lineBreakMode:UILineBreakModeWordWrap];
    // int countELine = (int)([result1 length]/(200.0/AllContentSize))+1;
-    int AllLineHigh = labelsize.height+10;
+    int AllLineHigh = labelsize.height+10+20;
     if (AllLineHigh<50)
     {
         AllLineHigh = 50;
