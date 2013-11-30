@@ -213,11 +213,12 @@
     }
     
     
-    self.rightBtn.titleLabel.font = [UIFont fontWithName:AllFont size:AllFontSize];
-    [self.rightBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.rightBtn setTitle:@"save" forState:UIControlStateNormal];
+//    self.rightBtn.titleLabel.font = [UIFont fontWithName:AllFont size:AllFontSize];
+//    [self.rightBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [self.rightBtn setTitle:@"save" forState:UIControlStateNormal];
+    [self.rightBtn setImage:[UIImage imageNamed:@"save.png"] forState:UIControlStateNormal];
     [self.rightBtn addTarget:self action:@selector(saveClick) forControlEvents:UIControlEventTouchUpInside];
-    self.rightBtn.backgroundColor = [UIColor whiteColor];
+   // self.rightBtn.backgroundColor = [UIColor whiteColor];
     
     self.IV_photo.userInteractionEnabled = YES;
     UITapGestureRecognizer * photoTap= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(photoClick:)];
@@ -408,8 +409,11 @@
     {
         if ([WebService ISIOS7])
         {
-            pickViewController.view.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height+100, 320, [UIScreen mainScreen].bounds.size.height-20);
-            [self.view addSubview:pickViewController.view];
+            if (!pickViewController)
+            {
+                pickViewController.view.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height+100, 320, [UIScreen mainScreen].bounds.size.height-20);
+                [self.view addSubview:pickViewController.view];
+            }
         }
         pickViewController.sourceType = UIImagePickerControllerSourceTypeCamera;
         pickViewController.delegate = self;

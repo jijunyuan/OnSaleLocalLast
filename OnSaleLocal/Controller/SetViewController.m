@@ -421,7 +421,7 @@
        imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 7.5, 20, 20)];
     }
    
-    imageView1.backgroundColor = [UIColor whiteColor];
+    imageView1.backgroundColor = [UIColor clearColor];
     imageView1.image = [UIImage imageNamed:[self.image_arr objectAtIndex:indexPath.row]];
     [cell addSubview:imageView1];
     if (self.dataArr.count == 8)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
@@ -41,7 +41,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="92"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="avatar_80x80.png" id="1179">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="name.png" id="1179">
                             <rect key="frame" x="120" y="6" width="80" height="80"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
@@ -296,11 +296,10 @@
         </view>
     </objects>
     <resources>
-        <image name="avatar_80x80.png" width="80" height="80"/>
         <image name="email.png" width="60" height="60"/>
         <image name="facebook_signin.png" width="459" height="80"/>
-        <image name="location.png" width="30" height="30"/>
-        <image name="name.png" width="30" height="30"/>
+        <image name="location.png" width="60" height="60"/>
+        <image name="name.png" width="60" height="60"/>
         <image name="notification1.png" width="60" height="60"/>
         <image name="password.png" width="60" height="60"/>
     </resources>
