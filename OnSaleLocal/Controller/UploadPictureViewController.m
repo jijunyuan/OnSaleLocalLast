@@ -78,8 +78,11 @@
     
     if ([WebService ISIOS7])
     {
-        pickViewController.view.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height+100, 320, [UIScreen mainScreen].bounds.size.height-20);
-        [self.view addSubview:pickViewController.view];
+        if (!pickViewController)
+        {
+            pickViewController.view.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height+100, 320, [UIScreen mainScreen].bounds.size.height-20);
+            [self.view addSubview:pickViewController.view];
+        }
     }
     if (buttonIndex == 0)  //take a picture
     {
