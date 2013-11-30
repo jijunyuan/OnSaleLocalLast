@@ -69,7 +69,7 @@
     <resources>
         <image name="divider.png" width="50" height="2"/>
         <image name="email_signup.png" width="459" height="80"/>
-        <image name="facebook_signin.png" width="459" height="80"/>
+        <image name="facebook_signin.png" width="580" height="86"/>
         <image name="logo.png" width="481" height="122"/>
     </resources>
 </document>

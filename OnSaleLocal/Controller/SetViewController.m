@@ -51,6 +51,11 @@
 @property (nonatomic,strong) IBOutlet UILabel * L_distance;
 @property (nonatomic,strong) IBOutlet UIButton * Btn_signout;
 @property (nonatomic,strong) NSMutableArray * image_arr;
+
+@property (nonatomic,strong) IBOutlet UIImageView * IV_sinout;
+@property (nonatomic,strong) IBOutlet UILabel * L_sinout;
+
+
 -(IBAction)signInClick:(id)sender;
 -(IBAction)registerClick:(id)sender;
 -(void)searchTapclick:(UITapGestureRecognizer *)aTap;
@@ -69,6 +74,7 @@
 @synthesize L_name;
 @synthesize image_arr;
 @synthesize Btn_signout;
+@synthesize IV_sinout,L_sinout;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -94,15 +100,19 @@
     //not login
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_STATUS] isEqualToString:@"0"])
     {
-        self.dataArr = [NSMutableArray arrayWithObjects:@"Trend",@"Categories",@"Change Location",@"About", nil];
+        self.dataArr = [NSMutableArray arrayWithObjects:@"Trend",@"Categories",@"Change Location",@"About",@"Sign In",@"Sign Up with Facebook", nil];
         self.IV_login_name.hidden = YES;
         self.L_distance.hidden = YES;
         self.L_name.hidden = YES;
         self.IV_noLogin_name.hidden = NO;
         self.Btn_signout.hidden = YES;
+        self.IV_sinout.alpha = 0.0;
+        self.L_sinout.alpha=0.0;
+        
+        
         self.Btn_login.hidden = NO;
         self.Btn_register.hidden = NO;
-        self.image_arr = [NSMutableArray arrayWithObjects:@"home.png",@"categories.png",@"share1.png",@"change_location.png",@"about.png", nil];
+        self.image_arr = [NSMutableArray arrayWithObjects:@"home.png",@"categories.png",@"change_location.png",@"about.png",@"about.png",@"about.png", nil];
     }
     else
     {
@@ -110,13 +120,16 @@
         self.Btn_login.hidden = YES;
         self.Btn_register.hidden = YES;
         self.Btn_signout.hidden = NO;
+        self.IV_sinout.alpha = 1.0;
+        self.L_sinout.alpha=1.0;
+        
         if (iPhone5)
         {
-            self.TV_tableview.frame = CGRectMake(0, 142, 218, 400);
+            self.TV_tableview.frame = CGRectMake(0, 142, 280, 400);
         }
         else
         {
-            self.TV_tableview.frame = CGRectMake(0, 133, 218, 310);
+            self.TV_tableview.frame = CGRectMake(0, 133, 280, 310);
         }
         self.IV_noLogin_name.hidden = YES;
         self.IV_login_name.hidden = NO;
@@ -394,11 +407,11 @@
         UILabel * title;
         if (iPhone5)
         {
-            title = [[UILabel alloc] initWithFrame:CGRectMake(40, 7, 170, 30)];
+            title = [[UILabel alloc] initWithFrame:CGRectMake(40, 7, 200, 30)];
         }
         else
         {
-            title = [[UILabel alloc] initWithFrame:CGRectMake(40, 7, 170, 20)];
+            title = [[UILabel alloc] initWithFrame:CGRectMake(40, 7, 200, 20)];
         }
         title.userInteractionEnabled = YES;
         title.font = [UIFont fontWithName:AllFont size:AllContentSize];
@@ -421,6 +434,7 @@
        imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 7.5, 20, 20)];
     }
    
+    imageView1.clipsToBounds = YES;
     imageView1.backgroundColor = [UIColor clearColor];
     imageView1.image = [UIImage imageNamed:[self.image_arr objectAtIndex:indexPath.row]];
     [cell addSubview:imageView1];
@@ -793,6 +807,34 @@
         transition.type = kCATransitionFromRight;
         [self.navigationController.view.layer addAnimation:transition forKey:nil];
         [delegate.nav_Center pushViewController:upload animated:YES];
+    }
+    if ([title isEqualToString:@"Sign In"])
+    {
+        LoginViewController * login;
+        if (iPhone5)
+        {
+            login =[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        }
+        else
+        {
+            login =[[LoginViewController alloc] initWithNibName:@"LoginViewController4" bundle:nil];
+        }
+        login.isEmail = YES;
+        login.isFromSetting = YES;
+        AppDelegate * delegate = [UIApplication sharedApplication].delegate;
+        JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
+        [controller showCenterPanelAnimated:YES];
+        CATransition* transition = [CATransition animation];
+        transition.duration = 0.1;
+        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        transition.type = kCATransitionFromRight;
+        [self.navigationController.view.layer addAnimation:transition forKey:nil];
+        [delegate.nav_Center pushViewController:login animated:YES];
+ 
+    }
+    if ([title isEqualToString:@"Sign Up with Facebook"])
+    {
+        [self updateView];
     }
 }
 

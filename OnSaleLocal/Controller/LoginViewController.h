@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : BaseViewController
 @property (nonatomic)BOOL isEmail;
 @property (nonatomic)BOOL isBack;
 @property (nonatomic)BOOL isFromSetting;

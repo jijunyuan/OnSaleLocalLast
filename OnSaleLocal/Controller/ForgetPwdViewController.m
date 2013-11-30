@@ -7,6 +7,7 @@
 //
 
 #import "ForgetPwdViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ForgetPwdViewController ()<UIAlertViewDelegate>
 {
@@ -15,8 +16,8 @@
 }
 @property (nonatomic,strong) IBOutlet UITextField * TF_email;
 @property (nonatomic,strong) IBOutlet UILabel * L_titlName;
--(IBAction)cancleClick:(id)sender;
--(IBAction)sendClick:(id)sender;
+//-(IBAction)cancleClick:(id)sender;
+-(void)sendClick:(id)sender;
 @end
 
 @implementation ForgetPwdViewController
@@ -37,12 +38,20 @@
     
     self.L_titlName.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.TF_email.font = [UIFont fontWithName:AllFont size:AllContentSize];
+    
+    self.rightBtn.alpha = 1.0;
+    [self.rightBtn setImage:[UIImage imageNamed:@"send.png"] forState:UIControlStateNormal];
+    [self.rightBtn addTarget:self action:@selector(sendClick:) forControlEvents:UIControlEventTouchUpInside];
+    self.l_navTitle.text = @"Recover Password";
+    
+    self.TF_email.layer.borderWidth = 1;
+    self.TF_email.layer.borderColor = [UIColor colorWithRed:196.0/255.0 green:196.0/255.0 blue:196.0/255.0 alpha:1.0].CGColor;
 }
--(IBAction)cancleClick:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
--(IBAction)sendClick:(id)sender
+//-(IBAction)cancleClick:(id)sender
+//{
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
+-(void)sendClick:(id)sender
 {
     if ([WebService isConnectionAvailable])
     {

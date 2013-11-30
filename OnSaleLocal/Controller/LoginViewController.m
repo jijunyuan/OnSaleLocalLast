@@ -32,7 +32,7 @@
 @property (nonatomic,strong) IBOutlet UILabel * L_forgetPWd;
 @property (nonatomic,strong) IBOutlet UIButton * btn_right1;
 
--(IBAction)cancleClick:(id)sender;
+//-(IBAction)cancleClick:(id)sender;
 -(IBAction)signInClick:(id)sender;
 -(void)tapForgetPwdClick:(UITapGestureRecognizer *)aTap;
 -(IBAction)facebookLoginIn:(UITapGestureRecognizer *)sender;
@@ -134,6 +134,9 @@
     self.btn_right1.titleLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
     
     
+    self.l_navTitle.text= @"SIGN IN";
+    
+    
     UITapGestureRecognizer * aTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapForgetPwdClick:)];
     [self.L_forget addGestureRecognizer:aTap];
     NSLog(@"%@===isEmail = %d",[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_LOGIN],isEmail);
@@ -167,7 +170,7 @@
     }
     [self.navigationController pushViewController:forget animated:YES];
 }
--(IBAction)cancleClick:(id)sender
+-(void)backClick:(UIButton *)aButton
 {
     AppDelegate * delegate = [UIApplication sharedApplication].delegate;
     JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;

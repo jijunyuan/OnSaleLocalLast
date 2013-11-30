@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface ForgetPwdViewController : UIViewController<NSURLConnectionDelegate,NSURLConnectionDataDelegate>
+@interface ForgetPwdViewController : BaseViewController<NSURLConnectionDelegate,NSURLConnectionDataDelegate>
 
 @end

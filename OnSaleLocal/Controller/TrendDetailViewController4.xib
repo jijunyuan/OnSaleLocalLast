@@ -211,12 +211,12 @@
     </objects>
     <resources>
         <image name="btn_like_bg.png" width="180" height="78"/>
-        <image name="call.png" width="30" height="30"/>
+        <image name="call.png" width="60" height="60"/>
         <image name="comments.png" width="30" height="30"/>
         <image name="divider.png" width="50" height="2"/>
         <image name="email_signup.png" width="459" height="80"/>
         <image name="facebook_signin.png" width="459" height="80"/>
-        <image name="like.png" width="30" height="30"/>
+        <image name="like.png" width="60" height="60"/>
         <image name="logo.png" width="481" height="122"/>
     </resources>
 </document>
