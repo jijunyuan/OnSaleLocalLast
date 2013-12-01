@@ -100,7 +100,7 @@
     //not login
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_STATUS] isEqualToString:@"0"])
     {
-        self.dataArr = [NSMutableArray arrayWithObjects:@"Trend",@"Categories",@"Change Location",@"About",@"Sign In",@"Sign Up with Facebook", nil];
+        self.dataArr = [NSMutableArray arrayWithObjects:@"Trending",@"Categories",@"Change Location",@"About",@"Sign In",@"Sign Up with Facebook", nil];
         self.IV_login_name.hidden = YES;
         self.L_distance.hidden = YES;
         self.L_name.hidden = YES;
@@ -112,11 +112,11 @@
         
         self.Btn_login.hidden = NO;
         self.Btn_register.hidden = NO;
-        self.image_arr = [NSMutableArray arrayWithObjects:@"home.png",@"categories.png",@"change_location.png",@"about.png",@"about.png",@"about.png", nil];
+        self.image_arr = [NSMutableArray arrayWithObjects:@"home.png",@"categories.png",@"change_location.png",@"about.png",@"sign_in_menu.png",@"facebook_menu.png", nil];
     }
     else
     {
-        self.dataArr = [NSMutableArray arrayWithObjects:@"Trend",@"Categories",@"Upload Deals",@"Me",@"Account Setting",@"Notification",@"Change Location",@"About", nil];
+        self.dataArr = [NSMutableArray arrayWithObjects:@"Trending",@"Categories",@"Upload Deals",@"Me",@"Account Setting",@"Notification",@"Change Location",@"About", nil];
         self.Btn_login.hidden = YES;
         self.Btn_register.hidden = YES;
         self.Btn_signout.hidden = NO;
@@ -414,7 +414,7 @@
             title = [[UILabel alloc] initWithFrame:CGRectMake(40, 7, 200, 20)];
         }
         title.userInteractionEnabled = YES;
-        title.font = [UIFont fontWithName:AllFont size:AllContentSize];
+        title.font = [UIFont fontWithName:AllFont size:AllFontSize];
         title.textColor = [UIColor whiteColor];
         title.backgroundColor = [UIColor clearColor];
         title.text = [self.dataArr objectAtIndex:indexPath.row];
@@ -427,11 +427,11 @@
     UIImageView * imageView1;
     if (iPhone5)
     {
-        imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 20, 20)]; 
+        imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 6, 30, 30)];
     }
     else
     {
-       imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 7.5, 20, 20)];
+       imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 7.5, 30, 30)];
     }
    
     imageView1.clipsToBounds = YES;
@@ -613,7 +613,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString * title = [self.dataArr objectAtIndex:indexPath.row];
-    if ([title isEqualToString:@"Trend"])
+    if ([title isEqualToString:@"Trending"])
     {
         ViewController * trendController;
         if (iPhone5)
