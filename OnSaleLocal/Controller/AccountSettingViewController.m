@@ -48,6 +48,9 @@
 
 @property (nonatomic,strong) IBOutlet UILabel * L_facebook;
 
+@property (nonatomic,strong) IBOutlet UILabel * L_desNotification;
+@property (nonatomic,strong) IBOutlet UILabel * L_desPush;
+
 -(IBAction)maleClick:(id)sender;
 -(IBAction)femaleClick:(id)sender;
 -(IBAction)nosayClick:(id)sender;
@@ -85,6 +88,7 @@
 @synthesize bt_2;
 @synthesize bt_3;
 @synthesize l_11;
+@synthesize L_desNotification,L_desPush;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -114,6 +118,9 @@
     self.bt_3.titleLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.l_11.font = [UIFont fontWithName:AllFont size:AllContentSize];
     
+    self.rightBtn.frame = CGRectMake(self.rightBtn.frame.origin.x+15, self.rightBtn.frame.origin.y, 30, 30);
+    self.L_desPush.font = [UIFont fontWithName:AllFont size:AllContentSize];
+    self.L_desNotification.font = [UIFont fontWithName:AllFont size:AllContentSize];
     
     pickViewController = [[UIImagePickerController alloc]init];
 
@@ -184,7 +191,7 @@
     if ([str1 isEqualToString:@"Man"])
     {
        // self.Btn_male.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1.0];
-        self.Btn_male.backgroundColor = [UIColor grayColor];
+        self.Btn_male.backgroundColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
         self.Btn_female.backgroundColor = [UIColor whiteColor];
         self.Btn_nosay.backgroundColor = [UIColor whiteColor];
     }
@@ -192,7 +199,7 @@
     {
         self.Btn_male.backgroundColor = [UIColor whiteColor];
         //self.Btn_female.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1.0];;
-        self.Btn_female.backgroundColor = [UIColor grayColor];
+        self.Btn_female.backgroundColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
         self.Btn_nosay.backgroundColor = [UIColor whiteColor];
     }
     else
@@ -200,7 +207,7 @@
         self.Btn_male.backgroundColor = [UIColor whiteColor];
         self.Btn_female.backgroundColor = [UIColor whiteColor];
        // self.Btn_nosay.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1.0];;
-        self.Btn_nosay.backgroundColor = [UIColor grayColor];
+        self.Btn_nosay.backgroundColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
     }
     
     if ([[user valueForKey:LOGIN_NOTI] isEqualToString:@"Enable"])
@@ -296,7 +303,7 @@
 {
     genderStr = @"Man";
    // self.Btn_male.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1.0];
-    self.Btn_male.backgroundColor = [UIColor grayColor];
+    self.Btn_male.backgroundColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
     self.Btn_nosay.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:255.0/255.0];
     self.Btn_female.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:255.0/255.0];
 }
@@ -306,14 +313,14 @@
     self.Btn_male.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0];
     self.Btn_nosay.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:255.0/255.0];
     //self.Btn_female.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:255.0/255.0];
-    self.Btn_female.backgroundColor = [UIColor grayColor];
+    self.Btn_female.backgroundColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
 }
 -(IBAction)nosayClick:(id)sender
 {
     genderStr = @"NoToSay";
     self.Btn_male.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0];
    // self.Btn_nosay.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:255.0/255.0];
-    self.Btn_nosay.backgroundColor = [UIColor grayColor];
+    self.Btn_nosay.backgroundColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
     self.Btn_female.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:255.0/255.0];
 }
 -(IBAction)faceBtnClick:(id)sender
@@ -409,11 +416,11 @@
     {
         if ([WebService ISIOS7])
         {
-            if (!pickViewController)
-            {
+//            if (!pickViewController)
+//            {
                 pickViewController.view.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height+100, 320, [UIScreen mainScreen].bounds.size.height-20);
                 [self.view addSubview:pickViewController.view];
-            }
+           // }
         }
         pickViewController.sourceType = UIImagePickerControllerSourceTypeCamera;
         pickViewController.delegate = self;

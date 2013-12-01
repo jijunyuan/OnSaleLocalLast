@@ -60,12 +60,12 @@
     [view1 addSubview:rightBtn1];
     
     UILabel * lab = [[UILabel alloc] initWithFrame:CGRectMake(80, 7, 160, 30)];
-    lab.font = [UIFont fontWithName:AllFont size:AllFontSize];
+    lab.font = [UIFont fontWithName:AllFont size:All_h2_size];
     self.l_navTitle = lab;
    // lab.font = [UIFont systemFontOfSize:20];
     lab.textAlignment = NSTextAlignmentCenter;
     lab.backgroundColor = [UIColor clearColor];
-    lab.textColor = [UIColor colorWithRed:237.0/255.0 green:28.0/255.0 blue:36.0/255.0 alpha:1.0];
+    lab.textColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
     [view1 addSubview:lab];
 }
 -(void)backClick:(UIButton *)aButton

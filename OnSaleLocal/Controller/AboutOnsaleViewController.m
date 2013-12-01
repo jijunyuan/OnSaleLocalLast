@@ -32,8 +32,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     
-    self.l_navTitle.text = @"OnsaleLocal";
-    
+    self.l_navTitle.text = @"About Us";
     self.myWebView.scrollView.bounces = NO;
     
     NSString * formatStr = [NSString stringWithFormat:@"%@/about.html",DO_MAIN];
@@ -43,7 +42,10 @@
     NSURLRequest * request= [NSURLRequest requestWithURL:[NSURL URLWithString:formatStr]];
     [self.myWebView loadRequest:request];
 }
-
+-(void)backClick:(UIButton *)aButton
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

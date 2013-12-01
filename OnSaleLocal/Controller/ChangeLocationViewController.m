@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <CoreLocation/CoreLocation.h>
 #import "TKHttpRequest.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ChangeLocationViewController ()<CLLocationManagerDelegate,UIAccelerometerDelegate>
 {
@@ -24,10 +25,11 @@
 @property (nonatomic,strong) IBOutlet UIView * IV_setView;
 @property (nonatomic,strong) IBOutlet UILabel * L_t1;
 @property (nonatomic,strong) IBOutlet UILabel * L_t2;
+@property (nonatomic,strong) IBOutlet UIView * bgViewCurr;
 
 -(IBAction)currBtnClick:(id)sender;
 -(IBAction)setLocationClick:(id)sender;
--(IBAction)sumbitLocation:(id)sender;
+-(void)sumbitLocation:(id)sender;
 @end
 
 @implementation ChangeLocationViewController
@@ -36,6 +38,7 @@
 @synthesize L_currLocation;
 @synthesize TF_setLocation;
 @synthesize L_t1,L_t2;
+@synthesize bgViewCurr;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -55,10 +58,18 @@
     self.IV_currView.layer.cornerRadius = 15;
     self.IV_setView.layer.cornerRadius = 15;
     
-    self.L_t1.font = [UIFont fontWithName:AllFont size:AllContentSize];
-    self.L_t2.font = [UIFont fontWithName:AllFont size:AllContentSize];
+    self.bgViewCurr.layer.borderWidth = 1;
+    self.bgViewCurr.layer.borderColor = [UIColor colorWithRed:196.0/255.0 green:196.0/255.0 blue:196.0/255.0 alpha:1.0].CGColor;
+    self.bgViewCurr.layer.cornerRadius = 5;
+    
+    self.L_t1.font = [UIFont fontWithName:AllFont size:AllFontSize];
+    self.L_t2.font = [UIFont fontWithName:AllFont size:AllFontSize];
     self.TF_setLocation.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.L_currLocation.font = [UIFont fontWithName:AllFont size:AllContentSize];
+    
+    [self.rightBtn setImage:[UIImage imageNamed:@"save.png"] forState:UIControlStateNormal];
+    [self.rightBtn addTarget:self action:@selector(sumbitLocation:) forControlEvents:UIControlEventTouchUpInside];
+    self.rightBtn.frame = CGRectMake(self.rightBtn.frame.origin.x+10, self.rightBtn.frame.origin.y, 30, 30);
     
     
     self.Btn_currLocation.backgroundColor = [UIColor colorWithRed:70.0/255.0 green:146.0/255.0 blue:19.0/255.0 alpha:1.0];
@@ -68,6 +79,10 @@
     
     
     self.TF_setLocation.text = [[NSUserDefaults standardUserDefaults] valueForKey:@"adress_set"];
+    self.TF_setLocation.layer.borderColor = [UIColor colorWithRed:196.0/255.0 green:196.0/255.0 blue:196.0/255.0 alpha:1.0].CGColor;
+    self.TF_setLocation.layer.borderWidth = 1;
+    self.TF_setLocation.layer.cornerRadius = 5;
+    
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:IS_CURR_LOCATION] isEqualToString:@"0"])
     {
         
@@ -192,7 +207,7 @@
 {
     [self.TF_setLocation resignFirstResponder];
 }
--(IBAction)sumbitLocation:(id)sender
+-(void)sumbitLocation:(id)sender
 {
     NSString * adressStr = self.TF_setLocation.text;
     NSLog(@"%f,%f",[self getPostion:adressStr].latitude,[self getPostion:adressStr].longitude);

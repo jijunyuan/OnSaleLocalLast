@@ -122,7 +122,7 @@
     }
     else
     {
-        self.dataArr = [NSMutableArray arrayWithObjects:@"Trending",@"Categories",@"Upload Deals",@"Me",@"Account Setting",@"Notification",@"Change Location",@"About", nil];
+        self.dataArr = [NSMutableArray arrayWithObjects:@"Trending",@"Categories",@"Upload Deal",@"Me",@"Account Settings",@"Notification",@"Change Location",@"About", nil];
         self.Btn_login.hidden = YES;
         self.Btn_register.hidden = YES;
         self.Btn_signout.hidden = NO;
@@ -161,7 +161,7 @@
         }
         
         NSUserDefaults * user1 = [NSUserDefaults standardUserDefaults];
-        NSString * nameStr = [NSString stringWithFormat:@"%@ %@",[user1 valueForKey:LOGIN_LAST_NAME],[user1 valueForKey:LOGIN_FIRST_NAME]];
+        NSString * nameStr = [NSString stringWithFormat:@"%@ %@",[user1 valueForKey:LOGIN_FIRST_NAME],[user1 valueForKey:LOGIN_LAST_NAME]];
         NSLog(@"nameStr = %@",nameStr);
         self.L_name.text = nameStr;
         //self.L_distance.text = @"0 Followers";
@@ -752,7 +752,7 @@
         [self.navigationController.view.layer addAnimation:transition forKey:nil];
         [delegate.nav_Center pushViewController:about animated:YES];
     }
-    if ([title isEqualToString:@"Account Setting"])
+    if ([title isEqualToString:@"Account Settings"])
     {
         AccountSettingViewController * about;
         if (iPhone5)
@@ -819,7 +819,7 @@
         [self.navigationController.view.layer addAnimation:transition forKey:nil];
         [delegate.nav_Center pushViewController:me animated:YES];
     }
-    if ([title isEqualToString:@"Upload Deals"])
+    if ([title isEqualToString:@"Upload Deal"])
     {
         UploadPictureViewController * upload;
         if (iPhone5)

@@ -54,6 +54,10 @@
     self.dataArr = [NSMutableArray arrayWithCapacity:0];
     
     self.l_navTitle.text = @"Categories";
+//    self.view.backgroundColor = [UIColor colorWithRed:225.0/255.0 green:224.0/255.0 blue:223.0/255.0 alpha:1.0];
+//    self.myTableView.alpha = 0.9;
+    
+    
     
     if (_refreshTableView == nil)
     {
@@ -190,11 +194,17 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:idStr];
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+   // cell.selectionStyle = UITableViewCellSelectionStyleGray;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.text = [[self.dataArr objectAtIndex:indexPath.row] valueForKey:@"name"];
-    cell.textLabel.textColor = [UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1.0];
+    cell.textLabel.textColor = [UIColor blackColor];
     cell.textLabel.font = [UIFont fontWithName:AllFont size:AllFontSize];
+    
+    UIImageView * imageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"next.png"]];
+    imageView1.frame = CGRectMake(0, 0, 20, 20);
+    cell.accessoryView= imageView1;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

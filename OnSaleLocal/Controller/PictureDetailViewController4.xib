@@ -25,6 +25,7 @@
                 <outlet property="l_t6" destination="77" id="OQU-qB-7o3"/>
                 <outlet property="l_t7" destination="76" id="uf6-Tz-148"/>
                 <outlet property="l_t8" destination="75" id="eSy-lU-0VH"/>
+                <outlet property="l_t9" destination="75" id="bU9-kg-N2k"/>
                 <outlet property="mainView" destination="70" id="98"/>
                 <outlet property="myScrollView" destination="57" id="60"/>
                 <outlet property="view" destination="1" id="3"/>
@@ -266,6 +267,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </view>
     </objects>
     <resources>
-        <image name="progress_3.png" width="431" height="69"/>
+        <image name="progress_3.png" width="532" height="85"/>
     </resources>
 </document>

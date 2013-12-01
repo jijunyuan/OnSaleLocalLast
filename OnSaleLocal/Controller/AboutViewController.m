@@ -55,50 +55,46 @@
     [self.dataArr addObject:arr2];
    // [self.dataArr addObject:arr3];
 }
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 50;
+}
+
+-(UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+
+{
+    UILabel *headerLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 10, 280, 30)];
+    
+    if (section == 0)
+    {
+        headerLabel.text = @"   This App";
+    }
+    else
+    {
+        headerLabel.text = @"   OnSaleLocal";
+    }
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.font = [UIFont fontWithName:AllFont size:AllFontSize];
+    headerLabel.textColor = [UIColor colorWithRed:220.0/256.0 green:24.0/256.0 blue:22.0/256.0 alpha:1.0];
+    return headerLabel;
+    
+}
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 //{
-//    UIView * view1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-//    view1.backgroundColor = [UIColor clearColor];
-//    UILabel * labTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 320, 30)];
-//    labTitle.backgroundColor = [UIColor clearColor];
-//    labTitle.font = [UIFont fontWithName:AllFont size:AllFontSize];
-//    [view1 addSubview:labTitle];
 //    if (section == 0)
 //    {
-//        labTitle.text = @"This App";
+//        
+//        return @"This App";
 //    }
 //    else
 //    {
-//         labTitle.text = @"OnSaleLocal";
+//      return @"OnSaleLocal";
 //    }
-//    
-//    return view1;
+//    return Nil;
 //}
-
-
-//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-//
-//{
-//    
-//    return 20;
-//    
-//}
-
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 20;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (section == 0) {
-        
-        return @"This App";
-    }
-    
-    else
-        return @"OnSaleLocal";
-}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.dataArr.count;
@@ -117,7 +113,7 @@
         cell.textLabel.text = [[self.dataArr objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         cell.textLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
         cell.textLabel.textColor = [UIColor blackColor];
-        if (indexPath.section == 2)
+        if (indexPath.section == 1&& indexPath.row == 3)
         {
             UILabel * lab = [[UILabel alloc] initWithFrame:CGRectMake(200, 7, 100, 30)];
             lab.textColor = [UIColor blackColor];
@@ -127,7 +123,7 @@
             [cell addSubview:lab];
         }
     }
-    if (indexPath.section<2)
+    if (indexPath.section<2 && indexPath.row!=3)
     {
         if (indexPath.section == 0 && indexPath.row == 2)
         {
@@ -152,7 +148,7 @@
         [self onCheckVersion:currVision];
     }
 
-    if(indexPath.section == 0 && indexPath.row == 1)
+    if(indexPath.section == 0 && indexPath.row == 0)
     {
         RateAppViewController * rate;
         if(iPhone5)
@@ -205,7 +201,20 @@
       }
       [self.navigationController pushViewController:term animated:YES];
   }
-    if (indexPath.section == 0&& indexPath.row == 1)
+//    if (indexPath.section == 1&& indexPath.row == 0)
+//    {
+//        AboutOnsaleViewController *aboutBack;
+//        if(iPhone5)
+//        {
+//            aboutBack = [[AboutOnsaleViewController alloc] initWithNibName:@"AboutOnsaleViewController" bundle:nil];
+//        }
+//        else
+//        {
+//            aboutBack = [[AboutOnsaleViewController alloc] initWithNibName:@"AboutOnsaleViewController4" bundle:nil];
+//        }
+//        [self.navigationController pushViewController:aboutBack animated:YES];
+//    }
+    if (indexPath.section==0&& indexPath.row== 1)
     {
         AboutBackViewController *aboutBack;
         if(iPhone5)

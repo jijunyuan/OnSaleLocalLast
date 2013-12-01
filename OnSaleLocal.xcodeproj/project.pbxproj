@@ -137,6 +137,7 @@
 		F10DEC1417F468CA00AD77FC /* FollowsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F10DEC1217F468C900AD77FC /* FollowsViewController.xib */; };
 		F10DEC1617F468E000AD77FC /* FollowsViewController4.xib in Resources */ = {isa = PBXBuildFile; fileRef = F10DEC1517F468E000AD77FC /* FollowsViewController4.xib */; };
 		F10DEC1917F46ED300AD77FC /* FollowsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F10DEC1817F46ED300AD77FC /* FollowsCell.m */; };
+		F10F750E184B1CA100598F03 /* notification2.png in Resources */ = {isa = PBXBuildFile; fileRef = F10F750D184B1CA100598F03 /* notification2.png */; };
 		F1109D4217E89B1200FFA36B /* ForgetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1109D4017E89B1200FFA36B /* ForgetPwdViewController.m */; };
 		F1109D4317E89B1200FFA36B /* ForgetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1109D4117E89B1200FFA36B /* ForgetPwdViewController.xib */; };
 		F1109D4617E89B2800FFA36B /* ForgetPwdViewController4.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1109D4517E89B2800FFA36B /* ForgetPwdViewController4.xib */; };
@@ -462,6 +463,7 @@
 		F10DEC1517F468E000AD77FC /* FollowsViewController4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowsViewController4.xib; sourceTree = "<group>"; };
 		F10DEC1717F46ED300AD77FC /* FollowsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowsCell.h; sourceTree = "<group>"; };
 		F10DEC1817F46ED300AD77FC /* FollowsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowsCell.m; sourceTree = "<group>"; };
+		F10F750D184B1CA100598F03 /* notification2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notification2.png; sourceTree = "<group>"; };
 		F1109D3F17E89B1200FFA36B /* ForgetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPwdViewController.h; sourceTree = "<group>"; };
 		F1109D4017E89B1200FFA36B /* ForgetPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPwdViewController.m; sourceTree = "<group>"; };
 		F1109D4117E89B1200FFA36B /* ForgetPwdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPwdViewController.xib; sourceTree = "<group>"; };
@@ -1181,6 +1183,7 @@
 		F14983BF17E0B0AE00C1CEC1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F10F750D184B1CA100598F03 /* notification2.png */,
 				F19A9E86184ACF5D003491FF /* facebook_menu.png */,
 				F19A9E87184ACF5D003491FF /* sign_in_menu.png */,
 				F1AEA5AC184A221E00D4E869 /* upload_580.png */,
@@ -1603,6 +1606,7 @@
 				4D7ADA8C1849C82900B1B0DA /* send.png in Resources */,
 				F19A9E88184ACF5D003491FF /* facebook_menu.png in Resources */,
 				F10DEC0F17F465D900AD77FC /* StoreMapViewController4.xib in Resources */,
+				F10F750E184B1CA100598F03 /* notification2.png in Resources */,
 				F10DEC1417F468CA00AD77FC /* FollowsViewController.xib in Resources */,
 				F10DEC1617F468E000AD77FC /* FollowsViewController4.xib in Resources */,
 				4D5D4C8117F5ACEC000B12AA /* CommentViewController.xib in Resources */,

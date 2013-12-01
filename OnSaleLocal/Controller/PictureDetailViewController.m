@@ -30,7 +30,7 @@
 @property (nonatomic,strong) IBOutlet UIScrollView * myScrollView;
 @property (nonatomic,strong) IBOutlet UIDatePicker * datePicker;
 @property (nonatomic,strong) IBOutlet UIView * bgview;
-@property (nonatomic,strong) IBOutlet UILabel * l_t1, *l_t2,*l_t3,*l_t4,*l_t5,*l_t6,*l_t7,*l_t8;
+@property (nonatomic,strong) IBOutlet UILabel * l_t1, *l_t2,*l_t3,*l_t4,*l_t5,*l_t6,*l_t7,*l_t8,*l_t9;
 -(void)sendClick:(UIButton *)aButton;
 -(IBAction)datePickValueChange:(UIDatePicker *)aPicker;
 -(void)getData;
@@ -48,7 +48,7 @@
 @synthesize lat,longt;
 @synthesize bgView;
 @synthesize TF_discound;
-@synthesize l_t1,l_t2,l_t3,l_t4,l_t5,l_t6,l_t7,l_t8;
+@synthesize l_t1,l_t2,l_t3,l_t4,l_t5,l_t6,l_t7,l_t8,l_t9;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -84,6 +84,7 @@
     self.l_t6.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.l_t7.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.l_t8.font = [UIFont fontWithName:AllFont size:AllContentSize];
+    self.l_t9.font = [UIFont fontWithName:AllFont size:AllContentSize];
     
     
     
