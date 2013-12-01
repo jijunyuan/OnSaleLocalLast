@@ -48,7 +48,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    
+    
     [self.leftButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    self.leftButton.frame = CGRectMake(self.leftButton.frame.origin.x, self.leftButton.frame.origin.y+5, 30, 30);
     self.l_navTitle.text = self.key;
     self.IV_result.alpha = 0.0;
     self.L_result.alpha = 0.0;

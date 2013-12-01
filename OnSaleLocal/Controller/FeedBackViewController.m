@@ -45,7 +45,7 @@
     }
     else
     {
-        [MyAlert ShowAlertMessage:@"Please fill in the information." title:@""];
+       // [MyAlert ShowAlertMessage:@"Please fill in the information." title:@""];
     }
 }
 - (void)didReceiveMemoryWarning

@@ -30,7 +30,7 @@
     {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    self.l_navTitle.text = @"Terms";
+    self.l_navTitle.text = @"Feedback";
     self.myWebView.scrollView.bounces = NO;
     NSString * formatStr = [NSString stringWithFormat:@"%@/contact.html",DO_MAIN];
     NSURLRequest * request= [NSURLRequest requestWithURL:[NSURL URLWithString:formatStr]];

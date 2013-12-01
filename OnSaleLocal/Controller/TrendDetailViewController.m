@@ -745,6 +745,7 @@
     UILabel * lab = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 200, 25)];
     lab.text = @"STORE";
     lab.backgroundColor = [UIColor clearColor];
+    lab.textColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
     lab.font = [UIFont fontWithName:AllFont size:AllContentSize];
     [storeView addSubview:lab];
     [self.myScrollView addSubview:storeView];
@@ -820,6 +821,7 @@
     
     l_comment_num = [[UILabel alloc] initWithFrame:CGRectMake(10, 130, 200, 30)];
     l_comment_num.text = [NSString stringWithFormat:@"COMMENTS(%@)",[[self.dic valueForKey:@"comments"] stringValue]];
+    l_comment_num.textColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
     l_comment_num.font = [UIFont fontWithName:AllFont size:AllContentSize];
     l_comment_num.backgroundColor = [UIColor clearColor];
     [bgViewmap addSubview:l_comment_num];
@@ -972,7 +974,7 @@
     
     // add time
     NSDateFormatter  * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
+    [formatter setDateFormat:@"MM/dd/yyyy   HH:mm"];
     NSDate * date = [NSDate dateWithTimeIntervalSince1970:([[[self.dataArr objectAtIndex:indexPath.row] valueForKey:@"created"] floatValue]/1000)];
     NSString * dateStr = [formatter stringFromDate:date];
     UILabel * lab1 = [[UILabel alloc] initWithFrame:CGRectMake(65, labelsize.height+5, 230, 20)];

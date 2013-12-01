@@ -449,7 +449,7 @@
     
     self.L_followings.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.L_follows.font = [UIFont fontWithName:AllFont size:AllContentSize];
-    self.L_name.font = [UIFont fontWithName:AllFont size:AllContentSize];
+    self.L_name.font = [UIFont fontWithName:AllFont size:All_h2_size];
     self.L_shared.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.L_likes.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.L_storeFollowed.font = [UIFont fontWithName:AllFont size:AllContentSize];
@@ -464,6 +464,7 @@
     if (self.userid.length>0 && self.isFromSetting == NO)
     {
         self.leftButton.imageView.image = nil;
+        self.leftButton.frame = CGRectMake(self.leftButton.frame.origin.x, self.leftButton.frame.origin.y+5, 30, 30);
         [self.leftButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     }
     dict_id = [NSMutableDictionary dictionaryWithCapacity:0];
@@ -575,6 +576,7 @@
             if (![[dic valueForKey:@"id"] isEqualToString:[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_ID]])
             {
                 NSString * resultStr1 = [NSString stringWithFormat:@"%@",[dic valueForKey:@"myFollowing"]];
+            
                 if ([resultStr1 isEqualToString:@"0"])
                 {
                     [self.rightBtn setImage:[UIImage imageNamed:@"follow.png"] forState:UIControlStateNormal];
@@ -583,20 +585,20 @@
                 {
                     [self.rightBtn setImage:[UIImage imageNamed:@"followed.png"] forState:UIControlStateNormal];
                 }
-                self.rightBtn.frame = CGRectMake(self.rightBtn.frame.origin.x, self.rightBtn.frame.origin.y-3, 40, 40);
+                self.rightBtn.frame = CGRectMake(self.rightBtn.frame.origin.x+10, self.rightBtn.frame.origin.y+1, 30, 30);
                 [self.rightBtn addTarget:self action:@selector(rightButtonClick:) forControlEvents:UIControlEventTouchUpInside];
             }
             
             
             self.L_name.text = name;
-            self.L_follows.text = [[NSString stringWithFormat:@"%d",[[dic valueForKey:@"followers"] intValue]] stringByAppendingFormat:@" follows"];
+            self.L_follows.text = [[NSString stringWithFormat:@"%d",[[dic valueForKey:@"followers"] intValue]] stringByAppendingFormat:@" follower"];
             self.L_followings.text = [[NSString stringWithFormat:@"%d",[[dic valueForKey:@"followings"] intValue]] stringByAppendingFormat:@" followings"];
             
             // currfollowing1 = [[dic valueForKey:@"followings"] intValue];
             
             self.L_likes.text = [[NSString stringWithFormat:@"%d",[[dic valueForKey:@"likes"] intValue]] stringByAppendingFormat:@" likes"];
             self.L_shared.text = [[NSString stringWithFormat:@"%d",[[dic valueForKey:@"offers"] intValue]] stringByAppendingFormat:@" shared"];
-            self.L_storeFollowed.text = [[NSString stringWithFormat:@"%d",[[dic valueForKey:@"stores"] intValue]] stringByAppendingFormat:@" store followed"];
+            self.L_storeFollowed.text = [[NSString stringWithFormat:@"%d",[[dic valueForKey:@"stores"] intValue]] stringByAppendingFormat:@" stores"];
             tempStoreFollow = self.L_storeFollowed.text;
             
             userid = [dic valueForKey:@"id"];

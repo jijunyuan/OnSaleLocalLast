@@ -235,7 +235,7 @@
         [cell addSubview:button];
         [buttonArr addObject:button];
         cell.textLabel.text = [[self.dataArr objectAtIndex:indexPath.row] valueForKey:@"name"];
-        cell.textLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
+        cell.textLabel.font = [UIFont fontWithName:AllFont size:AllFontSize];
     }
     
     return cell;
@@ -244,6 +244,7 @@
 {
     
     UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+//    cell.textLabel.textColor = [UIColor colorWithRed:37.0/255.0 green:197.0/255.0 blue:187.0/255.0 alpha:1.0];
     __block UIButton * tempButton;
     [cell.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([obj isKindOfClass:[UIButton class]])

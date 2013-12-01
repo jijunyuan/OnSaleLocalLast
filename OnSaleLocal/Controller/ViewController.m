@@ -185,7 +185,7 @@
     [super viewDidLoad];
     self.L_result.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.L_skip.font = [UIFont fontWithName:AllFont size:AllContentSize];
-    self.l_navTitle.font = [UIFont fontWithName:AllFont size:AllContentSize];
+   // self.l_navTitle.font = [UIFont fontWithName:AllFont size:All_h2_size];
     
     
     test = 0;
@@ -201,7 +201,7 @@
     mutable_dic = [NSMutableDictionary dictionaryWithCapacity:0];
     self.dataArr = [NSMutableArray arrayWithCapacity:0];
     self.l_navTitle.text = @"Trending";
-    self.l_navTitle.font = [UIFont fontWithName:AllFont size:AllContentSize];
+   // self.l_navTitle.font = [UIFont fontWithName:AllFont size:AllContentSize];
     //    UIButton * buttonMap = [UIButton buttonWithType:UIButtonTypeCustom];
     //    [buttonMap addTarget:self action:@selector(mapClick) forControlEvents:UIControlEventTouchUpInside];
     //    buttonMap.frame = CGRectMake(280, 7, 30, 30);
