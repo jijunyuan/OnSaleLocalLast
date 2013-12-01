@@ -62,6 +62,7 @@
 -(IBAction)signoutClick:(id)sender;
 - (void)updateView;
 //(void)refreshView1;
+-(void)tapClickPhoto:(UITapGestureRecognizer *)aTap;
 @end
 
 @implementation SetViewController
@@ -94,9 +95,14 @@
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView1) name:@"refreshViewWill" object:nil];
     
     NSLog(@"%s",__FUNCTION__);
+    self.L_sinout.font = [UIFont fontWithName:AllFont size:AllFontSize];
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClickPhoto:)];
+    self.IV_login_name.userInteractionEnabled = YES;
+    [self.IV_login_name addGestureRecognizer:tapGesture];
     self.dataArr = [NSMutableArray arrayWithCapacity:0];
     self.searchBar.text = @"";
     self.searchBar.backgroundColor = [UIColor colorWithRed:50.0/255.0 green:50.0/255.0 blue:50.0/255.0 alpha:1.0];
+    self.L_name.font = [UIFont fontWithName:AllFont size:All_h1_Size];
     //not login
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_STATUS] isEqualToString:@"0"])
     {
@@ -173,7 +179,30 @@
     [self.TV_tableview reloadData];
     NSLog(@"self.dataArr = %@",self.dataArr);
 }
+-(void)tapClickPhoto:(UITapGestureRecognizer *)aTap
+{
+    MeRootViewController * me;
+    if (iPhone5)
+    {
+        me = [[MeRootViewController alloc] initWithNibName:@"MeRootViewController" bundle:nil];
+    }
+    else
+    {
+        me = [[MeRootViewController alloc] initWithNibName:@"MeRootViewController4" bundle:nil];
+    }
+    
+    me.isFromSetting = YES;
+    AppDelegate * delegate = [UIApplication sharedApplication].delegate;
+    JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
+    [controller showCenterPanelAnimated:YES];
+    CATransition* transition = [CATransition animation];
+    transition.duration = 0.5;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFromRight;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    [delegate.nav_Center pushViewController:me animated:YES];
 
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -182,9 +211,12 @@
     self.Btn_register.titleLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.Btn_signout.titleLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
     
+    
+    
+    
     //去searchBar背景
     //self.searchBar.sea = YES;
-   
+   // self.searchBar.searchFieldBackgroundPositionAdjustment = (UIOffset)CGPointMake(10, 0);
     if ([WebService ISIOS7])
     {
        // self.searchBar.tintColor = [UIColor colorWithRed:50.0/255.0 green:50.0/255.0 blue:50.0/255.0 alpha:1.0];
@@ -407,11 +439,11 @@
         UILabel * title;
         if (iPhone5)
         {
-            title = [[UILabel alloc] initWithFrame:CGRectMake(40, 7, 200, 30)];
+            title = [[UILabel alloc] initWithFrame:CGRectMake(50, 7, 200, 30)];
         }
         else
         {
-            title = [[UILabel alloc] initWithFrame:CGRectMake(40, 7, 200, 20)];
+            title = [[UILabel alloc] initWithFrame:CGRectMake(50, 7, 200, 20)];
         }
         title.userInteractionEnabled = YES;
         title.font = [UIFont fontWithName:AllFont size:AllFontSize];
@@ -508,7 +540,7 @@
     AppDelegate * delegate = [UIApplication sharedApplication].delegate;
     JASidePanelController * controller2 = (JASidePanelController *)delegate.viewController1;
     [controller2 setCenterPanelHidden:NO animated:YES duration:0.3];
-    self.searchBar.frame = CGRectMake(10, 4, 204, 44);
+    self.searchBar.frame = CGRectMake(0, 4, 280, 44);
     self.searchBar.showsCancelButton = NO;
     [bgView1 removeFromSuperview];
     [topView removeFromSuperview];
@@ -538,7 +570,7 @@
     AppDelegate * delegate = [UIApplication sharedApplication].delegate;
     JASidePanelController * controller2 = (JASidePanelController *)delegate.viewController1;
     [controller2 setCenterPanelHidden:NO animated:YES duration:0.3];
-    self.searchBar.frame = CGRectMake(10, 4, 204, 44);
+    self.searchBar.frame = CGRectMake(0, 4, 280, 44);
     self.searchBar.showsCancelButton = NO;
     self.searchBar.showsSearchResultsButton = NO;
     [bgView1 removeFromSuperview];
@@ -566,7 +598,7 @@
 //        AppDelegate * delegate = [UIApplication sharedApplication].delegate;
 //        JASidePanelController * controller2 = (JASidePanelController *)delegate.viewController1;
 //        [controller2 setCenterPanelHidden:NO animated:YES duration:0.3];
-        self.searchBar.frame = CGRectMake(10, 4, 204, 44);
+        self.searchBar.frame = CGRectMake(0, 4, 280, 44);
         self.searchBar.showsCancelButton = NO;
         [bgView1 removeFromSuperview];
         [topView removeFromSuperview];

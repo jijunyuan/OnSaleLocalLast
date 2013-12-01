@@ -194,7 +194,7 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.text = [[self.dataArr objectAtIndex:indexPath.row] valueForKey:@"name"];
     cell.textLabel.textColor = [UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1.0];
-    cell.textLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
+    cell.textLabel.font = [UIFont fontWithName:AllFont size:AllFontSize];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
