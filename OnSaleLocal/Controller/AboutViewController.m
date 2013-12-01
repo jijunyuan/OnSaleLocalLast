@@ -48,12 +48,56 @@
     currVision = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
     
     self.dataArr = [NSMutableArray arrayWithObjects:0];
-    NSArray * arr1 = [NSArray arrayWithObjects:@"Rate this app",@"About Onsalelocal",@"Send Feedback", nil];
-    NSArray * arr2 = [NSArray arrayWithObjects:@"Team of Use",@"Privacy Policy", nil];
-    NSArray * arr3 = [NSArray arrayWithObjects:@"Version", nil];
+    NSArray * arr1 = [NSArray arrayWithObjects:@"Rate this app",@"Send Feedback", nil];
+    NSArray * arr2 = [NSArray arrayWithObjects:@"About Us",@"Team of Use",@"Privacy Policy",@"Version", nil];
+   // NSArray * arr3 = [NSArray arrayWithObjects:, nil];
     [self.dataArr addObject:arr1];
     [self.dataArr addObject:arr2];
-    [self.dataArr addObject:arr3];
+   // [self.dataArr addObject:arr3];
+}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    UIView * view1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+//    view1.backgroundColor = [UIColor clearColor];
+//    UILabel * labTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 320, 30)];
+//    labTitle.backgroundColor = [UIColor clearColor];
+//    labTitle.font = [UIFont fontWithName:AllFont size:AllFontSize];
+//    [view1 addSubview:labTitle];
+//    if (section == 0)
+//    {
+//        labTitle.text = @"This App";
+//    }
+//    else
+//    {
+//         labTitle.text = @"OnSaleLocal";
+//    }
+//    
+//    return view1;
+//}
+
+
+//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//
+//{
+//    
+//    return 20;
+//    
+//}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 20;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        
+        return @"This App";
+    }
+    
+    else
+        return @"OnSaleLocal";
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -72,11 +116,11 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
         cell.textLabel.text = [[self.dataArr objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         cell.textLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
-        cell.textLabel.textColor = [UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1.0];
+        cell.textLabel.textColor = [UIColor blackColor];
         if (indexPath.section == 2)
         {
             UILabel * lab = [[UILabel alloc] initWithFrame:CGRectMake(200, 7, 100, 30)];
-            lab.textColor = [UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1.0];
+            lab.textColor = [UIColor blackColor];
             lab.text = currVision;
             lab.backgroundColor = [UIColor clearColor];
             lab.textAlignment = NSTextAlignmentRight;
@@ -92,10 +136,9 @@
         else
         {
          // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            UIImageView * imageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"notification1.png"]];
+            UIImageView * imageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"next.png"]];
             imageView1.frame = CGRectMake(0, 0, 20, 20);
             cell.accessoryView= imageView1;
-            
         }
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -104,12 +147,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
    //update vision
-    if (indexPath.section == 2 && indexPath.row == 0)
+    if (indexPath.section == 1 && indexPath.row == 3)
     {
         [self onCheckVersion:currVision];
     }
 
-    if(indexPath.section == 0 && indexPath.row == 0)
+    if(indexPath.section == 0 && indexPath.row == 1)
     {
         RateAppViewController * rate;
         if(iPhone5)
@@ -123,7 +166,7 @@
         [self.navigationController pushViewController:rate animated:YES];
     }
 
-   if(indexPath.section == 0 && indexPath.row == 1)
+   if(indexPath.section == 1 && indexPath.row == 0)
    {
        AboutOnsaleViewController * aboutOnsale;
        if(iPhone5)
@@ -136,7 +179,7 @@
        }
        [self.navigationController pushViewController:aboutOnsale animated:YES];
    }
-  if(indexPath.section == 1 && indexPath.row == 1)
+  if(indexPath.section == 1 && indexPath.row == 2)
   {
       PrivacyViewController *privacy;
       if(iPhone5)
@@ -149,7 +192,7 @@
       }
       [self.navigationController pushViewController:privacy animated:YES];
   }
-  if(indexPath.section == 1 && indexPath.row == 0)
+  if(indexPath.section == 1 && indexPath.row == 1)
   {
       TermsViewController *term;
       if(iPhone5)
@@ -162,7 +205,7 @@
       }
       [self.navigationController pushViewController:term animated:YES];
   }
-    if (indexPath.section == 0&& indexPath.row == 2)
+    if (indexPath.section == 0&& indexPath.row == 1)
     {
         AboutBackViewController *aboutBack;
         if(iPhone5)
