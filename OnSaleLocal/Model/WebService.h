@@ -32,7 +32,7 @@
 +(NSMutableURLRequest *)LikeStore:(NSString *)aStoreId;
 +(NSMutableURLRequest *)UnLikeStore:(NSString *)aStoreId;
 
-+(NSMutableURLRequest *)SumbitOfferImage:(NSData *)data title:(NSString *)aTitle description:(NSString *)aDesc merchant:(NSString *)aMerchant address:(NSString *)aAdress city:(NSString *)aCity state:(NSString *)aState country:(NSString *)aCountr phone:(NSString *)aPhone start:(double)aStartTime end:(double)aEndtime tags:(NSString *)aTag andDiscount:(NSString *)aDiscount;
++(NSMutableURLRequest *)SumbitOfferImage:(NSData *)data title:(NSString *)aTitle description:(NSString *)aDesc merchant:(NSString *)aMerchant address:(NSString *)aAdress city:(NSString *)aCity state:(NSString *)aState country:(NSString *)aCountr phone:(NSString *)aPhone start:(double)aStartTime end:(double)aEndtime tags:(NSString *)aTag andDiscount:(NSString *)aDiscount andUrl:(NSString *)aUrl;
 
 +(NSMutableURLRequest *)uploadImageData:(NSData *)aImageData;
 +(NSMutableURLRequest *)MarkNotificationRead;

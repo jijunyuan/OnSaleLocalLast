@@ -72,11 +72,17 @@
     self.rightBtn.frame = CGRectMake(self.rightBtn.frame.origin.x+10, self.rightBtn.frame.origin.y, 30, 30);
     
     
+    
+    
     self.Btn_currLocation.backgroundColor = [UIColor colorWithRed:70.0/255.0 green:146.0/255.0 blue:19.0/255.0 alpha:1.0];
     self.Btn_setLocation.backgroundColor = [UIColor whiteColor];
     
     NSLog(@"IS_CURR_LOCATION = %@",[[NSUserDefaults standardUserDefaults] valueForKey:IS_CURR_LOCATION]);
-    
+    CGRect frame = [self.TF_setLocation frame];
+    frame.size.width = 15;
+    UIView *leftview = [[UIView alloc] initWithFrame:frame];
+    self.TF_setLocation.leftViewMode = UITextFieldViewModeAlways;
+    self.TF_setLocation.leftView = leftview;
     
     self.TF_setLocation.text = [[NSUserDefaults standardUserDefaults] valueForKey:@"adress_set"];
     self.TF_setLocation.layer.borderColor = [UIColor colorWithRed:196.0/255.0 green:196.0/255.0 blue:196.0/255.0 alpha:1.0].CGColor;

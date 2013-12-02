@@ -94,12 +94,14 @@
     //obver
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView1) name:@"refreshViewWill" object:nil];
     
+    
     NSLog(@"%s",__FUNCTION__);
     self.L_sinout.font = [UIFont fontWithName:AllFont size:AllFontSize];
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClickPhoto:)];
     self.IV_login_name.userInteractionEnabled = YES;
     [self.IV_login_name addGestureRecognizer:tapGesture];
     self.dataArr = [NSMutableArray arrayWithCapacity:0];
+    
     self.searchBar.text = @"";
     self.searchBar.backgroundColor = [UIColor colorWithRed:50.0/255.0 green:50.0/255.0 blue:50.0/255.0 alpha:1.0];
     self.L_name.font = [UIFont fontWithName:AllFont size:All_h1_Size];
@@ -463,7 +465,7 @@
     }
     else
     {
-       imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 7.5, 30, 30)];
+       imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 2.5, 30, 30)];
     }
    
     imageView1.clipsToBounds = YES;
