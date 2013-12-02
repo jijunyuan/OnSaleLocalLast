@@ -94,6 +94,8 @@
 		4DBAE1DD181FD37200E7513F /* BuyNowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBAE1DB181FD37100E7513F /* BuyNowViewController.m */; };
 		4DBAE1DE181FD37200E7513F /* BuyNowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DBAE1DC181FD37100E7513F /* BuyNowViewController.xib */; };
 		4DBAE1E0181FD38700E7513F /* BuyNowViewController4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DBAE1DF181FD38700E7513F /* BuyNowViewController4.xib */; };
+		4DC4DDB0184C804E00288BF6 /* call_store.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC4DDAF184C804E00288BF6 /* call_store.png */; };
+		4DC4DDB2184C805400288BF6 /* map_store.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC4DDB1184C805400288BF6 /* map_store.png */; };
 		4DCE4DFC183DF495009618AD /* GothamLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DCE4DFB183DF495009618AD /* GothamLight.ttf */; };
 		4DF728C41802F1360081AD30 /* CreatePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF728C21802F1360081AD30 /* CreatePasswordViewController.m */; };
 		4DF728C51802F1360081AD30 /* CreatePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF728C31802F1360081AD30 /* CreatePasswordViewController.xib */; };
@@ -398,6 +400,8 @@
 		4DBAE1DB181FD37100E7513F /* BuyNowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyNowViewController.m; sourceTree = "<group>"; };
 		4DBAE1DC181FD37100E7513F /* BuyNowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyNowViewController.xib; sourceTree = "<group>"; };
 		4DBAE1DF181FD38700E7513F /* BuyNowViewController4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyNowViewController4.xib; sourceTree = "<group>"; };
+		4DC4DDAF184C804E00288BF6 /* call_store.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = call_store.png; sourceTree = "<group>"; };
+		4DC4DDB1184C805400288BF6 /* map_store.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_store.png; sourceTree = "<group>"; };
 		4DCE4DFB183DF495009618AD /* GothamLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamLight.ttf; sourceTree = "<group>"; };
 		4DF728C11802F1350081AD30 /* CreatePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePasswordViewController.h; sourceTree = "<group>"; };
 		4DF728C21802F1360081AD30 /* CreatePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePasswordViewController.m; sourceTree = "<group>"; };
@@ -1183,6 +1187,8 @@
 		F14983BF17E0B0AE00C1CEC1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4DC4DDB1184C805400288BF6 /* map_store.png */,
+				4DC4DDAF184C804E00288BF6 /* call_store.png */,
 				F10F750D184B1CA100598F03 /* notification2.png */,
 				F19A9E86184ACF5D003491FF /* facebook_menu.png */,
 				F19A9E87184ACF5D003491FF /* sign_in_menu.png */,
@@ -1549,6 +1555,7 @@
 				4D11653017E4C839003807E8 /* ChangeLocationViewController4.xib in Resources */,
 				4D11653517E4C878003807E8 /* AboutViewController.xib in Resources */,
 				4D11653717E4C88B003807E8 /* AboutViewController4.xib in Resources */,
+				4DC4DDB0184C804E00288BF6 /* call_store.png in Resources */,
 				4D11654317E4C92D003807E8 /* NotificationViewController.xib in Resources */,
 				4D11654517E4C940003807E8 /* NotificationViewController4.xib in Resources */,
 				4D11654A17E4C97F003807E8 /* AccountSettingViewController.xib in Resources */,
@@ -1624,6 +1631,7 @@
 				4D22103517F7222200D6F684 /* PictureDetailViewController4.xib in Resources */,
 				4D37B07E17F759620055A1DD /* FeedBackViewController.xib in Resources */,
 				4D37B08017F759720055A1DD /* FeedBackViewController4.xib in Resources */,
+				4DC4DDB2184C805400288BF6 /* map_store.png in Resources */,
 				4D7F06F517F88F22004237B5 /* RateAppViewController.xib in Resources */,
 				4D7F06F717F88F33004237B5 /* RateAppViewController4.xib in Resources */,
 				4D7F070217F8934B004237B5 /* AboutOnsaleViewController.xib in Resources */,
