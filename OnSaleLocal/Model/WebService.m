@@ -320,7 +320,7 @@
 }
 
 
-+(NSMutableURLRequest *)SumbitOfferImage:(NSData *)data title:(NSString *)aTitle description:(NSString *)aDesc merchant:(NSString *)aMerchant address:(NSString *)aAdress city:(NSString *)aCity state:(NSString *)aState country:(NSString *)aCountr phone:(NSString *)aPhone start:(double)aStartTime end:(double)aEndtime tags:(NSString *)aTag andDiscount:(NSString *)aDiscount
++(NSMutableURLRequest *)SumbitOfferImage:(NSData *)data title:(NSString *)aTitle description:(NSString *)aDesc merchant:(NSString *)aMerchant address:(NSString *)aAdress city:(NSString *)aCity state:(NSString *)aState country:(NSString *)aCountr phone:(NSString *)aPhone start:(double)aStartTime end:(double)aEndtime tags:(NSString *)aTag andDiscount:(NSString *)aDiscount andUrl:(NSString *)aUrl
 {
     NSString * url = [NSString stringWithFormat:@"%@/ws/v2/offer",DO_MAIN];
     NSString *properlyEscapedURL = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -364,7 +364,7 @@
     [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"merchant\"\r\n\r\n%@", aMerchant] dataUsingEncoding:NSUTF8StringEncoding]];
     
     [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"phone\"\r\n\r\n%@",aPhone] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"phone\"\r\n\r\n%@",aDiscount] dataUsingEncoding:NSUTF8StringEncoding]];
     
     [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"latitude\"\r\n\r\n%@", @""] dataUsingEncoding:NSUTF8StringEncoding]];

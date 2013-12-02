@@ -26,11 +26,14 @@
 @property (nonatomic,strong) IBOutlet UITextField * TF_state;
 @property (nonatomic,strong) IBOutlet UITextView * TV_des;
 @property (nonatomic,strong) IBOutlet UITextField * TF_discound;
+@property (nonatomic,strong) IBOutlet UITextField * TF_url;
+
+
 @property (nonatomic,strong) IBOutlet UIView * mainView;
 @property (nonatomic,strong) IBOutlet UIScrollView * myScrollView;
 @property (nonatomic,strong) IBOutlet UIDatePicker * datePicker;
 @property (nonatomic,strong) IBOutlet UIView * bgview;
-@property (nonatomic,strong) IBOutlet UILabel * l_t1, *l_t2,*l_t3,*l_t4,*l_t5,*l_t6,*l_t7,*l_t8,*l_t9;
+@property (nonatomic,strong) IBOutlet UILabel * l_t1, *l_t2,*l_t3,*l_t4,*l_t5,*l_t6,*l_t7,*l_t8,*l_t9,*l_t10;
 -(void)sendClick:(UIButton *)aButton;
 -(IBAction)datePickValueChange:(UIDatePicker *)aPicker;
 -(void)getData;
@@ -48,7 +51,8 @@
 @synthesize lat,longt;
 @synthesize bgView;
 @synthesize TF_discound;
-@synthesize l_t1,l_t2,l_t3,l_t4,l_t5,l_t6,l_t7,l_t8,l_t9;
+@synthesize l_t1,l_t2,l_t3,l_t4,l_t5,l_t6,l_t7,l_t8,l_t9,l_t10;
+@synthesize TF_url;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -75,6 +79,7 @@
     self.TF_store.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.TF_title.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.TF_zipcode.font = [UIFont fontWithName:AllFont size:AllContentSize];
+    self.TF_url.font = [UIFont fontWithName:AllFont size:AllContentSize];
     
     self.l_t1.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.l_t2.font = [UIFont fontWithName:AllFont size:AllContentSize];
@@ -85,7 +90,8 @@
     self.l_t7.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.l_t8.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.l_t9.font = [UIFont fontWithName:AllFont size:AllContentSize];
-    
+    self.l_t10.font = [UIFont fontWithName:AllFont size:AllContentSize];
+
     
     
     self.l_navTitle.text = @"Description";
@@ -240,13 +246,14 @@
     [self.TF_Address resignFirstResponder];
     [self.TV_des resignFirstResponder];
     [self.TF_discound resignFirstResponder];
+    [self.TF_url resignFirstResponder];
     
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     NSDate * date = [formatter dateFromString:self.TF_startdate.text];
     NSDate * date1 = [formatter dateFromString:self.TF_enddate.text];
     
     
-    NSMutableURLRequest * request = [WebService SumbitOfferImage:self.imageData title:self.TF_title.text description:self.TV_des.text merchant:self.TF_store.text address:self.TF_Address.text city:self.TF_city.text state:self.TF_startdate.text country:self.TF_city.text phone:@"" start:[date timeIntervalSince1970] end:[date1 timeIntervalSince1970] tags:self.classId andDiscount:self.TF_discound.text];
+    NSMutableURLRequest * request = [WebService SumbitOfferImage:self.imageData title:self.TF_title.text description:self.TV_des.text merchant:self.TF_store.text address:self.TF_Address.text city:self.TF_city.text state:self.TF_startdate.text country:self.TF_city.text phone:@"" start:[date timeIntervalSince1970] end:[date1 timeIntervalSince1970] tags:self.classId andDiscount:self.TF_discound.text andUrl:self.TF_url.text];
     [NSURLConnection connectionWithRequest:request delegate:self];
     
 }
@@ -275,6 +282,7 @@
     [self.TF_Address resignFirstResponder];
     [self.TV_des resignFirstResponder];
      [self.TF_discound resignFirstResponder];
+    [self.TF_url resignFirstResponder];
 }
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
@@ -289,6 +297,7 @@
     [self.TF_Address resignFirstResponder];
     [self.TV_des resignFirstResponder];
      [self.TF_discound resignFirstResponder];
+    [self.TF_url resignFirstResponder];
 }
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
@@ -334,7 +343,7 @@
         if (textField.tag == 103)
         {
             [UIView animateWithDuration:0.3 animations:^{
-                self.view.frame = CGRectMake(0, -175, 320, 568);
+                self.view.frame = CGRectMake(0, -215, 320, 568);
                 self.datePicker.alpha = 0.0;
             }];
         }
@@ -349,7 +358,7 @@
         {
             tempTextfield = textField;
             [UIView animateWithDuration:0.3 animations:^{
-                self.view.frame = CGRectMake(0, -55, 320, 568);
+                self.view.frame = CGRectMake(0, -215, 320, 568);
                 self.datePicker.alpha = 1.0;
             }];
         }
@@ -394,7 +403,7 @@
         {
             [UIView animateWithDuration:0.3 animations:^{
                // self.view.frame = CGRectMake(0, -175, 320, 568);
-                self.myScrollView.contentOffset = CGPointMake(0, 270);
+                self.myScrollView.contentOffset = CGPointMake(0, 320);
                 self.datePicker.alpha = 0.0;
             }];
         }
@@ -410,7 +419,15 @@
         {
             [UIView animateWithDuration:0.3 animations:^{
                 // self.view.frame = CGRectMake(0, -215, 320, 568);
-                self.myScrollView.contentOffset = CGPointMake(0, 150);
+                self.myScrollView.contentOffset = CGPointMake(0, 320);
+                self.datePicker.alpha = 0.0;
+            }];
+        }
+        if (textField.tag == 107)
+        {
+            [UIView animateWithDuration:0.3 animations:^{
+                // self.view.frame = CGRectMake(0, -215, 320, 568);
+                self.myScrollView.contentOffset = CGPointMake(0, 320);
                 self.datePicker.alpha = 0.0;
             }];
         }
@@ -441,6 +458,7 @@
     [self.TF_Address resignFirstResponder];
     [self.TV_des resignFirstResponder];
      [self.TF_discound resignFirstResponder];
+    [self.TF_url resignFirstResponder];
     return YES;
 }
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response

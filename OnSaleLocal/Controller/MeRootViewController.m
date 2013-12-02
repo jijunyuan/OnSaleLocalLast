@@ -73,6 +73,8 @@
 @property(nonatomic,strong) IBOutlet UIView * middleView1;
 @property (nonatomic,strong) IBOutlet UIView * middleView2;
 
+@property (nonatomic,strong) IBOutlet UILabel * l_tl1,*l_yl2,*l_tl3;
+
 -(void)getData;
 -(void)getData1;
 -(void)getdata2;
@@ -111,6 +113,7 @@
 @synthesize allSignView,IV_email,IV_facebook,L_skip;
 @synthesize isNotification;
 @synthesize middleView1,middleView2;
+@synthesize l_tl1,l_tl3,l_yl2;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -217,7 +220,7 @@
 {
     NSArray * arr = [self.dataArr valueForKey:@"items"];
     NSLog(@"arr = %@",arr);
-    float scroll_heigh = 0.0+156-35;
+    float scroll_heigh = 160;
     for (int i = 0; i<arr.count; i++)
     {
         NSDictionary * dic1 = [arr objectAtIndex:i];
@@ -437,13 +440,17 @@
 {
     [super viewDidLoad];
     
+    self.l_tl1.font = [UIFont fontWithName:AllFont size:AllFontSize];
+    self.l_yl2.font = [UIFont fontWithName:AllFont size:AllFontSize];
+    self.l_tl3.font = [UIFont fontWithName:AllFont size:AllFontSize];
+    
     if ([WebService ISIOS7])
     {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     
-    self.middleView1.frame = CGRectMake(0, 0, 320, 72);
-    self.middleView2.frame = CGRectMake(0, 72, 320, 40);
+    self.middleView1.frame = CGRectMake(0, 0, 320, 110);
+    self.middleView2.frame = CGRectMake(0, 110, 320, 50);
     [self.myScroll addSubview:self.middleView1];
     [self.myScroll addSubview:self.middleView2];
     
@@ -456,7 +463,7 @@
     self.L_shared.font = [UIFont fontWithName:AllFont size:AllContentSize];
 
     
-    self.IV_photo.layer.cornerRadius = 26.0;
+    self.IV_photo.layer.cornerRadius = 40;
     self.dic_recodeClick = [NSMutableDictionary dictionaryWithCapacity:0];
     dict_lab = [NSMutableDictionary dictionaryWithCapacity:0];
     dicLabnum = [NSMutableDictionary dictionaryWithCapacity:0];
@@ -592,13 +599,17 @@
             
             self.L_name.text = name;
             self.L_follows.text = [[NSString stringWithFormat:@"%d",[[dic valueForKey:@"followers"] intValue]] stringByAppendingFormat:@" follower"];
-            self.L_followings.text = [[NSString stringWithFormat:@"%d",[[dic valueForKey:@"followings"] intValue]] stringByAppendingFormat:@" followings"];
+            self.L_followings.text = [[NSString stringWithFormat:@"     %d",[[dic valueForKey:@"followings"] intValue]] stringByAppendingFormat:@" followings"];
             
             // currfollowing1 = [[dic valueForKey:@"followings"] intValue];
             
-            self.L_likes.text = [[NSString stringWithFormat:@"%d",[[dic valueForKey:@"likes"] intValue]] stringByAppendingFormat:@" likes"];
-            self.L_shared.text = [[NSString stringWithFormat:@"%d",[[dic valueForKey:@"offers"] intValue]] stringByAppendingFormat:@" shared"];
-            self.L_storeFollowed.text = [[NSString stringWithFormat:@"%d",[[dic valueForKey:@"stores"] intValue]] stringByAppendingFormat:@" stores"];
+            
+            self.L_likes.textAlignment = NSTextAlignmentCenter;
+            self.L_shared.textAlignment = NSTextAlignmentCenter;
+            self.L_storeFollowed.textAlignment = NSTextAlignmentCenter;
+            self.L_likes.text = [[NSString stringWithFormat:@"%d",[[dic valueForKey:@"likes"] intValue]] stringByAppendingFormat:@""];
+            self.L_shared.text = [[NSString stringWithFormat:@"%d",[[dic valueForKey:@"offers"] intValue]] stringByAppendingFormat:@""];
+            self.L_storeFollowed.text = [[NSString stringWithFormat:@"%d",[[dic valueForKey:@"stores"] intValue]] stringByAppendingFormat:@""];
             tempStoreFollow = self.L_storeFollowed.text;
             
             userid = [dic valueForKey:@"id"];

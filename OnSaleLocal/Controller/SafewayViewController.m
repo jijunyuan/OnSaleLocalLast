@@ -83,7 +83,7 @@
 -(void)emailClick:(UITapGestureRecognizer *)aTap;
 -(void)faceBookClick:(UITapGestureRecognizer *)aTap;
 -(void)skipClick:(UITapGestureRecognizer *)aTap;
-
+-(void)callIphoneStore:(UITapGestureRecognizer *)aTap;
 @end
 
 @implementation SafewayViewController
@@ -377,26 +377,56 @@
     }
     
     self.SV_scroll.frame = CGRectMake(0, 44, 320, [UIScreen mainScreen].bounds.size.height-44);
-    self.myMapview.frame = CGRectMake(15, 9, 70, 70);
+    self.myMapview.frame = CGRectMake(0, 0, 320, 130);
+    self.myMapview.userInteractionEnabled = NO;
     [self.SV_scroll addSubview:self.myMapview];
     
-    self.l_name1.frame = CGRectMake(93, 13, 214, 21);
-    [self.SV_scroll addSubview:self.l_name1];
+#warning - add image
+    UIImageView * imageViewBg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 65, 320, 65)];
+    imageViewBg.alpha = 0.7;
+    imageViewBg.userInteractionEnabled = NO;
+    [self.myMapview addSubview:imageViewBg];
     
-    self.l_tell.frame = CGRectMake(93, 52, 214, 21);
-    [self.SV_scroll addSubview:self.l_tell];
+    self.l_name1.frame = CGRectMake(15, 10, 150, 30);
+    self.l_name1.font = [UIFont fontWithName:AllFont size:AllFontSize];
+    [imageViewBg addSubview:self.l_name1];
+    self.l_adress.frame = CGRectMake(15, 35, 200, 30);
+    self.l_adress.font = [UIFont fontWithName:AllFont size:AllContentSmallSize];
+    self.l_adress.numberOfLines = 0;
+    self.l_adress.textColor = [UIColor colorWithRed:138.0/255.0 green:138.0/255.0 blue:138.0/255.0 alpha:1.0];
+    [imageViewBg addSubview:self.l_adress];
     
-    self.middleView.frame = CGRectMake(0, 86, 320, 60);
+//    self.l_tell.frame = CGRectMake(93, 52, 214, 21);
+//    [imageViewBg addSubview:self.l_tell];
+    
+    self.middleView.frame = CGRectMake(0, 130, 320, 60);
     [self.SV_scroll addSubview:self.middleView];
+    
+    UIImageView * imageViewAdress = [[UIImageView alloc] initWithFrame:CGRectMake(230, 15, 40, 40)];
+    UITapGestureRecognizer * tapAdress = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapClick:)];
+    [imageViewAdress addGestureRecognizer:tapAdress];
+    imageViewAdress.userInteractionEnabled = YES;
+    imageViewAdress.image = [UIImage imageNamed:@"map_store.png"];
+    imageViewAdress.clipsToBounds = YES;
+    [imageViewBg addSubview:imageViewAdress];
+    
+    UIImageView * imageViewTell = [[UIImageView alloc] initWithFrame:CGRectMake(270, 15, 40, 40)];
+    imageViewTell.image = [UIImage imageNamed:@"call_store.png"];
+    imageViewTell.userInteractionEnabled = YES;
+    imageViewTell.clipsToBounds = YES;
+    UITapGestureRecognizer * tapTellStore = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(callIphoneStore:)];
+    [imageViewTell addGestureRecognizer:tapTellStore];
+    [imageViewBg addSubview:imageViewTell];
+
     
     
     self.dic_recodeClick = [NSMutableDictionary dictionaryWithCapacity:0];
     arr_lab = [NSMutableArray arrayWithCapacity:0];
     dicLabnum = [NSMutableDictionary dictionaryWithCapacity:0];
     
-    self.l_adress.font = [UIFont fontWithName:AllFont size:AllContentSize];
+    self.l_adress.font = [UIFont fontWithName:AllFont size:AllContentSmallSize];
     self.l_dealnumber.font = [UIFont fontWithName:AllFont size:AllContentSize];
-    self.l_name1.font = [UIFont fontWithName:AllFont size:AllContentSize];
+    self.l_name1.font = [UIFont fontWithName:AllFont size:AllFontSize];
     self.l_tell.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.l_followNumber.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.L_dealsName.font = [UIFont fontWithName:AllFont size:AllContentSize];
@@ -519,10 +549,6 @@
         if ([request responseStatusCode] == 200)
         {
             self.dic = [reciveData objectFromJSONData];
-           // NSArray * arr = [self.dic valueForKey:@"items"];
-//            [arr enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL *stop) {
-//                [dicLabnum setValue:[obj valueForKey:@"comments"] forKey:[obj valueForKey:@"id"]];
-//            }];
             NSLog(@"dic = %@",dic);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self chageUI];
@@ -630,7 +656,6 @@
                 {
                     [self.rightBtn setImage:[UIImage imageNamed:@"followed.png"] forState:UIControlStateNormal];
                 }
-
             }
             else
             {
@@ -658,12 +683,12 @@
       self.l_name1.text = @"";
     }
     self.l_adress.text = [NSString stringWithFormat:@"%@,%@",[[self.dic valueForKey:@"storeDetails"] valueForKey:@"address"],[[self.dic valueForKey:@"storeDetails"] valueForKey:@"city"]];
-    self.l_tell.text = [[self.dic valueForKey:@"storeDetails"] valueForKey:@"phone"];
+   // self.l_tell.text = [[self.dic valueForKey:@"storeDetails"] valueForKey:@"phone"];
     self.l_followNumber.text = [NSString stringWithFormat:@"%@",[[[self.dic valueForKey:@"storeDetails"] valueForKey:@"followers"] stringValue]];
     NSArray * arr = [self.dic valueForKey:@"items"];
     self.l_dealnumber.text = [NSString stringWithFormat:@"%d",[[[self.dic valueForKey:@"storeDetails"] valueForKey:@"offers"] intValue]];
     
-    float scroll_heigh = 0.0+160;
+    float scroll_heigh = 0.0+190;
     
     for (int i = 0; i<arr.count; i++)
     {
@@ -813,6 +838,30 @@
 {
     [_refreshTableView egoRefreshScrollViewDidEndDragging:scrollView];
     
+}
+#pragma mark - store call tell
+-(void)callIphoneStore:(UITapGestureRecognizer *)aTap
+{
+   // NSString * strTell = [[self.dic valueForKey:@"storeDetails"] valueForKey:@"phone"];
+    NSDictionary * dicTell = [self.dic valueForKey:@"storeDetails"];
+    NSArray * tempArr = [dicTell allKeys];
+    __block BOOL isHaveTell = NO;
+    [tempArr enumerateObjectsUsingBlock:^(NSString * obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isEqualToString:@"phone"])
+        {
+            isHaveTell = YES;
+            *stop = YES;
+        }
+    }];
+    if (isHaveTell)
+    {
+        NSString * strTell = [[self.dic valueForKey:@"storeDetails"] valueForKey:@"phone"];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",strTell]]];
+    }
+    else
+    {
+        [MyAlert ShowAlertMessage:@"No Call" title:@"Alert"];
+    }
 }
 -(void)callIphone:(UITapGestureRecognizer *)aTap
 {
