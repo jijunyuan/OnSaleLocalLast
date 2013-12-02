@@ -46,6 +46,7 @@
     CLLocationManager * manger;
     
      LoginViewController * login;
+    UIImageView *mapImageView;
 }
 @property (nonatomic,strong) NSDictionary * dic;
 @property (nonatomic,strong) IBOutlet MKMapView * myMapview;
@@ -66,7 +67,7 @@
 -(void)getdata1;
 -(void)chageUI;
 -(void)rightButtonClick;
--(IBAction)mapTapClick:(UITapGestureRecognizer *)aTap;
+-(void)mapTapClick:(UITapGestureRecognizer *)aTap;
 -(IBAction)followsClick:(UITapGestureRecognizer *)aTap;
 - (void)reloadTableViewDataSource;
 - (void)doneLoadingTableViewData;
@@ -298,9 +299,28 @@
                                 shareToSnsNames:[NSArray arrayWithObjects:UMShareToFacebook,UMShareToTwitter,nil]
                                        delegate:nil];
 }
-
--(IBAction)mapTapClick:(UITapGestureRecognizer *)aTap
+-(void)mapTapClick
 {
+    NSLog(@"====%s",__FUNCTION__);
+    StoreMapViewController * store;
+    if (iPhone5)
+    {
+        store = [[StoreMapViewController alloc] initWithNibName:@"StoreMapViewController" bundle:nil];
+    }
+    else
+    {
+        store = [[StoreMapViewController alloc] initWithNibName:@"StoreMapViewController4" bundle:nil];
+    }
+    store.lat = [[[self.dic valueForKey:@"storeDetails"] valueForKey:@"latitude"] floatValue];
+    store.longt = [[[self.dic valueForKey:@"storeDetails"] valueForKey:@"longitude"] floatValue];
+    store.name = [[[self.dic valueForKey:@"items"] objectAtIndex:0] valueForKey:@"merchant"];
+    store.merchantId = self.merchantId;
+    store.dic = (NSMutableDictionary *)self.dic;
+    [self.navigationController pushViewController:store animated:YES];
+}
+-(void)mapTapClick:(UITapGestureRecognizer *)aTap
+{
+    NSLog(@"====%s",__FUNCTION__);
     StoreMapViewController * store;
     if (iPhone5)
     {
@@ -370,30 +390,38 @@
         [self.backBtn setImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
         [self.backBtn addTarget:self action:@selector(notificationBackClick) forControlEvents:UIControlStateNormal];
     }
-    
     if ([WebService ISIOS7])
     {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     
     self.SV_scroll.frame = CGRectMake(0, 44, 320, [UIScreen mainScreen].bounds.size.height-44);
-    self.myMapview.frame = CGRectMake(0, 0, 320, 130);
-    self.myMapview.userInteractionEnabled = NO;
-    [self.SV_scroll addSubview:self.myMapview];
+//    self.myMapview.frame = CGRectMake(0, 0, 320, 130);
+//    self.myMapview.userInteractionEnabled = NO;
+//    self.myMapview.scrollEnabled = NO;
+//    [self.SV_scroll addSubview:self.myMapview];
+    
+    mapImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 130)];
+    mapImageView.userInteractionEnabled = YES;
+    [self.SV_scroll addSubview:mapImageView];
+   
+   
+    
     
 #warning - add image
     UIImageView * imageViewBg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 65, 320, 65)];
     imageViewBg.alpha = 0.7;
-    imageViewBg.userInteractionEnabled = NO;
-    [self.myMapview addSubview:imageViewBg];
+    imageViewBg.userInteractionEnabled = YES;
+    [mapImageView addSubview:imageViewBg];
     
     self.l_name1.frame = CGRectMake(15, 10, 150, 30);
     self.l_name1.font = [UIFont fontWithName:AllFont size:AllFontSize];
     [imageViewBg addSubview:self.l_name1];
-    self.l_adress.frame = CGRectMake(15, 35, 200, 30);
+    self.l_adress.frame = CGRectMake(15, 30, 200, 30);
     self.l_adress.font = [UIFont fontWithName:AllFont size:AllContentSmallSize];
     self.l_adress.numberOfLines = 0;
     self.l_adress.textColor = [UIColor colorWithRed:138.0/255.0 green:138.0/255.0 blue:138.0/255.0 alpha:1.0];
+   // self.l_adress.backgroundColor = [UIColor whiteColor];
     [imageViewBg addSubview:self.l_adress];
     
 //    self.l_tell.frame = CGRectMake(93, 52, 214, 21);
@@ -401,6 +429,13 @@
     
     self.middleView.frame = CGRectMake(0, 130, 320, 60);
     [self.SV_scroll addSubview:self.middleView];
+    
+//    UIButton * button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+//    button1.frame = CGRectMake(230, 15, 40, 40);
+//    [button1 setImage:[UIImage imageNamed:@"map_store.png"] forState:UIControlStateNormal];
+//    [button1 addTarget:self action:@selector(mapTapClick) forControlEvents:UIControlEventTouchUpInside];
+//    [imageViewBg addSubview:button1];
+    
     
     UIImageView * imageViewAdress = [[UIImageView alloc] initWithFrame:CGRectMake(230, 15, 40, 40)];
     UITapGestureRecognizer * tapAdress = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapClick:)];
@@ -444,6 +479,7 @@
         [self getData];
     });
 }
+
 -(void)reciveNotification:(NSNotification *)aNotification
 {
     NSDictionary * dic2 = [aNotification userInfo];
@@ -614,18 +650,33 @@
     @catch (NSException *exception) {
         NSLog(@"catch error");
     }
+    
+    
+    NSString * path_image = [[self.dic valueForKey:@"storeDetails"] valueForKey:@"logo"];
+    ASIHTTPRequest * requestImage = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:path_image]];
+    [requestImage startAsynchronous];
+    NSMutableData * reciveData_iamge = [NSMutableData dataWithCapacity:0];
+    [requestImage setDataReceivedBlock:^(NSData *data) {
+        [reciveData_iamge appendData:data];
+    }];
+    [requestImage setCompletionBlock:^{
+        mapImageView.image = [UIImage imageWithData:reciveData_iamge];
+    }];
+    
 
-    MKCoordinateRegion region;
-    region.center = location1;
-    MKCoordinateSpan span;
-    span.latitudeDelta = 0.007;
-    span.longitudeDelta = 0.007;
-    region.center = location1;
-    region.span = span;
-    [self.myMapview setRegion:region animated:YES];
-    MKAnnotation * annotation1 = [[MKAnnotation alloc] initWithCoords:location1];
-    self.myMapview.userInteractionEnabled = NO;
-    [self.myMapview addAnnotation:annotation1];
+//    MKCoordinateRegion region;
+//    region.center = location1;
+//    MKCoordinateSpan span;
+//    span.latitudeDelta = 0.007;
+//    span.longitudeDelta = 0.007;
+//    region.center = location1;
+//    region.span = span;
+//    [self.myMapview setRegion:region animated:YES];
+    
+    
+//    MKAnnotation * annotation1 = [[MKAnnotation alloc] initWithCoords:location1];
+//    self.myMapview.userInteractionEnabled = NO;
+//    [self.myMapview addAnnotation:annotation1];
     
     NSArray * arrKeys = [dic allKeys];
     __block BOOL isSumbit = NO;
@@ -688,7 +739,7 @@
     NSArray * arr = [self.dic valueForKey:@"items"];
     self.l_dealnumber.text = [NSString stringWithFormat:@"%d",[[[self.dic valueForKey:@"storeDetails"] valueForKey:@"offers"] intValue]];
     
-    float scroll_heigh = 0.0+190;
+    float scroll_heigh = 0.0+200;
     
     for (int i = 0; i<arr.count; i++)
     {
