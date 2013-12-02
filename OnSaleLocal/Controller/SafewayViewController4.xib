@@ -148,7 +148,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="11">
-                    <rect key="frame" x="159" y="0.0" width="2" height="60"/>
+                    <rect key="frame" x="159" y="0.0" width="1" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
