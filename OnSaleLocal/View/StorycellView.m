@@ -56,6 +56,7 @@
         UITextField * textfield = [[UITextField alloc] initWithFrame:CGRectMake(20, height1+50+3, 120, 30)];
         textfield.textColor = [UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1.0];
         textfield.textAlignment = NSTextAlignmentCenter;
+        textfield.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         textfield.layer.borderWidth = 1;
         textfield.font = [UIFont fontWithName:AllFont size:AllContentSmallSize];
         textfield.layer.borderColor =[UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1.0].CGColor;

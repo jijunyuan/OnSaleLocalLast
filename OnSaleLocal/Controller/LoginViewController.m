@@ -134,7 +134,7 @@
     self.btn_right1.titleLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
     
     
-    self.l_navTitle.text= @"SIGN IN";
+    self.l_navTitle.text= @"Sign In";
     
     
     UITapGestureRecognizer * aTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapForgetPwdClick:)];
