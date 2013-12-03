@@ -100,7 +100,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-   // [self viewDidLoad];
+    // [self viewDidLoad];
 }
 
 - (void)viewDidLoad
@@ -112,7 +112,7 @@
     self.TF_lastName.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.TF_password.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.TF_zipcode.font = [UIFont fontWithName:AllFont size:AllContentSize];
-   // self.L_facebook.font = [UIFont fontWithName:AllFont size:AllContentSize];
+    // self.L_facebook.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.bt_1.titleLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.bt_2.titleLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.bt_3.titleLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
@@ -123,7 +123,7 @@
     self.L_desNotification.font = [UIFont fontWithName:AllFont size:AllContentSize];
     
     pickViewController = [[UIImagePickerController alloc]init];
-
+    
     if (!iPhone5)
     {
         UIScrollView * scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 44, 320, 480)];
@@ -141,7 +141,7 @@
     {
         self.L_facebook.alpha = 0.0;
     }
- 
+    
     NSString * imageStr = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_IMAGE]];
     NSLog(@"imagestr = %@",imageStr);
     if ([imageStr isEqualToString:@"(null)"])
@@ -172,16 +172,16 @@
     self.TF_lastName.text = [user valueForKey:LOGIN_LAST_NAME];
     self.TF_email.text = [user valueForKey:LOGIN_LOGIN];
     
-//    remeberPWD = [user valueForKey:LOGIN_PASSWORD];
-//    NSString * tempStr;
-//    if ([[user valueForKey:LOGIN_PASSWORD] length]>5)
-//    {
-//        tempStr = [[user valueForKey:LOGIN_PASSWORD] substringWithRange:NSMakeRange(0, 6)];
-//    }
-//    else
-//    {
-//        tempStr = [user valueForKey:LOGIN_PASSWORD];
-//    }
+    //    remeberPWD = [user valueForKey:LOGIN_PASSWORD];
+    //    NSString * tempStr;
+    //    if ([[user valueForKey:LOGIN_PASSWORD] length]>5)
+    //    {
+    //        tempStr = [[user valueForKey:LOGIN_PASSWORD] substringWithRange:NSMakeRange(0, 6)];
+    //    }
+    //    else
+    //    {
+    //        tempStr = [user valueForKey:LOGIN_PASSWORD];
+    //    }
     self.TF_password.text = [user valueForKey:LOGIN_PASSWORD];
     [self.TF_password addTarget:self action:@selector(textChaged:) forControlEvents:UIControlEventEditingChanged];
     
@@ -190,7 +190,7 @@
     //Man"Woman";NoToSay";
     if ([str1 isEqualToString:@"Man"])
     {
-       // self.Btn_male.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1.0];
+        // self.Btn_male.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1.0];
         self.Btn_male.backgroundColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
         self.Btn_female.backgroundColor = [UIColor whiteColor];
         self.Btn_nosay.backgroundColor = [UIColor whiteColor];
@@ -206,7 +206,7 @@
     {
         self.Btn_male.backgroundColor = [UIColor whiteColor];
         self.Btn_female.backgroundColor = [UIColor whiteColor];
-       // self.Btn_nosay.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1.0];;
+        // self.Btn_nosay.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1.0];;
         self.Btn_nosay.backgroundColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
     }
     
@@ -216,16 +216,16 @@
     }
     else
     {
-      self.SW_notification.on = NO;
+        self.SW_notification.on = NO;
     }
     
     
-//    self.rightBtn.titleLabel.font = [UIFont fontWithName:AllFont size:AllFontSize];
-//    [self.rightBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    [self.rightBtn setTitle:@"save" forState:UIControlStateNormal];
+    //    self.rightBtn.titleLabel.font = [UIFont fontWithName:AllFont size:AllFontSize];
+    //    [self.rightBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    //    [self.rightBtn setTitle:@"save" forState:UIControlStateNormal];
     [self.rightBtn setImage:[UIImage imageNamed:@"save.png"] forState:UIControlStateNormal];
     [self.rightBtn addTarget:self action:@selector(saveClick) forControlEvents:UIControlEventTouchUpInside];
-   // self.rightBtn.backgroundColor = [UIColor whiteColor];
+    // self.rightBtn.backgroundColor = [UIColor whiteColor];
     
     self.IV_photo.userInteractionEnabled = YES;
     UITapGestureRecognizer * photoTap= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(photoClick:)];
@@ -250,12 +250,12 @@
         NSHTTPURLResponse * httpRes = (NSHTTPURLResponse *)response2;
         if (httpRes.statusCode == 200)
         {
-          //  [MyAlert ShowAlertMessage:@"Success" title:@""];
+            //  [MyAlert ShowAlertMessage:@"Success" title:@""];
             [[NSUserDefaults standardUserDefaults] setValue:@"Enable" forKey:LOGIN_NOTI];
         }
         else
         {
-           // [MyAlert ShowAlertMessage:@"Sever appears error." title:@""];
+            // [MyAlert ShowAlertMessage:@"Sever appears error." title:@""];
             self.SW_notification.on = NO;
         }
     }
@@ -263,7 +263,7 @@
     {
         request_no = [WebService TurnoffNotification];
         [NSURLConnection connectionWithRequest:request_no delegate:self];
-         [[NSUserDefaults standardUserDefaults] setValue:@"noEnable" forKey:LOGIN_NOTI];
+        [[NSUserDefaults standardUserDefaults] setValue:@"noEnable" forKey:LOGIN_NOTI];
     }
 }
 
@@ -289,7 +289,7 @@
             }
             else
             {
-              [MyAlert ShowAlertMessage:@"Email code is incorrect." title:@"Alert"];
+                [MyAlert ShowAlertMessage:@"Email code is incorrect." title:@"Alert"];
             }
             
         }
@@ -302,7 +302,7 @@
 -(IBAction)maleClick:(id)sender
 {
     genderStr = @"Man";
-   // self.Btn_male.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1.0];
+    // self.Btn_male.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1.0];
     self.Btn_male.backgroundColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
     self.Btn_nosay.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:255.0/255.0];
     self.Btn_female.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:255.0/255.0];
@@ -319,7 +319,7 @@
 {
     genderStr = @"NoToSay";
     self.Btn_male.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0];
-   // self.Btn_nosay.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:255.0/255.0];
+    // self.Btn_nosay.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:255.0/255.0];
     self.Btn_nosay.backgroundColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
     self.Btn_female.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:255.0/255.0];
 }
@@ -333,18 +333,18 @@
     else
     {
         isFaceBook = YES;
-         [self.Btn_facebook setImage:[UIImage imageNamed:@"check.png"] forState:UIControlStateNormal];
+        [self.Btn_facebook setImage:[UIImage imageNamed:@"check.png"] forState:UIControlStateNormal];
     }
 }
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     [MyActivceView stopAnimatedInView:self.view];
     //[MyAlert ShowAlertMessage:@"Not to force the network" title:@""];
-     if ((NSMutableURLRequest *)[connection currentRequest] == request_no)
-     {
-         self.SW_notification.on = NO;
-     }
-
+    if ((NSMutableURLRequest *)[connection currentRequest] == request_no)
+    {
+        self.SW_notification.on = NO;
+    }
+    
 }
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
@@ -364,7 +364,7 @@
     {
         if ((NSMutableURLRequest *)[connection currentRequest] == request_no)
         {
-               // [MyAlert ShowAlertMessage:@"Save Success" title:@""];
+            // [MyAlert ShowAlertMessage:@"Save Success" title:@""];
         }
         else
         {
@@ -380,13 +380,13 @@
             [self.TF_lastName resignFirstResponder];
             [self.TF_firstName resignFirstResponder];
             [self.TF_email resignFirstResponder];
-
-         [MyAlert ShowAlertMessage:@"Save Success！" title:@""];
+            
+            [MyAlert ShowAlertMessage:@"Save Success！" title:@""];
         }
     }
     else
     {
-       // [MyAlert ShowAlertMessage:[NSString ErrorCodeAndErrorMsgFromReciveData:reciveData] title:@""];
+        // [MyAlert ShowAlertMessage:[NSString ErrorCodeAndErrorMsgFromReciveData:reciveData] title:@""];
     }
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -411,23 +411,33 @@
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-   
+    
     if (buttonIndex == 0)  //take a picture
     {
         if ([WebService ISIOS7])
         {
-//            if (!pickViewController)
-//            {
-                pickViewController.view.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height+100, 320, [UIScreen mainScreen].bounds.size.height-20);
-                [self.view addSubview:pickViewController.view];
-           // }
+            [pickViewController.view removeFromSuperview];
+            pickViewController.view.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height+100, 320, [UIScreen mainScreen].bounds.size.height-20);
+            self.view.clipsToBounds = YES;
+            [self.view addSubview:pickViewController.view];
+            
         }
         pickViewController.sourceType = UIImagePickerControllerSourceTypeCamera;
         pickViewController.delegate = self;
         if ([WebService ISIOS7])
         {
             [UIView animateWithDuration:0.3 animations:^{
-                pickViewController.view.frame = CGRectMake(0,0, 320, [UIScreen mainScreen].bounds.size.height-20);
+//                pickViewController.view.frame = CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height-20);
+                if (iPhone5)
+                {
+                    pickViewController.view.frame = CGRectMake(0, 0, 320, 548);
+                }
+                else
+                {
+                    pickViewController.view.frame = CGRectMake(0, 0, 320, 460);
+                }
+            } completion:^(BOOL finished) {
+                [self backIOS7];
             }];
         }
         else
@@ -456,6 +466,42 @@
         }
     }
 }
+-(void)updateUIStatus
+{
+    UIWindow * theWindow = [UIApplication sharedApplication].delegate.window;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    theWindow.clipsToBounds =YES;
+    if (iPhone5)
+    {
+        pickViewController.view.frame = CGRectMake(0, 548+50, 320, 548);
+    }
+    else
+    {
+        pickViewController.view.frame = CGRectMake(0, 460+50, 320, 460);
+    }
+    
+}
+-(void)backIOS7
+{
+    if ([WebService ISIOS7])
+    {
+        UIWindow * theWindow = [UIApplication sharedApplication].delegate.window;
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        theWindow.clipsToBounds =YES;
+        //        theWindow.bounds =  CGRectMake(0,0,theWindow.frame.size.width,theWindow.frame.size.height-20);
+        //        theWindow.frame = CGRectMake(0,20,theWindow.frame.size.width,theWindow.frame.size.height);
+        if (iPhone5)
+        {
+            theWindow.bounds =  CGRectMake(0,0,320,548);
+            theWindow.frame = CGRectMake(0,20,320,548);
+        }
+        else
+        {
+            theWindow.bounds =  CGRectMake(0,0,320,460);
+            theWindow.frame = CGRectMake(0,20,320,460);
+        }
+    }
+}
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
@@ -468,14 +514,15 @@
     
     if ([WebService ISIOS7])
     {
-        [UIView animateWithDuration:0.3 animations:^{
-           
+        [UIView animateWithDuration:0.3 animations:^{  
         }];
         [UIView animateWithDuration:0.3 animations:^{
-             pickViewController.view.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height+100, 320, [UIScreen mainScreen].bounds.size.height-20);
+//            pickViewController.view.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height+100, 320, [UIScreen mainScreen].bounds.size.height-20);
+            [self updateUIStatus];
         } completion:^(BOOL finished) {
             self.IV_photo.image = [image imageByScalingAndCroppingForSize:CGSizeMake(80, 80)];
             [self uploadPhotoImage];
+            [self backIOS7];
         }];
     }
     else
@@ -483,6 +530,7 @@
         [self dismissViewControllerAnimated:YES completion:^{
             self.IV_photo.image = [image imageByScalingAndCroppingForSize:CGSizeMake(80, 80)];
             [self uploadPhotoImage];
+           
         }];
         //[self dismissModalViewControllerAnimated:YES];
     }
@@ -493,7 +541,10 @@
     if ([WebService ISIOS7])
     {
         [UIView animateWithDuration:0.3 animations:^{
-            pickViewController.view.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height+100, 320, [UIScreen mainScreen].bounds.size.height-20);
+           // pickViewController.view.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height+100, 320, [UIScreen mainScreen].bounds.size.height-20);
+            [self updateUIStatus];
+        } completion:^(BOOL finished) {
+            [self backIOS7];
         }];
     }
     else
@@ -510,10 +561,10 @@
     NSData * data3 = [NSURLConnection sendSynchronousRequest:upRequest returningResponse:&respones2 error:nil];
     NSHTTPURLResponse * res = (NSHTTPURLResponse *)respones2;
     NSLog(@"success data = %@",[[NSString alloc] initWithData:data3 encoding:4]);
-
+    
     if (res.statusCode == 200)
     {
-       // [[NSUserDefaults standardUserDefaults] setValue:[UIImage imageWithData:imageData] forKey:LOGIN_IMAGE];
+        // [[NSUserDefaults standardUserDefaults] setValue:[UIImage imageWithData:imageData] forKey:LOGIN_IMAGE];
         
         self.setController.IV_login_name.image = [UIImage imageWithData:imageData];
     }
@@ -529,7 +580,7 @@
     
     if (textField.tag == 50 || textField.tag == 51)
     {
-       // self.myScrollView.contentOffset = CGPointMake(0, 50);
+        // self.myScrollView.contentOffset = CGPointMake(0, 50);
     }
     if (textField.tag == 52)
     {
