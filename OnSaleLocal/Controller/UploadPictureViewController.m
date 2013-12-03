@@ -49,7 +49,6 @@
     {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    
 }
 -(void)nextClick
 {
@@ -58,10 +57,10 @@
     {
         pick = [[PictureClassViewController alloc] initWithNibName:@"PictureClassViewController" bundle:nil];
     }
-   else
-   {
-       pick = [[PictureClassViewController alloc] initWithNibName:@"PictureClassViewController4" bundle:nil];
-   }
+    else
+    {
+        pick = [[PictureClassViewController alloc] initWithNibName:@"PictureClassViewController4" bundle:nil];
+    }
     if (!(self.imageView.image == nil))
     {
         pick.imageData = imageData;
@@ -71,18 +70,22 @@
     {
         [MyAlert ShowAlertMessage:@"Please choose picture!" title:@""];
     }
-   
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    
     if ([WebService ISIOS7])
     {
-//        if (!pickViewController)
-//        {
-            pickViewController.view.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height+100, 320, [UIScreen mainScreen].bounds.size.height-20);
-            [self.view addSubview:pickViewController.view];
-       // }
+        [pickViewController.view removeFromSuperview];
+        if (iPhone5)
+        {
+          pickViewController.view.frame = CGRectMake(0, 548+50, 320, 548);
+        }
+        else
+        {
+          pickViewController.view.frame = CGRectMake(0, 460+50, 320, 460);
+        }
+        self.view.clipsToBounds = YES;
+        [self.view addSubview:pickViewController.view];
     }
     if (buttonIndex == 0)  //take a picture
     {
@@ -91,12 +94,22 @@
         if ([WebService ISIOS7])
         {
             [UIView animateWithDuration:0.3 animations:^{
-                pickViewController.view.frame = CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height-20);
+                if (iPhone5)
+                {
+                   pickViewController.view.frame = CGRectMake(0, 0, 320, 548);
+                }
+                else
+                {
+                  pickViewController.view.frame = CGRectMake(0, 0, 320, 460);
+                }
+            } completion:^(BOOL finished) {
+                [self backIOS7];
             }];
         }
         else
         {
-            [self presentModalViewController:pickViewController animated:YES];
+            [self presentViewController:pickViewController animated:YES completion:^{
+            }];
         }
     }
     if (buttonIndex == 1)  //choose from album
@@ -106,7 +119,9 @@
         if ([WebService ISIOS7])
         {
             [UIView animateWithDuration:0.3 animations:^{
-                pickViewController.view.frame = CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height-20);
+                 pickViewController.view.frame = CGRectMake(0, 0, 320, [UIScreen mainScreen].bounds.size.height-20);
+            } completion:^(BOOL finished) {
+               // [self backIOS7];
             }];
         }
         else
@@ -116,12 +131,26 @@
     }
 }
 
+-(void)updateUIStatus
+{
+    UIWindow * theWindow = [UIApplication sharedApplication].delegate.window;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    theWindow.clipsToBounds =YES;
+    if (iPhone5)
+    {
+        pickViewController.view.frame = CGRectMake(0, 548+50, 320, 548);
+    }
+    else
+    {
+         pickViewController.view.frame = CGRectMake(0, 460+50, 320, 460);
+    }
+    
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
     UIImage * image1 = [image imageByScalingAndCroppingForSize:image.size];
-    NSLog(@"image1 = %@",image1);
     self.imageView.image = image1;
-    
     UIGraphicsBeginImageContextWithOptions(image1.size, NO, image1.scale);
     [image drawInRect:(CGRect){0, 0, image1.size}];
     UIImage *normalizedImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -131,12 +160,14 @@
     if ([WebService ISIOS7])
     {
         [UIView animateWithDuration:0.3 animations:^{
-            pickViewController.view.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height+100, 320, [UIScreen mainScreen].bounds.size.height-20);
+          [self updateUIStatus];
+        } completion:^(BOOL finished) {
+            [self backIOS7];
         }];
     }
     else
     {
-      [self dismissModalViewControllerAnimated:YES];
+        [self dismissModalViewControllerAnimated:YES];
     }
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
@@ -144,20 +175,45 @@
     if ([WebService ISIOS7])
     {
         [UIView animateWithDuration:0.3 animations:^{
-            pickViewController.view.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height+100, 320, [UIScreen mainScreen].bounds.size.height-20);
+             [self updateUIStatus];
+        } completion:^(BOOL finished) {
+            [self backIOS7];
         }];
     }
     else
     {
-      [self dismissModalViewControllerAnimated:YES];
+        [self dismissModalViewControllerAnimated:YES];
     }
 }
+
 -(IBAction)choosePictureClick:(id)sender
 {
     UIActionSheet * sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a picture",@"Choose from album", nil];
     sheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [sheet showFromRect:CGRectMake(0, 100, 320, 300) inView:self.view animated:self];
     [sheet showInView:[UIApplication sharedApplication].keyWindow];
+}
+
+-(void)backIOS7
+{
+    if ([WebService ISIOS7])
+    {
+        UIWindow * theWindow = [UIApplication sharedApplication].delegate.window;
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        theWindow.clipsToBounds =YES;
+//        theWindow.bounds =  CGRectMake(0,0,theWindow.frame.size.width,theWindow.frame.size.height-20);
+//        theWindow.frame = CGRectMake(0,20,theWindow.frame.size.width,theWindow.frame.size.height);
+        if (iPhone5)
+        {
+            theWindow.bounds =  CGRectMake(0,0,320,548);
+            theWindow.frame = CGRectMake(0,20,320,548);
+        }
+        else
+        {
+            theWindow.bounds =  CGRectMake(0,0,320,460);
+            theWindow.frame = CGRectMake(0,20,320,460);
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
