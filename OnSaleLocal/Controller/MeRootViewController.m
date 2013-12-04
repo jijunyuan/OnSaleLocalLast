@@ -74,6 +74,7 @@
 @property (nonatomic,strong) IBOutlet UIView * middleView2;
 
 @property (nonatomic,strong) IBOutlet UILabel * l_tl1,*l_yl2,*l_tl3;
+@property (nonatomic,strong) IBOutlet UILabel * l_tl11,*l_yl22,*l_tl33;
 
 -(void)getData;
 -(void)getData1;
@@ -440,9 +441,9 @@
 {
     [super viewDidLoad];
     
-    self.l_tl1.font = [UIFont fontWithName:AllFont size:AllFontSize];
-    self.l_yl2.font = [UIFont fontWithName:AllFont size:AllFontSize];
-    self.l_tl3.font = [UIFont fontWithName:AllFont size:AllFontSize];
+    self.l_tl1.font = [UIFont fontWithName:AllFont size:AllContentSmallSize];
+    self.l_yl2.font = [UIFont fontWithName:AllFont size:AllContentSmallSize];
+    self.l_tl3.font = [UIFont fontWithName:AllFont size:AllContentSmallSize];
     
     if ([WebService ISIOS7])
     {
@@ -457,10 +458,9 @@
     self.L_followings.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.L_follows.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.L_name.font = [UIFont fontWithName:AllFont size:All_h2_size];
-    self.L_shared.font = [UIFont fontWithName:AllFont size:AllContentSize];
-    self.L_likes.font = [UIFont fontWithName:AllFont size:AllContentSize];
-    self.L_storeFollowed.font = [UIFont fontWithName:AllFont size:AllContentSize];
-    self.L_shared.font = [UIFont fontWithName:AllFont size:AllContentSize];
+    self.L_shared.font = [UIFont fontWithName:AllFont size:All_h2_size];
+    self.L_likes.font = [UIFont fontWithName:AllFont size:All_h2_size];
+    self.L_storeFollowed.font = [UIFont fontWithName:AllFont size:All_h2_size];
 
     
     self.IV_photo.layer.cornerRadius = 40;
@@ -598,8 +598,8 @@
             
             
             self.L_name.text = name;
-            self.L_follows.text = [[NSString stringWithFormat:@"%d",[[dic valueForKey:@"followers"] intValue]] stringByAppendingFormat:@" follower"];
-            self.L_followings.text = [[NSString stringWithFormat:@"     %d",[[dic valueForKey:@"followings"] intValue]] stringByAppendingFormat:@" followings"];
+            self.L_follows.text = [[NSString stringWithFormat:@"%d",[[dic valueForKey:@"followers"] intValue]] stringByAppendingFormat:@" followers"];
+            self.L_followings.text = [[NSString stringWithFormat:@"     %d",[[dic valueForKey:@"followings"] intValue]] stringByAppendingFormat:@" following"];
             
             // currfollowing1 = [[dic valueForKey:@"followings"] intValue];
             

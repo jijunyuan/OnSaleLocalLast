@@ -43,36 +43,36 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="logo.png" id="36">
-                    <rect key="frame" x="40" y="35" width="240" height="61"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <rect key="frame" x="40" y="95" width="240" height="61"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView contentMode="scaleToFill" image="facebook_signin.png" id="35">
-                    <rect key="frame" x="50" y="260" width="230" height="40"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <rect key="frame" x="50" y="320" width="230" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <gestureRecognizers/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="34">
-                    <rect key="frame" x="144" y="221" width="42" height="21"/>
+                    <rect key="frame" x="144" y="281" width="42" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="divider.png" id="33">
-                    <rect key="frame" x="185" y="231" width="95" height="2"/>
+                    <rect key="frame" x="185" y="291" width="95" height="2"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
-                <imageView contentMode="scaleToFill" image="email_signup.png" id="32">
-                    <rect key="frame" x="50" y="165" width="230" height="40"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <imageView contentMode="scaleToFill" image="sign_in_580.png" id="32">
+                    <rect key="frame" x="50" y="225" width="230" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <gestureRecognizers/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="divider.png" id="31">
-                    <rect key="frame" x="50" y="231" width="95" height="2"/>
+                    <rect key="frame" x="50" y="291" width="95" height="2"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Skip for now >" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="46">
-                    <rect key="frame" x="135" y="338" width="145" height="21"/>
+                    <rect key="frame" x="135" y="400" width="145" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -86,9 +86,9 @@
     </objects>
     <resources>
         <image name="divider.png" width="50" height="2"/>
-        <image name="email_signup.png" width="459" height="80"/>
-        <image name="facebook_signin.png" width="459" height="80"/>
+        <image name="facebook_signin.png" width="580" height="86"/>
         <image name="logo.png" width="481" height="122"/>
-        <image name="no_result.png" width="166" height="225"/>
+        <image name="no_result.png" width="224" height="268"/>
+        <image name="sign_in_580.png" width="580" height="86"/>
     </resources>
 </document>

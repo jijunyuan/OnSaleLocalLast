@@ -32,7 +32,7 @@
         self.L_homedown = home;
         home.backgroundColor = [UIColor clearColor];
         home.font = [UIFont fontWithName:AllFont size:AllContentSize];
-        home.textColor = [UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1.0];
+        home.textColor = [UIColor colorWithRed:108.0/255.0 green:108.0/255.0 blue:108.0/255.0 alpha:1.0];
         [self addSubview:home];
         
         UIImageView * image = [[UIImageView alloc] initWithFrame:CGRectMake(75, 50, 20, 20)];
@@ -43,7 +43,7 @@
         self.L_phone = phone;
         phone.backgroundColor = [UIColor clearColor];
         phone.font = [UIFont fontWithName:AllFont size:AllContentSize];
-        phone.textColor = [UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1.0];
+        phone.textColor = [UIColor colorWithRed:108.0/255.0 green:108.0/255.0 blue:108.0/255.0 alpha:1.0];
         [self addSubview:phone];
         
         UIButton * button = [[UIButton alloc] initWithFrame:CGRectMake(278, 35, 30, 30)];
