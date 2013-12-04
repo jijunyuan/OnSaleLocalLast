@@ -16,6 +16,7 @@
 }
 @property (nonatomic,strong) IBOutlet UITextField * TF_email;
 @property (nonatomic,strong) IBOutlet UILabel * L_titlName;
+
 //-(IBAction)cancleClick:(id)sender;
 -(void)sendClick:(id)sender;
 @end
@@ -36,7 +37,7 @@
 {
     [super viewDidLoad];
     
-    self.L_titlName.font = [UIFont fontWithName:AllFont size:AllContentSize];
+    self.L_titlName.font = [UIFont fontWithName:AllFont size:AllFontSize];
     self.TF_email.font = [UIFont fontWithName:AllFont size:AllContentSize];
     
     self.rightBtn.alpha = 1.0;

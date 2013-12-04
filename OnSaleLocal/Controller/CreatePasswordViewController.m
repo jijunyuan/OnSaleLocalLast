@@ -23,12 +23,14 @@
 @property (nonatomic,strong) IBOutlet UITextField * TF_email;
 @property (nonatomic,strong) IBOutlet UITextField * TF_password;
 @property (nonatomic,strong) IBOutlet UITextField * TF_zipcode;
+@property (nonatomic,strong) IBOutlet UILabel * l_t1,*l_t2;
 @end
 
 @implementation CreatePasswordViewController
 @synthesize TF_email,TF_password,TF_zipcode;
 @synthesize email,zipcode;
 @synthesize isFromSetting;
+@synthesize l_t1,l_t2;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,6 +44,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.l_t1.font = [UIFont fontWithName:AllFont size:AllFontSize];
+    self.l_t2.font = [UIFont fontWithName:AllFont size:AllFontSize];
+    
     self.TF_password.secureTextEntry = YES;
     self.l_navTitle.text = @"Create Password";
     self.l_navTitle.textColor = [UIColor whiteColor];
