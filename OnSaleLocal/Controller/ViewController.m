@@ -200,7 +200,9 @@
     requestArr = [NSMutableArray arrayWithCapacity:0];
     mutable_dic = [NSMutableDictionary dictionaryWithCapacity:0];
     self.dataArr = [NSMutableArray arrayWithCapacity:0];
+    self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
     self.l_navTitle.text = @"Trending";
+    
    // self.l_navTitle.font = [UIFont fontWithName:AllFont size:AllContentSize];
     //    UIButton * buttonMap = [UIButton buttonWithType:UIButtonTypeCustom];
     //    [buttonMap addTarget:self action:@selector(mapClick) forControlEvents:UIControlEventTouchUpInside];
