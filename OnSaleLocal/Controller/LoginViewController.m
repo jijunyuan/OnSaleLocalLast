@@ -419,7 +419,7 @@
                         UINavigationController* nav = (UINavigationController *)controller.centerPanel;
                         NSArray * arr = [nav viewControllers];
                         ViewController * viewController = (ViewController *)[arr objectAtIndex:0];
-                        [viewController viewDidLoad];
+                        [viewController viewDidAppear:YES];
                     }
                     SetViewController* setViewController = (SetViewController *)controller.leftPanel;
                     dispatch_async(dispatch_get_main_queue(), ^{
