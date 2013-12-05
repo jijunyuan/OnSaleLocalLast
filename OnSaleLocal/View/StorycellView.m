@@ -46,7 +46,7 @@
         UILabel * des = [[UILabel alloc] initWithFrame:CGRectMake(8, height1+10, 128, 40)];
         des.textColor = [UIColor blackColor];
         //des.font = [UIFont systemFontOfSize:14];
-        des.font = [UIFont fontWithName:AllFont size:AllContentSize];
+        des.font = [UIFont systemFontOfSize:AllContentSize];
         des.numberOfLines = 2;
         des.backgroundColor = [UIColor clearColor];
         self.L_des = des;
@@ -57,7 +57,7 @@
         textfield.textColor = [UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1.0];
         textfield.textAlignment = NSTextAlignmentCenter;
         textfield.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        textfield.layer.borderWidth = 1;
+        textfield.layer.borderWidth = 0.6;
         textfield.font = [UIFont fontWithName:AllFont size:AllContentSmallSize];
         textfield.layer.borderColor =[UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1.0].CGColor;
         textfield.userInteractionEnabled = NO;
@@ -89,7 +89,7 @@
         distanceLab.font = [UIFont fontWithName:AllFont size:AllContentSmallSize+1];
         [self addSubview:distanceLab];
         
-        UIView * line = [[UIView alloc] initWithFrame:CGRectMake(8, height1+110+3, 144, 1)];
+        UIView * line = [[UIView alloc] initWithFrame:CGRectMake(8, height1+110+3, 144, 0.6)];
         line.backgroundColor = [UIColor colorWithRed:196.0/255.0 green:196.0/255.0 blue:196.0/255.0 alpha:1.0];
         [self addSubview:line];
         
