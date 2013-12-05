@@ -109,7 +109,6 @@
         [reciveData1 appendData:data];
     }];
     [request setCompletionBlock:^{
-        NSLog(@"data = %@",reciveData1);
         self.TV_tableview.alpha = 1.0;
         [MyActivceView stopAnimatedInView:self.view];
         if ([request responseStatusCode] == 200)
