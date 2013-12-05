@@ -32,6 +32,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     
+    self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
     self.l_navTitle.text = @"About Us";
     self.myWebView.scrollView.bounces = NO;
     

@@ -49,6 +49,7 @@
     self.l_t2.font = [UIFont fontWithName:AllFont size:AllFontSize];
     
     self.TF_password.secureTextEntry = YES;
+    self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
     self.l_navTitle.text = @"Create Password";
     self.l_navTitle.textColor = [UIColor whiteColor];
     self.bgView.backgroundColor = [UIColor colorWithRed:46.0/255.0 green:46.0/255.0 blue:46.0/255.0 alpha:1.0];

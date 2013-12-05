@@ -33,6 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
     self.l_navTitle.text = @"Comment";
     [self.TV_text resignFirstResponder];
     self.rightBtn.userInteractionEnabled = YES;

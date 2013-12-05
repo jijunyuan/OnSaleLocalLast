@@ -53,6 +53,7 @@
     self.myTableView.tableFooterView = [[UIView alloc] init];
     self.dataArr = [NSMutableArray arrayWithCapacity:0];
     
+    self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
     self.l_navTitle.text = @"Categories";
 //    self.view.backgroundColor = [UIColor colorWithRed:225.0/255.0 green:224.0/255.0 blue:223.0/255.0 alpha:1.0];
 //    self.myTableView.alpha = 0.9;

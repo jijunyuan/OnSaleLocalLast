@@ -28,6 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
     self.l_navTitle.text = @"Likes";
     self.dataArr = [NSMutableArray arrayWithCapacity:0];
     self.IV_result.alpha = 0.0;
