@@ -133,6 +133,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
+    NSLog(@"TrendDetailViewController initWithNibName");
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
     }
@@ -140,10 +141,11 @@
 }
 -(void)viewDidDisappear:(BOOL)animated
 {
-    
+    NSLog(@"TrendDetailViewController viewDidDisappear");
 }
 -(void)viewWillAppear:(BOOL)animated
 {
+    NSLog(@"TrendDetailViewController viewWillAppear");
     if (self.isFromNotification)
     {
         self.dic = [NSMutableDictionary dictionaryWithCapacity:0];
@@ -164,6 +166,7 @@
             [appDelegate.session openWithCompletionHandler:^(FBSession *session,
                                                              FBSessionState status,
                                                              NSError *error) {
+                NSLog(@"TrendDetailViewController openWithCompletionHandler");
                 //[self updateView];
             }];
         }
@@ -191,11 +194,14 @@
         login.view.alpha = 0.0;
     }
     NSArray * arr = [l_comment_num.text componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"()"]];
+    NSLog(@"TrendDetailViewController isSafeway %d", isSafeway);
     if (!isSafeway)
     {
+        NSLog(@"TrendDetailViewController arr.count %d", arr.count);
         if (arr.count>0)
         {
             int num = [[arr objectAtIndex:1] intValue];
+            NSLog(@"TrendDetailViewController num %d", num);
             if (num > 0)
             {
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -204,6 +210,7 @@
             }
         }
     }
+    NSLog(@"TrendDetailViewController isFromTrendStore %d", isFromTrendStore);
     if (isFromTrendStore)
     {
         isFromTrendStore = NO;
