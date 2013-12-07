@@ -461,7 +461,7 @@
     self.L_shared.font = [UIFont fontWithName:AllFont size:All_h2_size];
     self.L_likes.font = [UIFont fontWithName:AllFont size:All_h2_size];
     self.L_storeFollowed.font = [UIFont fontWithName:AllFont size:All_h2_size];
-
+    self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
     
     self.IV_photo.layer.cornerRadius = 40;
     self.dic_recodeClick = [NSMutableDictionary dictionaryWithCapacity:0];
