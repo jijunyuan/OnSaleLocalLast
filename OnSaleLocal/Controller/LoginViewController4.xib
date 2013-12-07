@@ -35,7 +35,7 @@
                             <rect key="frame" x="48" y="0.0" width="240" height="42"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                         </textField>
                         <view contentMode="scaleToFill" id="104">
                             <rect key="frame" x="40" y="0.0" width="1" height="84"/>
