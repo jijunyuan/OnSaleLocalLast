@@ -92,7 +92,7 @@
     NSString * formatStr = [NSString stringWithFormat:@"/ws/user/notifications?format=json"];
     NSString * url = [DO_MAIN stringByAppendingString:formatStr];
     NSLog(@"url = %@",url);
-    __weak ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    __block ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request setTimeOutSeconds:MAX_SECONDS_REQUEST];
     [request setCacheStoragePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy];
     [ request setNumberOfTimesToRetryOnTimeout:3]; //set times when request fail
@@ -100,7 +100,6 @@
     [request setSecondsToCache:60*60*2];
     [request setUseCookiePersistence:YES];
     [request buildRequestHeaders];
-    [request startAsynchronous];
     NSMutableData * reciveData1 = [NSMutableData dataWithCapacity:0];
     [request setStartedBlock:^{
         self.TV_tableview.alpha = 0.0;
@@ -110,6 +109,7 @@
         [reciveData1 appendData:data];
     }];
     [request setCompletionBlock:^{
+        NSLog(@"get notifications completed");
         self.TV_tableview.alpha = 1.0;
         [MyActivceView stopAnimatedInView:self.view];
         if ([request responseStatusCode] == 200)
@@ -131,12 +131,14 @@
     }];
     __weak typeof(self) weakSelf = self;
     [request setFailedBlock:^{
+        NSLog(@"get notifications failed");
         [MyActivceView stopAnimatedInView:weakSelf.view];
         if ([request responseStatusCode] != 200)
         {
             //[MyAlert ShowAlertMessage:[NSString ErrorCodeAndErrorMsgFromReciveData:reciveData1] title:@""];
         }
     }];
+    [request startAsynchronous];
 
 }
 -(void)getData1

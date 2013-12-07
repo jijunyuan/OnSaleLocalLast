@@ -471,16 +471,17 @@
 -(void)getData
 {
     NSString * isStr = [self.dic valueForKey:@"id"];
-    __weak ASIHTTPRequest * request = [WebService GeCommentsListByID:isStr];
+    __block ASIHTTPRequest * request = [WebService GeCommentsListByID:isStr];
+    NSLog(@"start to get comments");
     [request setUseCookiePersistence:YES];
     [request buildRequestHeaders];
-    [request startAsynchronous];
     NSMutableData * reciveData3 = [NSMutableData dataWithCapacity:0];
     [MyActivceView startAnimatedInView:self.view];
     [request setDataReceivedBlock:^(NSData *data) {
         [reciveData3 appendData:data];
     }];
     [request setCompletionBlock:^{
+        NSLog(@"getComment status code: %d",request.responseStatusCode);
         [MyActivceView stopAnimatedInView:self.view];
         if (request.responseStatusCode == 200)
         {
@@ -492,13 +493,13 @@
         }
         else
         {
-           // [MyAlert ShowAlertMessage:[NSString ErrorCodeAndErrorMsgFromReciveData:reciveData3] title:@""];
         }
     }];
     [request setFailedBlock:^{
+        NSLog(@"getComment failed");
         [MyActivceView stopAnimatedInView:self.view];
-       // [MyAlert ShowAlertMessage:@"Not to force the network" title:@""];
     }];
+    [request startAsynchronous];
 }
 -(void)getData2
 {
