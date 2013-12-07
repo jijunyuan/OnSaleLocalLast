@@ -527,7 +527,7 @@
     NSString * formatStr = [NSString stringWithFormat:@"/ws/user/offers?userId=%@&latitude=%f&longitude=%f&format=json",userid,lat,longit];
     NSString * url = [DO_MAIN stringByAppendingString:formatStr];
     NSLog(@"url = %@",url);
-    __weak ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    __block ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request setTimeOutSeconds:MAX_SECONDS_REQUEST];
     [request setCacheStoragePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy];
     [ request setNumberOfTimesToRetryOnTimeout:3]; //set times when request fail
@@ -556,7 +556,7 @@
     }
     NSString * url = [DO_MAIN stringByAppendingString:formatStr];
     NSLog(@"url = %@",url);
-    __weak ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    __block ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request setTimeOutSeconds:MAX_SECONDS_REQUEST];
     [request setCacheStoragePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy];
     [ request setNumberOfTimesToRetryOnTimeout:3]; //set times when request fail
@@ -710,7 +710,7 @@
     NSString * formatStr = [NSString stringWithFormat:@"/ws/user/offers?userId=%@&offset=%d&latitude=%f&longitude=%f&format=json",userid,currPage,lat,longit];
     NSString * url = [DO_MAIN stringByAppendingString:formatStr];
     NSLog(@"url = %@",url);
-    __weak ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    __block ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request setTimeOutSeconds:MAX_SECONDS_REQUEST];
     [request setCacheStoragePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy];
     [ request setNumberOfTimesToRetryOnTimeout:3]; //set times when request fail

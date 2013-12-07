@@ -514,7 +514,7 @@
     NSString * formatStr = [NSString stringWithFormat:@"/ws/v2/store/details?storeId=%@&latitude=%@&longitude=%@&format=json",self.merchantId,[[[NSUserDefaults standardUserDefaults] valueForKey:USING_LAT] stringValue],[[[NSUserDefaults standardUserDefaults] valueForKey:USING_LONG] stringValue]];
     NSString * url = [DO_MAIN stringByAppendingString:formatStr];
     NSLog(@"url = %@",url);
-    __weak ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    __block ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request setTimeOutSeconds:MAX_SECONDS_REQUEST];
     [request setCacheStoragePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy];
     [ request setNumberOfTimesToRetryOnTimeout:3]; //set times when request fail
@@ -562,7 +562,7 @@
      NSString * formatStr = [NSString stringWithFormat:@"/ws/v2/store/details?storeId=%@&latitude=%f&longitude=%f&format=json",self.merchantId,lat,longit];
     NSString * url = [DO_MAIN stringByAppendingString:formatStr];
     NSLog(@"url = %@",url);
-    __weak ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    __block ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request setTimeOutSeconds:MAX_SECONDS_REQUEST];
     [request setCacheStoragePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy];
     [ request setNumberOfTimesToRetryOnTimeout:3]; //set times when request fail

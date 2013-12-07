@@ -47,7 +47,7 @@
     NSString * formatStr = [NSString stringWithFormat:@"/ws/user/user-fav-offers?userId=%@&format=json",self.userid];
     NSString * url = [DO_MAIN stringByAppendingString:formatStr];
     NSLog(@"url = %@",url);
-    __weak ASIHTTPRequest * request3 = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    __block ASIHTTPRequest * request3 = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request3 setTimeOutSeconds:MAX_SECONDS_REQUEST];
     [request3 setCacheStoragePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy];
     [ request3 setNumberOfTimesToRetryOnTimeout:3]; //set times when request fail
@@ -123,7 +123,7 @@
     
     NSString * url = [DO_MAIN stringByAppendingString:formatStr];
     NSLog(@"url = %@",url);
-    __weak ASIHTTPRequest * request6 = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    __block ASIHTTPRequest * request6 = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request6 setTimeOutSeconds:MAX_SECONDS_REQUEST];
     [request6 setCacheStoragePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy];
     [ request6 setNumberOfTimesToRetryOnTimeout:3]; //set times when request fail

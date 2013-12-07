@@ -139,7 +139,7 @@
     NSString * formatStr = [NSString stringWithFormat:@"/ws/v2/location-lookup?latitude=%g&longitude=%g&format=json",self.lat,self.longt];
     NSString * url = [DO_MAIN stringByAppendingString:formatStr];
     NSLog(@"url = %@",url);
-    __weak ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    __block ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request setTimeOutSeconds:MAX_SECONDS_REQUEST];
     [request setCacheStoragePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy];
     [ request setNumberOfTimesToRetryOnTimeout:3]; //set times when request fail

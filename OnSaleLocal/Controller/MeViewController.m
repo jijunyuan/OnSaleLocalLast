@@ -66,7 +66,7 @@
     }
     NSString * url = [DO_MAIN stringByAppendingString:formatStr];
     NSLog(@"url = %@",url);
-    __weak ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    __block ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request setTimeOutSeconds:MAX_SECONDS_REQUEST];
     [request setCacheStoragePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy];
     [ request setNumberOfTimesToRetryOnTimeout:3]; //set times when request fail
@@ -102,7 +102,7 @@
                     
 //                    NSString * formatStr1 = [NSString stringWithFormat:@"/ws/v2/user/followings?userId=%@&format=json",self.userId];
 //                     NSString * urlSTr1 = [DO_MAIN stringByAppendingString:formatStr1];
-//                    __weak ASIHTTPRequest * requestTemp = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlSTr1]];
+//                    __block ASIHTTPRequest * requestTemp = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlSTr1]];
 //                    [requestTemp setTimeOutSeconds:MAX_SECONDS_REQUEST];
 //                    [requestTemp setCacheStoragePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy];
 //                    [ requestTemp setNumberOfTimesToRetryOnTimeout:3]; //set times when request fail
@@ -155,7 +155,7 @@
     }
     NSString * url = [DO_MAIN stringByAppendingString:formatStr];
     NSLog(@"url = %@",url);
-    __weak ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    __block ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request setTimeOutSeconds:MAX_SECONDS_REQUEST];
     [request setCacheStoragePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy];
     [ request setNumberOfTimesToRetryOnTimeout:3]; //set times when request fail

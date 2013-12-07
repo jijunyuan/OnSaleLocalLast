@@ -22,7 +22,7 @@
     CLLocationManager * manger;
     int currPage;
     ASIHTTPRequest * request1;
-    __weak ASIHTTPRequest * request;
+    __block ASIHTTPRequest * request;
     NSMutableArray * requestArr;
     NSMutableDictionary * tempDict;
     NSMutableDictionary * tempDictLab;

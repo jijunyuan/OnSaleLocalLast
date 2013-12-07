@@ -504,7 +504,7 @@
 -(void)getData2
 {
     NSString * isStr = [self.dic valueForKey:@"id"];
-    __weak ASIHTTPRequest * request = [WebService GeCommentsListByID:isStr];
+    __block ASIHTTPRequest * request = [WebService GeCommentsListByID:isStr];
     [request setUseCookiePersistence:YES];
     [request buildRequestHeaders];
     [request startSynchronous];

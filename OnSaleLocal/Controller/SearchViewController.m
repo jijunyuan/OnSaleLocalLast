@@ -101,7 +101,7 @@
     NSLog(@"resultstr = %@",resultStr);
     NSString * formatStr = [NSString stringWithFormat:@"/ws/v2/search?latitude=%f&longitude=%f&radius=10&offset=0&size=20&category=%@&keywords=%@&format=json",lat,longit,@"",resultStr];
     NSString * url = [DO_MAIN stringByAppendingString:formatStr];
-   __weak ASIHTTPRequest * request4 = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+   __block ASIHTTPRequest * request4 = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request4 setTimeOutSeconds:MAX_SECONDS_REQUEST];//ASIAskServerIfModifiedCachePolicy,ASIAskServerIfModifiedWhenStaleCachePolicy
     [request4 setCacheStoragePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy];
     //[ request setNumberOfTimesToRetryOnTimeout:3]; //set times when request fail

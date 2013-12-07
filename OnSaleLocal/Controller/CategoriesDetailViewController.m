@@ -113,13 +113,13 @@
     
     //test 37.378536   -122.086586
 //#warning mark - change value
-    //   __weak ASIHTTPRequest * request = (ASIHTTPRequest *)[WebService SearchTrendkeywords:self.key latitude:37.378536 longitude:-122.086586 category:@""];
+    //   __block ASIHTTPRequest * request = (ASIHTTPRequest *)[WebService SearchTrendkeywords:self.key latitude:37.378536 longitude:-122.086586 category:@""];
     NSString * resultStr = [self.key stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     NSLog(@"resultstr = %@",resultStr);
     NSString * formatStr = [NSString stringWithFormat:@"/ws/v2/search?latitude=%f&longitude=%f&radius=10&offset=0&size=20&category=%@&keywords=%@&format=json",lat,longit,resultStr,resultStr];
     NSString * url = [DO_MAIN stringByAppendingString:formatStr];
     NSLog(@"url = %@",url);
-    __weak ASIHTTPRequest * request3 = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    __block ASIHTTPRequest * request3 = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request3 setTimeOutSeconds:MAX_SECONDS_REQUEST];//ASIAskServerIfModifiedCachePolicy,ASIAskServerIfModifiedWhenStaleCachePolicy
     [request3 setCacheStoragePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy];
     [ request3 setNumberOfTimesToRetryOnTimeout:3]; //set times when request fail

@@ -106,7 +106,7 @@
     ////test 37.378536   -122.086586
     // ASIHTTPRequest * request = [WebService GetClasslistByLat:37.378536 long:-122.086586 radius:10.0];
     NSString * formatStr = [NSString stringWithFormat:@"%@/ws/category/top-categories?lat=%f&lng=%f&radius=%f&format=json",DO_MAIN,lat,longit,10.0];
-    __weak ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:formatStr]];
+    __block ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:formatStr]];
     [request setTimeOutSeconds:MAX_SECONDS_REQUEST];
     [request setCacheStoragePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy];
     [ request setNumberOfTimesToRetryOnTimeout:3]; //set times when request fail

@@ -306,7 +306,7 @@
     NSString * url = [DO_MAIN stringByAppendingString:formatStr];
     NSLog(@"url = %@",url);
     
-    __weak ASIHTTPRequest * request11 = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    __block ASIHTTPRequest * request11 = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request11 setTimeOutSeconds:MAX_SECONDS_REQUEST];
     [request11 setCacheStoragePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy];
     [request11 setNumberOfTimesToRetryOnTimeout:2]; //set times when request fail
