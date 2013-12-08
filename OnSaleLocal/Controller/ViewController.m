@@ -357,7 +357,7 @@
             [self.dataArr removeAllObjects];
             NSString * strRes = [[NSString alloc] initWithData:(NSData *)reciveData1 encoding:1];
             self.dataArr = (NSMutableArray *)[[strRes objectFromJSONString] valueForKey:@"items"];
-            NSLog(@"dataArr = %@", self.dataArr);
+//            NSLog(@"dataArr = %@", self.dataArr);
             isfirstloading = YES;
           //  [self getData1];
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -454,7 +454,7 @@
     });
     
     // [waterFlow relayoutDisplaySubviews];
-    NSLog(@"self.dataArr = %@",self.dataArr);
+//    NSLog(@"self.dataArr = %@",self.dataArr);
 }
 -(void)getData2
 {
@@ -499,7 +499,7 @@
         });
     }];
     
-    NSLog(@"self.dataArr = %@",self.dataArr);
+//    NSLog(@"self.dataArr = %@",self.dataArr);
     NSLog(@"self.dataArr.count-getdata1 = %d",self.dataArr.count);
     
 }
