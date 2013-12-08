@@ -511,7 +511,7 @@
     }
 
     
-    NSString * formatStr = [NSString stringWithFormat:@"/ws/v2/store/details?storeId=%@&latitude=%@&longitude=%@&format=json",self.merchantId,[[[NSUserDefaults standardUserDefaults] valueForKey:USING_LAT] stringValue],[[[NSUserDefaults standardUserDefaults] valueForKey:USING_LONG] stringValue]];
+    NSString * formatStr = [NSString stringWithFormat:@"/ws/v2/store/details?storeId=%@&format=json",self.merchantId];
     NSString * url = [DO_MAIN stringByAppendingString:formatStr];
     NSLog(@"url = %@",url);
     __block ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
