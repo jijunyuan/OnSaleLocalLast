@@ -333,7 +333,7 @@
                 login = [[LoginViewController alloc] initWithNibName:@"LoginViewController4" bundle:nil];
             }
             login.isQukyLogin = YES;
-            login.view.alpha = 0.8;
+            login.view.alpha = 0.9;
             [self.view addSubview:login.view];
         }
     }

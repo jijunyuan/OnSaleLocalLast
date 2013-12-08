@@ -27,8 +27,13 @@
 #import "LoginSelectedViewController.h"
 #import "Container.h"
 #import "CreatePasswordViewController.h"
+#import "LoginViewController.h"
 
 @interface ViewController ()<WaterFlowViewDelegate,WaterFlowViewDataSource,EGORefreshTableHeaderDelegate,UIScrollViewDelegate,CLLocationManagerDelegate,NSURLConnectionDelegate,UIActionSheetDelegate,UIAlertViewDelegate>
+{
+
+    LoginViewController * login;
+}
 ////开始重新加载时调用的方法
 - (void)reloadTableViewDataSource;
 ////完成加载时调用的方法
@@ -103,17 +108,17 @@
 }
 -(void)emailClick:(UITapGestureRecognizer *)aTap
 {
-    LoginViewController * login;
+    LoginViewController * login1;
     if (iPhone5)
     {
-        login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        login1 = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     }
     else
     {
-        login = [[LoginViewController alloc] initWithNibName:@"LoginViewController4" bundle:nil];
+        login1 = [[LoginViewController alloc] initWithNibName:@"LoginViewController4" bundle:nil];
     }
-    login.isBack = YES;
-    [self.navigationController pushViewController:login animated:YES];
+    login1.isBack = YES;
+    [self.navigationController pushViewController:login1 animated:YES];
 }
 -(void)faceBookClick:(UITapGestureRecognizer *)aTap
 {
@@ -244,6 +249,26 @@
             }];
         }
     }
+    
+    if (![[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_STATUS] isEqualToString:@"1"])
+    {
+        if (iPhone5)
+        {
+            login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        }
+        else
+        {
+            login = [[LoginViewController alloc] initWithNibName:@"LoginViewController4" bundle:nil];
+        }
+        login.isQukyLogin = YES;
+        login.view.alpha = 0.0;
+        [self.view addSubview:login.view];
+    }
+    else
+    {
+        login.view.alpha = 0.0;
+    }
+
     
     if (![[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_STATUS] isEqualToString:@"1"])
     {
@@ -907,19 +932,21 @@
     {
         if (buttonIndex == 1)
         {
-            [self.view insertSubview:self.allSignView belowSubview:_refreshTableView];
-            
-            UITapGestureRecognizer * tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(skipClick:)];
-            UITapGestureRecognizer * tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(faceBookClick:)];
-            UITapGestureRecognizer * tap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(emailClick:)];
-            self.IV_facebook.userInteractionEnabled = YES;
-            self.IV_email.userInteractionEnabled = YES;
-            self.L_skip.userInteractionEnabled = YES;
-            [self.IV_email addGestureRecognizer:tap3];
-            [self.IV_facebook addGestureRecognizer:tap2];
-            [self.L_skip addGestureRecognizer:tap1];
-            
-            self.allSignView.alpha = 0.8;
+//            [self.view insertSubview:self.allSignView belowSubview:_refreshTableView];
+//            
+//            UITapGestureRecognizer * tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(skipClick:)];
+//            UITapGestureRecognizer * tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(faceBookClick:)];
+//            UITapGestureRecognizer * tap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(emailClick:)];
+//            self.IV_facebook.userInteractionEnabled = YES;
+//            self.IV_email.userInteractionEnabled = YES;
+//            self.L_skip.userInteractionEnabled = YES;
+//            [self.IV_email addGestureRecognizer:tap3];
+//            [self.IV_facebook addGestureRecognizer:tap2];
+//            [self.L_skip addGestureRecognizer:tap1];
+//            
+//            self.allSignView.alpha = 0.8;
+             login.view.alpha = 0.9;
+        
         }
     }
     
