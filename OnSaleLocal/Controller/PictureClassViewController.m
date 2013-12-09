@@ -224,15 +224,23 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell * cell = [[UITableViewCell alloc] init];
-    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
-    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.layer.borderColor = [UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1.0].CGColor;
-    button.tag = indexPath.row;
-    [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-    button.frame = CGRectMake(275, 15, 20, 20);
-    button.layer.borderWidth = 1;
-    button.layer.cornerRadius = 10;
+    static NSString * markCell = @"markcell";
+    UITableViewCell * cell = [tableView dequeueReusableHeaderFooterViewWithIdentifier:markCell];
+    UIButton * button;
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:markCell];
+       // cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.layer.borderColor = [UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1.0].CGColor;
+        button.tag = indexPath.row;
+        [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+        button.frame = CGRectMake(275, 15, 20, 20);
+        button.layer.borderWidth = 1;
+        button.layer.cornerRadius = 10;
+    }
+   
     NSLog(@"1111");
     if (self.myDicStaus.count>0)
     {
@@ -300,13 +308,16 @@
         [aButton setImage:[UIImage imageNamed:@"check.png"] forState:UIControlStateNormal];
         currIdOrName = [[self.dataArr objectAtIndex:aButton.tag] valueForKey:@"name"];
         [buttonArr enumerateObjectsUsingBlock:^(UIButton * obj, NSUInteger idx, BOOL *stop) {
+            [self.myDicStaus setValue:@"0" forKey:[NSString stringWithFormat:@"%d",idx]];
             if (![obj isEqual:aButton])
             {
                 obj.imageView.image = nil;
+                 [self.myDicStaus setValue:@"0" forKey:[NSString stringWithFormat:@"%d",idx]];
             }
             else
             {
                 [obj setImage:[UIImage imageNamed:@"check.png"] forState:UIControlStateNormal];
+                [self.myDicStaus setValue:@"1" forKey:[NSString stringWithFormat:@"%d",idx]];
             }
         }];
     }
