@@ -101,6 +101,8 @@
 		4DF728C51802F1360081AD30 /* CreatePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF728C31802F1360081AD30 /* CreatePasswordViewController.xib */; };
 		4DF728C71802F1480081AD30 /* CreatePasswordViewController4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF728C61802F1480081AD30 /* CreatePasswordViewController4.xib */; };
 		E9A8233A1855A1BC00196B41 /* GothamBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9A823391855A1BC00196B41 /* GothamBold.ttf */; };
+		E9A8233B1855A61400196B41 /* Gotham-Bold_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9A823381855A1AF00196B41 /* Gotham-Bold_0.ttf */; };
+		E9A8233C1855A61400196B41 /* Gotham-XLight_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9A823371855A19600196B41 /* Gotham-XLight_0.ttf */; };
 		F1035F9217E768C5006903D4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1035F9017E768C4006903D4 /* LoginViewController.m */; };
 		F1035F9317E768C5006903D4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1035F9117E768C4006903D4 /* LoginViewController.xib */; };
 		F1035F9517E768DD006903D4 /* LoginViewController4.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1035F9417E768DD006903D4 /* LoginViewController4.xib */; };
@@ -1537,6 +1539,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9A8233B1855A61400196B41 /* Gotham-Bold_0.ttf in Resources */,
+				E9A8233C1855A61400196B41 /* Gotham-XLight_0.ttf in Resources */,
 				F14983AA17E0AFD000C1CEC1 /* InfoPlist.strings in Resources */,
 				F1A265C917E22C4D00D42E8F /* ViewController.xib in Resources */,
 				F1A265CB17E22C5F00D42E8F /* ViewController4.xib in Resources */,
