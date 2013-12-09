@@ -358,10 +358,16 @@
             NSString * strRes = [[NSString alloc] initWithData:(NSData *)reciveData1 encoding:1];
             self.dataArr = (NSMutableArray *)[[strRes objectFromJSONString] valueForKey:@"items"];
 //            NSLog(@"dataArr = %@", self.dataArr);
+            
             isfirstloading = YES;
           //  [self getData1];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [waterFlow reloadData];
+                if (self.dataArr.count==0)
+                {
+                    self.IV_result.alpha = 1.0;
+                    self.L_result.alpha = 1.0;
+                }
             });
         }
         else
@@ -387,14 +393,15 @@
     waterFlow.backgroundColor = [UIColor colorWithRed:231.0/255.0 green:231.0/255.0  blue:231.0/255.0  alpha:1.0];
     [self.view addSubview:waterFlow];
     
-    [waterFlow addSubview:self.IV_result];
-    [waterFlow addSubview:self.L_result];
+   
     
     
     //  waterFlow.bounces = NO;
     
     self.IV_result.alpha = 0.0;
     self.L_result.alpha = 0.0;
+//    [waterFlow addSubview:self.IV_result];
+//    [waterFlow addSubview:self.L_result];
     
     _refreshTableView = nil;
     if (_refreshTableView == nil)
@@ -407,6 +414,9 @@
         _refreshTableView = refreshView;
     }
     
+    [waterFlow addSubview:self.IV_result];
+    [waterFlow addSubview:self.L_result];
+   
 }
 -(void)getData1
 {
@@ -451,6 +461,11 @@
     NSLog(@"self.dicnumber -= %@",self.dic_lab_num);
     dispatch_async(dispatch_get_main_queue(), ^{
         [waterFlow reloadData];
+        if (self.dataArr.count==0)
+        {
+            self.IV_result.alpha = 1.0;
+            self.L_result.alpha = 1.0;
+        }
     });
     
     // [waterFlow relayoutDisplaySubviews];
@@ -496,6 +511,11 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [MyActivceView stopAnimatedInView:weakSelf.view];
             [waterFlow reloadData];
+            if (weakSelf.dataArr.count==0)
+            {
+                self.IV_result.alpha = 1.0;
+                self.L_result.alpha = 1.0;
+            }
         });
     }];
     

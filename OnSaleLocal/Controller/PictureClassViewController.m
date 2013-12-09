@@ -25,6 +25,7 @@
 }
 @property (nonatomic,strong) IBOutlet UITableView * TV_tableview;
 @property (nonatomic,strong) NSMutableArray * dataArr;
+@property (nonatomic,strong) NSMutableDictionary * myDicStaus;
 -(void)nextClick;
 -(void)getData;
 ////开始重新加载时调用的方法
@@ -38,6 +39,7 @@
 @synthesize TV_tableview;
 @synthesize dataArr;
 @synthesize imageData;
+@synthesize myDicStaus;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,6 +52,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.myDicStaus = [NSMutableDictionary dictionaryWithCapacity:0];
     self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
     self.l_navTitle.text = @"Categories";
     
@@ -221,23 +224,34 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell * cell;
-    if (cell == nil)
+    UITableViewCell * cell = [[UITableViewCell alloc] init];
+    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
+    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.layer.borderColor = [UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1.0].CGColor;
+    button.tag = indexPath.row;
+    [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    button.frame = CGRectMake(275, 15, 20, 20);
+    button.layer.borderWidth = 1;
+    button.layer.cornerRadius = 10;
+    NSLog(@"1111");
+    if (self.myDicStaus.count>0)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-        cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
-        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.layer.borderColor = [UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1.0].CGColor;
-        button.tag = indexPath.row;
-        [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-        button.frame = CGRectMake(275, 15, 20, 20);
-        button.layer.borderWidth = 1;
-        button.layer.cornerRadius = 10;
-        [cell addSubview:button];
-        [buttonArr addObject:button];
-        cell.textLabel.text = [[self.dataArr objectAtIndex:indexPath.row] valueForKey:@"name"];
-        cell.textLabel.font = [UIFont fontWithName:AllFont size:AllFontSize];
+        
+        NSString * result1 = [self.myDicStaus valueForKey:[NSString stringWithFormat:@"%d",indexPath.row]];
+        NSLog(@"result1 = %@",result1);
+        if ([result1 isEqualToString:@"1"])
+        {
+            [button setImage:[UIImage imageNamed:@"check.png"] forState:UIControlStateNormal];
+        }
+        else
+        {
+          [button setImage:nil forState:UIControlStateNormal];
+        }
     }
+    [cell addSubview:button];
+    [buttonArr addObject:button];
+    cell.textLabel.text = [[self.dataArr objectAtIndex:indexPath.row] valueForKey:@"name"];
+    cell.textLabel.font = [UIFont fontWithName:AllFont size:AllFontSize];
     
     return cell;
 }
@@ -257,16 +271,21 @@
     {
         [tempButton setImage:[UIImage imageNamed:@"check.png"] forState:UIControlStateNormal];
         currIdOrName = [[self.dataArr objectAtIndex:tempButton.tag] valueForKey:@"name"];
+        NSLog(@"buttonarr = %@",buttonArr);
         [buttonArr enumerateObjectsUsingBlock:^(UIButton * obj, NSUInteger idx, BOOL *stop) {
-            if (![obj isEqual:tempButton])
+            [self.myDicStaus setValue:@"0" forKey:[NSString stringWithFormat:@"%d",idx]];
+            if (idx != indexPath.row)
             {
                 obj.imageView.image = nil;
+                [self.myDicStaus setValue:@"0" forKey:[NSString stringWithFormat:@"%d",idx]];
             }
             else
             {
                 [obj setImage:[UIImage imageNamed:@"check.png"] forState:UIControlStateNormal];
+                 [self.myDicStaus setValue:@"1" forKey:[NSString stringWithFormat:@"%d",idx]];
             }
         }];
+        NSLog(@"dic = %@",self.myDicStaus);
     }
     else
     {

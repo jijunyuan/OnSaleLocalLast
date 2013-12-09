@@ -80,6 +80,7 @@
     self.TF_title.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.TF_zipcode.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.TF_url.font = [UIFont fontWithName:AllFont size:AllContentSize];
+    self.TV_des.font = [UIFont fontWithName:AllFont size:AllContentSize];
     
     self.l_t1.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.l_t2.font = [UIFont fontWithName:AllFont size:AllContentSize];
@@ -507,7 +508,7 @@
 -(IBAction)datePickValueChange:(UIDatePicker *)aPicker
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
     tempTextfield.text = [formatter stringFromDate:aPicker.date];
 }
 - (BOOL)isPureInt:(NSString *)string

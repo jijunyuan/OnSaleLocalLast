@@ -205,7 +205,6 @@
     imageView1.frame = CGRectMake(0, 0, 20, 20);
     cell.accessoryView= imageView1;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

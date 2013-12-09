@@ -132,10 +132,12 @@
     self.TF_pwssword.font = [UIFont fontWithName:AllFont size:AllContentSize];
     
     self.btn_right1.titleLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
-    
-    
     self.l_navTitle.text= @"Sign In";
     
+    if (self.isFromSetting)
+    {
+        [self.backBtn setImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
+    }
     
     UITapGestureRecognizer * aTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapForgetPwdClick:)];
     [self.L_forget addGestureRecognizer:aTap];
@@ -205,6 +207,10 @@
     // {
     if (self.TF_pwssword.text.length>0 &&self.TF_email.text >0)
     {
+        
+        [self.TF_email resignFirstResponder];
+        [self.TF_pwssword resignFirstResponder];
+        
         //  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [MyActivceView startAnimatedInView1:self.view];
         NSMutableURLRequest * request = [WebService LoginUserName:self.TF_email.text password:self.TF_pwssword.text];
@@ -314,8 +320,7 @@
                 createPWD.isFromSetting = YES;
                 if (isQukyLogin)
                 {
-                    [self.TF_email resignFirstResponder];
-                    [self.TF_pwssword resignFirstResponder];
+                    
                     self.view.alpha = 0.0;
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"loginSuccessRef" object:self];
                 }

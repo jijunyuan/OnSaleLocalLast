@@ -579,7 +579,6 @@
     textfieldTime.textAlignment = NSTextAlignmentCenter;
     textfieldTime.font = [UIFont fontWithName:AllFont size:AllContentSize];
     textfieldTime.userInteractionEnabled = NO;
-    textfieldTime.contentHorizontalAlignment = NSTextAlignmentCenter;
     textfieldTime.layer.borderColor = [UIColor colorWithRed:196.0/255.0 green:196.0/255.0 blue:196.0/255.0 alpha:1.0].CGColor;
     textfieldTime.layer.borderWidth = 1;
     NSDateFormatter  * formatter = [[NSDateFormatter alloc] init];
@@ -587,6 +586,7 @@
     NSDate * date = [NSDate dateWithTimeIntervalSince1970:([[dic valueForKey:@"end"] floatValue]/1000)];
     NSString * dateStr = [formatter stringFromDate:date];
     textfieldTime.text = [NSString stringWithFormat:@"Ends %@",dateStr];
+    textfieldTime.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     textfieldTime.textColor = [UIColor colorWithRed:196.0/255.0 green:196.0/255.0 blue:196.0/255.0 alpha:1.0];
     [self.myScrollView addSubview:textfieldTime];
     

@@ -179,7 +179,8 @@
       //  cell.contentView.backgroundColor = [UIColor colorWithRed:238.0/255.0 green:232.0/255.0 blue:232.0/255.0 alpha:1.0];
         
         UIView * bgView = [[UIView alloc] initWithFrame:cell.frame];
-        bgView.backgroundColor = [UIColor colorWithRed:238.0/255.0 green:232.0/255.0 blue:232.0/255.0 alpha:1.0];
+       // bgView.backgroundColor = [UIColor colorWithRed:238.0/255.0 green:232.0/255.0 blue:232.0/255.0 alpha:1.0];
+        bgView.backgroundColor = [UIColor grayColor];
         cell.backgroundView = bgView;
         
     }

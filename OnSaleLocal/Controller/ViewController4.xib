@@ -22,11 +22,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="no_result.png" id="13">
-                    <rect key="frame" x="104" y="143" width="112" height="144"/>
+                    <rect key="frame" x="110" y="170" width="100" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No search results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="14">
-                    <rect key="frame" x="82" y="295" width="156" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="found nothing here." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="14">
+                    <rect key="frame" x="82" y="278" width="156" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -88,7 +88,7 @@
         <image name="divider.png" width="50" height="2"/>
         <image name="facebook_signin.png" width="580" height="86"/>
         <image name="logo.png" width="481" height="122"/>
-        <image name="no_result.png" width="224" height="268"/>
+        <image name="no_result.png" width="197" height="196"/>
         <image name="sign_in_580.png" width="580" height="86"/>
     </resources>
 </document>

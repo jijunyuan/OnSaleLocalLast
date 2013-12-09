@@ -62,6 +62,7 @@
         txtfield.textColor = [UIColor colorWithRed:196.0/255.0 green:196.0/255.0 blue:196.0/255.0 alpha:1.0];
         txtfield.layer.borderColor = [UIColor colorWithRed:196.0/255.0 green:196.0/255.0 blue:196.0/255.0 alpha:1.0].CGColor;
         txtfield.font = [UIFont fontWithName:AllFont size:AllContentSize-2];
+        txtfield.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         [self addSubview:txtfield];
         
         UIImageView * imageView_share = [[UIImageView alloc] initWithFrame:CGRectMake(7, aHeigh+90, 30, 30)];

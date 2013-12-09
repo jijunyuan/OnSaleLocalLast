@@ -38,6 +38,6 @@
         </view>
     </objects>
     <resources>
-        <image name="progress_2.png" width="431" height="69"/>
+        <image name="progress_2.png" width="532" height="85"/>
     </resources>
 </document>

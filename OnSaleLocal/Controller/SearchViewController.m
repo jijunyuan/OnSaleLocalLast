@@ -59,12 +59,16 @@
     [self addWaterfolow];
     
      tempDictLab = [NSMutableDictionary dictionaryWithCapacity:0];
-    self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
+    self.l_navTitle.font = [UIFont fontWithName:AllFont size:All_h2_size];
     self.l_navTitle.text = @"Seach";
+    self.L_result.font = [UIFont fontWithName:AllFont size:All_h1_Size];
  
     self.IV_result.alpha = 0.0;
     self.L_result.alpha = 0.0;
     self.allSignView.alpha = 0.0;
+    
+    [waterFlow addSubview:self.IV_result];
+    [waterFlow addSubview:self.L_result];
 }
 -(void)getData
 {
@@ -136,11 +140,12 @@
                     [waterFlow reloadData];   
                 });
             }
-            else
+            if (self.dataArr.count == 0)
             {
                 self.IV_result.alpha = 1.0;
                 self.L_result.alpha = 1.0;
             }
+
             
         }
         else

@@ -48,10 +48,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-    
-    
     [self.leftButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     self.leftButton.frame = CGRectMake(self.leftButton.frame.origin.x, self.leftButton.frame.origin.y+5, 30, 30);
     self.l_navTitle.text = self.key;
@@ -64,7 +60,8 @@
     }
     [self addWaterfolow];
     
-    
+    [waterFlow addSubview:self.IV_result];
+    [waterFlow addSubview:self.L_result];
 }
 
 -(void)getData
@@ -151,13 +148,18 @@
             {
                 isfirstloading = YES;
                 [self getData1];
-                 [waterFlow reloadData];
+                [waterFlow reloadData];
                  
             }
             else
             {
-                self.IV_result.alpha = 1.0;
-                self.L_result.alpha = 0.0;
+                if (self.dataArr.count==0)
+                {
+                    self.IV_result.alpha = 1.0;
+                    self.L_result.alpha = 1.0;
+                    [waterFlow addSubview:self.IV_result];
+                    [waterFlow addSubview:self.L_result];
+                }
             }
         }
         else
@@ -225,6 +227,13 @@
                 
         [waterFlow reloadData];
         self.IV_result.alpha = 0.0;
+        if (self.dataArr.count==0)
+        {
+            self.IV_result.alpha = 1.0;
+            self.L_result.alpha = 1.0;
+//            [waterFlow addSubview:self.IV_result];
+//            [waterFlow addSubview:self.L_result];
+        }
        // self.L_result.alpha = 0.0;
     });
 }
@@ -285,6 +294,11 @@
     [waterFlow reloadData];
     self.IV_result.alpha = 0.0;
     self.L_result.alpha = 0.0;
+    if (self.dataArr.count==0)
+    {
+        self.IV_result.alpha = 1.0;
+        self.L_result.alpha = 1.0;
+    }
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

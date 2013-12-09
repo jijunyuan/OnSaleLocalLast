@@ -37,8 +37,8 @@
     self.l_navTitle.text = @"Comment";
     [self.TV_text resignFirstResponder];
     self.rightBtn.userInteractionEnabled = YES;
-    [self.rightBtn setTitle:@"Done" forState:UIControlStateNormal];
-    self.rightBtn.frame = CGRectMake(self.rightBtn.frame.origin.x-30, self.rightBtn.frame.origin.y, self.rightBtn.frame.size.width+30, self.rightBtn.frame.size.height);
+    [self.rightBtn setImage:[UIImage imageNamed:@"save.png"] forState:UIControlStateNormal];
+    self.rightBtn.frame = CGRectMake(self.rightBtn.frame.origin.x, self.rightBtn.frame.origin.y, 30, 30);
     [self.rightBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.rightBtn addTarget:self action:@selector(doneClick) forControlEvents:UIControlEventTouchUpInside];
 }
