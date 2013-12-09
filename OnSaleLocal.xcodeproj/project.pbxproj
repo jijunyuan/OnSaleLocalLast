@@ -1883,8 +1883,8 @@
 		F14983BA17E0AFD000C1CEC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yongjiang Zhang (X4WZD8S44A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yongjiang Zhang (X4WZD8S44A)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/OnSaleLocal/3Class/UMSocial_Sdk_3.0/frameworks/TencentOpenAPI\"",
@@ -1901,7 +1901,7 @@
 					"\"$(SRCROOT)/OnSaleLocal/3Class/UMSocial_Sdk_3.0\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0FF2B4AA-284A-410D-B5F6-E6A9D7CED3B8";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -1911,8 +1911,8 @@
 		F14983BB17E0AFD000C1CEC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yongjiang Zhang (X4WZD8S44A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yongjiang Zhang (X4WZD8S44A)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/OnSaleLocal/3Class/UMSocial_Sdk_3.0/frameworks/TencentOpenAPI\"",
@@ -1929,7 +1929,7 @@
 					"\"$(SRCROOT)/OnSaleLocal/3Class/UMSocial_Sdk_3.0\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0FF2B4AA-284A-410D-B5F6-E6A9D7CED3B8";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
