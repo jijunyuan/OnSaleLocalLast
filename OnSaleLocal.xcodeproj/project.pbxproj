@@ -1512,6 +1512,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "junyuan ji";
+				TargetAttributes = {
+					F149839A17E0AFD000C1CEC1 = {
+						DevelopmentTeam = 567ESH38MM;
+					};
+				};
 			};
 			buildConfigurationList = F149839517E0AFD000C1CEC1 /* Build configuration list for PBXProject "OnSaleLocal" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1879,8 +1884,8 @@
 		F14983BA17E0AFD000C1CEC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yongjiang Zhang (X4WZD8S44A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yongjiang Zhang (X4WZD8S44A)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/OnSaleLocal/3Class/UMSocial_Sdk_3.0/frameworks/TencentOpenAPI\"",
@@ -1897,7 +1902,7 @@
 					"\"$(SRCROOT)/OnSaleLocal/3Class/UMSocial_Sdk_3.0\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0FF2B4AA-284A-410D-B5F6-E6A9D7CED3B8";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -1907,8 +1912,8 @@
 		F14983BB17E0AFD000C1CEC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yongjiang Zhang (X4WZD8S44A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yongjiang Zhang (X4WZD8S44A)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/OnSaleLocal/3Class/UMSocial_Sdk_3.0/frameworks/TencentOpenAPI\"",
@@ -1925,7 +1930,7 @@
 					"\"$(SRCROOT)/OnSaleLocal/3Class/UMSocial_Sdk_3.0\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0FF2B4AA-284A-410D-B5F6-E6A9D7CED3B8";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
