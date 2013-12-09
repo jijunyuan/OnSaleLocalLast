@@ -431,6 +431,7 @@
 {
     return self.dataArr.count;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //NSString * mark = @"mark";
@@ -449,7 +450,7 @@
         }
         title.userInteractionEnabled = YES;
         title.font = [UIFont fontWithName:AllFont size:AllFontSize];
-        title.textColor = [UIColor whiteColor];
+        title.textColor = UIColorFromRGB(0xbababa);
         title.backgroundColor = [UIColor clearColor];
         title.text = [self.dataArr objectAtIndex:indexPath.row];
         [cell addSubview:title];
@@ -481,7 +482,7 @@
             [cell addSubview:bigBarge];
             
             UILabel * lable1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-            lable1.textColor = [UIColor whiteColor];
+            lable1.textColor = UIColorFromRGB(0xbababa);
             lable1.textAlignment = NSTextAlignmentCenter;
             lable1.font = [UIFont fontWithName:AllFont size:AllContentSize];
             lable1.text = [NSString stringWithFormat:@"%d",unread];

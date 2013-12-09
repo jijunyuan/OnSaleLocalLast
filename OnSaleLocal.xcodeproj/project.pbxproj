@@ -99,6 +99,9 @@
 		4DF728C41802F1360081AD30 /* CreatePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF728C21802F1360081AD30 /* CreatePasswordViewController.m */; };
 		4DF728C51802F1360081AD30 /* CreatePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF728C31802F1360081AD30 /* CreatePasswordViewController.xib */; };
 		4DF728C71802F1480081AD30 /* CreatePasswordViewController4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF728C61802F1480081AD30 /* CreatePasswordViewController4.xib */; };
+		E9A8233A1855A1BC00196B41 /* GothamBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9A823391855A1BC00196B41 /* GothamBold.ttf */; };
+		E9A8233B1855A61400196B41 /* Gotham-Bold_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9A823381855A1AF00196B41 /* Gotham-Bold_0.ttf */; };
+		E9A8233C1855A61400196B41 /* Gotham-XLight_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9A823371855A19600196B41 /* Gotham-XLight_0.ttf */; };
 		F1035F9217E768C5006903D4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1035F9017E768C4006903D4 /* LoginViewController.m */; };
 		F1035F9317E768C5006903D4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1035F9117E768C4006903D4 /* LoginViewController.xib */; };
 		F1035F9517E768DD006903D4 /* LoginViewController4.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1035F9417E768DD006903D4 /* LoginViewController4.xib */; };
@@ -405,6 +408,9 @@
 		4DF728C21802F1360081AD30 /* CreatePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePasswordViewController.m; sourceTree = "<group>"; };
 		4DF728C31802F1360081AD30 /* CreatePasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePasswordViewController.xib; sourceTree = "<group>"; };
 		4DF728C61802F1480081AD30 /* CreatePasswordViewController4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePasswordViewController4.xib; sourceTree = "<group>"; };
+		E9A823371855A19600196B41 /* Gotham-XLight_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-XLight_0.ttf"; sourceTree = "<group>"; };
+		E9A823381855A1AF00196B41 /* Gotham-Bold_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Bold_0.ttf"; sourceTree = "<group>"; };
+		E9A823391855A1BC00196B41 /* GothamBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamBold.ttf; sourceTree = "<group>"; };
 		F1035F8F17E768C4006903D4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F1035F9017E768C4006903D4 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F1035F9117E768C4006903D4 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -1138,6 +1144,9 @@
 		F14983A617E0AFD000C1CEC1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E9A823391855A1BC00196B41 /* GothamBold.ttf */,
+				E9A823381855A1AF00196B41 /* Gotham-Bold_0.ttf */,
+				E9A823371855A19600196B41 /* Gotham-XLight_0.ttf */,
 				4DCE4DFB183DF495009618AD /* GothamLight.ttf */,
 				F14983A717E0AFD000C1CEC1 /* OnSaleLocal-Info.plist */,
 				F14983A817E0AFD000C1CEC1 /* InfoPlist.strings */,
@@ -1527,6 +1536,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9A8233B1855A61400196B41 /* Gotham-Bold_0.ttf in Resources */,
+				E9A8233C1855A61400196B41 /* Gotham-XLight_0.ttf in Resources */,
 				F14983AA17E0AFD000C1CEC1 /* InfoPlist.strings in Resources */,
 				F1A265C917E22C4D00D42E8F /* ViewController.xib in Resources */,
 				F1A265CB17E22C5F00D42E8F /* ViewController4.xib in Resources */,
@@ -1621,6 +1632,7 @@
 				4D7ADAC81849D98500B1B0DA /* no_result.png in Resources */,
 				F1071A4717F5CB5E00752CB0 /* PictureClassViewController.xib in Resources */,
 				F1071A4917F5CB7900752CB0 /* PictureClassViewController4.xib in Resources */,
+				E9A8233A1855A1BC00196B41 /* GothamBold.ttf in Resources */,
 				4D7ADAC51849D95900B1B0DA /* progress_2.png in Resources */,
 				4D22103317F7221100D6F684 /* PictureDetailViewController.xib in Resources */,
 				4D7ADAA01849D1BD00B1B0DA /* me.png in Resources */,
@@ -1867,8 +1879,8 @@
 		F14983BA17E0AFD000C1CEC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yongjiang Zhang (X4WZD8S44A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yongjiang Zhang (X4WZD8S44A)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/OnSaleLocal/3Class/UMSocial_Sdk_3.0/frameworks/TencentOpenAPI\"",
@@ -1885,7 +1897,7 @@
 					"\"$(SRCROOT)/OnSaleLocal/3Class/UMSocial_Sdk_3.0\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0FF2B4AA-284A-410D-B5F6-E6A9D7CED3B8";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -1895,8 +1907,8 @@
 		F14983BB17E0AFD000C1CEC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yongjiang Zhang (X4WZD8S44A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yongjiang Zhang (X4WZD8S44A)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/OnSaleLocal/3Class/UMSocial_Sdk_3.0/frameworks/TencentOpenAPI\"",
@@ -1913,7 +1925,7 @@
 					"\"$(SRCROOT)/OnSaleLocal/3Class/UMSocial_Sdk_3.0\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0FF2B4AA-284A-410D-B5F6-E6A9D7CED3B8";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
