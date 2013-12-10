@@ -563,7 +563,8 @@
     }
     
     self.myScrollView.contentSize = CGSizeMake(320, height+820);
-    topImage = [[UIImageView alloc] initWithFrame:CGRectMake((320.0-weight)/2.0+10,5,weight,height)];
+    topImage = [[UIImageView alloc] initWithFrame:CGRectMake((320.0-weight)/2.0,5,weight,height)];
+    topImage.clipsToBounds = YES;
     NSString * larImageStr = [self.dic valueForKey:@"largeImg"];
     [topImage setImageWithURL:[NSURL URLWithString:larImageStr] placeholderImage:nil];
     [self.myScrollView addSubview:topImage];

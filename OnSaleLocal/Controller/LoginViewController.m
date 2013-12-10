@@ -136,6 +136,7 @@
     
     if (self.isFromSetting)
     {
+        self.backBtn.frame = CGRectMake(10, 2, 40, 40);
         [self.backBtn setImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
     }
     
@@ -176,11 +177,11 @@
 {
     AppDelegate * delegate = [UIApplication sharedApplication].delegate;
     JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-    CATransition* transition = [CATransition animation];
-    transition.duration = 0.5;
-    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    transition.type = kCATransitionMoveIn;
-    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+//    CATransition* transition = [CATransition animation];
+//    transition.duration = 0.5;
+//    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//    transition.type = kCATransitionMoveIn;
+//    [self.navigationController.view.layer addAnimation:transition forKey:nil];
     
     if (self.isQukyLogin)
     {
@@ -196,7 +197,7 @@
         }
         else
         {
-            [self.navigationController popViewControllerAnimated:YES];
+            //[self.navigationController popViewControllerAnimated:YES];
             [controller showLeftPanelAnimated:YES];
         }
     }

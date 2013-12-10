@@ -76,14 +76,6 @@
 {
     AppDelegate * delegate = [UIApplication sharedApplication].delegate;
     JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-//    CATransition* transition = [CATransition animation];
-//    transition.duration = 0.5;
-//    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-//    transition.type = kCATransitionMoveIn;
-//    [self.navigationController.view.layer addAnimation:transition forKey:nil];
-    
-   // [self.navigationController popViewControllerAnimated:YES];
-  //  [controller showCenterPanelAnimated:YES];
     [controller showLeftPanelAnimated:YES];
 }
 
