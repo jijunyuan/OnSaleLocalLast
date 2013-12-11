@@ -224,6 +224,11 @@
         self.myTableView.alpha = 1.0;
         if ([request responseStatusCode] == 200)
         {
+//            if (self.dataArr.count>0)
+//            {
+//                self.dataArr = Nil;
+//                self.dataArr = [NSMutableArray arrayWithCapacity:0];
+//            }
             self.dataArr = [[reciveData objectFromJSONData] valueForKey:@"items"];
             NSLog(@"self.dataArr = %@",self.dataArr);
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -415,13 +420,13 @@
 {
     _reloading = NO;
     [_refreshTableView egoRefreshScrollViewDataSourceDidFinishedLoading:self.myTableView];
-    [self.myTableView reloadData];
+   // [self.myTableView reloadData];
 }
 -(void)doInBackground
 {
     if ([WebService isConnectionAvailable])
     {
-        [self getdata1];
+        [self getData];
     }
     [self performSelectorOnMainThread:@selector(doneLoadingTableViewData) withObject:nil waitUntilDone:YES];
 }
@@ -494,11 +499,7 @@
         if ([aButton.imageView.image isEqual:[UIImage imageNamed:@"followed.png"]])
         {
             tempButton = aButton;
-//            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You sure you want to unfollowed it." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
-//            [alert show];
-            
-            
-            NSURLRequest * request2 = [WebService UnLikeFollow:[[self.dataArr objectAtIndex:tempButton.tag] valueForKey:@"id"]];
+            NSURLRequest * request2 = [WebService UnLikeFollow:[[self.dataArr objectAtIndex:aButton.tag] valueForKey:@"id"]];
             NSURLResponse * response2 = [[NSURLResponse alloc] init];
             NSError * error2 = [[NSError alloc] init];
             [NSURLConnection sendSynchronousRequest:request2 returningResponse:&response2 error:&error2];
@@ -506,8 +507,8 @@
             NSLog(@"status code = %d",httpResponse1.statusCode);
             if (httpResponse1.statusCode == 200)
             {
-                [self getdata1];
-                [tempButton setImage:[UIImage imageNamed:@"follow.png"] forState:UIControlStateNormal];
+                [self getData];
+                [aButton setImage:[UIImage imageNamed:@"follow.png"] forState:UIControlStateNormal];
                 [self.myTableView reloadData];
                 
                 //meroot change number
@@ -518,9 +519,6 @@
                     self.currFollowings --;
                 }
             }
-            
-            
-            
         }
         else
         {

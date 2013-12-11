@@ -255,7 +255,7 @@
             weitht = 294.0;
         }
         // NSLog(@"width = %g,heigh = %g",height,weitht);
-        StoreOfferView * offerView = [[StoreOfferView alloc] initWithFrame:CGRectMake(13, scroll_heigh, 294, (height+176.0)) andImageHeigh:height andWeigh:weitht];
+        StoreOfferView * offerView = [[StoreOfferView alloc] initWithFrame:CGRectMake(13, scroll_heigh+10, 294, (height+176.0)) andImageHeigh:height andWeigh:weitht];
         // NSLog(@"=====heigh = %f=======================high = %f",(height+156.0),(height+156)*i);
         [offerView.IV_imageview setImageWithURL:[NSURL URLWithString:[dic1 valueForKey:@"largeImg"]] placeholderImage:nil];
         offerView.L_title.text = [dic1 valueForKey:@"title"];
