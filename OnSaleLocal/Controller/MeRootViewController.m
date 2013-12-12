@@ -1099,6 +1099,7 @@
         trend1 = [[TrendDetailViewController alloc] initWithNibName:@"TrendDetailViewController4" bundle:nil];
     }
     NSString * idstr = [dicTrend valueForKey:@"id"];
+    
     if ([[self.dic_recodeClick valueForKey:idstr] isEqualToString:@"1"])
     {
         isClick1 = 2;
@@ -1107,9 +1108,24 @@
     {
         isClick1 = 1;
     }
+    
+  //  trend1.isFromNotification = YES;
+//    if (self.userid.length>0)
+//    {
+//        trend1.userId_notification = self.userid;
+//    }
+//    else
+//    {
+//        trend1.userId_notification = [[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_ID];
+//    }
+    trend1.userId_notification = [dicTrend valueForKey:@"id"];
+    NSLog(@"trend1.userId_notification = %@",trend1.userId_notification);
+    trend1.isNotification = YES;
+    trend1.isFromNotification = YES;
+    
     trend1.isClick = isClick1;
     trend1.dic_recode = dicLabnum;
-    trend1.dic = dicTrend;
+   // trend1.dic = dicTrend;
     trend1.isFromTrendStore = YES;
     trend1.dic_recode = self.dic_recodeClick;
     trend1.dic_lab_number = dicLabnum;

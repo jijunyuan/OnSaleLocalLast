@@ -149,13 +149,20 @@
     if (self.isFromNotification)
     {
         self.dic = [NSMutableDictionary dictionaryWithCapacity:0];
-        ASIHTTPRequest * reqiest_detail = [WebService OfferDetail:self.userId_notification];
-        [reqiest_detail startSynchronous];
-        NSData * data_noti = [reqiest_detail responseData];
-        self.dic = [data_noti objectFromJSONData];
-        [self addUI];
-        NSLog(@"self.dic = %@",self.dic);
-    }
+       
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+             ASIHTTPRequest * reqiest_detail = [WebService OfferDetail:self.userId_notification];
+            [reqiest_detail startSynchronous];
+             NSData * data_noti = [reqiest_detail responseData];
+            NSString * strTemp = [[NSString alloc] initWithData:data_noti encoding:4];
+            self.dic = [strTemp objectFromJSONString];
+            NSLog(@"strTemp = %@",strTemp);
+            NSLog(@"self.dic = %@",self.dic);
+           dispatch_async(dispatch_get_main_queue(), ^{
+                [self addUI];
+           });
+        });
+   }
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
     if (!appDelegate.session.isOpen) {
@@ -331,8 +338,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"dic = %@",self.dic);
-   // NSLog(@"likeNum = %@",self.dic_lab_number);
     
     if (self.isNotification)
     {
@@ -376,7 +381,6 @@
     
     NSString * idStr = [self.dic valueForKey:@"id"];
     NSArray * arrKeys = [self.dic_recode allKeys];
-   // NSLog(@"allkeys = %@,idstr = %@",arrKeys,idStr);
     __block BOOL isHaveKey = NO;
     [arrKeys enumerateObjectsUsingBlock:^(NSString * obj, NSUInteger idx, BOOL *stop) {
         if (obj != nil)
