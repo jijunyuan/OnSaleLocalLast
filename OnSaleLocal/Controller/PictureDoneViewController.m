@@ -59,8 +59,14 @@
     {
        trend = [[TrendDetailViewController alloc] initWithNibName:@"TrendDetailViewController4" bundle:nil];
     }
-    trend.dic = self.dic;
-    NSLog(@"self.dic = %@",self.dic);
+//    trend.dic = self.dic;
+//    NSLog(@"self.dic = %@",self.dic);
+    
+    trend.userId_notification = [self.dic valueForKey:@"id"];
+    NSLog(@"trend1.userId_notification = %@",trend.userId_notification);
+    trend.isNotification = YES;
+    trend.isFromNotification = YES;
+    
     trend.isClick = NO;
     [self.navigationController pushViewController:trend animated:YES];
 }
