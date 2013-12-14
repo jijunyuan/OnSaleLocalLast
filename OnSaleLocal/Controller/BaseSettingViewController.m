@@ -46,7 +46,7 @@
     [backBtn addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
     self.leftButton = backBtn;
     backBtn.showsTouchWhenHighlighted = YES;
-    backBtn.frame = CGRectMake(10, 2, 40, 40);
+    backBtn.frame = CGRectMake(9, 2, 40, 40);
     backBtn.backgroundColor = [UIColor clearColor];
     [backBtn setImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
     [view1 addSubview:backBtn];
