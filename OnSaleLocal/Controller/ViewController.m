@@ -188,6 +188,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"commentAddOne" object:nil];
+//    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentAddOne:) name:@"commentAddOne" object:nil];
+//    
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"likeData" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(likedata:) name:@"likeData" object:nil];
+
+    
     self.L_result.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.L_skip.font = [UIFont fontWithName:AllFont size:AllContentSize];
    // self.l_navTitle.font = [UIFont fontWithName:AllFont size:All_h2_size];
@@ -542,6 +551,7 @@
 - (UIView *)waterFlowView:(WaterFlowView *)waterFlowView cellForRowAtIndexPath:(IndexPath *)indexPath
 {
     //int arrIndex = indexPath.row * waterFlowView.columnCount + indexPath.column;
+    NSLog(@"%s===indexpath = %d",__FUNCTION__,indexPath.row);
     int arrIndex = 0;
     if (indexPath.column == 0)
     {
@@ -585,6 +595,7 @@
 
 -(void)waterFlowView:(WaterFlowView *)waterFlowView  relayoutCellSubview:(UIView *)view withIndexPath:(IndexPath *)indexPath
 {
+      NSLog(@"%s===indexpath = %d",__FUNCTION__,indexPath.row);
     //arrIndex是某个数据在总数组中的索引
     // int arrIndex = indexPath.row * waterFlowView.columnCount + indexPath.column;
     int arrIndex = 0;
@@ -607,9 +618,10 @@
         image_url = [dic valueForKey:@"largeImg"];
     }
     
-    //  NSLog(@"image_url = %@",image_url);
-    [leftView.imageView_story setImageWithURL:[NSURL URLWithString:image_url] placeholderImage:nil];
-    
+    if (leftView.imageView_story.image == nil)
+    {
+      [leftView.imageView_story setImageWithURL:[NSURL URLWithString:image_url] placeholderImage:nil];
+    }
     
     leftView.L_des.text = [dic valueForKey:@"title"];
     leftView.L_storename.text = [dic valueForKey:@"merchant"];
@@ -652,10 +664,19 @@
     leftView.L_collNum.text = collumStr;
     leftView.L_Meter.text = [NSString stringWithFormat:@"%.1f m",[[dic valueForKey:@"distance"] floatValue]];
     leftView.L_Meter.userInteractionEnabled = YES;
-    [leftView addGestureRecognizer:tap];
-    
-    leftView.imageView_adress.userInteractionEnabled = YES;
-    [leftView.imageView_adress addGestureRecognizer:tap];
+    NSArray * arrTempGes = [leftView gestureRecognizers];
+    [arrTempGes enumerateObjectsUsingBlock:^(UITapGestureRecognizer * obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isEqual:tap])
+        {
+            *stop = YES;
+        }
+        else
+        {
+         [leftView addGestureRecognizer:tap];
+         leftView.imageView_adress.userInteractionEnabled = YES;
+         [leftView.imageView_adress addGestureRecognizer:tap];
+        }
+    }]; 
 }
 
 

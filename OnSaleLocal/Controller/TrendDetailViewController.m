@@ -485,7 +485,6 @@
         [reciveData3 appendData:data];
     }];
     [request setCompletionBlock:^{
-        NSLog(@"getComment status code: %d",request.responseStatusCode);
         [MyActivceView stopAnimatedInView:self.view];
         if (request.responseStatusCode == 200)
         {
@@ -1142,8 +1141,8 @@
 {
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_STATUS] isEqualToString:@"1"])
     {
-        NSNotification * notification = [NSNotification notificationWithName:@"likeData" object:nil];
-        [[NSNotificationCenter defaultCenter] postNotification:notification];
+//        NSNotification * notification = [NSNotification notificationWithName:@"likeData" object:nil];
+//        [[NSNotificationCenter defaultCenter] postNotification:notification];
         
         UIImageView * imageView = (UIImageView *)[aTap view];
         currImageView = imageView;
