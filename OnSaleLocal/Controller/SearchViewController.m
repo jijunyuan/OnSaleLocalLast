@@ -59,7 +59,7 @@
     [self addWaterfolow];
     
      tempDictLab = [NSMutableDictionary dictionaryWithCapacity:0];
-    self.l_navTitle.font = [UIFont fontWithName:AllFont size:All_h2_size];
+    self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
     self.l_navTitle.text = @"Seach";
     self.L_result.font = [UIFont fontWithName:AllFont size:All_h1_Size];
  
