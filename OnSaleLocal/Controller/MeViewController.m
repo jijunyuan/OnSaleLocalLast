@@ -73,7 +73,6 @@
     [request setDownloadCache:[TKHttpRequest ShareMyCache]];
     [request setSecondsToCache:60*60*2];
     [request buildRequestHeaders];
-    [request startAsynchronous];
     NSMutableData * reciveData = [NSMutableData dataWithCapacity:0];
     [request setStartedBlock:^{
         [MyActivceView startAnimatedInView2:self.view];
@@ -141,6 +140,7 @@
           //  [MyAlert ShowAlertMessage:[NSString ErrorCodeAndErrorMsgFromReciveData:reciveData] title:@""];
         }
     }];
+    [request startAsynchronous];
 }
 -(void)getdata1
 {

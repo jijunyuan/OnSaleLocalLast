@@ -132,7 +132,6 @@
     [request setSecondsToCache:60*60*2];
     [request setUseCookiePersistence:YES];
     [request buildRequestHeaders];
-    [request startAsynchronous];
     NSMutableData * reciveData1 = [NSMutableData dataWithCapacity:0];
     [request setStartedBlock:^{
         [MyActivceView startAnimatedInView:self.view];
@@ -162,6 +161,7 @@
             //[MyAlert ShowAlertMessage:[NSString ErrorCodeAndErrorMsgFromReciveData:reciveData1] title:@""];
         }
     }];
+    [request startAsynchronous];
 }
 -(IBAction)currBtnClick:(id)sender
 {

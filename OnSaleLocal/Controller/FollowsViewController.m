@@ -208,7 +208,6 @@
     [request setSecondsToCache:60*60*2];
     [request setUseCookiePersistence:YES];
     [request buildRequestHeaders];
-    [request startAsynchronous];
     
     NSMutableData * reciveData = [NSMutableData dataWithCapacity:0];
     [request setStartedBlock:^{
@@ -248,6 +247,7 @@
             ;
         }
     }];
+    [request startAsynchronous];
 }
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {

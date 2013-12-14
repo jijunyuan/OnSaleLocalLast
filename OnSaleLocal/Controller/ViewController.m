@@ -349,7 +349,6 @@
     [request11 setUseCookiePersistence:YES];
     [request11 buildRequestHeaders];
     NSMutableData * reciveData1 = [NSMutableData dataWithCapacity:0];
-    [request11 startAsynchronous];
     
     [request11 setStartedBlock:^{
         [MyActivceView startAnimatedInView:self.view];
@@ -392,6 +391,7 @@
             self.allSignView.alpha = 0.0;
         }
     }];
+    [request11 startAsynchronous];
 }
 -(void)addWaterfolow
 {
@@ -500,7 +500,6 @@
         [request1 setUseCookiePersistence:YES];
         [request1 buildRequestHeaders];
     }
-    [request1 startAsynchronous];
     NSMutableData * reciveData3 = [NSMutableData dataWithCapacity:0];
     __weak typeof(self) weakSelf = self;
     [request1 setStartedBlock:^{
@@ -527,6 +526,7 @@
             }
         });
     }];
+    [request1 startAsynchronous];
     
 //    NSLog(@"self.dataArr = %@",self.dataArr);
     NSLog(@"self.dataArr.count-getdata1 = %d",self.dataArr.count);

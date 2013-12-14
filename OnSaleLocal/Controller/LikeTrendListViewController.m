@@ -56,7 +56,6 @@
     [request3 setSecondsToCache:60*60*2];
     [request3 setUseCookiePersistence:YES];
     [request3 buildRequestHeaders];
-    [request3 startAsynchronous];
     NSMutableData * reciveData4 = [NSMutableData dataWithCapacity:0];
     [request3 setStartedBlock:^{
         self.dataArr = [NSMutableArray arrayWithCapacity:0];
@@ -110,6 +109,7 @@
            // [MyAlert ShowAlertMessage:[NSString ErrorCodeAndErrorMsgFromReciveData:reciveData] title:@""];
         }
     }];
+    [request3 startAsynchronous];
 }
 -(void)getData1
 {

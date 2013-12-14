@@ -79,7 +79,6 @@
     [request setSecondsToCache:60*60*2];
     [request setUseCookiePersistence:YES];
     [request buildRequestHeaders];
-    [request startAsynchronous];
     NSMutableData * reciveData = [NSMutableData dataWithCapacity:0];
     [request setStartedBlock:^{
         self.TV_tableivew.alpha = 0.0;
@@ -142,6 +141,7 @@
           //  [MyAlert ShowAlertMessage:[NSString ErrorCodeAndErrorMsgFromReciveData:reciveData] title:@""];
         }
     }];
+    [request startAsynchronous];
 }
 -(void)getData1
 {

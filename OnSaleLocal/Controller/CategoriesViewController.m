@@ -114,7 +114,6 @@
     [request setSecondsToCache:60*60*2];
     [request setUseCookiePersistence:YES];
     [request buildRequestHeaders];
-    [request startAsynchronous];
     __block NSMutableData * reciveData = [NSMutableData dataWithCapacity:0];
     [request setStartedBlock:^{
         self.myTableView.hidden = YES;
@@ -144,6 +143,7 @@
         [MyActivceView stopAnimatedInView:self.view];
         //[MyAlert ShowAlertMessage:@"Not to force the network" title:@""];
     }];
+    [request startAsynchronous];
 }
 -(void)getData1
 {

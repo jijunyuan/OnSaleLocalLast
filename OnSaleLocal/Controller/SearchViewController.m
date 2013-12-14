@@ -113,7 +113,6 @@
     [request4 setSecondsToCache:60*60*2];
     [request4 setUseCookiePersistence:YES];
     [request4 buildRequestHeaders];
-    [request4 startAsynchronous];
    __block  NSMutableData * reciveData1 = [NSMutableData dataWithCapacity:0];
    
     [request4 setDataReceivedBlock:^(NSData *data) {
@@ -160,6 +159,7 @@
         self.L_result.alpha = 0.0;
          [MyActivceView stopAnimatedInView:self.view];
     }];
+    [request4 startAsynchronous];
 }
 
 

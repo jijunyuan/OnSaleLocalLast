@@ -889,7 +889,6 @@
     [request setSecondsToCache:60*60*2];
     [request setUseCookiePersistence:YES];
     [request buildRequestHeaders];
-    [request startAsynchronous];
     NSMutableData * reciveData2 = [NSMutableData dataWithCapacity:0];
     [request setDataReceivedBlock:^(NSData *data) {
         [reciveData2 appendData:data];
@@ -921,6 +920,7 @@
            // [MyAlert ShowAlertMessage:[NSString ErrorCodeAndErrorMsgFromReciveData:reciveData] title:@""];
         }
     }];
+    [request startAsynchronous];
 }
 
 - (void)didReceiveMemoryWarning

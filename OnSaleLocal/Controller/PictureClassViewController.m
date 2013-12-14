@@ -121,7 +121,6 @@
     [ request setNumberOfTimesToRetryOnTimeout:3]; //set times when request fail
     [request setDownloadCache:[TKHttpRequest ShareMyCache]];
     [request setSecondsToCache:60*60*2];
-    [request startAsynchronous];
     __block NSMutableData * reciveData = [NSMutableData dataWithCapacity:0];
     [request setStartedBlock:^{
         self.TV_tableview.hidden = YES;
@@ -151,6 +150,7 @@
         [MyActivceView stopAnimatedInView:self.view];
         //[MyAlert ShowAlertMessage:@"Not to force the network" title:@""];
     }];
+    [request startAsynchronous];
 }
 -(void)getData1
 {

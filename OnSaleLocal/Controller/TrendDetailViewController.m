@@ -523,7 +523,6 @@
     NSString * larImageStr = [self.dic valueForKey:@"largeImg"];
     ASIHTTPRequest * request_topimage = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:larImageStr]];
     [request_topimage setTimeOutSeconds:MAX_SECONDS_REQUEST];
-    [request_topimage startAsynchronous];
     NSMutableData * reciveData1 = [NSMutableData dataWithCapacity:0];
     [request_topimage setDataReceivedBlock:^(NSData *data) {
         [reciveData1 appendData:data];
@@ -531,6 +530,7 @@
     [request_topimage setCompletionBlock:^{
         topImage.image = [UIImage imageWithData:reciveData1];
     }];
+    [request_topimage startAsynchronous];
 }
 -(void)addUI
 {
@@ -945,7 +945,6 @@
         
         NSURL * path_url = [NSURL URLWithString:[[[self.dataArr objectAtIndex:indexPath.row] valueForKey:@"user"] valueForKey:@"img"]];
         ASIHTTPRequest * request_image = [ASIHTTPRequest requestWithURL:path_url];
-        [request_image startAsynchronous];
         NSMutableData * reciveImageData = [NSMutableData dataWithCapacity:0];
         [request_image setDataReceivedBlock:^(NSData *data) {
             [reciveImageData appendData:data];
@@ -953,6 +952,7 @@
         [request_image setCompletionBlock:^{
             imageView.image = [UIImage imageWithData:reciveImageData];
         }];
+        [request_image startAsynchronous];
     }
     else
     {

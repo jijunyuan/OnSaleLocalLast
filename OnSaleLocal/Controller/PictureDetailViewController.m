@@ -148,7 +148,6 @@
     [request setSecondsToCache:60*60*2];
     [request setUseCookiePersistence:YES];
     [request buildRequestHeaders];
-    [request startAsynchronous];
     NSMutableData * reciveData1 = [NSMutableData dataWithCapacity:0];
     [request setStartedBlock:^{
         [MyActivceView startAnimatedInView:self.view];
@@ -182,6 +181,7 @@
         }
     }];
 
+    [request startAsynchronous];
 }
 -(void)sendClick:(UIButton *)aButton
 {

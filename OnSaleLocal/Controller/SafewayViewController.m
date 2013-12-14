@@ -570,7 +570,6 @@
     [request setSecondsToCache:60*60*2];
     [request setUseCookiePersistence:YES];
     [request buildRequestHeaders];
-    [request startAsynchronous];
     NSMutableData * reciveData = [NSMutableData dataWithCapacity:0];
     [request setStartedBlock:^{
         // self.view.alpha = 0.0;
@@ -603,6 +602,7 @@
             ;
         }
     }];
+    [request startAsynchronous];
 }
 -(void)trendClick:(UITapGestureRecognizer *)aTap
 {
@@ -655,7 +655,6 @@
     
     NSString * path_image = [[self.dic valueForKey:@"storeDetails"] valueForKey:@"logo"];
     ASIHTTPRequest * requestImage = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:path_image]];
-    [requestImage startAsynchronous];
     NSMutableData * reciveData_iamge = [NSMutableData dataWithCapacity:0];
     [requestImage setDataReceivedBlock:^(NSData *data) {
         [reciveData_iamge appendData:data];
@@ -663,6 +662,7 @@
     [requestImage setCompletionBlock:^{
         mapImageView.image = [UIImage imageWithData:reciveData_iamge];
     }];
+    [requestImage startAsynchronous];
     
 
 //    MKCoordinateRegion region;
