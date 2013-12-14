@@ -149,20 +149,20 @@
     if (self.isFromNotification)
     {
         self.dic = [NSMutableDictionary dictionaryWithCapacity:0];
-       
+        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-             ASIHTTPRequest * reqiest_detail = [WebService OfferDetail:self.userId_notification];
+            ASIHTTPRequest * reqiest_detail = [WebService OfferDetail:self.userId_notification];
             [reqiest_detail startSynchronous];
-             NSData * data_noti = [reqiest_detail responseData];
+            NSData * data_noti = [reqiest_detail responseData];
             NSString * strTemp = [[NSString alloc] initWithData:data_noti encoding:4];
             self.dic = [strTemp objectFromJSONString];
             NSLog(@"strTemp = %@",strTemp);
             NSLog(@"self.dic = %@",self.dic);
-           dispatch_async(dispatch_get_main_queue(), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
                 [self addUI];
-           });
+            });
         });
-   }
+    }
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
     if (!appDelegate.session.isOpen) {
@@ -190,7 +190,7 @@
         }
         else
         {
-          login = [[LoginViewController alloc] initWithNibName:@"LoginViewController4" bundle:nil];
+            login = [[LoginViewController alloc] initWithNibName:@"LoginViewController4" bundle:nil];
         }
         login.isQukyLogin = YES;
         login.view.alpha = 0.0;
@@ -232,13 +232,13 @@
     if (self.isClick == 2)
     {
         self.IV_collect.image = [UIImage imageNamed:@"liked.png"];
-       // self.L_num.text = [NSString stringWithFormat:@"%d",self.likenumber];
-         self.L_num.text = [NSString stringWithFormat:@"%@",[self.dic_lab_number valueForKey:[self.dic valueForKey:@"id"]]];
+        // self.L_num.text = [NSString stringWithFormat:@"%d",self.likenumber];
+        self.L_num.text = [NSString stringWithFormat:@"%@",[self.dic_lab_number valueForKey:[self.dic valueForKey:@"id"]]];
     }
     else
     {
         self.IV_collect.image = [UIImage imageNamed:@"like.png"];
-       // self.L_num.text = [NSString stringWithFormat:@"%d",self.likenumber];
+        // self.L_num.text = [NSString stringWithFormat:@"%d",self.likenumber];
         NSLog(@"dic = %@",[self.dic_lab_number valueForKey:[self.dic valueForKey:@"id"]]);
         self.L_num.text = [NSString stringWithFormat:@"%@",[self.dic_lab_number valueForKey:[self.dic valueForKey:@"id"]]];
     }
@@ -375,7 +375,7 @@
     
     if (!isFromNotification)
     {
-       [self addUI]; 
+        [self addUI];
     }
     
     
@@ -411,12 +411,12 @@
     NSURLRequest *request5 = [NSURLRequest requestWithURL:[NSURL URLWithString:[dic valueForKey:@"smallImg"]]];
     NSData * data1 = [NSURLConnection sendSynchronousRequest:request5 returningResponse:nil error:nil];
     
-//    [UMSocialSnsService presentSnsIconSheetView:self
-//                                         appKey:UM_APP_KEY
-//                                      shareText:[attribut string]
-//                                     shareImage:[UIImage imageWithData:data1]
-//                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToFacebook,UMShareToSms,UMShareToTwitter,UMShareToEmail,nil]
-//                                       delegate:self];
+    //    [UMSocialSnsService presentSnsIconSheetView:self
+    //                                         appKey:UM_APP_KEY
+    //                                      shareText:[attribut string]
+    //                                     shareImage:[UIImage imageWithData:data1]
+    //                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToFacebook,UMShareToSms,UMShareToTwitter,UMShareToEmail,nil]
+    //                                       delegate:self];
     
     [UMSocialSnsService presentSnsIconSheetView:self
                                          appKey:UM_APP_KEY
@@ -431,11 +431,11 @@
     {
         [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToFacebook] content:socialData.commentText image:socialData.commentImage location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
             if (response.responseCode == UMSResponseCodeSuccess) {
-               // [MyAlert ShowAlertMessage:@"Success" title:@"Alert"];
+                // [MyAlert ShowAlertMessage:@"Success" title:@"Alert"];
             }
             else
             {
-               // [MyAlert ShowAlertMessage:@"Share failed." title:@"Alert"];
+                // [MyAlert ShowAlertMessage:@"Share failed." title:@"Alert"];
             }
         }];
     }
@@ -443,26 +443,26 @@
     {
         [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToTwitter] content:socialData.commentText image:socialData.commentImage location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
             if (response.responseCode == UMSResponseCodeSuccess) {
-               // [MyAlert ShowAlertMessage:@"Success" title:@"Alert"];
+                // [MyAlert ShowAlertMessage:@"Success" title:@"Alert"];
             }
             else
             {
-               // [MyAlert ShowAlertMessage:@"Share failed." title:@"Alert"];
+                // [MyAlert ShowAlertMessage:@"Share failed." title:@"Alert"];
             }
         }];
     }
-//    if (platformName == UMShareToEmail)
-//    {
-//        [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToEmail] content:socialData.commentText image:socialData.commentImage location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
-//            if (response.responseCode == UMSResponseCodeSuccess) {
-//                [MyAlert ShowAlertMessage:@"Success" title:@"Alert"];
-//            }
-//            else
-//            {
-//             [MyAlert ShowAlertMessage:@"Share failed." title:@"Alert"];
-//            }
-//        }];
-//    }
+    //    if (platformName == UMShareToEmail)
+    //    {
+    //        [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToEmail] content:socialData.commentText image:socialData.commentImage location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+    //            if (response.responseCode == UMSResponseCodeSuccess) {
+    //                [MyAlert ShowAlertMessage:@"Success" title:@"Alert"];
+    //            }
+    //            else
+    //            {
+    //             [MyAlert ShowAlertMessage:@"Share failed." title:@"Alert"];
+    //            }
+    //        }];
+    //    }
 }
 -(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType
 {
@@ -513,7 +513,7 @@
     [request startSynchronous];
     self.dataArr = [[[request responseData] objectFromJSONData] valueForKey:@"items"];
     NSString * sumbitName = [NSString stringWithFormat:@"%@",[self.dic valueForKey:@"submitter"]];
-  //  NSLog(@"sumbitName = %@",sumbitName);
+    //  NSLog(@"sumbitName = %@",sumbitName);
     if (![sumbitName isEqualToString:@"<null>"])
     {
         NSString * imageStr1 = [[self.dic valueForKey:@"submitter"] valueForKey:@"img"];
@@ -544,7 +544,7 @@
     {
         if (width1 != 0 && height1 != 0)
         {
-           weight = tempHeigh/height1*width1; 
+            weight = tempHeigh/height1*width1;
         }
         else
         {
@@ -556,13 +556,13 @@
     {
         if (width1 != 0 && height1 != 0)
         {
-           height = 300.0/width1*height1;
+            height = 300.0/width1*height1;
         }
         else
         {
-          height = 10;
+            height = 10;
         }
-       
+        
         weight = 300;
     }
     
@@ -611,38 +611,38 @@
             isHaveUrl = NO;
         }
     }];
-     UIButton * buttonBuy = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton * buttonBuy = [UIButton buttonWithType:UIButtonTypeCustom];
     if (isHaveUrl)
     {
-       
+        
         buttonBuy.backgroundColor = [UIColor redColor];
         buttonBuy.layer.cornerRadius = 5;
         buttonBuy.frame = CGRectMake(210, 5, 90, 39);
         [buttonBuy setImage:[UIImage imageNamed:@"btn_shop.png"] forState:UIControlStateNormal];
         [buttonBuy addTarget:self action:@selector(buttonClickForNuyNow) forControlEvents:UIControlEventTouchUpInside];
-       // [self.myScrollView addSubview:buttonBuy];
+        // [self.myScrollView addSubview:buttonBuy];
         
         height = height+30;
     }
     else
     {
-       // UIButton * buttonBuy = [UIButton buttonWithType:UIButtonTypeCustom];
+        // UIButton * buttonBuy = [UIButton buttonWithType:UIButtonTypeCustom];
         buttonBuy.backgroundColor = [UIColor redColor];
         buttonBuy.layer.cornerRadius = 5;
         buttonBuy.frame = CGRectMake(210, height+160, 90, 39);
         [buttonBuy setImage:[UIImage imageNamed:@"btn_call.png"] forState:UIControlStateNormal];
         [buttonBuy addTarget:self action:@selector(callIphone1) forControlEvents:UIControlEventTouchUpInside];
-      //  [self.myScrollView addSubview:buttonBuy];
+        //  [self.myScrollView addSubview:buttonBuy];
         
         height = height+30;
-
+        
     }
     
     
     
-//    UIView * line1 = [[UIView alloc] initWithFrame:CGRectMake(0, height+110, 320, 1)];
-//    line1.backgroundColor = [UIColor colorWithRed:195.0/255.0 green:195.0/255.0 blue:195.0/255.0 alpha:1.0];
-//    [self.myScrollView addSubview:line1];
+    //    UIView * line1 = [[UIView alloc] initWithFrame:CGRectMake(0, height+110, 320, 1)];
+    //    line1.backgroundColor = [UIColor colorWithRed:195.0/255.0 green:195.0/255.0 blue:195.0/255.0 alpha:1.0];
+    //    [self.myScrollView addSubview:line1];
     
     shareImg = [[UIImageView alloc] initWithFrame:CGRectMake(15, height+70, 40, 40)];
     shareImg.layer.borderColor = [UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1.0].CGColor;
@@ -664,7 +664,7 @@
     
     NSString * sumbitName = [NSString stringWithFormat:@"%@",[self.dic valueForKey:@"submitter"]];
     NSLog(@"sumbitName = %@",sumbitName);
-   
+    
     if ([sumbitName isEqualToString:@"<null>"]||[sumbitName isEqualToString:@"(null)"])
     {
         shareNameLab.text = @"Onsale Local";
@@ -717,7 +717,7 @@
             UITapGestureRecognizer * tapCheck = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(likefollower:)];
             [shareCheck addGestureRecognizer:tapCheck];
         }
-       
+        
     }
     else
     {
@@ -798,11 +798,11 @@
     self.L_contact.text = [NSString stringWithFormat:@"%@",iphoneStr];
     self.L_contact.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.L_down.text = [NSString stringWithFormat:@"%@",merStr];
-     self.L_down.font = [UIFont fontWithName:AllFont size:AllContentSize];
+    self.L_down.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.L_street.text = [NSString stringWithFormat:@"%@",adressStr];
     self.L_street.font = [UIFont fontWithName:AllFont size:AllContentSize];
-//    self.IV_contact.layer.borderWidth = 1;
-//    self.IV_contact.layer.borderColor = [UIColor grayColor].CGColor;
+    //    self.IV_contact.layer.borderWidth = 1;
+    //    self.IV_contact.layer.borderColor = [UIColor grayColor].CGColor;
     
     NSString * strRes = [NSString stringWithFormat:@"%@",[dic valueForKey:@"liked"]];
     if ([strRes intValue] == 0)
@@ -869,7 +869,7 @@
     }
     else
     {
-      buyNow = [[BuyNowViewController alloc] initWithNibName:@"BuyNowViewController4" bundle:nil];
+        buyNow = [[BuyNowViewController alloc] initWithNibName:@"BuyNowViewController4" bundle:nil];
     }
     NSString * tempUrl = [NSString stringWithFormat:@"%@",[self.dic valueForKey:@"url"]];
     buyNow.buyUrl = tempUrl;
@@ -922,7 +922,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   // static NSString * str = @"mark";
+    // static NSString * str = @"mark";
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:nil];
     if (cell == nil)
     {
@@ -1018,7 +1018,7 @@
         }
         me.userid = userid;
         [self.navigationController pushViewController:me animated:YES];
-    } 
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -1028,21 +1028,21 @@
     
     
     CGSize labelsize = [result1 sizeWithFont:[UIFont fontWithName:AllFont size:AllContentSize] constrainedToSize:CGSizeMake(200, 2000) lineBreakMode:UILineBreakModeWordWrap];
-   // int countELine = (int)([result1 length]/(200.0/AllContentSize))+1;
+    // int countELine = (int)([result1 length]/(200.0/AllContentSize))+1;
     int AllLineHigh = labelsize.height+10+20;
     if (AllLineHigh<50)
     {
         AllLineHigh = 50;
     }
-//    else
-//    {
-//        AllLineHigh = labelsize.height+10;
-//    }
+    //    else
+    //    {
+    //        AllLineHigh = labelsize.height+10;
+    //    }
     [lineDic setValue:[NSNumber numberWithInt:AllLineHigh] forKey:[NSString stringWithFormat:@"%d",indexPath.row]];
     
     
     NSLog(@"height = %f",[[lineDic valueForKey:[NSString stringWithFormat:@"%d",indexPath.row]] floatValue]);
-        return [[lineDic valueForKey:[NSString stringWithFormat:@"%d",indexPath.row]] floatValue];
+    return [[lineDic valueForKey:[NSString stringWithFormat:@"%d",indexPath.row]] floatValue];
 }
 
 - (void)reloadTableViewDataSource
@@ -1143,8 +1143,8 @@
 {
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_STATUS] isEqualToString:@"1"])
     {
-//        NSNotification * notification = [NSNotification notificationWithName:@"likeData" object:nil];
-//        [[NSNotificationCenter defaultCenter] postNotification:notification];
+        //        NSNotification * notification = [NSNotification notificationWithName:@"likeData" object:nil];
+        //        [[NSNotificationCenter defaultCenter] postNotification:notification];
         
         UIImageView * imageView = (UIImageView *)[aTap view];
         currImageView = imageView;
@@ -1190,7 +1190,7 @@
             {
                 if (self.safewayController != nil)
                 {
-                   self.safewayController.isLoading = YES; 
+                    self.safewayController.isLoading = YES;
                 }
                 if (self.meRootController != nil)
                 {
@@ -1211,7 +1211,7 @@
                 {
                     self.meRootController.isLoading = YES;
                 }
-
+                
                 self.L_num.text = [NSString stringWithFormat:@"%d",[self.L_num.text intValue]+1];
                 [currImageView setImage:[UIImage imageNamed:@"liked.png"]];
                 self.L_likes.text = @"Liked";

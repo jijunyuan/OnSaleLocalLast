@@ -54,7 +54,7 @@
     UIButton * rightBtn1 = [UIButton buttonWithType:UIButtonTypeCustom];
     self.rightBtn = rightBtn1;
     rightBtn1.showsTouchWhenHighlighted = YES;
-    rightBtn1.frame = CGRectMake(260, 7, 50, 30);
+    rightBtn1.frame = CGRectMake(280, 7, 50, 30);
     [view1 addSubview:rightBtn1];
     
     UILabel * lab = [[UILabel alloc] initWithFrame:CGRectMake(80, 7, 160, 30)];
