@@ -26,7 +26,7 @@
 #import "ViewController.h"
 #import "BuyNowViewController.h"
 #import "AppDelegate.h"
-
+#import "MSLabel.h"
 
 @interface TrendDetailViewController ()<UITableViewDataSource,UITableViewDelegate,EGORefreshTableHeaderDelegate,NSURLConnectionDelegate,UIAlertViewDelegate,UMSocialUIDelegate>
 {
@@ -573,10 +573,11 @@
     [topImage setImageWithURL:[NSURL URLWithString:larImageStr] placeholderImage:nil];
     [self.myScrollView addSubview:topImage];
     
-    UILabel * desc = [[UILabel alloc] initWithFrame:CGRectMake(15, height+20, 290, 40)];
+    MSLabel * desc = [[MSLabel alloc] initWithFrame:CGRectMake(15, height+20, 290, 52)];
     desc.text = [self.dic valueForKey:@"title"];
     desc.backgroundColor = [UIColor whiteColor];
     desc.numberOfLines = 0;
+    desc.lineHeight = 22;
     desc.font = [UIFont fontWithName:AllFont size:All_h2_size];
     [self.myScrollView addSubview:desc];
     
