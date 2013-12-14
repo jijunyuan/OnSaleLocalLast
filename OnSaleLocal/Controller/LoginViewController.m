@@ -132,6 +132,7 @@
     self.TF_pwssword.font = [UIFont fontWithName:AllFont size:AllContentSize];
     
     self.btn_right1.titleLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
+    self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
     self.l_navTitle.text= @"Sign In";
     
     if (self.isFromSetting)
