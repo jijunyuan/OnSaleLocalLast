@@ -681,7 +681,7 @@
     shareNameLab.backgroundColor = [UIColor clearColor];
     [self.myScrollView addSubview:shareNameLab];
     
-    shareCheck = [[UIImageView alloc] initWithFrame:CGRectMake(270, height+128.5, 23, 23)];
+    shareCheck = [[UIImageView alloc] initWithFrame:CGRectMake(280, height+128.5, 23, 23)];
     shareCheck.layer.borderWidth = 1;
     shareCheck.layer.borderColor = [UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1.0].CGColor;
     NSArray * arrKeys = [dic allKeys];
