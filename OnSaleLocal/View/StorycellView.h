@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MSLabel.h"
 
 @interface StorycellView : UIView
 @property (nonatomic,strong) UIImageView * imageView_story;
 @property (nonatomic,strong) UIImageView * imageView_adress;
-@property (nonatomic,strong) UILabel * L_des;
+@property (nonatomic,strong) MSLabel * L_des;
 @property (nonatomic,strong) UITextField * TF_time;
 @property (nonatomic,strong) UILabel * L_Meter;
 @property (nonatomic,strong) UILabel * L_collNum;

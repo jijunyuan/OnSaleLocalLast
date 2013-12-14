@@ -43,11 +43,12 @@
         self.imageView_story = imageView;
         [self addSubview:imageView];
         
-        UILabel * des = [[UILabel alloc] initWithFrame:CGRectMake(8, height1+10, 128, 40)];
+        MSLabel * des = [[MSLabel alloc] initWithFrame:CGRectMake(8, height1+10, 128, 48)];
         des.textColor = [UIColor blackColor];
         //des.font = [UIFont systemFontOfSize:14];
         des.font = [UIFont fontWithName:AllFont size:AllContentSize];
         des.numberOfLines = 2;
+        des.lineHeight = 18;
         des.backgroundColor = [UIColor clearColor];
         self.L_des = des;
         [self addSubview:des];
