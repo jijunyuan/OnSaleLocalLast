@@ -471,7 +471,8 @@
     if (self.userid.length>0 && self.isFromSetting == NO)
     {
         self.leftButton.imageView.image = nil;
-        self.leftButton.frame = CGRectMake(self.leftButton.frame.origin.x, self.leftButton.frame.origin.y+5, 30, 30);
+        //self.leftButton.frame = CGRectMake(self.leftButton.frame.origin.x, self.leftButton.frame.origin.y+5, 30, 30);
+        self.leftButton.frame = CGRectMake(0, self.leftButton.frame.origin.y+5, 30, 30);
         [self.leftButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     }
     dict_id = [NSMutableDictionary dictionaryWithCapacity:0];

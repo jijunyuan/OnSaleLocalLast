@@ -46,7 +46,7 @@
     self.backBtn = backBtn1;
     [backBtn1 addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
     backBtn1.showsTouchWhenHighlighted = YES;
-    backBtn1.frame = CGRectMake(10, 7, 30, 30);
+    backBtn1.frame = CGRectMake(0, 7, 30, 30);
     backBtn1.backgroundColor = [UIColor clearColor];
     [backBtn1 setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     [view1 addSubview:backBtn1];
