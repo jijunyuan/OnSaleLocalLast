@@ -900,14 +900,15 @@
                 
                 NSString * idstr = [tempDict valueForKey:[NSString stringWithFormat:@"%d",currButton.tag]];
                 request12 = [WebService UnLikeOffer:idstr];
-                [NSURLConnection connectionWithRequest:request12 delegate:self];
+                [self likeUnlike];
+                [NSURLConnection connectionWithRequest:request12 delegate:nil];
                 
             }
             else
             {
-                
                 request12 = [WebService LikeOffer:idstr];
-                [NSURLConnection connectionWithRequest:request12 delegate:self];
+                [self likeUnlike];
+                [NSURLConnection connectionWithRequest:request12 delegate:nil];
             }
 
         }
@@ -1002,6 +1003,31 @@
     [reciveData appendData:data];
 }
 
+- (void) likeUnlike
+{
+    if ([currButton.imageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
+    {
+        [currButton setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
+        UILabel * lab = (UILabel *)[tempDictLab valueForKey:[NSString stringWithFormat:@"%d",button_tag]];
+        lab.text = [NSString stringWithFormat:@"%d",[lab.text intValue]-1];
+        [self.dic_recodeClick setValue:@"0" forKey:[[self.dataArr objectAtIndex:button_tag-100] valueForKey:@"id"]];
+        likesNum = [lab.text intValue];
+        [self.dic_lab_num setValue:[NSString stringWithFormat:@"%d",likesNum] forKey:[[self.dataArr objectAtIndex:button_tag-100] valueForKey:@"id"]];
+        isClick = 1;
+    }
+    else
+    {
+        [currButton setImage:[UIImage imageNamed:@"liked.png"] forState:UIControlStateNormal];
+        UILabel * lab = (UILabel *)[tempDictLab valueForKey:[NSString stringWithFormat:@"%d",button_tag]];
+        lab.text = [NSString stringWithFormat:@"%d",[lab.text intValue]+1];
+        
+        isClick = 2;
+        [self.dic_recodeClick setValue:@"1" forKey:[[self.dataArr objectAtIndex:button_tag-100] valueForKey:@"id"]];
+        likesNum = [lab.text intValue];
+        [self.dic_lab_num setValue:[NSString stringWithFormat:@"%d",likesNum] forKey:[[self.dataArr objectAtIndex:button_tag-100] valueForKey:@"id"]];
+    }
+}
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     [MyActivceView stopAnimatedInView:self.view];
@@ -1017,27 +1043,7 @@
         {
             if ([(NSMutableURLRequest *)[connection currentRequest] isEqual:request12])
             {
-                if ([currButton.imageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
-                {
-                    [currButton setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
-                    UILabel * lab = (UILabel *)[tempDictLab valueForKey:[NSString stringWithFormat:@"%d",button_tag]];
-                    lab.text = [NSString stringWithFormat:@"%d",[lab.text intValue]-1];
-                    [self.dic_recodeClick setValue:@"0" forKey:[[self.dataArr objectAtIndex:button_tag-100] valueForKey:@"id"]];
-                    likesNum = [lab.text intValue];
-                    [self.dic_lab_num setValue:[NSString stringWithFormat:@"%d",likesNum] forKey:[[self.dataArr objectAtIndex:button_tag-100] valueForKey:@"id"]];
-                    isClick = 1;
-                }
-                else
-                {
-                    [currButton setImage:[UIImage imageNamed:@"liked.png"] forState:UIControlStateNormal];
-                    UILabel * lab = (UILabel *)[tempDictLab valueForKey:[NSString stringWithFormat:@"%d",button_tag]];
-                    lab.text = [NSString stringWithFormat:@"%d",[lab.text intValue]+1];
-                    
-                    isClick = 2;
-                    [self.dic_recodeClick setValue:@"1" forKey:[[self.dataArr objectAtIndex:button_tag-100] valueForKey:@"id"]];
-                    likesNum = [lab.text intValue];
-                    [self.dic_lab_num setValue:[NSString stringWithFormat:@"%d",likesNum] forKey:[[self.dataArr objectAtIndex:button_tag-100] valueForKey:@"id"]];
-                }
+                [self likeUnlike];
             }
             else if ([(NSMutableURLRequest *)[connection currentRequest] isEqual:request_fb])
             {
