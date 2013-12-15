@@ -930,23 +930,19 @@
             NSString * idstr = [tempDict valueForKey:[NSString stringWithFormat:@"%d",aButton.tag]];
             if ([aButton.imageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
             {
-//                request12 = [WebService UnLikeOffer:idstr];
-//                [NSURLConnection connectionWithRequest:request12 delegate:self];
-//                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You want Unfollow？" delegate:self cancelButtonTitle:@"Cancle" otherButtonTitles:@"Yes", nil];
-//                alert.tag = 3333;
-//                [alert show];
-                //meroot change number
                 [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"refreshRoot" object:nil]];
                 
                 NSString * idstr = [tempDict valueForKey:[NSString stringWithFormat:@"%d",currButton.tag]];
                 request12 = [WebService UnLikeOffer:idstr];
-                [NSURLConnection connectionWithRequest:request12 delegate:self];
+                [self likeUnlike];
+                [NSURLConnection connectionWithRequest:request12 delegate:nil];
             }
             else
             {
                 
                 request12 = [WebService LikeOffer:idstr];
-                [NSURLConnection connectionWithRequest:request12 delegate:self];
+                [self likeUnlike];
+                [NSURLConnection connectionWithRequest:request12 delegate:nil];
             }
         }
         else
