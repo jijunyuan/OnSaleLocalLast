@@ -118,7 +118,7 @@
     self.bt_3.titleLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.l_11.font = [UIFont fontWithName:AllFont size:AllContentSize];
     
-    self.rightBtn.frame = CGRectMake(self.rightBtn.frame.origin.x+15, self.rightBtn.frame.origin.y, 30, 30);
+    self.rightBtn.frame = CGRectMake(self.rightBtn.frame.origin.x, self.rightBtn.frame.origin.y, 30, 30);
     self.L_desPush.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.L_desNotification.font = [UIFont fontWithName:AllFont size:AllContentSize];
     
