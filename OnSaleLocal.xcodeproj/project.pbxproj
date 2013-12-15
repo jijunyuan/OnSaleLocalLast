@@ -103,7 +103,7 @@
 		E9A8233B1855A61400196B41 /* Gotham-Bold_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9A823381855A1AF00196B41 /* Gotham-Bold_0.ttf */; };
 		E9A8233C1855A61400196B41 /* Gotham-XLight_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9A823371855A19600196B41 /* Gotham-XLight_0.ttf */; };
 		E9F23347185D7DE800DD99D9 /* OslUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F23346185D7DE800DD99D9 /* OslUIViewController.m */; };
-		E9F2334C185D7EF500DD99D9 /* MSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F2334B185D7EF500DD99D9 /* MSLabel.m */; };
+		E9F2334C185D7EF500DD99D9 /* MSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F2334B185D7EF500DD99D9 /* MSLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F1035F9217E768C5006903D4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1035F9017E768C4006903D4 /* LoginViewController.m */; };
 		F1035F9317E768C5006903D4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1035F9117E768C4006903D4 /* LoginViewController.xib */; };
 		F1035F9517E768DD006903D4 /* LoginViewController4.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1035F9417E768DD006903D4 /* LoginViewController4.xib */; };
