@@ -102,6 +102,8 @@
 		E9A8233A1855A1BC00196B41 /* GothamBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9A823391855A1BC00196B41 /* GothamBold.ttf */; };
 		E9A8233B1855A61400196B41 /* Gotham-Bold_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9A823381855A1AF00196B41 /* Gotham-Bold_0.ttf */; };
 		E9A8233C1855A61400196B41 /* Gotham-XLight_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9A823371855A19600196B41 /* Gotham-XLight_0.ttf */; };
+		E9F23347185D7DE800DD99D9 /* OslUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F23346185D7DE800DD99D9 /* OslUIViewController.m */; };
+		E9F2334C185D7EF500DD99D9 /* MSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F2334B185D7EF500DD99D9 /* MSLabel.m */; };
 		F1035F9217E768C5006903D4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1035F9017E768C4006903D4 /* LoginViewController.m */; };
 		F1035F9317E768C5006903D4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1035F9117E768C4006903D4 /* LoginViewController.xib */; };
 		F1035F9517E768DD006903D4 /* LoginViewController4.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1035F9417E768DD006903D4 /* LoginViewController4.xib */; };
@@ -411,6 +413,10 @@
 		E9A823371855A19600196B41 /* Gotham-XLight_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-XLight_0.ttf"; sourceTree = "<group>"; };
 		E9A823381855A1AF00196B41 /* Gotham-Bold_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Bold_0.ttf"; sourceTree = "<group>"; };
 		E9A823391855A1BC00196B41 /* GothamBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamBold.ttf; sourceTree = "<group>"; };
+		E9F23345185D7DE800DD99D9 /* OslUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OslUIViewController.h; sourceTree = "<group>"; };
+		E9F23346185D7DE800DD99D9 /* OslUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OslUIViewController.m; sourceTree = "<group>"; };
+		E9F2334A185D7EF500DD99D9 /* MSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSLabel.h; sourceTree = "<group>"; };
+		E9F2334B185D7EF500DD99D9 /* MSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSLabel.m; sourceTree = "<group>"; };
 		F1035F8F17E768C4006903D4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F1035F9017E768C4006903D4 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F1035F9117E768C4006903D4 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -798,6 +804,15 @@
 			name = other;
 			sourceTree = "<group>";
 		};
+		E9F23349185D7EF500DD99D9 /* MSLabel */ = {
+			isa = PBXGroup;
+			children = (
+				E9F2334A185D7EF500DD99D9 /* MSLabel.h */,
+				E9F2334B185D7EF500DD99D9 /* MSLabel.m */,
+			);
+			path = MSLabel;
+			sourceTree = "<group>";
+		};
 		F105B0E917FA62D10042DDDA /* UMSocial_Sdk_3.0 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1073,6 +1088,8 @@
 				4DBAE1DB181FD37100E7513F /* BuyNowViewController.m */,
 				4DBAE1DC181FD37100E7513F /* BuyNowViewController.xib */,
 				4DBAE1DF181FD38700E7513F /* BuyNowViewController4.xib */,
+				E9F23345185D7DE800DD99D9 /* OslUIViewController.h */,
+				E9F23346185D7DE800DD99D9 /* OslUIViewController.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -1159,6 +1176,7 @@
 		F14983BC17E0B0AE00C1CEC1 /* 3Class */ = {
 			isa = PBXGroup;
 			children = (
+				E9F23349185D7EF500DD99D9 /* MSLabel */,
 				F105B0E917FA62D10042DDDA /* UMSocial_Sdk_3.0 */,
 				F1F4DD4117EA7B6A00BCE578 /* SDWebImage */,
 				F1F4DD3617EA7ABC00BCE578 /* WaterFlow */,
@@ -1783,6 +1801,7 @@
 				F1071A3B17F5BAAF00752CB0 /* UploadPictureViewController.m in Sources */,
 				F1071A4617F5CB5E00752CB0 /* PictureClassViewController.m in Sources */,
 				4D22103217F7221100D6F684 /* PictureDetailViewController.m in Sources */,
+				E9F23347185D7DE800DD99D9 /* OslUIViewController.m in Sources */,
 				4D00AA6E17F7431400E8A26A /* UIImage+UIImageExt.m in Sources */,
 				4D37B07D17F759620055A1DD /* FeedBackViewController.m in Sources */,
 				4D7F06F417F88F22004237B5 /* RateAppViewController.m in Sources */,
@@ -1792,6 +1811,7 @@
 				F1FFF2B417F9046B00243C97 /* PictureDoneViewController.m in Sources */,
 				F19E92A417F918F300BEA4B1 /* MeRootViewController.m in Sources */,
 				F19DC33717F93CE1005BFB13 /* StoreFollowersViewController.m in Sources */,
+				E9F2334C185D7EF500DD99D9 /* MSLabel.m in Sources */,
 				F19DC33E17F93DFC005BFB13 /* StoreFollowCell.m in Sources */,
 				F105B0E717FA5AB30042DDDA /* AboutBackViewController.m in Sources */,
 				F10A0F7B17FBA98F00039666 /* NotificationCell.m in Sources */,

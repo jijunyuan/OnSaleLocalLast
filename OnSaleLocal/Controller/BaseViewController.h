@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OslUIViewController.h"
 
-@interface BaseViewController : UIViewController
+@interface BaseViewController : OslUIViewController
 @property (nonatomic,strong) UILabel * l_navTitle;
 @property (nonatomic,strong) UIButton * rightBtn;
 @property (nonatomic,strong) UIButton * backBtn;
