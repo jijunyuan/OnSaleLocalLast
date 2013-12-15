@@ -1047,7 +1047,7 @@
 {
     if (buttonIndex == 1)
     {
-       login.view.alpha = 0.9;
+       login.view.alpha = 1.0;
     }
     else
     {

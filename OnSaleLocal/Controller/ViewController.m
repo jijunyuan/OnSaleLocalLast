@@ -983,7 +983,7 @@
 //            [self.L_skip addGestureRecognizer:tap1];
 //            
 //            self.allSignView.alpha = 0.8;
-             login.view.alpha = 0.9;
+             login.view.alpha = 1.0;
         
         }
     }

@@ -103,7 +103,8 @@
     self.dataArr = [NSMutableArray arrayWithCapacity:0];
     
     self.searchBar.text = @"";
-    self.searchBar.backgroundColor = [UIColor colorWithRed:50.0/255.0 green:50.0/255.0 blue:50.0/255.0 alpha:1.0];
+    self.searchBar.backgroundColor = [UIColor colorWithRed:64.0/255.0 green:66.0/255.0 blue:72/255.0 alpha:1.0];
+   // self.searchBar.tintColor = [UIColor whiteColor];
     self.L_name.font = [UIFont fontWithName:AllFont size:All_h1_Size];
     //not login
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_STATUS] isEqualToString:@"0"])
@@ -213,7 +214,8 @@
     self.Btn_register.titleLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.Btn_signout.titleLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
     
-    
+    self.view.backgroundColor = [UIColor colorWithRed:64.0/255.0 green:66.0/255.0 blue:72.0/255.0 alpha:1.0];
+//    self.TV_tableview.backgroundColor = [UIColor colorWithRed:64.0/255.0 green:66.0/255.0 blue:72.0/255.0 alpha:1.0];
     
     
     //去searchBar背景
@@ -457,7 +459,8 @@
         }
         title.userInteractionEnabled = YES;
         title.font = [UIFont fontWithName:AllFont size:AllFontSize];
-        title.textColor = UIColorFromRGB(0xbababa);
+      //  title.textColor = UIColorFromRGB(0xbababa);
+        title.textColor = [UIColor whiteColor];
         title.backgroundColor = [UIColor clearColor];
         title.text = [self.dataArr objectAtIndex:indexPath.row];
         [cell addSubview:title];
@@ -489,7 +492,8 @@
             [cell addSubview:bigBarge];
             
             UILabel * lable1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-            lable1.textColor = UIColorFromRGB(0xbababa);
+          //  lable1.textColor = UIColorFromRGB(0xbababa);
+            lable1.textColor = [UIColor whiteColor];
             lable1.textAlignment = NSTextAlignmentCenter;
             lable1.font = [UIFont fontWithName:AllFont size:AllContentSize];
             lable1.text = [NSString stringWithFormat:@"%d",unread];
@@ -507,7 +511,7 @@
             }
         }
     }
-    cell.backgroundColor = [UIColor colorWithRed:50.0/255.0 green:50.0/255.0 blue:50.0/255.0 alpha:1.0];
+    cell.backgroundColor = [UIColor colorWithRed:64.0/255.0 green:66.0/255.0 blue:72.0/255.0 alpha:1.0];
     return cell;
 }
 
@@ -537,7 +541,7 @@
 }
 -(void)searchTapclick:(UITapGestureRecognizer *)aTap
 {
-    self.searchBar.backgroundColor = [UIColor colorWithRed:50.0/255.0 green:50.0/255.0 blue:50.0/255.0 alpha:1.0];
+    self.searchBar.backgroundColor = [UIColor colorWithRed:64.0/255.0 green:66.0/255.0 blue:72/255.0 alpha:1.0];
     for (UIView *subview in self.searchBar.subviews)
     {
         if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")])
@@ -576,7 +580,7 @@
             }
         }
     }
-    self.searchBar.backgroundColor = [UIColor colorWithRed:50.0/255.0 green:50.0/255.0 blue:50.0/255.0 alpha:1.0];
+    self.searchBar.backgroundColor = [UIColor colorWithRed:64.0/255.0 green:66.0/255.0 blue:72/255.0 alpha:1.0];
     AppDelegate * delegate = [UIApplication sharedApplication].delegate;
     JASidePanelController * controller2 = (JASidePanelController *)delegate.viewController1;
     [controller2 setCenterPanelHidden:NO animated:YES duration:0.3];

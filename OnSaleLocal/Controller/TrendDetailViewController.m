@@ -1296,7 +1296,7 @@
             [self.IV_facebook addGestureRecognizer:tap2];
             [self.L_skip addGestureRecognizer:tap1];
             
-            login.view.alpha = 0.9;
+            login.view.alpha = 1.0;
             // [self.view addSubview:self.allSignView];
         }
     }
@@ -1314,7 +1314,7 @@
             [self.IV_facebook addGestureRecognizer:tap2];
             [self.L_skip addGestureRecognizer:tap1];
             
-            login.view.alpha = 0.9;
+            login.view.alpha = 1.0;
         }
     }
     else
