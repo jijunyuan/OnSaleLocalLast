@@ -193,6 +193,7 @@
     {
         // self.Btn_male.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1.0];
         self.Btn_male.backgroundColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
+        self.Btn_male.titleLabel.textColor = [UIColor whiteColor];
         self.Btn_female.backgroundColor = [UIColor whiteColor];
         self.Btn_nosay.backgroundColor = [UIColor whiteColor];
     }
@@ -201,6 +202,7 @@
         self.Btn_male.backgroundColor = [UIColor whiteColor];
         //self.Btn_female.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1.0];;
         self.Btn_female.backgroundColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
+        self.Btn_female.titleLabel.textColor = [UIColor whiteColor];
         self.Btn_nosay.backgroundColor = [UIColor whiteColor];
     }
     else
@@ -209,6 +211,7 @@
         self.Btn_female.backgroundColor = [UIColor whiteColor];
         // self.Btn_nosay.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1.0];;
         self.Btn_nosay.backgroundColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
+        self.Btn_nosay.titleLabel.textColor = [UIColor whiteColor];
     }
     
     if ([[user valueForKey:LOGIN_NOTI] isEqualToString:@"Enable"])
@@ -305,6 +308,13 @@
     genderStr = @"Man";
     // self.Btn_male.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:1.0];
     self.Btn_male.backgroundColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
+    
+   // self.Btn_male.titleLabel.textColor = [UIColor whiteColor];
+    [self.Btn_male setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+   [self.Btn_female setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.Btn_nosay setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
     self.Btn_nosay.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:255.0/255.0];
     self.Btn_female.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:255.0/255.0];
 }
@@ -315,6 +325,9 @@
     self.Btn_nosay.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:255.0/255.0];
     //self.Btn_female.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:255.0/255.0];
     self.Btn_female.backgroundColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
+    [self.Btn_female setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+     [self.Btn_male setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+     [self.Btn_nosay setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 }
 -(IBAction)nosayClick:(id)sender
 {
@@ -322,6 +335,9 @@
     self.Btn_male.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0];
     // self.Btn_nosay.backgroundColor = [UIColor colorWithRed:243.0/255.0 green:243.0/255.0 blue:243.0/255.0 alpha:255.0/255.0];
     self.Btn_nosay.backgroundColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
+    [self.Btn_nosay setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.Btn_female setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.Btn_male setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     self.Btn_female.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:255.0/255.0];
 }
 -(IBAction)faceBtnClick:(id)sender

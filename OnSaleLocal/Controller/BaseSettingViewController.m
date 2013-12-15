@@ -43,15 +43,17 @@
     [view1 addSubview:view2];
     
     UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.showsTouchWhenHighlighted = YES;
     [backBtn addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
     self.leftButton = backBtn;
-    backBtn.showsTouchWhenHighlighted = YES;
-    backBtn.frame = CGRectMake(9, 2, 40, 40);
+  //  backBtn.showsTouchWhenHighlighted = YES;
+    backBtn.frame = CGRectMake(9, 0, 44, 44);
     backBtn.backgroundColor = [UIColor clearColor];
     [backBtn setImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
     [view1 addSubview:backBtn];
     
     UIButton * rightBtn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+  //  rightBtn1.showsTouchWhenHighlighted = YES;
     self.rightBtn = rightBtn1;
     rightBtn1.showsTouchWhenHighlighted = YES;
     rightBtn1.frame = CGRectMake(280, 7, 50, 30);

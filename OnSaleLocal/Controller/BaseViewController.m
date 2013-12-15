@@ -43,6 +43,7 @@
     [self.view addSubview:view2];
     
     UIButton * backBtn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn1.showsTouchWhenHighlighted = YES;
     self.backBtn = backBtn1;
     [backBtn1 addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
     backBtn1.showsTouchWhenHighlighted = YES;
@@ -52,6 +53,7 @@
     [view1 addSubview:backBtn1];
     
     UIButton * rightBtn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightBtn1.showsTouchWhenHighlighted = YES;
     [rightBtn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.rightBtn = rightBtn1;
     rightBtn1.showsTouchWhenHighlighted = YES;
