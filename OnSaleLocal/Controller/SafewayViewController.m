@@ -934,6 +934,29 @@
     [reciveData1 appendData:data];
 }
 
+- (void) likeUnlike
+{
+    UILabel * lab = (UILabel *)[arr_lab objectAtIndex:currTag];
+    if ([currImageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
+    {
+        lab.text = [NSString stringWithFormat:@"%d",[lab.text intValue]-1];
+        [dicLabnum setValue:lab.text forKey:[[[self.dic valueForKey:@"items"] objectAtIndex:currTag] valueForKey:@"id"]];
+        [currImageView setImage:[UIImage imageNamed:@"like.png"]];
+        [self.dic_recodeClick setValue:@"0" forKey:[[[self.dic valueForKey:@"items"] objectAtIndex:currTag] valueForKey:@"id"]];
+        isClick1 = 1;
+    }
+    else
+    {
+        lab.text = [NSString stringWithFormat:@"%d",[lab.text intValue]+1];
+        NSLog(@"currtag = %d",currTag);
+        NSLog(@"============%@",[[[self.dic valueForKey:@"items"] objectAtIndex:currTag] valueForKey:@"id"]);
+        [dicLabnum setValue:lab.text forKey:[[[self.dic valueForKey:@"items"] objectAtIndex:currTag] valueForKey:@"id"]];
+        [currImageView setImage:[UIImage imageNamed:@"liked.png"]];
+        isClick1 = 2;
+        [self.dic_recodeClick setValue:@"1" forKey:[[[self.dic valueForKey:@"items"] objectAtIndex:currTag] valueForKey:@"id"]];
+    }
+}
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     [MyActivceView stopAnimatedInView:self.view];
@@ -943,27 +966,9 @@
         if ([(NSMutableURLRequest *)[connection currentRequest] isEqual:request_like])
         {
            // UILabel * lab = (UILabel *)[dict_lab valueForKey:[NSString stringWithFormat:@"%d",currTag]];
-            UILabel * lab = (UILabel *)[arr_lab objectAtIndex:currTag];
             if ([(NSMutableURLRequest *)[connection currentRequest] isEqual:request_like])
             {
-                if ([currImageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
-                {
-                    lab.text = [NSString stringWithFormat:@"%d",[lab.text intValue]-1];
-                    [dicLabnum setValue:lab.text forKey:[[[self.dic valueForKey:@"items"] objectAtIndex:currTag] valueForKey:@"id"]];
-                    [currImageView setImage:[UIImage imageNamed:@"like.png"]];
-                    [self.dic_recodeClick setValue:@"0" forKey:[[[self.dic valueForKey:@"items"] objectAtIndex:currTag] valueForKey:@"id"]];
-                    isClick1 = 1;
-                }
-                else
-                {
-                    lab.text = [NSString stringWithFormat:@"%d",[lab.text intValue]+1];
-                    NSLog(@"currtag = %d",currTag);
-                    NSLog(@"============%@",[[[self.dic valueForKey:@"items"] objectAtIndex:currTag] valueForKey:@"id"]);
-                    [dicLabnum setValue:lab.text forKey:[[[self.dic valueForKey:@"items"] objectAtIndex:currTag] valueForKey:@"id"]];
-                    [currImageView setImage:[UIImage imageNamed:@"liked.png"]];
-                    isClick1 = 2;
-                     [self.dic_recodeClick setValue:@"1" forKey:[[[self.dic valueForKey:@"items"] objectAtIndex:currTag] valueForKey:@"id"]];
-                }
+                [self likeUnlike];
             }
         }
         else if ([(NSMutableURLRequest *)[connection currentRequest] isEqual:request_fb])
@@ -1022,13 +1027,14 @@
         if ([imageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
         {
             request_like = [WebService UnLikeOffer:idstr];
-            [NSURLConnection connectionWithRequest:request_like delegate:self];
+            [self likeUnlike];
+            [NSURLConnection connectionWithRequest:request_like delegate:nil];
         }
         else
         {
-            [MyActivceView startAnimatedInView:self.view];
             request_like = [WebService LikeOffer:idstr];
-            [NSURLConnection connectionWithRequest:request_like delegate:self];
+            [self likeUnlike];
+            [NSURLConnection connectionWithRequest:request_like delegate:nil];
         }
     }
     else

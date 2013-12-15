@@ -1151,13 +1151,14 @@
         if ([imageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
         {
             request_like = [WebService UnLikeOffer:[self.dic valueForKey:@"id"]];
-            [NSURLConnection connectionWithRequest:request_like delegate:self];
+            [self likeUnlike];
+            [NSURLConnection connectionWithRequest:request_like delegate:nil];
         }
         else
         {
-            [MyActivceView startAnimatedInView:self.view];
             request_like = [WebService LikeOffer:[self.dic valueForKey:@"id"]];
-            [NSURLConnection connectionWithRequest:request_like delegate:self];
+            [self likeUnlike];
+            [NSURLConnection connectionWithRequest:request_like delegate:nil];
         }
     }
     else
@@ -1177,6 +1178,41 @@
     [reciveData appendData:data];
 }
 
+- (void) likeUnlike
+{
+    self.viewController1.isLoading = YES;
+    if ([currImageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
+    {
+        if (self.safewayController != nil)
+        {
+            self.safewayController.isLoading = YES;
+        }
+        if (self.meRootController != nil)
+        {
+            self.meRootController.isLoading = YES;
+        }
+        self.L_num.text = [NSString stringWithFormat:@"%d",[self.L_num.text intValue]-1];
+        [currImageView setImage:[UIImage imageNamed:@"like.png"]];
+        self.L_likes.text = @"Like";
+        
+    }
+    else
+    {
+        if (self.safewayController != nil)
+        {
+            self.safewayController.isLoading = YES;
+        }
+        if (self.meRootController != nil)
+        {
+            self.meRootController.isLoading = YES;
+        }
+        
+        self.L_num.text = [NSString stringWithFormat:@"%d",[self.L_num.text intValue]+1];
+        [currImageView setImage:[UIImage imageNamed:@"liked.png"]];
+        self.L_likes.text = @"Liked";
+    }
+}
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     [MyActivceView stopAnimatedInView:self.view];
@@ -1185,38 +1221,7 @@
     {
         if ([(NSMutableURLRequest *)[connection currentRequest] isEqual:request_like])
         {
-            self.viewController1.isLoading = YES;
-            if ([currImageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
-            {
-                if (self.safewayController != nil)
-                {
-                    self.safewayController.isLoading = YES;
-                }
-                if (self.meRootController != nil)
-                {
-                    self.meRootController.isLoading = YES;
-                }
-                self.L_num.text = [NSString stringWithFormat:@"%d",[self.L_num.text intValue]-1];
-                [currImageView setImage:[UIImage imageNamed:@"like.png"]];
-                self.L_likes.text = @"Like";
-                
-            }
-            else
-            {
-                if (self.safewayController != nil)
-                {
-                    self.safewayController.isLoading = YES;
-                }
-                if (self.meRootController != nil)
-                {
-                    self.meRootController.isLoading = YES;
-                }
-                
-                self.L_num.text = [NSString stringWithFormat:@"%d",[self.L_num.text intValue]+1];
-                [currImageView setImage:[UIImage imageNamed:@"liked.png"]];
-                self.L_likes.text = @"Liked";
-            }
-            
+            [self likeUnlike];
         }
         else if ([(NSMutableURLRequest *)[connection currentRequest] isEqual:request_fb])
         {

@@ -859,7 +859,8 @@
         if ([imageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
         {
             request_like = [WebService UnLikeOffer:idstr];
-            [NSURLConnection connectionWithRequest:request_like delegate:self];
+            [self likeUnlike];
+            [NSURLConnection connectionWithRequest:request_like delegate:nil];
             //        NSString * str = self.L_likes.text;
             //        NSArray * arr = [str componentsSeparatedByString:@" "];
             //        NSLog(@"arr = %@",arr);
@@ -868,7 +869,8 @@
         else
         {
             request_like = [WebService LikeOffer:idstr];
-            [NSURLConnection connectionWithRequest:request_like delegate:self];
+            [self likeUnlike];
+            [NSURLConnection connectionWithRequest:request_like delegate:nil];
             //        NSString * str = self.L_likes.text;
             //        NSArray * arr = [str componentsSeparatedByString:@" "];
             //        NSLog(@"arr = %@",arr);
@@ -893,6 +895,35 @@
     [reciveData1 appendData:data];
 }
 
+- (void) likeUnlike
+{
+    UILabel * lab = (UILabel *)[dict_lab valueForKey:[NSString stringWithFormat:@"%d",currTag]];
+    if ([currImageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
+    {
+        lab.text = [NSString stringWithFormat:@"%d",[lab.text intValue]-1];
+        [currImageView setImage:[UIImage imageNamed:@"like.png"]];
+        
+        NSArray * arr = [self.dataArr valueForKey:@"items"];
+        NSDictionary * dic1 = [arr objectAtIndex:currTag-100];
+        [self.dic_recodeClick setValue:@"0" forKey:[dic1 valueForKey:@"id"]];
+        isClick1 = 1;
+        [dicLabnum setValue:lab.text forKey:[dic1 valueForKey:@"id"]];
+        
+    }
+    else
+    {
+        lab.text = [NSString stringWithFormat:@"%d",[lab.text intValue]+1];
+        [currImageView setImage:[UIImage imageNamed:@"liked.png"]];
+        isClick1 = 2;
+        NSArray * arr = [self.dataArr valueForKey:@"items"];
+        NSDictionary * dic1 = [arr objectAtIndex:currTag-100];
+        [self.dic_recodeClick setValue:@"1" forKey:[dic1 valueForKey:@"id"]];
+        [dicLabnum setValue:lab.text forKey:[dic1 valueForKey:@"id"]];
+    }
+    [self getData];
+
+}
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     NSLog(@"dic = %@",[[NSString alloc] initWithData:reciveData1 encoding:4]);
@@ -900,32 +931,9 @@
     {
         if ([(NSMutableURLRequest *)[connection currentRequest] isEqual:request_like])
         {
-            UILabel * lab = (UILabel *)[dict_lab valueForKey:[NSString stringWithFormat:@"%d",currTag]];
             if ([(NSMutableURLRequest *)[connection currentRequest] isEqual:request_like])
             {
-                if ([currImageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
-                {
-                    lab.text = [NSString stringWithFormat:@"%d",[lab.text intValue]-1];
-                    [currImageView setImage:[UIImage imageNamed:@"like.png"]];
-                    
-                    NSArray * arr = [self.dataArr valueForKey:@"items"];
-                    NSDictionary * dic1 = [arr objectAtIndex:currTag-100];
-                    [self.dic_recodeClick setValue:@"0" forKey:[dic1 valueForKey:@"id"]];
-                    isClick1 = 1;
-                    [dicLabnum setValue:lab.text forKey:[dic1 valueForKey:@"id"]];
-                    
-                }
-                else
-                {
-                    lab.text = [NSString stringWithFormat:@"%d",[lab.text intValue]+1];
-                    [currImageView setImage:[UIImage imageNamed:@"liked.png"]];
-                    isClick1 = 2;
-                    NSArray * arr = [self.dataArr valueForKey:@"items"];
-                    NSDictionary * dic1 = [arr objectAtIndex:currTag-100];
-                    [self.dic_recodeClick setValue:@"1" forKey:[dic1 valueForKey:@"id"]];
-                    [dicLabnum setValue:lab.text forKey:[dic1 valueForKey:@"id"]];
-                }
-                [self getData];
+                [self likeUnlike];
             }
         }
         if ([(NSMutableURLRequest *)[connection currentRequest] isEqual:request_follow])
