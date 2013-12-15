@@ -104,6 +104,7 @@
 		E9A8233C1855A61400196B41 /* Gotham-XLight_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9A823371855A19600196B41 /* Gotham-XLight_0.ttf */; };
 		E9F23347185D7DE800DD99D9 /* OslUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F23346185D7DE800DD99D9 /* OslUIViewController.m */; };
 		E9F2334C185D7EF500DD99D9 /* MSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F2334B185D7EF500DD99D9 /* MSLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9F2334F185E2D8D00DD99D9 /* LikeIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F2334E185E2D8D00DD99D9 /* LikeIconView.m */; };
 		F1035F9217E768C5006903D4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1035F9017E768C4006903D4 /* LoginViewController.m */; };
 		F1035F9317E768C5006903D4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1035F9117E768C4006903D4 /* LoginViewController.xib */; };
 		F1035F9517E768DD006903D4 /* LoginViewController4.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1035F9417E768DD006903D4 /* LoginViewController4.xib */; };
@@ -417,6 +418,8 @@
 		E9F23346185D7DE800DD99D9 /* OslUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OslUIViewController.m; sourceTree = "<group>"; };
 		E9F2334A185D7EF500DD99D9 /* MSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSLabel.h; sourceTree = "<group>"; };
 		E9F2334B185D7EF500DD99D9 /* MSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSLabel.m; sourceTree = "<group>"; };
+		E9F2334D185E2D8D00DD99D9 /* LikeIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeIconView.h; sourceTree = "<group>"; };
+		E9F2334E185E2D8D00DD99D9 /* LikeIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeIconView.m; sourceTree = "<group>"; };
 		F1035F8F17E768C4006903D4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F1035F9017E768C4006903D4 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F1035F9117E768C4006903D4 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -790,6 +793,8 @@
 		4D779D2317E3C20B00AAB2DF /* other */ = {
 			isa = PBXGroup;
 			children = (
+				E9F2334D185E2D8D00DD99D9 /* LikeIconView.h */,
+				E9F2334E185E2D8D00DD99D9 /* LikeIconView.m */,
 				4D779D0E17E35ABB00AAB2DF /* MyAlert.h */,
 				4D779D0F17E35ABB00AAB2DF /* MyAlert.m */,
 				F149851C17E0F6C100C1CEC1 /* MyActivceView.h */,
@@ -1786,6 +1791,7 @@
 				F1A4692617EC597E00EAB792 /* BasicMapAnnotation.m in Sources */,
 				F1A4692717EC597E00EAB792 /* CallOutAnnotationVifew.m in Sources */,
 				F1A4692817EC597E00EAB792 /* CalloutMapAnnotation.m in Sources */,
+				E9F2334F185E2D8D00DD99D9 /* LikeIconView.m in Sources */,
 				F1A4692917EC597E00EAB792 /* JingDianMapCell.m in Sources */,
 				F19AE89F17EC8AFB006FAE9E /* Map1ViewController.m in Sources */,
 				F19AE8A717EC948C006FAE9E /* TrendDetailViewController.m in Sources */,
@@ -1904,8 +1910,8 @@
 		F14983BA17E0AFD000C1CEC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yongjiang Zhang (X4WZD8S44A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yongjiang Zhang (X4WZD8S44A)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/OnSaleLocal/3Class/UMSocial_Sdk_3.0/frameworks/TencentOpenAPI\"",
@@ -1922,7 +1928,7 @@
 					"\"$(SRCROOT)/OnSaleLocal/3Class/UMSocial_Sdk_3.0\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4ED005BE-1A8E-4537-9042-5C001BA0BF15";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -1932,8 +1938,8 @@
 		F14983BB17E0AFD000C1CEC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yongjiang Zhang (X4WZD8S44A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yongjiang Zhang (X4WZD8S44A)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/OnSaleLocal/3Class/UMSocial_Sdk_3.0/frameworks/TencentOpenAPI\"",
@@ -1950,7 +1956,7 @@
 					"\"$(SRCROOT)/OnSaleLocal/3Class/UMSocial_Sdk_3.0\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4ED005BE-1A8E-4537-9042-5C001BA0BF15";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
