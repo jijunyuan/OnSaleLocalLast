@@ -319,8 +319,8 @@
 - (void)updateView
 {
     AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-//    if (appDelegate.session.isOpen)
-//    {
+    if (appDelegate.session.isOpen)
+    {
         NSString* token = appDelegate.session.accessTokenData.accessToken;
         NSString* url = [NSString stringWithFormat:@"%@/ws/user/facebook-login",DO_MAIN];
         NSDictionary* _params = @{@"token":token};
@@ -347,11 +347,18 @@
         NSString *msgLength = [NSString stringWithFormat:@"%d", [jsonData length]];
         [request_fb addValue: msgLength forHTTPHeaderField:@"Content-Length"];
         [NSURLConnection connectionWithRequest:request_fb delegate:self];
-//    }
-//    else
-//    {
-//        NSLog(@"***********");
-//    }
+    }
+    else
+    {
+        if (appDelegate.session.state != FBSessionStateCreated)
+        {
+            NSArray *permissions = [NSArray arrayWithObjects:@"email", @"publish_stream", @"user_about_me", @"publish_actions", nil];
+            appDelegate.session = [[FBSession alloc] initWithPermissions:permissions];
+        }
+        [appDelegate.session openWithBehavior:FBSessionLoginBehaviorWithFallbackToWebView completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+            [self updateView];
+        }];
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
