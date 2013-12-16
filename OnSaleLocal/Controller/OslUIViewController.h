@@ -15,5 +15,5 @@
 
 -(BOOL) dataChanged;
 -(void)dataChangedNotificationCallback:(NSNotification *)noti;
-- (void) likeUnlike:(id)offer :(BOOL)liked;
+- (void) likeUnlike:(id)offer :(BOOL)liked :(id)params;
 @end

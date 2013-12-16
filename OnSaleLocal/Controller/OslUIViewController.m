@@ -71,11 +71,12 @@
     return self.dataChangedTime > self.disappearTime;
 }
 
-- (void) likeUnlike:(id)offer :(BOOL)liked
+- (void) likeUnlike:(id)offer :(BOOL)liked :(id)params
 {
     NSNumber *num = [NSNumber numberWithBool:liked];
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:offer forKey:@"offer"];
     [userInfo setValue:num forKey:@"liked"];
+    [userInfo setValue:params forKey:@"params"];
     [[NSNotificationCenter defaultCenter] postNotificationName: @"dataChangedNotification" object:nil userInfo:userInfo];
 }
 @end

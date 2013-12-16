@@ -1151,13 +1151,13 @@
         if ([imageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
         {
             request_like = [WebService UnLikeOffer:[self.dic valueForKey:@"id"]];
-            [self likeUnlike :self.dic :NO];
+            [self likeUnlike :self.dic :NO :nil];
             [NSURLConnection connectionWithRequest:request_like delegate:nil];
         }
         else
         {
             request_like = [WebService LikeOffer:[self.dic valueForKey:@"id"]];
-            [self likeUnlike :self.dic :YES];
+            [self likeUnlike :self.dic :YES :nil];
             [NSURLConnection connectionWithRequest:request_like delegate:nil];
         }
     }
@@ -1207,47 +1207,6 @@
         self.L_likes.text = @"Like";
     }
 }
-
-//- (void) likeUnlike
-//{
-//    self.viewController1.isLoading = YES;
-//    BOOL liked = NO;
-//    if ([currImageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
-//    {
-//        if (self.safewayController != nil)
-//        {
-//            self.safewayController.isLoading = YES;
-//        }
-//        if (self.meRootController != nil)
-//        {
-//            self.meRootController.isLoading = YES;
-//        }
-//        self.L_num.text = [NSString stringWithFormat:@"%d",[self.L_num.text intValue]-1];
-//        [currImageView setImage:[UIImage imageNamed:@"like.png"]];
-//        self.L_likes.text = @"Like";
-//    }
-//    else
-//    {
-//        if (self.safewayController != nil)
-//        {
-//            self.safewayController.isLoading = YES;
-//        }
-//        if (self.meRootController != nil)
-//        {
-//            self.meRootController.isLoading = YES;
-//        }
-//        
-//        self.L_num.text = [NSString stringWithFormat:@"%d",[self.L_num.text intValue]+1];
-//        [currImageView setImage:[UIImage imageNamed:@"liked.png"]];
-//        self.L_likes.text = @"Liked";
-//        liked = YES;
-//    }
-//    
-//    NSNumber *num = [NSNumber numberWithBool:liked];
-//    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:self.dic forKey:@"offer"];
-//    [userInfo setValue:num forKey:@"liked"];
-//    [[NSNotificationCenter defaultCenter] postNotificationName: @"dataChangedNotification" object:nil userInfo:userInfo];
-//}
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {

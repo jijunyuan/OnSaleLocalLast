@@ -913,14 +913,14 @@
                 
                 NSString * idstr = [tempDict valueForKey:[NSString stringWithFormat:@"%d",currButton.tag]];
                 request12 = [WebService UnLikeOffer:idstr];
-                [self likeUnlike :[self.dataArr objectAtIndex:currButton.tag-100] :NO];
+                [self likeUnlike :[self.dataArr objectAtIndex:currButton.tag-100] :NO :nil];
                 [NSURLConnection connectionWithRequest:request12 delegate:nil];
                 
             }
             else
             {
                 request12 = [WebService LikeOffer:idstr];
-                [self likeUnlike :[self.dataArr objectAtIndex:currButton.tag-100] :YES];
+                [self likeUnlike :[self.dataArr objectAtIndex:currButton.tag-100] :YES :nil];
                 [NSURLConnection connectionWithRequest:request12 delegate:nil];
             }
 
@@ -947,13 +947,13 @@
                 
                 NSString * idstr = [tempDict valueForKey:[NSString stringWithFormat:@"%d",currButton.tag]];
                 request12 = [WebService UnLikeOffer:idstr];
-                [self likeUnlike :[self.dataArr objectAtIndex:currButton.tag-100] :NO];
+                [self likeUnlike :[self.dataArr objectAtIndex:currButton.tag-100] :NO :nil];
                 [NSURLConnection connectionWithRequest:request12 delegate:nil];
             }
             else
             {
                 request12 = [WebService LikeOffer:idstr];
-                [self likeUnlike :[self.dataArr objectAtIndex:currButton.tag-100] :YES];
+                [self likeUnlike :[self.dataArr objectAtIndex:currButton.tag-100] :YES :nil];
                 [NSURLConnection connectionWithRequest:request12 delegate:nil];
             }
         }
