@@ -898,17 +898,19 @@
 - (void) likeUnlike
 {
     UILabel * lab = (UILabel *)[dict_lab valueForKey:[NSString stringWithFormat:@"%d",currTag]];
+    BOOL liked = NO;
+    NSDictionary * dic1;
     if ([currImageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
     {
         lab.text = [NSString stringWithFormat:@"%d",[lab.text intValue]-1];
         [currImageView setImage:[UIImage imageNamed:@"like.png"]];
         
         NSArray * arr = [self.dataArr valueForKey:@"items"];
-        NSDictionary * dic1 = [arr objectAtIndex:currTag-100];
+        dic1 = [arr objectAtIndex:currTag-100];
         [self.dic_recodeClick setValue:@"0" forKey:[dic1 valueForKey:@"id"]];
         isClick1 = 1;
         [dicLabnum setValue:lab.text forKey:[dic1 valueForKey:@"id"]];
-        
+        liked = NO;
     }
     else
     {
@@ -916,12 +918,17 @@
         [currImageView setImage:[UIImage imageNamed:@"liked.png"]];
         isClick1 = 2;
         NSArray * arr = [self.dataArr valueForKey:@"items"];
-        NSDictionary * dic1 = [arr objectAtIndex:currTag-100];
+        dic1 = [arr objectAtIndex:currTag-100];
         [self.dic_recodeClick setValue:@"1" forKey:[dic1 valueForKey:@"id"]];
         [dicLabnum setValue:lab.text forKey:[dic1 valueForKey:@"id"]];
+        liked = YES;
     }
     [self getData];
 
+    NSNumber *num = [NSNumber numberWithBool:liked];
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:dic1 forKey:@"offer"];
+    [userInfo setValue:num forKey:@"liked"];
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"dataChangedNotification" object:nil userInfo:userInfo];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection

@@ -52,6 +52,8 @@
 -(void)skipClick:(UITapGestureRecognizer *)aTap;
 -(void)likedata:(NSNotification *)aNotification;
 -(void)getData2;
+
+@property(strong, nonatomic) NSMutableDictionary *cells;
 @end
 
 @implementation ViewController
@@ -70,8 +72,10 @@
     }
     return self;
 }
+
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"commentAddOne" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentAddOne:) name:@"commentAddOne" object:nil];
@@ -81,31 +85,47 @@
     self.navigationController.navigationBarHidden = YES;
     NSLog(@"isRefresh = %d",isRefresh);
     self.myAllSignView = allSignView;
-    if (self.isLoading)
-    {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [self getData1];
-        });
+//    if (self.isLoading)
+//    {
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//            [self getData1];
+//        });
+//    }
+}
+
+-(void) viewDidUnload
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"commentAddOne" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"likeData" object:nil];
+}
+
+- (void) dealloc
+{
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if([self dataChanged]) {
+//        [waterFlow reloadData];
+        self.dataChangedTime = 0;
     }
 }
+
+-(void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+}
+
 -(void)commentAddOne:(NSNotification *)aNotification
 {
     [self getData1];
 }
+
 -(void)likedata:(NSNotification *)aNotification
 {
-    isRefresh = YES;
-    NSLog(@"%s",__FUNCTION__);
-    if (isRefresh)
-    {
-        self.allSignView.alpha = 0.0;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [self getData1];
-        });
-        // [allSignView removeFromSuperview];
-        self.allSignView.alpha = 0.0;
-    }
 }
+
 -(void)emailClick:(UITapGestureRecognizer *)aTap
 {
     LoginViewController * login1;
@@ -188,19 +208,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"commentAddOne" object:nil];
-//    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentAddOne:) name:@"commentAddOne" object:nil];
-//    
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"likeData" object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(likedata:) name:@"likeData" object:nil];
-
+    self.cells = [NSMutableDictionary dictionaryWithCapacity:0];
     
     self.L_result.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.L_skip.font = [UIFont fontWithName:AllFont size:AllContentSize];
    // self.l_navTitle.font = [UIFont fontWithName:AllFont size:All_h2_size];
-    
     
     test = 0;
     currPage = 0;
@@ -214,6 +226,7 @@
     requestArr = [NSMutableArray arrayWithCapacity:0];
     mutable_dic = [NSMutableDictionary dictionaryWithCapacity:0];
     self.dataArr = [NSMutableArray arrayWithCapacity:0];
+    self.cells = [NSMutableDictionary dictionaryWithCapacity:0];
     self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
     self.l_navTitle.text = @"Trending";
     
@@ -363,8 +376,9 @@
         if ([request11 responseStatusCode] == 200)
         {
             [self.dataArr removeAllObjects];
+            self.cells = [NSMutableDictionary dictionaryWithCapacity:0];
             NSString * strRes = [[NSString alloc] initWithData:(NSData *)reciveData1 encoding:1];
-            self.dataArr = (NSMutableArray *)[[strRes objectFromJSONString] valueForKey:@"items"];
+            [self.dataArr addObjectsFromArray:[[strRes objectFromJSONString] valueForKey:@"items"]];
 //            NSLog(@"dataArr = %@", self.dataArr);
             
             isfirstloading = YES;
@@ -461,9 +475,10 @@
         [request1 buildRequestHeaders];
     }
     [request1 startSynchronous];
-    self.dataArr = nil;
+    self.dataArr = [NSMutableArray arrayWithCapacity:0];
+    self.cells = [NSMutableDictionary dictionaryWithCapacity:0];
     NSString * strRes = [[NSString alloc] initWithData:[request1 responseData] encoding:1];
-    self.dataArr = (NSMutableArray *)[[strRes objectFromJSONString] valueForKey:@"items"];
+    [self.dataArr addObjectsFromArray:[[strRes objectFromJSONString] valueForKey:@"items"]];
     [self.dataArr enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL *stop) {
         [self.dic_lab_num setValue:[obj valueForKey:@"likes"] forKey:[obj valueForKey:@"id"]];
     }];
@@ -551,7 +566,6 @@
 - (UIView *)waterFlowView:(WaterFlowView *)waterFlowView cellForRowAtIndexPath:(IndexPath *)indexPath
 {
     //int arrIndex = indexPath.row * waterFlowView.columnCount + indexPath.column;
-    NSLog(@"%s===indexpath = %d",__FUNCTION__,indexPath.row);
     int arrIndex = 0;
     if (indexPath.column == 0)
     {
@@ -589,13 +603,13 @@
         }
     }
     StorycellView *view1 = [[StorycellView alloc] initWithFrame:CGRectMake(0, 0, 160.0, tempHeight+150.0) andImageHeight:height andWidth:width];
+    [self.cells setObject:view1 forKey:[dict objectForKey:@"id"]];
     return view1;
 }
 
 
 -(void)waterFlowView:(WaterFlowView *)waterFlowView  relayoutCellSubview:(UIView *)view withIndexPath:(IndexPath *)indexPath
 {
-      NSLog(@"%s===indexpath = %d",__FUNCTION__,indexPath.row);
     //arrIndex是某个数据在总数组中的索引
     // int arrIndex = indexPath.row * waterFlowView.columnCount + indexPath.column;
     int arrIndex = 0;
@@ -607,9 +621,10 @@
     {
         arrIndex = 2*indexPath.row+1;
     }
+    NSDictionary * dic = [self.dataArr objectAtIndex:arrIndex];
+    
     // NSLog(@"arrindex = %d",arrIndex);
     StorycellView * leftView = (StorycellView *)view;
-    NSDictionary * dic = [self.dataArr objectAtIndex:arrIndex];
     leftView.tag = arrIndex;
     leftView.Btn_temp.tag = arrIndex;
     NSString * image_url = [dic valueForKey:@"smallImg"];
@@ -643,18 +658,16 @@
     [leftView.Btn_share addTarget:self action:@selector(ShareClick:) forControlEvents:UIControlEventTouchUpInside];
     leftView.Btn_share.tag = arrIndex;
     
-    NSLog(@"=================%d",[[dic valueForKey:@"liked"] intValue]);
+    NSLog(@"%d %d: liked: %d", indexPath.row, indexPath.column, [[dic valueForKey:@"liked"] intValue]);
     NSString * strRes = [NSString stringWithFormat:@"%@",[dic valueForKey:@"liked"]];
     [leftView.Btn_collect setImage:nil forState:UIControlStateNormal];
     
     if ([strRes intValue] == 1)
     {
-        NSLog(@"change the image=======liked.png");
         [leftView.Btn_collect setImage:[UIImage imageNamed:@"liked.png"] forState:UIControlStateNormal];
     }
     else
     {
-        NSLog(@"change the image=======like.png");
         [leftView.Btn_collect setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
     }
     
@@ -900,14 +913,14 @@
                 
                 NSString * idstr = [tempDict valueForKey:[NSString stringWithFormat:@"%d",currButton.tag]];
                 request12 = [WebService UnLikeOffer:idstr];
-                [self likeUnlike];
+                [self changeOfferLikeState:idstr liked:NO];
                 [NSURLConnection connectionWithRequest:request12 delegate:nil];
                 
             }
             else
             {
                 request12 = [WebService LikeOffer:idstr];
-                [self likeUnlike];
+                [self changeOfferLikeState:idstr liked:YES];
                 [NSURLConnection connectionWithRequest:request12 delegate:nil];
             }
 
@@ -934,14 +947,13 @@
                 
                 NSString * idstr = [tempDict valueForKey:[NSString stringWithFormat:@"%d",currButton.tag]];
                 request12 = [WebService UnLikeOffer:idstr];
-                [self likeUnlike];
+                [self changeOfferLikeState:idstr liked:NO];
                 [NSURLConnection connectionWithRequest:request12 delegate:nil];
             }
             else
             {
-                
                 request12 = [WebService LikeOffer:idstr];
-                [self likeUnlike];
+                [self changeOfferLikeState:idstr liked:YES];
                 [NSURLConnection connectionWithRequest:request12 delegate:nil];
             }
         }
@@ -1001,6 +1013,7 @@
 
 - (void) likeUnlike
 {
+    BOOL liked = NO;
     if ([currButton.imageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
     {
         [currButton setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
@@ -1021,6 +1034,7 @@
         [self.dic_recodeClick setValue:@"1" forKey:[[self.dataArr objectAtIndex:button_tag-100] valueForKey:@"id"]];
         likesNum = [lab.text intValue];
         [self.dic_lab_num setValue:[NSString stringWithFormat:@"%d",likesNum] forKey:[[self.dataArr objectAtIndex:button_tag-100] valueForKey:@"id"]];
+        liked = YES;
     }
 }
 
@@ -1225,6 +1239,50 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)changeOfferLikeState:(NSString *)likedOfferId liked:(BOOL)like
+{
+    NSNumber *liked = [NSNumber numberWithBool:like];
+    NSMutableArray *newArray = [NSMutableArray arrayWithCapacity:[self.dataArr count]];
+    for (int i=0; i<[self.dataArr count]; i++) {
+        NSMutableDictionary *item = [self.dataArr objectAtIndex:i];
+        NSString *offerId = [item objectForKey:@"id"];
+        if(offerId == likedOfferId) {
+            StorycellView *cell = [self.cells objectForKey:offerId];
+            
+            NSMutableDictionary *newItem = [NSMutableDictionary dictionaryWithDictionary:item];
+            [newItem setValue:liked forKey:@"liked"];
+            if([liked intValue] == 0) {
+                NSNumber *likes = [NSNumber numberWithInt:([[item objectForKey:@"likes"] intValue] - 1)];
+                [newItem setValue:likes forKey:@"likes"];
+                [cell.Btn_collect setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
+                cell.L_collNum.text = [likes stringValue];
+            }
+            else {
+                NSNumber *likes = [NSNumber numberWithInt:([[item objectForKey:@"likes"] intValue] + 1)];
+                [newItem setValue:likes forKey:@"likes"];
+                [cell.Btn_collect setImage:[UIImage imageNamed:@"liked.png"] forState:UIControlStateNormal];
+                cell.L_collNum.text = [likes stringValue];
+            }
+            [newArray addObject:newItem];
+        }
+        else {
+            [newArray addObject:item];
+        }
+    }
+    self.dataArr = newArray;
+}
+
+-(void)dataChangedNotificationCallback:(NSNotification *)noti
+{
+    [super dataChangedNotificationCallback:noti];
+    NSDictionary *userInfo = noti.userInfo;
+    NSNumber *liked = [userInfo objectForKey:@"liked"];
+    if(liked) {
+        NSString * likedOfferId = [[userInfo objectForKey:@"offer"] objectForKey:@"id"];
+        [self changeOfferLikeState:likedOfferId liked:[liked boolValue]];
+    }
 }
 
 @end

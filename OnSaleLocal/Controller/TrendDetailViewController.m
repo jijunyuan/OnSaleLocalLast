@@ -155,7 +155,7 @@
             [reqiest_detail startSynchronous];
             NSData * data_noti = [reqiest_detail responseData];
             NSString * strTemp = [[NSString alloc] initWithData:data_noti encoding:4];
-            self.dic = [strTemp objectFromJSONString];
+            self.dic = [NSMutableDictionary dictionaryWithDictionary:[strTemp objectFromJSONString]];
             NSLog(@"strTemp = %@",strTemp);
             NSLog(@"self.dic = %@",self.dic);
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -1181,6 +1181,7 @@
 - (void) likeUnlike
 {
     self.viewController1.isLoading = YES;
+    BOOL liked = NO;
     if ([currImageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
     {
         if (self.safewayController != nil)
@@ -1194,7 +1195,6 @@
         self.L_num.text = [NSString stringWithFormat:@"%d",[self.L_num.text intValue]-1];
         [currImageView setImage:[UIImage imageNamed:@"like.png"]];
         self.L_likes.text = @"Like";
-        
     }
     else
     {
@@ -1210,7 +1210,13 @@
         self.L_num.text = [NSString stringWithFormat:@"%d",[self.L_num.text intValue]+1];
         [currImageView setImage:[UIImage imageNamed:@"liked.png"]];
         self.L_likes.text = @"Liked";
+        liked = YES;
     }
+    
+    NSNumber *num = [NSNumber numberWithBool:liked];
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:self.dic forKey:@"offer"];
+    [userInfo setValue:num forKey:@"liked"];
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"dataChangedNotification" object:nil userInfo:userInfo];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
