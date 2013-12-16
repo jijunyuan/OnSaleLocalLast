@@ -941,21 +941,27 @@
     NSNumber *liked = [userInfo objectForKey:@"liked"];
     if(liked) {
         NSString * likedOfferId = [[userInfo objectForKey:@"offer"] objectForKey:@"id"];
-        [self changeOfferLikeState:likedOfferId liked:[liked boolValue] itemIndex:[[userInfo objectForKey:@"params"] intValue]];
+        [self changeOfferLikeState:likedOfferId liked:[liked boolValue]];
     }
 }
 
-- (void)changeOfferLikeState:(NSString *)likedOfferId liked:(BOOL)like itemIndex:(int)index
+- (void)changeOfferLikeState:(NSString *)likedOfferId liked:(BOOL)like
 {
     NSMutableDictionary *newData = [NSMutableDictionary dictionaryWithDictionary:self.dic];
     NSMutableArray *newItems = [NSMutableArray arrayWithArray:[newData objectForKey:@"items"]];
     [newData setObject:newItems forKey:@"items"];
     
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[newItems objectAtIndex:index]];
-    [newItems replaceObjectAtIndex:index withObject:dict];
-    NSNumber *likes = [NSNumber numberWithInt:([[dict objectForKey:@"likes"] intValue] + (like ? 1 : -1))];
-    [dict setValue:likes forKey:@"likes"];
-    [dict setValue:[NSNumber numberWithBool:like] forKey:@"liked"];
+    NSMutableDictionary *dict = nil;
+    for(int i=0; i<[newItems count]; i++) {
+        if([[[newItems objectAtIndex:i] objectForKey:@"id"] isEqualToString:likedOfferId]) {
+            dict = [NSMutableDictionary dictionaryWithDictionary:[newItems objectAtIndex:i]];
+            [newItems replaceObjectAtIndex:i withObject:dict];
+            NSNumber *likes = [NSNumber numberWithInt:([[dict objectForKey:@"likes"] intValue] + (like ? 1 : -1))];
+            [dict setValue:likes forKey:@"likes"];
+            [dict setValue:[NSNumber numberWithBool:like] forKey:@"liked"];
+            break;
+        }
+    }
     
     self.dic = newData;
     
@@ -1069,13 +1075,13 @@
         NSString * idstr = [dict_id valueForKey:[NSString stringWithFormat:@"%d",imageView.tag]];
         if ([imageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
         {
-            [self likeUnlike:[[self.dic objectForKey:@"items"] objectAtIndex:currTag] :NO :[NSNumber numberWithInt:currTag]];
+            [self likeUnlike:[[self.dic objectForKey:@"items"] objectAtIndex:currTag] :NO :nil];
             request_like = [WebService UnLikeOffer:idstr];
             [NSURLConnection connectionWithRequest:request_like delegate:nil];
         }
         else
         {
-            [self likeUnlike:[[self.dic objectForKey:@"items"] objectAtIndex:currTag] :YES :[NSNumber numberWithInt:currTag]];
+            [self likeUnlike:[[self.dic objectForKey:@"items"] objectAtIndex:currTag] :YES :nil];
             request_like = [WebService LikeOffer:idstr];
             [NSURLConnection connectionWithRequest:request_like delegate:nil];
         }
