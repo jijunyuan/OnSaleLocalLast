@@ -70,9 +70,7 @@
         if ([request3 responseStatusCode] == 200)
         {
             NSString * resultStr = [[NSString alloc] initWithData:reciveData4 encoding:NSASCIIStringEncoding];
-             NSLog(@"-----resultStr = %@",resultStr);
             NSMutableArray * arr = [[resultStr objectFromJSONString] valueForKey:@"items"];
-            NSLog(@"-----arr = %@",arr);
             [arr enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL *stop) {
                 for (NSString * key in [obj allKeys])
                 {
@@ -91,7 +89,6 @@
                 }
             }];
 
-            NSLog(@"********self.dataArr = %@",self.dataArr);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [waterFlow reloadData];
             });
@@ -140,7 +137,6 @@
     __block BOOL isHaveKey = NO;
     NSString * str11 = [[NSString alloc] initWithData:[request6 responseData] encoding:1];
     NSMutableArray * arr = [[str11 objectFromJSONString] valueForKey:@"items"];
-    NSLog(@"arr = %@",arr);
     [arr enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL *stop) {
         for (NSString * key in [obj allKeys])
         {

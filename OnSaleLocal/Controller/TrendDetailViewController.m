@@ -489,7 +489,6 @@
         if (request.responseStatusCode == 200)
         {
             self.dataArr = [[reciveData3 objectFromJSONData] valueForKey:@"items"];
-            NSLog(@"==dataArr==%@",self.dataArr);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.TV_tableView reloadData];
             });

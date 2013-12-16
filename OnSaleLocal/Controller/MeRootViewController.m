@@ -220,7 +220,6 @@
 -(void)changeUI
 {
     NSArray * arr = [self.dataArr valueForKey:@"items"];
-    NSLog(@"arr = %@",arr);
     float scroll_heigh = 160;
     for (int i = 0; i<arr.count; i++)
     {

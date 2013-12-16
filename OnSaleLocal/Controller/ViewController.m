@@ -913,14 +913,14 @@
                 
                 NSString * idstr = [tempDict valueForKey:[NSString stringWithFormat:@"%d",currButton.tag]];
                 request12 = [WebService UnLikeOffer:idstr];
-                [self changeOfferLikeState:idstr liked:NO];
+                [self likeUnlike :currButton.tag-100 :NO];
                 [NSURLConnection connectionWithRequest:request12 delegate:nil];
                 
             }
             else
             {
                 request12 = [WebService LikeOffer:idstr];
-                [self changeOfferLikeState:idstr liked:YES];
+                [self likeUnlike :currButton.tag-100 :YES];
                 [NSURLConnection connectionWithRequest:request12 delegate:nil];
             }
 
@@ -947,13 +947,13 @@
                 
                 NSString * idstr = [tempDict valueForKey:[NSString stringWithFormat:@"%d",currButton.tag]];
                 request12 = [WebService UnLikeOffer:idstr];
-                [self changeOfferLikeState:idstr liked:NO];
+                [self likeUnlike :currButton.tag-100 :NO];
                 [NSURLConnection connectionWithRequest:request12 delegate:nil];
             }
             else
             {
                 request12 = [WebService LikeOffer:idstr];
-                [self changeOfferLikeState:idstr liked:YES];
+                [self likeUnlike :currButton.tag-100 :YES];
                 [NSURLConnection connectionWithRequest:request12 delegate:nil];
             }
         }
@@ -1011,31 +1011,12 @@
     [reciveData appendData:data];
 }
 
-- (void) likeUnlike
+- (void) likeUnlike:(int)offerIndex :(BOOL)liked
 {
-    BOOL liked = NO;
-    if ([currButton.imageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
-    {
-        [currButton setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
-        UILabel * lab = (UILabel *)[tempDictLab valueForKey:[NSString stringWithFormat:@"%d",button_tag]];
-        lab.text = [NSString stringWithFormat:@"%d",[lab.text intValue]-1];
-        [self.dic_recodeClick setValue:@"0" forKey:[[self.dataArr objectAtIndex:button_tag-100] valueForKey:@"id"]];
-        likesNum = [lab.text intValue];
-        [self.dic_lab_num setValue:[NSString stringWithFormat:@"%d",likesNum] forKey:[[self.dataArr objectAtIndex:button_tag-100] valueForKey:@"id"]];
-        isClick = 1;
-    }
-    else
-    {
-        [currButton setImage:[UIImage imageNamed:@"liked.png"] forState:UIControlStateNormal];
-        UILabel * lab = (UILabel *)[tempDictLab valueForKey:[NSString stringWithFormat:@"%d",button_tag]];
-        lab.text = [NSString stringWithFormat:@"%d",[lab.text intValue]+1];
-        
-        isClick = 2;
-        [self.dic_recodeClick setValue:@"1" forKey:[[self.dataArr objectAtIndex:button_tag-100] valueForKey:@"id"]];
-        likesNum = [lab.text intValue];
-        [self.dic_lab_num setValue:[NSString stringWithFormat:@"%d",likesNum] forKey:[[self.dataArr objectAtIndex:button_tag-100] valueForKey:@"id"]];
-        liked = YES;
-    }
+    NSNumber *num = [NSNumber numberWithBool:liked];
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:[self.dataArr objectAtIndex:offerIndex] forKey:@"offer"];
+    [userInfo setValue:num forKey:@"liked"];
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"dataChangedNotification" object:nil userInfo:userInfo];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
@@ -1051,11 +1032,7 @@
         }
         else
         {
-            if ([(NSMutableURLRequest *)[connection currentRequest] isEqual:request12])
-            {
-                [self likeUnlike];
-            }
-            else if ([(NSMutableURLRequest *)[connection currentRequest] isEqual:request_fb])
+            if ([(NSMutableURLRequest *)[connection currentRequest] isEqual:request_fb])
             {
                 NSDictionary * dic = [reciveData objectFromJSONData];
                 NSUserDefaults * user = [NSUserDefaults standardUserDefaults];
@@ -1248,7 +1225,7 @@
     for (int i=0; i<[self.dataArr count]; i++) {
         NSMutableDictionary *item = [self.dataArr objectAtIndex:i];
         NSString *offerId = [item objectForKey:@"id"];
-        if(offerId == likedOfferId) {
+        if([offerId isEqualToString:likedOfferId]) {
             StorycellView *cell = [self.cells objectForKey:offerId];
             
             NSMutableDictionary *newItem = [NSMutableDictionary dictionaryWithDictionary:item];

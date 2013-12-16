@@ -29,6 +29,8 @@
     self.dataChangedTime = 0;
     self.appearTime = 0;
     self.disappearTime = 0;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataChangedNotificationCallback:) name:@"dataChangedNotification" object:nil];
+    NSLog(@"addObserver dataChangedNotification");
 }
 
 - (void)viewDidunload
@@ -46,17 +48,12 @@
 {
     [super viewDidDisappear:animated];
     self.disappearTime = [[NSDate date] timeIntervalSince1970];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"dataChangedNotification" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataChangedNotificationCallback:) name:@"dataChangedNotification" object:nil];
-    NSLog(@"addObserver dataChangedNotification");
 }
 
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"dataChangedNotification" object:nil];
     self.appearTime = [[NSDate date] timeIntervalSince1970];
-    NSLog(@"removeObserver dataChangedNotification");
 }
 
 -(BOOL) isAppearing
