@@ -105,6 +105,7 @@
 		E9F23347185D7DE800DD99D9 /* OslUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F23346185D7DE800DD99D9 /* OslUIViewController.m */; };
 		E9F2334C185D7EF500DD99D9 /* MSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F2334B185D7EF500DD99D9 /* MSLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E9F2334F185E2D8D00DD99D9 /* LikeIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F2334E185E2D8D00DD99D9 /* LikeIconView.m */; };
+		E9F23355185F509F00DD99D9 /* UIView+StringTag.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F23354185F509F00DD99D9 /* UIView+StringTag.m */; };
 		F1035F9217E768C5006903D4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1035F9017E768C4006903D4 /* LoginViewController.m */; };
 		F1035F9317E768C5006903D4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1035F9117E768C4006903D4 /* LoginViewController.xib */; };
 		F1035F9517E768DD006903D4 /* LoginViewController4.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1035F9417E768DD006903D4 /* LoginViewController4.xib */; };
@@ -420,6 +421,8 @@
 		E9F2334B185D7EF500DD99D9 /* MSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSLabel.m; sourceTree = "<group>"; };
 		E9F2334D185E2D8D00DD99D9 /* LikeIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeIconView.h; sourceTree = "<group>"; };
 		E9F2334E185E2D8D00DD99D9 /* LikeIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeIconView.m; sourceTree = "<group>"; };
+		E9F23353185F509F00DD99D9 /* UIView+StringTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+StringTag.h"; sourceTree = "<group>"; };
+		E9F23354185F509F00DD99D9 /* UIView+StringTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+StringTag.m"; sourceTree = "<group>"; };
 		F1035F8F17E768C4006903D4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F1035F9017E768C4006903D4 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F1035F9117E768C4006903D4 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -805,6 +808,8 @@
 				F1FBDCF417E5486F00F8C21B /* SmallActiveView.m */,
 				4D8D707317F4744F00F19A80 /* StoreOfferView.h */,
 				4D8D707417F4744F00F19A80 /* StoreOfferView.m */,
+				E9F23353185F509F00DD99D9 /* UIView+StringTag.h */,
+				E9F23354185F509F00DD99D9 /* UIView+StringTag.m */,
 			);
 			name = other;
 			sourceTree = "<group>";
@@ -1736,6 +1741,7 @@
 				F14984FC17E0F53200C1CEC1 /* ASIAuthenticationDialog.m in Sources */,
 				F14984FD17E0F53200C1CEC1 /* ASIDataCompressor.m in Sources */,
 				F14984FE17E0F53200C1CEC1 /* ASIDataDecompressor.m in Sources */,
+				E9F23355185F509F00DD99D9 /* UIView+StringTag.m in Sources */,
 				F14984FF17E0F53200C1CEC1 /* ASIDownloadCache.m in Sources */,
 				F149850017E0F53200C1CEC1 /* ASIFormDataRequest.m in Sources */,
 				F149850117E0F53200C1CEC1 /* ASIHTTPRequest.m in Sources */,

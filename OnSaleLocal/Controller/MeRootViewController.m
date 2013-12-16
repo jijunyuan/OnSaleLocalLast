@@ -926,7 +926,8 @@
     for (id subview in [self.myScroll subviews]) {
         if([subview isKindOfClass:[StoreOfferView class]]) {
             StoreOfferView *offerView = subview;
-            if(offerView.IV_collect.tag == (index+100)) {
+            NSString *itemOfferId = [[newItems objectAtIndex:(offerView.IV_collect.tag-100)] objectForKey:@"id"];
+            if([likedOfferId isEqualToString:itemOfferId]) {
                 if ([[dict valueForKey:@"liked"] intValue] == 0)
                 {
                     offerView.IV_collect.image = [UIImage imageNamed:@"like.png"];
