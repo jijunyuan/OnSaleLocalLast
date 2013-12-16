@@ -913,14 +913,14 @@
                 
                 NSString * idstr = [tempDict valueForKey:[NSString stringWithFormat:@"%d",currButton.tag]];
                 request12 = [WebService UnLikeOffer:idstr];
-                [self likeUnlike :currButton.tag-100 :NO];
+                [self likeUnlike :[self.dataArr objectAtIndex:currButton.tag-100] :NO];
                 [NSURLConnection connectionWithRequest:request12 delegate:nil];
                 
             }
             else
             {
                 request12 = [WebService LikeOffer:idstr];
-                [self likeUnlike :currButton.tag-100 :YES];
+                [self likeUnlike :[self.dataArr objectAtIndex:currButton.tag-100] :YES];
                 [NSURLConnection connectionWithRequest:request12 delegate:nil];
             }
 
@@ -947,13 +947,13 @@
                 
                 NSString * idstr = [tempDict valueForKey:[NSString stringWithFormat:@"%d",currButton.tag]];
                 request12 = [WebService UnLikeOffer:idstr];
-                [self likeUnlike :currButton.tag-100 :NO];
+                [self likeUnlike :[self.dataArr objectAtIndex:currButton.tag-100] :NO];
                 [NSURLConnection connectionWithRequest:request12 delegate:nil];
             }
             else
             {
                 request12 = [WebService LikeOffer:idstr];
-                [self likeUnlike :currButton.tag-100 :YES];
+                [self likeUnlike :[self.dataArr objectAtIndex:currButton.tag-100] :YES];
                 [NSURLConnection connectionWithRequest:request12 delegate:nil];
             }
         }
@@ -1009,14 +1009,6 @@
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     [reciveData appendData:data];
-}
-
-- (void) likeUnlike:(int)offerIndex :(BOOL)liked
-{
-    NSNumber *num = [NSNumber numberWithBool:liked];
-    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:[self.dataArr objectAtIndex:offerIndex] forKey:@"offer"];
-    [userInfo setValue:num forKey:@"liked"];
-    [[NSNotificationCenter defaultCenter] postNotificationName: @"dataChangedNotification" object:nil userInfo:userInfo];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection

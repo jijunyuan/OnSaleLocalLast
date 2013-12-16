@@ -496,6 +496,7 @@
         else
         {
         }
+        request = nil;
     }];
     [request setFailedBlock:^{
         NSLog(@"getComment failed");
@@ -1150,13 +1151,13 @@
         if ([imageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
         {
             request_like = [WebService UnLikeOffer:[self.dic valueForKey:@"id"]];
-            [self likeUnlike];
+            [self likeUnlike :self.dic :NO];
             [NSURLConnection connectionWithRequest:request_like delegate:nil];
         }
         else
         {
             request_like = [WebService LikeOffer:[self.dic valueForKey:@"id"]];
-            [self likeUnlike];
+            [self likeUnlike :self.dic :YES];
             [NSURLConnection connectionWithRequest:request_like delegate:nil];
         }
     }
@@ -1177,46 +1178,76 @@
     [reciveData appendData:data];
 }
 
-- (void) likeUnlike
+
+-(void)dataChangedNotificationCallback:(NSNotification *)noti
 {
-    self.viewController1.isLoading = YES;
-    BOOL liked = NO;
-    if ([currImageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
-    {
-        if (self.safewayController != nil)
-        {
-            self.safewayController.isLoading = YES;
-        }
-        if (self.meRootController != nil)
-        {
-            self.meRootController.isLoading = YES;
-        }
-        self.L_num.text = [NSString stringWithFormat:@"%d",[self.L_num.text intValue]-1];
-        [currImageView setImage:[UIImage imageNamed:@"like.png"]];
+    [super dataChangedNotificationCallback:noti];
+    NSDictionary *userInfo = noti.userInfo;
+    NSNumber *liked = [userInfo objectForKey:@"liked"];
+    if(liked) {
+        NSString * likedOfferId = [[userInfo objectForKey:@"offer"] objectForKey:@"id"];
+        [self changeOfferLikeState:likedOfferId liked:[liked boolValue]];
+    }
+}
+
+- (void)changeOfferLikeState:(NSString *)likedOfferId liked:(BOOL)like
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:self.dic];
+    NSNumber *likes = [NSNumber numberWithInt:([[dict objectForKey:@"likes"] intValue] + (like ? 1 : -1))];
+    [dict setValue:likes forKey:@"likes"];
+    [dict setValue:[NSNumber numberWithBool:like] forKey:@"liked"];
+    self.dic = dict;
+    self.L_num.text = [NSString stringWithFormat:@"%@",[self.dic objectForKey:@"likes"]];
+    if(like) {
+        [self.IV_collect setImage:[UIImage imageNamed:@"liked.png"]];
+        self.L_likes.text = @"Liked";
+    }
+    else {
+        [self.IV_collect setImage:[UIImage imageNamed:@"like.png"]];
         self.L_likes.text = @"Like";
     }
-    else
-    {
-        if (self.safewayController != nil)
-        {
-            self.safewayController.isLoading = YES;
-        }
-        if (self.meRootController != nil)
-        {
-            self.meRootController.isLoading = YES;
-        }
-        
-        self.L_num.text = [NSString stringWithFormat:@"%d",[self.L_num.text intValue]+1];
-        [currImageView setImage:[UIImage imageNamed:@"liked.png"]];
-        self.L_likes.text = @"Liked";
-        liked = YES;
-    }
-    
-    NSNumber *num = [NSNumber numberWithBool:liked];
-    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:self.dic forKey:@"offer"];
-    [userInfo setValue:num forKey:@"liked"];
-    [[NSNotificationCenter defaultCenter] postNotificationName: @"dataChangedNotification" object:nil userInfo:userInfo];
 }
+
+//- (void) likeUnlike
+//{
+//    self.viewController1.isLoading = YES;
+//    BOOL liked = NO;
+//    if ([currImageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
+//    {
+//        if (self.safewayController != nil)
+//        {
+//            self.safewayController.isLoading = YES;
+//        }
+//        if (self.meRootController != nil)
+//        {
+//            self.meRootController.isLoading = YES;
+//        }
+//        self.L_num.text = [NSString stringWithFormat:@"%d",[self.L_num.text intValue]-1];
+//        [currImageView setImage:[UIImage imageNamed:@"like.png"]];
+//        self.L_likes.text = @"Like";
+//    }
+//    else
+//    {
+//        if (self.safewayController != nil)
+//        {
+//            self.safewayController.isLoading = YES;
+//        }
+//        if (self.meRootController != nil)
+//        {
+//            self.meRootController.isLoading = YES;
+//        }
+//        
+//        self.L_num.text = [NSString stringWithFormat:@"%d",[self.L_num.text intValue]+1];
+//        [currImageView setImage:[UIImage imageNamed:@"liked.png"]];
+//        self.L_likes.text = @"Liked";
+//        liked = YES;
+//    }
+//    
+//    NSNumber *num = [NSNumber numberWithBool:liked];
+//    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:self.dic forKey:@"offer"];
+//    [userInfo setValue:num forKey:@"liked"];
+//    [[NSNotificationCenter defaultCenter] postNotificationName: @"dataChangedNotification" object:nil userInfo:userInfo];
+//}
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
@@ -1224,11 +1255,7 @@
     NSLog(@"dic = %@",[[NSString alloc] initWithData:reciveData encoding:4]);
     if ([httpResponse statusCode] == 200)
     {
-        if ([(NSMutableURLRequest *)[connection currentRequest] isEqual:request_like])
-        {
-            [self likeUnlike];
-        }
-        else if ([(NSMutableURLRequest *)[connection currentRequest] isEqual:request_fb])
+        if ([(NSMutableURLRequest *)[connection currentRequest] isEqual:request_fb])
         {
             NSDictionary * dic_fb = [reciveData objectFromJSONData];
             NSUserDefaults * user = [NSUserDefaults standardUserDefaults];
