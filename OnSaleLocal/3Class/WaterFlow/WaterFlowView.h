@@ -28,7 +28,7 @@
     id<WaterFlowViewDataSource> _waterFlowViewDatasource;
 }
 
-//@property (nonatomic,retain) NSMutableArray * tableviews;
+@property (nonatomic,retain) NSMutableArray * tableviews;
 @property (nonatomic,assign) int columnCount; 
 @property (nonatomic,assign) int cellsTotal; 
 @property (nonatomic,assign) float cellWidth;

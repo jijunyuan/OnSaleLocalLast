@@ -53,7 +53,6 @@
 -(void)likedata:(NSNotification *)aNotification;
 -(void)getData2;
 
-@property(strong, nonatomic) NSMutableDictionary *cells;
 @end
 
 @implementation ViewController
@@ -208,7 +207,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.cells = [NSMutableDictionary dictionaryWithCapacity:0];
     
     self.L_result.font = [UIFont fontWithName:AllFont size:AllContentSize];
     self.L_skip.font = [UIFont fontWithName:AllFont size:AllContentSize];
@@ -226,7 +224,6 @@
     requestArr = [NSMutableArray arrayWithCapacity:0];
     mutable_dic = [NSMutableDictionary dictionaryWithCapacity:0];
     self.dataArr = [NSMutableArray arrayWithCapacity:0];
-    self.cells = [NSMutableDictionary dictionaryWithCapacity:0];
     self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
     self.l_navTitle.text = @"Trending";
     
@@ -376,7 +373,6 @@
         if ([request11 responseStatusCode] == 200)
         {
             [self.dataArr removeAllObjects];
-            self.cells = [NSMutableDictionary dictionaryWithCapacity:0];
             NSString * strRes = [[NSString alloc] initWithData:(NSData *)reciveData1 encoding:1];
             [self.dataArr addObjectsFromArray:[[strRes objectFromJSONString] valueForKey:@"items"]];
 //            NSLog(@"dataArr = %@", self.dataArr);
@@ -476,7 +472,6 @@
     }
     [request1 startSynchronous];
     self.dataArr = [NSMutableArray arrayWithCapacity:0];
-    self.cells = [NSMutableDictionary dictionaryWithCapacity:0];
     NSString * strRes = [[NSString alloc] initWithData:[request1 responseData] encoding:1];
     [self.dataArr addObjectsFromArray:[[strRes objectFromJSONString] valueForKey:@"items"]];
     [self.dataArr enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL *stop) {
@@ -603,7 +598,6 @@
         }
     }
     StorycellView *view1 = [[StorycellView alloc] initWithFrame:CGRectMake(0, 0, 160.0, tempHeight+150.0) andImageHeight:height andWidth:width];
-    [self.cells setObject:view1 forKey:[dict objectForKey:@"id"]];
     return view1;
 }
 
@@ -1218,21 +1212,24 @@
         NSMutableDictionary *item = [self.dataArr objectAtIndex:i];
         NSString *offerId = [item objectForKey:@"id"];
         if([offerId isEqualToString:likedOfferId]) {
-            StorycellView *cell = [self.cells objectForKey:offerId];
-            
+            StorycellView *cell = [self searchStorycellViewByTag:i];
             NSMutableDictionary *newItem = [NSMutableDictionary dictionaryWithDictionary:item];
             [newItem setValue:liked forKey:@"liked"];
             if([liked intValue] == 0) {
                 NSNumber *likes = [NSNumber numberWithInt:([[item objectForKey:@"likes"] intValue] - 1)];
                 [newItem setValue:likes forKey:@"likes"];
-                [cell.Btn_collect setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
-                cell.L_collNum.text = [likes stringValue];
+                if(cell) {
+                    [cell.Btn_collect setImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
+                    cell.L_collNum.text = [likes stringValue];
+                }
             }
             else {
                 NSNumber *likes = [NSNumber numberWithInt:([[item objectForKey:@"likes"] intValue] + 1)];
                 [newItem setValue:likes forKey:@"likes"];
-                [cell.Btn_collect setImage:[UIImage imageNamed:@"liked.png"] forState:UIControlStateNormal];
-                cell.L_collNum.text = [likes stringValue];
+                if(cell) {
+                    [cell.Btn_collect setImage:[UIImage imageNamed:@"liked.png"] forState:UIControlStateNormal];
+                    cell.L_collNum.text = [likes stringValue];
+                }
             }
             [newArray addObject:newItem];
         }
@@ -1254,4 +1251,19 @@
     }
 }
 
+-(StorycellView *) searchStorycellViewByTag:(int)tag
+{
+    for(UITableView *tv in waterFlow.tableviews) {
+        for (int i=0; i<1000; i++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow: i inSection: 0];
+            UITableViewCell *cell = [tv cellForRowAtIndexPath:indexPath];
+            for (UIView *view in  cell.contentView.subviews){
+                if ([view isKindOfClass:[StorycellView class]] && view.tag == tag){
+                    return (StorycellView *)view;
+                }
+            }
+        }
+    }
+    return nil;
+}
 @end

@@ -14,7 +14,7 @@
 @implementation WaterFlowView
 @synthesize columnCount = _columnCount, cellsTotal = _cellsTotal,cellWidth = _cellWidth;
 @synthesize waterFlowViewDelegate = _waterFlowViewDelegate,waterFlowViewDatasource = _waterFlowViewDatasource;
-//@synthesize tableviews;
+@synthesize tableviews;
 
 -(void)dealloc{
 
