@@ -1192,6 +1192,8 @@
 
 - (void)changeOfferLikeState:(NSString *)likedOfferId liked:(BOOL)like
 {
+    if(![likedOfferId isEqualToString:[self.dic objectForKey:@"id"]])
+        return;
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:self.dic];
     NSNumber *likes = [NSNumber numberWithInt:([[dict objectForKey:@"likes"] intValue] + (like ? 1 : -1))];
     [dict setValue:likes forKey:@"likes"];
