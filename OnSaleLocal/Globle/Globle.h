@@ -63,7 +63,7 @@
 #define IS_CURR_LOCATION @"curr_location"
 #define DEVIVE_TOKEN @"devicetoken"
 
-#define AllFont @"Gotham-Light"
+#define AllFont @"Gotham-Medium"
 #define AllFontBold @"Gotham-Bold"
 
 #define All_h1_Size ceil(20.0)

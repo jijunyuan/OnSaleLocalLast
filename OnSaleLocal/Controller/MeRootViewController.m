@@ -68,7 +68,8 @@
 @property (nonatomic,strong) IBOutlet UIImageView * IV_photo;
 @property (nonatomic,strong) IBOutlet UIScrollView * myScroll;
 @property (nonatomic,strong) NSMutableDictionary * dic_recodeClick;
-@property (nonatomic,strong)NSMutableDictionary * dataArr;
+@property (nonatomic,strong) NSMutableDictionary * dataArr;
+@property (nonatomic,strong) NSMutableDictionary * userInfo;
 
 @property(nonatomic,strong) IBOutlet UIView * middleView1;
 @property (nonatomic,strong) IBOutlet UIView * middleView2;
@@ -575,7 +576,7 @@
         if ([request responseStatusCode] == 200)
         {
             NSDictionary * dic = [reciveData objectFromJSONData];
-            NSLog(@"self.dataArr = %@",[reciveData objectFromJSONData]);
+            self.userInfo = [NSMutableDictionary dictionaryWithDictionary:dic];
             NSString * name = [[dic valueForKey:@"firstName"] stringByAppendingFormat:@" %@",[dic valueForKey:@"lastName"]];
             self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
             self.l_navTitle.text = [dic valueForKey:@"firstName"];
@@ -661,13 +662,12 @@
     {
         if ([aButton.currentImage isEqual:[UIImage imageNamed:@"follow.png"]])
         {
-            request_follow =  [WebService LikeFollow:userid];
+            [self followUnfollowUser:userid :YES :nil];
         }
         else
         {
-            request_follow =  [WebService UnLikeFollow:userid];
+            [self followUnfollowUser:userid :NO :nil];
         }
-        [NSURLConnection connectionWithRequest:request_follow delegate:self];
     }
     else
     {
@@ -899,10 +899,53 @@
 {
     [super dataChangedNotificationCallback:noti];
     NSDictionary *userInfo = noti.userInfo;
+    
     NSNumber *liked = [userInfo objectForKey:@"liked"];
     if(liked) {
         NSString * likedOfferId = [[userInfo objectForKey:@"offer"] objectForKey:@"id"];
         [self changeOfferLikeState:likedOfferId liked:[liked boolValue]];
+    }
+    
+    NSNumber *followUser = [userInfo objectForKey:@"followUser"];
+    if(followUser) {
+        NSString * userId = [userInfo objectForKey:@"userId"];
+        [self changeUserFollowState:userId followed:[followUser boolValue]];
+    }
+    
+    NSNumber *followStore = [userInfo objectForKey:@"followStore"];
+    if(followStore) {
+        NSString * storeId = [userInfo objectForKey:@"storeId"];
+        [self changeStoreFollowState:storeId followed:[followStore boolValue]];
+    }
+}
+
+- (void)changeStoreFollowState:(NSString *)userId followed:(BOOL)followed
+{
+    
+}
+
+- (void)changeUserFollowState:(NSString *)userId followed:(BOOL)followed
+{
+    if (![[self.userInfo valueForKey:@"id"] isEqualToString:[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_ID]])
+    {
+        // not me page
+        if([userId isEqualToString:[self.userInfo valueForKey:@"id"]]) {
+            // follow/unfollowed current user
+            if (!followed) {
+                [self.rightBtn setImage:[UIImage imageNamed:@"follow.png"] forState:UIControlStateNormal];
+            }
+            else {
+                [self.rightBtn setImage:[UIImage imageNamed:@"followed.png"] forState:UIControlStateNormal];
+            }
+            int newFollowers = [[self.userInfo objectForKey:@"followers"] intValue] + (followed ? 1 : -1);
+            [self.userInfo setObject:[NSNumber numberWithInt:newFollowers] forKey:@"followers"];
+            self.L_follows.text = [[NSString stringWithFormat:@"%d",[[self.userInfo valueForKey:@"followers"] intValue]] stringByAppendingFormat:@" follower"];
+        }
+    }
+    else {
+        int newFollowings = [[self.userInfo objectForKey:@"followings"] intValue] + (followed ? 1 : -1);
+        [self.userInfo setObject:[NSNumber numberWithInt:newFollowings] forKey:@"followings"];
+        self.L_followings.text = [[NSString stringWithFormat:@"%d",[[self.userInfo valueForKey:@"followings"] intValue]] stringByAppendingFormat:@" followings"];
     }
 }
 

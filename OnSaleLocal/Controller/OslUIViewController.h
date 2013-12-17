@@ -16,4 +16,7 @@
 -(BOOL) dataChanged;
 -(void)dataChangedNotificationCallback:(NSNotification *)noti;
 - (void) likeUnlike:(id)offer :(BOOL)liked :(id)params;
+- (void) followUnfollowUser:(NSString *)userId :(BOOL)follow :(id)params;
+- (void) followUnfollowStore:(NSString *)storeId :(BOOL)follow :(id)params;
+- (BOOL)isLoginUser:(NSString *)userId;
 @end

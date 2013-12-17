@@ -7,6 +7,7 @@
 //
 
 #import "OslUIViewController.h"
+#import "WebService.h"
 
 @interface OslUIViewController ()
 
@@ -76,7 +77,111 @@
     NSNumber *num = [NSNumber numberWithBool:liked];
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:offer forKey:@"offer"];
     [userInfo setValue:num forKey:@"liked"];
-    [userInfo setValue:params forKey:@"params"];
+    if(params) {
+        [userInfo setValue:params forKey:@"params"];
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName: @"dataChangedNotification" object:nil userInfo:userInfo];
 }
+
+- (void) followUnfollowUser:(NSString *)userId :(BOOL)follow :(id)params
+{
+    NSNumber *num = [NSNumber numberWithBool:follow];
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:userId forKey:@"userId"];
+    [userInfo setValue:num forKey:@"followUser"];
+    if(params) {
+        [userInfo setValue:params forKey:@"params"];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"dataChangedNotification" object:nil userInfo:userInfo];
+    
+    if(follow) {
+        NSURLRequest * request = [WebService LikeFollow:userId];
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError){
+                                   if(connectionError != nil) {
+                                       NSLog(@"follow user failed");
+                                       NSNumber *num = [NSNumber numberWithBool:!follow];
+                                       NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:userId forKey:@"userId"];
+                                       [userInfo setValue:num forKey:@"followUser"];
+                                       if(params) {
+                                           [userInfo setValue:params forKey:@"params"];
+                                       }
+                                       [[NSNotificationCenter defaultCenter] postNotificationName: @"dataChangedNotification" object:nil userInfo:userInfo];
+                                   }
+                               }
+         ];
+    }
+    else {
+        NSURLRequest * request = [WebService UnLikeFollow:userId];
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError){
+                                   if(connectionError != nil) {
+                                       NSLog(@"follow user failed");
+                                       NSNumber *num = [NSNumber numberWithBool:!follow];
+                                       NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:userId forKey:@"userId"];
+                                       [userInfo setValue:num forKey:@"followUser"];
+                                       if(params) {
+                                           [userInfo setValue:params forKey:@"params"];
+                                       }
+                                       [[NSNotificationCenter defaultCenter] postNotificationName: @"dataChangedNotification" object:nil userInfo:userInfo];
+                                   }
+                               }
+         ];
+    }
+}
+
+- (void) followUnfollowStore:(NSString *)storeId :(BOOL)follow :(id)params
+{
+    NSNumber *num = [NSNumber numberWithBool:follow];
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:storeId forKey:@"storeId"];
+    [userInfo setValue:num forKey:@"followStore"];
+    if(params) {
+        [userInfo setValue:params forKey:@"params"];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"dataChangedNotification" object:nil userInfo:userInfo];
+    
+    if(follow) {
+        NSURLRequest * request = [WebService LikeStore:storeId];
+        [NSURLConnection sendAsynchronousRequest:request
+            queue:[NSOperationQueue mainQueue]
+            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError){
+                if(connectionError != nil) {
+                    NSLog(@"follow store failed");
+                    NSNumber *num = [NSNumber numberWithBool:!follow];
+                    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:storeId forKey:@"storeId"];
+                    [userInfo setValue:num forKey:@"followStore"];
+                    if(params) {
+                        [userInfo setValue:params forKey:@"params"];
+                    }
+                    [[NSNotificationCenter defaultCenter] postNotificationName: @"dataChangedNotification" object:nil userInfo:userInfo];
+                }
+            }
+         ];
+    }
+    else {
+        NSURLRequest * request = [WebService UnLikeStore:storeId];
+        [NSURLConnection sendAsynchronousRequest:request
+                           queue:[NSOperationQueue mainQueue]
+               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError){
+                   if(connectionError != nil) {
+                       NSLog(@"unfollow store failed");
+                       NSNumber *num = [NSNumber numberWithBool:!follow];
+                       NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:storeId forKey:@"storeId"];
+                       [userInfo setValue:num forKey:@"followStore"];
+                       if(params) {
+                           [userInfo setValue:params forKey:@"params"];
+                       }
+                       [[NSNotificationCenter defaultCenter] postNotificationName: @"dataChangedNotification" object:nil userInfo:userInfo];
+                   }
+               }
+         ];
+    }
+}
+
+- (BOOL)isLoginUser:(NSString *)userId
+{
+    return [userId isEqualToString:[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_ID]];
+}
 @end
+
