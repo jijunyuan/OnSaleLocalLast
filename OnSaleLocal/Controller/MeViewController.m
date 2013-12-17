@@ -48,7 +48,7 @@
     else
     {
         self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
-    self.l_navTitle.text = @"Follows";
+    self.l_navTitle.text = @"Followers";
     }
     
 }
@@ -98,30 +98,6 @@
                 else
                 {
                     [dic setObject:[NSString stringWithFormat:@"%d",[[obj valueForKey:@"myFollowing"] intValue]] forKey:@"myFollowing"];
-                    
-//                    NSString * formatStr1 = [NSString stringWithFormat:@"/ws/v2/user/followings?userId=%@&format=json",self.userId];
-//                     NSString * urlSTr1 = [DO_MAIN stringByAppendingString:formatStr1];
-//                    __block ASIHTTPRequest * requestTemp = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlSTr1]];
-//                    [requestTemp setTimeOutSeconds:MAX_SECONDS_REQUEST];
-//                    [requestTemp setCacheStoragePolicy:ASIAskServerIfModifiedWhenStaleCachePolicy];
-//                    [ requestTemp setNumberOfTimesToRetryOnTimeout:3]; //set times when request fail
-//                    [requestTemp setDownloadCache:[TKHttpRequest ShareMyCache]];
-//                    [requestTemp setSecondsToCache:60*60*2];
-//                    [requestTemp setUseCookiePersistence:YES];
-//                    [requestTemp buildRequestHeaders];
-//                    [requestTemp startSynchronous];
-//                    NSMutableArray * arr1 = [[[requestTemp responseData] objectFromJSONData] valueForKey:@"items"];
-//                    
-//                    NSMutableArray * arrTemp = [NSMutableArray arrayWithCapacity:0];
-//                    [arr1 enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL *stop) {
-//                        NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithDictionary:[obj valueForKey:@"user"]];
-//                        [dic setObject:[NSString stringWithFormat:@"%@",[obj valueForKey:@"myFollowing"]] forKey:@"myFollower"];
-//                        [arrTemp addObject:dic];
-//                    }];
-//                    NSLog(@"arr test = %d",arrTemp.count);
-//                    self.currFollowings = arrTemp.count;
-    
-                    
                 }
                 [self.dataArr addObject:dic];
             }];

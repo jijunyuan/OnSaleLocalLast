@@ -52,9 +52,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>GothamLight.ttf</string>
-		<string>GothamBold.ttf</string>
-		<string>Gotham-XLight_0.ttf</string>
+		<string>Gotham-Medium_0.ttf</string>
 		<string>Gotham-Bold_0.ttf</string>
 	</array>
 	<key>UIPrerenderedIcon</key>
