@@ -65,7 +65,7 @@
     
     self.TV_tableview.tableFooterView = [[UIView alloc] init];
     [self.rightBtn setImage:[UIImage imageNamed:@"next.png"] forState:UIControlStateNormal];
-    [self.rightBtn addTarget:self action:@selector(nextClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.rightBtn addTarget:self action:@selector(nextClick) forControlEvents:UIButtonClickEvent];
     
     if (_refreshTableView == nil)
     {
@@ -235,7 +235,7 @@
         button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.layer.borderColor = [UIColor colorWithRed:127.0/255.0 green:127.0/255.0 blue:127.0/255.0 alpha:1.0].CGColor;
         button.tag = indexPath.row;
-        [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIButtonClickEvent];
         button.frame = CGRectMake(275, 15, 20, 20);
         button.layer.borderWidth = 1;
         button.layer.cornerRadius = 10;

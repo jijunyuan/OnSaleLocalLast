@@ -447,7 +447,7 @@
         cell.L_phone.text = [[dic1 valueForKey:@"store"] valueForKey:@"phone"];
         cell.L_name.text = [[dic1 valueForKey:@"store"] valueForKey:@"name"];
         cell.L_homedown.text = [NSString stringWithFormat:@"%@,%@,%@",[[dic1 valueForKey:@"store"] valueForKey:@"address"],[[dic1 valueForKey:@"store"] valueForKey:@"city"],[[dic1 valueForKey:@"store"] valueForKey:@"state"]];
-        [cell.Btn_follow addTarget:self action:@selector(unfollowed:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.Btn_follow addTarget:self action:@selector(unfollowed:) forControlEvents:UIButtonClickEvent];
         cell.Btn_follow.tag = indexPath.row;
     }
     return cell;

@@ -63,8 +63,11 @@
 #define IS_CURR_LOCATION @"curr_location"
 #define DEVIVE_TOKEN @"devicetoken"
 
-#define AllFont @"GothamLight"
-#define AllFontBold @"GothamBold"
+//#define AllFont @"GothamLight"
+//#define AllFontBold @"GothamBold"
+
+#define AllFont @"AvenirNext-Regular"
+#define AllFontBold @"AvenirNext-Bold"
 
 #define All_h1_Size ceil(20.0)
 #define All_h2_size ceil(18.0)
@@ -75,3 +78,6 @@
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #endif
+
+//#define UIButtonClickEvent UIControlEventTouchUpInside
+#define UIButtonClickEvent UIControlEventTouchDown

@@ -35,7 +35,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     [self.rightBtn setImage:[UIImage imageNamed:@"send.png"] forState:UIControlStateNormal];
-    [self.rightBtn addTarget:self action:@selector(sendClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.rightBtn addTarget:self action:@selector(sendClick) forControlEvents:UIButtonClickEvent];
 }
 -(void)sendClick
 {

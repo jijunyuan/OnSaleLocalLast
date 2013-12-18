@@ -594,7 +594,7 @@
                     [self.rightBtn setImage:[UIImage imageNamed:@"followed.png"] forState:UIControlStateNormal];
                 }
                 self.rightBtn.frame = CGRectMake(self.rightBtn.frame.origin.x+10, self.rightBtn.frame.origin.y+1, 30, 30);
-                [self.rightBtn addTarget:self action:@selector(rightButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+                [self.rightBtn addTarget:self action:@selector(rightButtonClick:) forControlEvents:UIButtonClickEvent];
             }
             
             

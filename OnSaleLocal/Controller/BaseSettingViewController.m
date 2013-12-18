@@ -44,7 +44,7 @@
     
     UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backBtn.showsTouchWhenHighlighted = YES;
-    [backBtn addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
+    [backBtn addTarget:self action:@selector(backClick:) forControlEvents:UIButtonClickEvent];
     self.leftButton = backBtn;
   //  backBtn.showsTouchWhenHighlighted = YES;
     backBtn.frame = CGRectMake(9, 0, 44, 44);

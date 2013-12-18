@@ -61,7 +61,7 @@
     self.rightBtn.layer.borderWidth = 1;
     self.rightBtn.layer.borderColor = [UIColor whiteColor].CGColor;
     self.rightBtn.layer.cornerRadius = 5;
-    [self.rightBtn addTarget:self action:@selector(rightClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.rightBtn addTarget:self action:@selector(rightClick:) forControlEvents:UIButtonClickEvent];
 }
 -(void)rightClick:(UIButton *)aButton
 {

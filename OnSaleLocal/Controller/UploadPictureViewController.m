@@ -42,7 +42,7 @@
     self.btn_choose.titleLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
     
     [self.rightBtn setImage:[UIImage imageNamed:@"next.png"] forState:UIControlStateNormal];
-    [self.rightBtn addTarget:self action:@selector(nextClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.rightBtn addTarget:self action:@selector(nextClick) forControlEvents:UIButtonClickEvent];
     self.rightBtn.frame = CGRectMake(self.rightBtn.frame.origin.x, self.rightBtn.frame.origin.y, 30, 30);
     
     pickViewController = [[UIImagePickerController alloc]init];

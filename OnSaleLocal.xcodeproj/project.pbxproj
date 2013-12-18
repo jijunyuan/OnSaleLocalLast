@@ -101,6 +101,7 @@
 		4DF728C71802F1480081AD30 /* CreatePasswordViewController4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF728C61802F1480081AD30 /* CreatePasswordViewController4.xib */; };
 		E94C0B58185FC9C500004AB0 /* Gotham-Medium_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E94C0B57185FC98400004AB0 /* Gotham-Medium_0.ttf */; };
 		E94C0B5A18602DE100004AB0 /* Gotham-Light_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E94C0B5918602D7200004AB0 /* Gotham-Light_0.ttf */; };
+		E94D2D1918617465008749EE /* avenir-lt-45-book-1361499806.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E94D2D18186173B9008749EE /* avenir-lt-45-book-1361499806.ttf */; };
 		E9A8233A1855A1BC00196B41 /* GothamBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9A823391855A1BC00196B41 /* GothamBold.ttf */; };
 		E9A8233B1855A61400196B41 /* Gotham-Bold_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9A823381855A1AF00196B41 /* Gotham-Bold_0.ttf */; };
 		E9F23347185D7DE800DD99D9 /* OslUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F23346185D7DE800DD99D9 /* OslUIViewController.m */; };
@@ -415,6 +416,7 @@
 		4DF728C61802F1480081AD30 /* CreatePasswordViewController4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePasswordViewController4.xib; sourceTree = "<group>"; };
 		E94C0B57185FC98400004AB0 /* Gotham-Medium_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Medium_0.ttf"; sourceTree = "<group>"; };
 		E94C0B5918602D7200004AB0 /* Gotham-Light_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Light_0.ttf"; sourceTree = "<group>"; };
+		E94D2D18186173B9008749EE /* avenir-lt-45-book-1361499806.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "avenir-lt-45-book-1361499806.ttf"; sourceTree = "<group>"; };
 		E9A823371855A19600196B41 /* Gotham-XLight_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-XLight_0.ttf"; sourceTree = "<group>"; };
 		E9A823381855A1AF00196B41 /* Gotham-Bold_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Bold_0.ttf"; sourceTree = "<group>"; };
 		E9A823391855A1BC00196B41 /* GothamBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamBold.ttf; sourceTree = "<group>"; };
@@ -1174,6 +1176,7 @@
 		F14983A617E0AFD000C1CEC1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E94D2D18186173B9008749EE /* avenir-lt-45-book-1361499806.ttf */,
 				E94C0B5918602D7200004AB0 /* Gotham-Light_0.ttf */,
 				E94C0B57185FC98400004AB0 /* Gotham-Medium_0.ttf */,
 				E9A823391855A1BC00196B41 /* GothamBold.ttf */,
@@ -1574,6 +1577,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E94D2D1918617465008749EE /* avenir-lt-45-book-1361499806.ttf in Resources */,
 				E94C0B5A18602DE100004AB0 /* Gotham-Light_0.ttf in Resources */,
 				E94C0B58185FC9C500004AB0 /* Gotham-Medium_0.ttf in Resources */,
 				E9A8233B1855A61400196B41 /* Gotham-Bold_0.ttf in Resources */,

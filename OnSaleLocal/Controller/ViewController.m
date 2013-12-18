@@ -229,7 +229,7 @@
     
    // self.l_navTitle.font = [UIFont fontWithName:AllFont size:AllContentSize];
     //    UIButton * buttonMap = [UIButton buttonWithType:UIButtonTypeCustom];
-    //    [buttonMap addTarget:self action:@selector(mapClick) forControlEvents:UIControlEventTouchUpInside];
+    //    [buttonMap addTarget:self action:@selector(mapClick) forControlEvents:UIButtonClickEvent];
     //    buttonMap.frame = CGRectMake(280, 7, 30, 30);
     //    [buttonMap setImage:[UIImage imageNamed:@"map_view.png"] forState:UIControlStateNormal];
     //    [self.view addSubview:buttonMap];
@@ -638,7 +638,7 @@
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(stopClick:)];
     leftView.L_storename.userInteractionEnabled =YES;
     [leftView.L_storename addGestureRecognizer:tap];
-    [leftView.Btn_temp addTarget:self action:@selector(stopClick1:) forControlEvents:UIControlEventTouchUpInside];
+    [leftView.Btn_temp addTarget:self action:@selector(stopClick1:) forControlEvents:UIButtonClickEvent];
     
     NSDateFormatter  * formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MM/dd/yyyy"];
@@ -648,8 +648,8 @@
     leftView.TF_time.font = [UIFont systemFontOfSize:12];
     NSString * collumStr = [NSString stringWithFormat:@"%@",[dic valueForKey:@"likes"]];
     leftView.Btn_collect.tag = 100+arrIndex;
-    [leftView.Btn_collect addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [leftView.Btn_share addTarget:self action:@selector(ShareClick:) forControlEvents:UIControlEventTouchUpInside];
+    [leftView.Btn_collect addTarget:self action:@selector(likeButtonClick:) forControlEvents:UIButtonClickEvent];
+    [leftView.Btn_share addTarget:self action:@selector(ShareClick:) forControlEvents:UIButtonClickEvent];
     leftView.Btn_share.tag = arrIndex;
     
     NSLog(@"%d %d: liked: %d", indexPath.row, indexPath.column, [[dic valueForKey:@"liked"] intValue]);
@@ -884,7 +884,7 @@
 }
 -(void)likeButtonClick:(UIButton *)aButton
 {
-    
+    NSLog(@"===========like button clicked");
     if (self.isFromMeLikes)
     {
         if ([[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_STATUS] isEqualToString:@"1"])
@@ -1143,7 +1143,7 @@
 }
 -(void)ShareClick:(UIButton *)aButton
 {
-    
+    NSLog(@"====================share btn clicked");
     NSDictionary * dic = [self.dataArr objectAtIndex:aButton.tag];
      NSString * linkStr = [NSString stringWithFormat:@"%@/offer/details/index.jsp.oo",DO_MAIN];
     NSLog(@"dic = %@",dic);

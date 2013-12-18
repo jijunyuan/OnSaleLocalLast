@@ -161,7 +161,7 @@
     self.l_navTitle.text = self.name;
     
     [self.rightBtn setTitle:@"+" forState:UIControlStateNormal];
-    [self.rightBtn addTarget:self action:@selector(rightButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.rightBtn addTarget:self action:@selector(rightButtonClick) forControlEvents:UIButtonClickEvent];
 
     if ([[[self.dic valueForKey:@"storeDetails"] valueForKey:@"following"] intValue] == 0)
     {

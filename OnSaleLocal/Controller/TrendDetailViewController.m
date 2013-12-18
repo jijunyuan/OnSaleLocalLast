@@ -362,7 +362,7 @@
     }
     
     
-    [self.rightBtn addTarget:self action:@selector(ShareClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.rightBtn addTarget:self action:@selector(ShareClick:) forControlEvents:UIButtonClickEvent];
     if (_refreshTableView == nil)
     {
         //初始化下拉刷新控件
@@ -619,7 +619,7 @@
         buttonBuy.layer.cornerRadius = 5;
         buttonBuy.frame = CGRectMake(210, 5, 90, 39);
         [buttonBuy setImage:[UIImage imageNamed:@"btn_shop.png"] forState:UIControlStateNormal];
-        [buttonBuy addTarget:self action:@selector(buttonClickForNuyNow) forControlEvents:UIControlEventTouchUpInside];
+        [buttonBuy addTarget:self action:@selector(buttonClickForNuyNow) forControlEvents:UIButtonClickEvent];
         // [self.myScrollView addSubview:buttonBuy];
         
         height = height+30;
@@ -631,7 +631,7 @@
         buttonBuy.layer.cornerRadius = 5;
         buttonBuy.frame = CGRectMake(210, height+160, 90, 39);
         [buttonBuy setImage:[UIImage imageNamed:@"btn_call.png"] forState:UIControlStateNormal];
-        [buttonBuy addTarget:self action:@selector(callIphone1) forControlEvents:UIControlEventTouchUpInside];
+        [buttonBuy addTarget:self action:@selector(callIphone1) forControlEvents:UIButtonClickEvent];
         //  [self.myScrollView addSubview:buttonBuy];
         
         height = height+30;
@@ -841,7 +841,7 @@
     [bgViewmap addSubview:l_comment_num];
     
     UIButton * buttonCommbit = [UIButton buttonWithType:UIButtonTypeCustom];
-    [buttonCommbit addTarget:self action:@selector(commentClick) forControlEvents:UIControlEventTouchUpInside];
+    [buttonCommbit addTarget:self action:@selector(commentClick) forControlEvents:UIButtonClickEvent];
     buttonCommbit.frame = CGRectMake(5, 160, 310, 34);
     buttonCommbit.layer.borderWidth = 1;
     buttonCommbit.layer.borderColor = [UIColor colorWithRed:196.0/233.0 green:196.0/233.0 blue:196.0/233.0 alpha:1.0].CGColor;

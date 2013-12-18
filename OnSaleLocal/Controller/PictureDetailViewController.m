@@ -98,7 +98,7 @@
     self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
     self.l_navTitle.text = @"Description";
     [self.rightBtn setImage:[UIImage imageNamed:@"upload.png"] forState:UIControlStateNormal];
-    [self.rightBtn addTarget:self action:@selector(sendClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.rightBtn addTarget:self action:@selector(sendClick:) forControlEvents:UIButtonClickEvent];
     
     //self.TF_startdate.inputView = [[UIView alloc] init];
     self.TF_enddate.inputView = [[UIView alloc] init];

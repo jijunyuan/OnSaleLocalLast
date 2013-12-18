@@ -69,7 +69,7 @@
     self.L_currLocation.font = [UIFont fontWithName:AllFont size:AllContentSize];
     
     [self.rightBtn setImage:[UIImage imageNamed:@"save.png"] forState:UIControlStateNormal];
-    [self.rightBtn addTarget:self action:@selector(sumbitLocation:) forControlEvents:UIControlEventTouchUpInside];
+    [self.rightBtn addTarget:self action:@selector(sumbitLocation:) forControlEvents:UIButtonClickEvent];
     self.rightBtn.frame = CGRectMake(self.rightBtn.frame.origin.x, self.rightBtn.frame.origin.y, 30, 30);
     
     

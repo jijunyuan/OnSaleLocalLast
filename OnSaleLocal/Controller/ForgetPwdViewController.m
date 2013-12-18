@@ -42,7 +42,7 @@
     
     self.rightBtn.alpha = 1.0;
     [self.rightBtn setImage:[UIImage imageNamed:@"send.png"] forState:UIControlStateNormal];
-    [self.rightBtn addTarget:self action:@selector(sendClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.rightBtn addTarget:self action:@selector(sendClick:) forControlEvents:UIButtonClickEvent];
     self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
     self.l_navTitle.text = @"Recover Password";
     

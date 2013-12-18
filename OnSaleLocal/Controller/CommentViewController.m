@@ -40,7 +40,7 @@
     [self.rightBtn setImage:[UIImage imageNamed:@"save.png"] forState:UIControlStateNormal];
     self.rightBtn.frame = CGRectMake(self.rightBtn.frame.origin.x, self.rightBtn.frame.origin.y, 30, 30);
     [self.rightBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.rightBtn addTarget:self action:@selector(doneClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.rightBtn addTarget:self action:@selector(doneClick) forControlEvents:UIButtonClickEvent];
 }
 -(void)doneClick
 {
