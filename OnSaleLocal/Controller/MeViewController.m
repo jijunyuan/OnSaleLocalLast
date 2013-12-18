@@ -10,7 +10,7 @@
 #import "MeListCell.h"
 #import "TKHttpRequest.h"
 #import "MeRootViewController.h"
-
+#import "FollowsCell.h"
 
 @interface MeViewController ()<UITableViewDelegate>
 {
@@ -215,4 +215,53 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) dataChangedNotificationCallback:(NSNotification *)noti
+{
+    [super dataChangedNotificationCallback:noti];
+    NSDictionary *userInfo = noti.userInfo;
+    
+    NSNumber *liked = [userInfo objectForKey:@"liked"];
+    if(liked) {
+        NSString * likedOfferId = [[userInfo objectForKey:@"offer"] objectForKey:@"id"];
+    }
+    
+    NSNumber *followUser = [userInfo objectForKey:@"followUser"];
+    if(followUser) {
+        NSString * userId = [userInfo objectForKey:@"userId"];
+        [self changeUserFollowState:userId followed:[followUser boolValue]];
+    }
+    
+    NSNumber *followStore = [userInfo objectForKey:@"followStore"];
+    if(followStore) {
+        NSString * storeId = [userInfo objectForKey:@"storeId"];
+    }
+}
+
+- (void)changeUserFollowState:(NSString *)userId followed:(BOOL)followed
+{
+    for(int i=0; i<[self.dataArr count]; i++) {
+        NSDictionary *dic = [self.dataArr objectAtIndex:i];
+        if([userId isEqualToString:[dic objectForKey:@"id"]]) {
+            NSMutableDictionary *newdic = [NSMutableDictionary dictionaryWithDictionary:dic];
+            [newdic setObject:[NSNumber numberWithBool:followed] forKey:@"myFollowings"];
+            [self changeNumer:dic diff:(followed ? 1 : -1) forKey:@"followers"];
+            [self.dataArr replaceObjectAtIndex:i withObject:newdic];
+        }
+        if([self isLoginUser:[dic objectForKey:@"id"]]) {
+            NSMutableDictionary *newdic = [NSMutableDictionary dictionaryWithDictionary:dic];
+            [self changeNumer:dic diff:(followed ? 1 : -1) forKey:@"followings"];
+            [self.dataArr replaceObjectAtIndex:i withObject:newdic];
+        }
+    }
+    
+    FollowsCell *cell = [self searchTableView:self.myTableView forClass:[FollowsCell class] withStringTag:userId];
+    if(cell) {
+        if(followed) {
+            [cell.Btn_follow setImage:[UIImage imageNamed:@"followed.png"] forState:UIControlStateNormal];
+        }
+        else {
+            [cell.Btn_follow setImage:[UIImage imageNamed:@"follow.png"] forState:UIControlStateNormal];
+        }
+    }
+}
 @end

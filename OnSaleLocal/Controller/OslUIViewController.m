@@ -8,6 +8,7 @@
 
 #import "OslUIViewController.h"
 #import "WebService.h"
+#import "UIView+StringTag.h"
 
 @interface OslUIViewController ()
 
@@ -182,6 +183,41 @@
 - (BOOL)isLoginUser:(NSString *)userId
 {
     return [userId isEqualToString:[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_ID]];
+}
+
+-(id) searchTableView:(UITableView *)tv forClass:(Class)cls withTag:(int)tag
+{
+    for (int i=0; i<1000; i++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow: i inSection: 0];
+        UIView *cell = [tv cellForRowAtIndexPath:indexPath];
+        if ([cell isKindOfClass:cls] && cell.tag == tag){
+            return (id)cell;
+        }
+    }
+    return nil;
+}
+
+-(id) searchTableView:(UITableView *)tv forClass:(Class)cls withStringTag:(NSString *)tag
+{
+    for (int i=0; i<1000; i++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow: i inSection: 0];
+        UIView *cell = [tv cellForRowAtIndexPath:indexPath];
+        if ([cell isKindOfClass:cls] && [tag isEqualToString:cell.stringTag]){
+            return (id)cell;
+        }
+    }
+    return nil;
+}
+
+-(void) changeNumer:(NSDictionary *)dic diff:(int)diff forKey:(NSString *)key
+{
+    int number = [[dic objectForKey:key] intValue] + diff;
+    [dic setValue:[NSNumber numberWithInt:number] forKey:key];
+}
+
+-(void) setBool:(NSDictionary *)dic value:(BOOL)value forKey:(NSString *)key
+{
+    [dic setValue:[NSNumber numberWithBool:value] forKey:key];
 }
 @end
 

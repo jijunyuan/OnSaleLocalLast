@@ -54,6 +54,7 @@
 	<array>
 		<string>Gotham-Medium_0.ttf</string>
 		<string>Gotham-Bold_0.ttf</string>
+		<string>Gotham-Light_0.ttf</string>
 	</array>
 	<key>UIPrerenderedIcon</key>
 	<true/>

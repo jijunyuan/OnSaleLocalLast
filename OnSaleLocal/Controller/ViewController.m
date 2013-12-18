@@ -1251,7 +1251,7 @@
     }
 }
 
--(StorycellView *) searchStorycellViewByTag:(int)tag
+-(id) searchStorycellViewByTag:(int)tag
 {
     for(UITableView *tv in waterFlow.tableviews) {
         for (int i=0; i<1000; i++) {
@@ -1259,7 +1259,7 @@
             UITableViewCell *cell = [tv cellForRowAtIndexPath:indexPath];
             for (UIView *view in  cell.contentView.subviews){
                 if ([view isKindOfClass:[StorycellView class]] && view.tag == tag){
-                    return (StorycellView *)view;
+                    return (id)view;
                 }
             }
         }

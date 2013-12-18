@@ -15,6 +15,7 @@
 #import "SafewayViewController.h"
 #import "MeRootViewController.h"
 #import "LoginViewController.h"
+#import "UIView+StringTag.h"
 
 @interface FollowsViewController ()<EGORefreshTableHeaderDelegate,UIAlertViewDelegate>
 {
@@ -338,6 +339,7 @@
     {
         cell = [[FollowsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:markStr];
     }
+    cell.stringTag = [[self.dataArr objectAtIndex:indexPath.row] valueForKey:@"id"];
     cell.L_name.text = [NSString stringWithFormat:@"%@,%@",[[self.dataArr objectAtIndex:indexPath.row] valueForKey:@"firstName"],[[self.dataArr objectAtIndex:indexPath.row] valueForKey:@"lastName"]];
     NSString * codeZip = [NSString stringWithFormat:@"%@",[[self.dataArr objectAtIndex:indexPath.row] valueForKey:@"zipcode"]];
     if ([codeZip isEqualToString:@"(null)"])
@@ -498,50 +500,13 @@
         
         if ([aButton.imageView.image isEqual:[UIImage imageNamed:@"followed.png"]])
         {
-            tempButton = aButton;
-            NSURLRequest * request2 = [WebService UnLikeFollow:[[self.dataArr objectAtIndex:aButton.tag] valueForKey:@"id"]];
-            NSURLResponse * response2 = [[NSURLResponse alloc] init];
-            NSError * error2 = [[NSError alloc] init];
-            [NSURLConnection sendSynchronousRequest:request2 returningResponse:&response2 error:&error2];
-            NSHTTPURLResponse * httpResponse1 = (NSHTTPURLResponse *)response2;
-            NSLog(@"status code = %d",httpResponse1.statusCode);
-            if (httpResponse1.statusCode == 200)
-            {
-                [self getData];
-                [aButton setImage:[UIImage imageNamed:@"follow.png"] forState:UIControlStateNormal];
-                [self.myTableView reloadData];
-                
-                //meroot change number
-                [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"refreshRoot" object:nil]];
-                
-                if (!self.isFollowing)
-                {
-                    self.currFollowings --;
-                }
-            }
+            NSString *userId = [[self.dataArr objectAtIndex:aButton.tag] valueForKey:@"id"];
+            [self followUnfollowUser:userId :NO :nil];
         }
         else
         {
-            NSURLRequest * request2 = [WebService LikeFollow:[[self.dataArr objectAtIndex:aButton.tag] valueForKey:@"id"]];
-            NSURLResponse * response2 = [[NSURLResponse alloc] init];
-            NSError * error2 = [[NSError alloc] init];
-           NSData * reciveDataSt = [NSURLConnection sendSynchronousRequest:request2 returningResponse:&response2 error:&error2];
-            NSHTTPURLResponse * httpResponse1 = (NSHTTPURLResponse *)response2;
-            if (httpResponse1.statusCode == 200)
-            {
-                [self getData];
-                [self.myTableView reloadData];
-                [aButton setImage:[UIImage imageNamed:@"followed.png"] forState:UIControlStateNormal];
-                if (!isFollowing)
-                {
-                    self.currFollowings++;
-                }
-            }
-            else
-            {
-                NSLog(@"curr = %@",[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_ID]);
-                NSLog(@"error = %@",[[NSString alloc] initWithData:reciveDataSt encoding:4]);
-            }
+            NSString *userId = [[self.dataArr objectAtIndex:aButton.tag] valueForKey:@"id"];
+            [self followUnfollowUser:userId :YES :nil];
         }
     }
     else

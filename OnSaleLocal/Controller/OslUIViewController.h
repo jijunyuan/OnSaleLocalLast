@@ -19,4 +19,8 @@
 - (void) followUnfollowUser:(NSString *)userId :(BOOL)follow :(id)params;
 - (void) followUnfollowStore:(NSString *)storeId :(BOOL)follow :(id)params;
 - (BOOL)isLoginUser:(NSString *)userId;
+-(id) searchTableView:(UITableView *)tv forClass:(Class)cls withTag:(int)tag;
+-(id) searchTableView:(UITableView *)tv forClass:(Class)cls withStringTag:(NSString *)tag;
+-(void) changeNumer:(NSDictionary *)dic diff:(int)diff forKey:(NSString *)key;
+-(void) setBool:(NSDictionary *)dic value:(BOOL)value forKey:(NSString *)key;
 @end
