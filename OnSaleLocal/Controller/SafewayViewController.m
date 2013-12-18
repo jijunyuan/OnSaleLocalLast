@@ -233,34 +233,11 @@
     {
         if ([self.rightBtn.imageView.image isEqual:[UIImage imageNamed:@"follow.png"]])
         {
-            
-            NSURLRequest * request = [WebService LikeStore:self.merchantId];
-            NSURLResponse * response = [[NSURLResponse alloc] init];
-            NSError * error = [[NSError alloc] init];
-            [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-            NSHTTPURLResponse * httpResponse1 = (NSHTTPURLResponse *)response;
-            if (httpResponse1.statusCode == 200)
-            {
-                int number = [self.l_followNumber.text intValue];
-                number++;
-                self.l_followNumber.text = [NSString stringWithFormat:@"%d",number];
-                [self.rightBtn setImage:[UIImage imageNamed:@"followed.png"] forState:UIControlStateNormal];
-            }
+            [self followUnfollowStore:[[self.dic objectForKey:@"storeDetails"] objectForKey:@"id" ] :YES :nil];
         }
         else
         {
-            NSURLRequest * request = [WebService UnLikeStore:self.merchantId];
-            NSURLResponse * response = [[NSURLResponse alloc] init];
-            NSError * error = [[NSError alloc] init];
-            [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-            NSHTTPURLResponse * httpResponse1 = (NSHTTPURLResponse *)response;
-            if (httpResponse1.statusCode == 200)
-            {
-                int number = [self.l_followNumber.text intValue];
-                number--;
-                self.l_followNumber.text = [NSString stringWithFormat:@"%d",number];
-                [self.rightBtn setImage:[UIImage imageNamed:@"follow.png"] forState:UIControlStateNormal];
-            }
+            [self followUnfollowStore:[[self.dic objectForKey:@"storeDetails"] objectForKey:@"id" ] :NO :nil];
         }
     }
     else
@@ -524,7 +501,8 @@
     [request buildRequestHeaders];
     [request startSynchronous];
     NSString * strResult = [[NSString alloc] initWithData:[request responseData] encoding:1];
-    self.dic = [strResult objectFromJSONString];
+    self.dic = [NSMutableDictionary dictionaryWithDictionary:[strResult objectFromJSONString]];
+    [self.dic setValue:[NSMutableDictionary dictionaryWithDictionary:[self.dic objectForKey:@"storeDetails"]] forKey:@"storeDetails"];
     NSLog(@"self.dic = %@",self.dic);
 }
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation
@@ -583,7 +561,8 @@
         [MyActivceView stopAnimatedInView:self.view];
         if ([request responseStatusCode] == 200)
         {
-            self.dic = [reciveData objectFromJSONData];
+            self.dic = [NSMutableDictionary dictionaryWithDictionary:[reciveData objectFromJSONData]];
+            [self.dic setValue:[NSMutableDictionary dictionaryWithDictionary:[self.dic objectForKey:@"storeDetails"]] forKey:@"storeDetails"];
             NSLog(@"dic = %@",dic);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self chageUI];
@@ -943,6 +922,36 @@
         NSString * likedOfferId = [[userInfo objectForKey:@"offer"] objectForKey:@"id"];
         [self changeOfferLikeState:likedOfferId liked:[liked boolValue]];
     }
+    
+    NSNumber *followUser = [userInfo objectForKey:@"followUser"];
+    if(followUser) {
+        NSString * userId = [userInfo objectForKey:@"userId"];
+    }
+    
+    NSNumber *followStore = [userInfo objectForKey:@"followStore"];
+    if(followStore) {
+        NSString * storeId = [userInfo objectForKey:@"storeId"];
+        [self changeStoreFollowState:storeId followed:[followStore boolValue]];
+    }
+}
+
+- (void)changeStoreFollowState:(NSString *)storeId followed:(BOOL)followed
+{
+    NSString *currentStoreId = [[self.dic objectForKey:@"storeDetails"] objectForKey:@"id"];
+    if(![storeId isEqualToString:currentStoreId])
+        return;
+    
+    [self changeNumer:[self.dic objectForKey:@"storeDetails"] diff:(followed ? 1 : -1) forKey:@"followers"];
+    [self setBool:[self.dic objectForKey:@"storeDetails"] value:followed forKey:@"following"];
+    
+    if(followed) {
+        [self.rightBtn setImage:[UIImage imageNamed:@"followed.png"] forState:UIControlStateNormal];
+    }
+    else {
+        [self.rightBtn setImage:[UIImage imageNamed:@"follow.png"] forState:UIControlStateNormal];
+    }
+    
+    self.l_followNumber.text = [[[self.dic objectForKey:@"storeDetails"] objectForKey:@"followers"] stringValue];
 }
 
 - (void)changeOfferLikeState:(NSString *)likedOfferId liked:(BOOL)like
