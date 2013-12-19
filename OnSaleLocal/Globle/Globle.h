@@ -67,7 +67,8 @@
 //#define AllFontBold @"GothamBold"
 
 #define AllFont @"AvenirNext-Regular"
-#define AllFontBold @"AvenirNext-Bold"
+//#define AllFontBold @"AvenirNext-Bold"
+#define AllFontBold @"Avenir-Roman"
 
 #define All_h1_Size ceil(20.0)
 #define All_h2_size ceil(18.0)
