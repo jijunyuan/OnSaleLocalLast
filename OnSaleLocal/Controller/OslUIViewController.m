@@ -202,7 +202,9 @@
     for (int i=0; i<1000; i++) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow: i inSection: 0];
         UIView *cell = [tv cellForRowAtIndexPath:indexPath];
-        if ([cell isKindOfClass:cls] && [tag isEqualToString:cell.stringTag]){
+        BOOL isCls = [cell isKindOfClass:cls];
+        NSString *cellTag = cell.stringTag;
+        if (isCls && [tag isEqualToString:cellTag]){
             return (id)cell;
         }
     }

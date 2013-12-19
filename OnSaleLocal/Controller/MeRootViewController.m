@@ -921,7 +921,10 @@
 
 - (void)changeStoreFollowState:(NSString *)userId followed:(BOOL)followed
 {
-    
+    if(![self isLoginUser:self.userid])
+        return;
+    [self changeNumer:self.userInfo diff:(followed?1:-1) forKey:@"stores"];
+    self.L_storeFollowed.text = [[NSString stringWithFormat:@"%d",[[self.userInfo valueForKey:@"stores"] intValue]] stringByAppendingFormat:@""];
 }
 
 - (void)changeUserFollowState:(NSString *)userId followed:(BOOL)followed

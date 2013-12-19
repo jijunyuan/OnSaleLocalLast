@@ -14,6 +14,7 @@
 #import "MeRootViewController.h"
 #import "LoginViewController.h"
 #import "AppDelegate.h"
+#import "UIView+StringTag.h"
 
 @interface StoreFollowersViewController ()<EGORefreshTableHeaderDelegate,UIAlertViewDelegate>
 {
@@ -97,7 +98,7 @@
         {
             if (!isLikes)
             {
-                self.dataArr = [[reciveData objectFromJSONData] valueForKey:@"items"];
+                self.dataArr = [NSMutableArray arrayWithArray:[[reciveData objectFromJSONData] valueForKey:@"items"]];
                 NSLog(@"dataArr = %@",self.dataArr);
             }
             else
@@ -169,7 +170,7 @@
     self.dataArr = [NSMutableArray arrayWithCapacity:0];
     if (!isLikes)
     {
-        self.dataArr = [[[request responseData] objectFromJSONData] valueForKey:@"items"];
+        self.dataArr = [NSMutableArray arrayWithArray:[[[request responseData] objectFromJSONData] valueForKey:@"items"]];
     }
     else
     {
@@ -441,6 +442,8 @@
         cell.L_phone.text = [dic1 valueForKey:@"phone"];
         cell.L_name.text = [dic1 valueForKey:@"merchant"];
         cell.L_homedown.text = [NSString stringWithFormat:@"%@,%@,%@",[dic1 valueForKey:@"address"],[dic1  valueForKey:@"city"],[dic1 valueForKey:@"state"]];
+        cell.Btn_follow.stringTag = [dic1 valueForKey:@"id"];
+        cell.stringTag = [dic1 valueForKey:@"id"];
     }
     else
     {
@@ -449,6 +452,8 @@
         cell.L_homedown.text = [NSString stringWithFormat:@"%@,%@,%@",[[dic1 valueForKey:@"store"] valueForKey:@"address"],[[dic1 valueForKey:@"store"] valueForKey:@"city"],[[dic1 valueForKey:@"store"] valueForKey:@"state"]];
         [cell.Btn_follow addTarget:self action:@selector(unfollowed:) forControlEvents:UIButtonClickEvent];
         cell.Btn_follow.tag = indexPath.row;
+        cell.Btn_follow.stringTag = [[dic1 valueForKey:@"store"] valueForKey:@"id"];
+        cell.stringTag = [[dic1 valueForKey:@"store"] valueForKey:@"id"];
     }
     return cell;
 }
@@ -457,39 +462,13 @@
     tempTag = aButton.tag;
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_STATUS] isEqualToString:@"1"])
     {
-        //meroot change number
-        [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"refreshRoot" object:nil]];
-        
         if ([aButton.imageView.image isEqual:[UIImage imageNamed:@"followed.png"]])
         {
-//            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You sure you want to unfollowed it." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
-//            alert.tag = 9999;
-//            [alert show];
-            NSDictionary * dic4 = [self.dataArr objectAtIndex:tempTag];
-            NSURLRequest * request = [WebService UnLikeStore:[dic4 valueForKey:@"id"]];
-            NSURLResponse * response = [[NSURLResponse alloc] init];
-            NSError * error = [[NSError alloc] init];
-            [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-            NSHTTPURLResponse * httpResponse1 = (NSHTTPURLResponse *)response;
-            NSLog(@"httpcode = %d",httpResponse1.statusCode);
-            if (httpResponse1.statusCode == 200)
-            {
-                [self getData];
-            }
+            [self followUnfollowStore:aButton.stringTag :NO :nil];
         }
         else
         {
-            NSDictionary * dic4 = [self.dataArr objectAtIndex:tempTag];
-            NSURLRequest * request = [WebService LikeStore:[dic4 valueForKey:@"id"]];
-            NSURLResponse * response = [[NSURLResponse alloc] init];
-            NSError * error = [[NSError alloc] init];
-            [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-            NSHTTPURLResponse * httpResponse1 = (NSHTTPURLResponse *)response;
-            NSLog(@"httpcode = %d",httpResponse1.statusCode);
-            if (httpResponse1.statusCode == 200)
-            {
-                [self getData];
-            }
+            [self followUnfollowStore:aButton.stringTag :YES :nil];
         }
 
     }
@@ -601,5 +580,48 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)dataChangedNotificationCallback:(NSNotification *)noti
+{
+    [super dataChangedNotificationCallback:noti];
+    NSDictionary *userInfo = noti.userInfo;
+    NSNumber *liked = [userInfo objectForKey:@"liked"];
+    if(liked) {
+        NSString * likedOfferId = [[userInfo objectForKey:@"offer"] objectForKey:@"id"];
+    }
+    
+    NSNumber *followUser = [userInfo objectForKey:@"followUser"];
+    if(followUser) {
+        NSString * userId = [userInfo objectForKey:@"userId"];
+    }
+    
+    NSNumber *followStore = [userInfo objectForKey:@"followStore"];
+    if(followStore) {
+        NSString * storeId = [userInfo objectForKey:@"storeId"];
+        [self changeStoreFollowState:storeId followed:[followStore boolValue]];
+    }
+}
+
+- (void)changeStoreFollowState:(NSString *)storeId followed:(BOOL)followed
+{
+    for(int i=0; i<[self.dataArr count]; i++) {
+        if([[[self.dataArr objectAtIndex:i] objectForKey:@"id"] isEqualToString:storeId]) {
+            NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:[self.dataArr objectAtIndex:i]];
+            [self setBool:dic value:followed forKey:@"myFollowingStore"];
+            [self.dataArr replaceObjectAtIndex:i withObject:dic];
+            break;
+        }
+    }
+    StoreFollowCell *cell = [self searchTableView:self.TV_tableivew forClass:[StoreFollowCell class] withStringTag:storeId];
+    if(cell) {
+        if(followed) {
+            [cell.Btn_follow setImage:[UIImage imageNamed:@"followed.png"] forState:UIControlStateNormal];
+        }
+        else {
+            [cell.Btn_follow setImage:[UIImage imageNamed:@"follow.png"] forState:UIControlStateNormal];
+        }
+    }
+}
+
 
 @end
