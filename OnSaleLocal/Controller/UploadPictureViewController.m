@@ -10,6 +10,7 @@
 #import "PictureClassViewController.h"
 #import "UIImage+UIImageExt.h"
 #import "AppDelegate.h"
+#import "UIButton+ClickEvent.h"
 
 @interface UploadPictureViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {

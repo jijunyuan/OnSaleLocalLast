@@ -19,6 +19,7 @@
 #import "AppDelegate.h"
 #import "TrendDetailViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "UIButton+ClickEvent.h"
 
 @interface SafewayViewController ()<EGORefreshTableHeaderDelegate,NSURLConnectionDelegate,UIAlertViewDelegate,CLLocationManagerDelegate>
 {

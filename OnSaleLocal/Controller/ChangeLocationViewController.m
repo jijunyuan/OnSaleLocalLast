@@ -11,6 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "TKHttpRequest.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIButton+ClickEvent.h"
 
 @interface ChangeLocationViewController ()<CLLocationManagerDelegate,UIAccelerometerDelegate>
 {

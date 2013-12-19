@@ -8,6 +8,7 @@
 
 #import "ForgetPwdViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIButton+ClickEvent.h"
 
 @interface ForgetPwdViewController ()<UIAlertViewDelegate>
 {

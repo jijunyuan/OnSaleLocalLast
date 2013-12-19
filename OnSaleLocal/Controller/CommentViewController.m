@@ -7,6 +7,7 @@
 //
 
 #import "CommentViewController.h"
+#import "UIButton+ClickEvent.h"
 
 @interface CommentViewController ()<NSURLConnectionDelegate,UIAlertViewDelegate>
 {

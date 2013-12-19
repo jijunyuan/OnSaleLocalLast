@@ -11,6 +11,7 @@
 #import "MKAnnotation.h"
 #import "LoginViewController.h"
 #import "AppDelegate.h"
+#import "UIButton+ClickEvent.h"
 
 @interface StoreMapViewController ()
 {

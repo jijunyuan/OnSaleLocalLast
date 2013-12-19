@@ -11,6 +11,7 @@
 #import "UIImage+UIImageExt.h"
 #import "SetViewController.h"
 #import "AppDelegate.h"
+#import "UIButton+ClickEvent.h"
 
 @interface AccountSettingViewController ()<NSURLConnectionDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {

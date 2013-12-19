@@ -23,4 +23,5 @@
 -(id) searchTableView:(UITableView *)tv forClass:(Class)cls withStringTag:(NSString *)tag;
 -(void) changeNumer:(NSDictionary *)dic diff:(int)diff forKey:(NSString *)key;
 -(void) setBool:(NSDictionary *)dic value:(BOOL)value forKey:(NSString *)key;
+- (void)setButtonClickAction:(SEL)action withTarget:(id)target toButton:(UIButton *)btn;
 @end
