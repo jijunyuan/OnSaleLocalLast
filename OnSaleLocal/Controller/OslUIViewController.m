@@ -73,16 +73,53 @@
     return self.dataChangedTime > self.disappearTime;
 }
 
-- (void) likeUnlike:(id)offer :(BOOL)liked :(id)params
+- (void) likeUnlike:(NSString *)offerId :(BOOL)liked :(id)params
 {
     NSLog(@"---------- likeUnlike");
     NSNumber *num = [NSNumber numberWithBool:liked];
-    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:offer forKey:@"offer"];
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:offerId forKey:@"offerId"];
     [userInfo setValue:num forKey:@"liked"];
     if(params) {
         [userInfo setValue:params forKey:@"params"];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName: @"dataChangedNotification" object:nil userInfo:userInfo];
+    
+    if(liked) {
+        NSURLRequest * request = [WebService LikeOffer:offerId];
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError){
+                                   if(connectionError != nil) {
+                                       NSLog(@"like offer failed");
+                                       NSNumber *num = [NSNumber numberWithBool:!liked];
+                                       NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:offerId forKey:@"offerId"];
+                                       [userInfo setValue:num forKey:@"liked"];
+                                       if(params) {
+                                           [userInfo setValue:params forKey:@"params"];
+                                       }
+                                       [[NSNotificationCenter defaultCenter] postNotificationName: @"dataChangedNotification" object:nil userInfo:userInfo];
+                                   }
+                               }
+         ];
+    }
+    else {
+        NSURLRequest * request = [WebService UnLikeOffer:offerId];
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError){
+                                   if(connectionError != nil) {
+                                       NSLog(@"unlike offer failed");
+                                       NSNumber *num = [NSNumber numberWithBool:!liked];
+                                       NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:offerId forKey:@"offerId"];
+                                       [userInfo setValue:num forKey:@"liked"];
+                                       if(params) {
+                                           [userInfo setValue:params forKey:@"params"];
+                                       }
+                                       [[NSNotificationCenter defaultCenter] postNotificationName: @"dataChangedNotification" object:nil userInfo:userInfo];
+                                   }
+                               }
+         ];
+    }
 }
 
 - (void) followUnfollowUser:(NSString *)userId :(BOOL)follow :(id)params
@@ -214,10 +251,11 @@
     return nil;
 }
 
--(void) changeNumer:(NSDictionary *)dic diff:(int)diff forKey:(NSString *)key
+-(int) changeNumer:(NSDictionary *)dic diff:(int)diff forKey:(NSString *)key
 {
     int number = [[dic objectForKey:key] intValue] + diff;
     [dic setValue:[NSNumber numberWithInt:number] forKey:key];
+    return number;
 }
 
 -(void) setBool:(NSDictionary *)dic value:(BOOL)value forKey:(NSString *)key

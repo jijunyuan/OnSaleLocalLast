@@ -920,7 +920,7 @@
     NSDictionary *userInfo = noti.userInfo;
     NSNumber *liked = [userInfo objectForKey:@"liked"];
     if(liked) {
-        NSString * likedOfferId = [[userInfo objectForKey:@"offer"] objectForKey:@"id"];
+        NSString * likedOfferId = [userInfo objectForKey:@"offerId"];
         [self changeOfferLikeState:likedOfferId liked:[liked boolValue]];
     }
     
@@ -1085,15 +1085,11 @@
         NSString * idstr = [dict_id valueForKey:[NSString stringWithFormat:@"%d",imageView.tag]];
         if ([imageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
         {
-            [self likeUnlike:[[self.dic objectForKey:@"items"] objectAtIndex:currTag] :NO :nil];
-            request_like = [WebService UnLikeOffer:idstr];
-            [NSURLConnection connectionWithRequest:request_like delegate:nil];
+            [self likeUnlike:[[[self.dic objectForKey:@"items"] objectAtIndex:currTag] valueForKey:@"id"] :NO :nil];
         }
         else
         {
-            [self likeUnlike:[[self.dic objectForKey:@"items"] objectAtIndex:currTag] :YES :nil];
-            request_like = [WebService LikeOffer:idstr];
-            [NSURLConnection connectionWithRequest:request_like delegate:nil];
+            [self likeUnlike:[[[self.dic objectForKey:@"items"] objectAtIndex:currTag] valueForKey:@"id"] :YES :nil];
         }
     }
     else

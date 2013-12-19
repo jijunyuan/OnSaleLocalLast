@@ -314,7 +314,7 @@
 		4D11653317E4C877003807E8 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		4D11653617E4C88A003807E8 /* AboutViewController4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController4.xib; sourceTree = "<group>"; };
 		4D11653817E4C8D6003807E8 /* MeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
-		4D11653917E4C8D6003807E8 /* MeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
+		4D11653917E4C8D6003807E8 /* MeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MeViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4D11653F17E4C92B003807E8 /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
 		4D11654017E4C92C003807E8 /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
 		4D11654117E4C92C003807E8 /* NotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationViewController.xib; sourceTree = "<group>"; };
@@ -526,7 +526,7 @@
 		F11F891317F1D59C00822B1C /* MeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeListCell.h; sourceTree = "<group>"; };
 		F11F891417F1D59C00822B1C /* MeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeListCell.m; sourceTree = "<group>"; };
 		F11F891817F1E59000822B1C /* SafewayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafewayViewController.h; sourceTree = "<group>"; };
-		F11F891917F1E59000822B1C /* SafewayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafewayViewController.m; sourceTree = "<group>"; };
+		F11F891917F1E59000822B1C /* SafewayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SafewayViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F11F891A17F1E59000822B1C /* SafewayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SafewayViewController.xib; sourceTree = "<group>"; };
 		F11F891D17F1E5A500822B1C /* SafewayViewController4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SafewayViewController4.xib; sourceTree = "<group>"; };
 		F12832B417EDD33600907AD6 /* comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comments.png; sourceTree = "<group>"; };
@@ -607,7 +607,7 @@
 		F19AE89E17EC8AFB006FAE9E /* Map1ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Map1ViewController.xib; sourceTree = "<group>"; };
 		F19AE8A217EC8B1E006FAE9E /* Map1ViewController4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Map1ViewController4.xib; sourceTree = "<group>"; };
 		F19AE8A417EC948C006FAE9E /* TrendDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendDetailViewController.h; sourceTree = "<group>"; };
-		F19AE8A517EC948C006FAE9E /* TrendDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendDetailViewController.m; sourceTree = "<group>"; };
+		F19AE8A517EC948C006FAE9E /* TrendDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TrendDetailViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F19AE8A617EC948C006FAE9E /* TrendDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrendDetailViewController.xib; sourceTree = "<group>"; };
 		F19AE8A917EC94AA006FAE9E /* TrendDetailViewController4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrendDetailViewController4.xib; sourceTree = "<group>"; };
 		F19DB7AA17FBBB160063A32A /* LoginSelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSelectedViewController.h; sourceTree = "<group>"; };
@@ -618,7 +618,7 @@
 		F19DB7B417FBBBAC0063A32A /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		F19DB7B817FBBC640063A32A /* divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = divider.png; sourceTree = "<group>"; };
 		F19DC33417F93CE0005BFB13 /* StoreFollowersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreFollowersViewController.h; sourceTree = "<group>"; };
-		F19DC33517F93CE1005BFB13 /* StoreFollowersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreFollowersViewController.m; sourceTree = "<group>"; };
+		F19DC33517F93CE1005BFB13 /* StoreFollowersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = StoreFollowersViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F19DC33617F93CE1005BFB13 /* StoreFollowersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreFollowersViewController.xib; sourceTree = "<group>"; };
 		F19DC33A17F93CF6005BFB13 /* StoreFollowersViewController4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreFollowersViewController4.xib; sourceTree = "<group>"; };
 		F19DC33C17F93DFC005BFB13 /* StoreFollowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreFollowCell.h; sourceTree = "<group>"; };
@@ -629,7 +629,7 @@
 		F19E14CE17E5E06F0073A219 /* RegisterViewController4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController4.xib; sourceTree = "<group>"; };
 		F19E14D517E5F1200073A219 /* avatar_80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar_80x80.png; sourceTree = "<group>"; };
 		F19E92A117F918F300BEA4B1 /* MeRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeRootViewController.h; sourceTree = "<group>"; };
-		F19E92A217F918F300BEA4B1 /* MeRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeRootViewController.m; sourceTree = "<group>"; };
+		F19E92A217F918F300BEA4B1 /* MeRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MeRootViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F19E92A317F918F300BEA4B1 /* MeRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeRootViewController.xib; sourceTree = "<group>"; };
 		F19E92A717F9190700BEA4B1 /* MeRootViewController4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeRootViewController4.xib; sourceTree = "<group>"; };
 		F1A265BB17E22ACB00D42E8F /* JASidePanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASidePanelController.h; sourceTree = "<group>"; };
@@ -637,7 +637,7 @@
 		F1A265BD17E22ACB00D42E8F /* UIViewController+JASidePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JASidePanel.h"; sourceTree = "<group>"; };
 		F1A265BE17E22ACB00D42E8F /* UIViewController+JASidePanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JASidePanel.m"; sourceTree = "<group>"; };
 		F1A265C517E22C4D00D42E8F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F1A265C617E22C4D00D42E8F /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F1A265C617E22C4D00D42E8F /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F1A265C717E22C4D00D42E8F /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		F1A265CA17E22C5F00D42E8F /* ViewController4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController4.xib; sourceTree = "<group>"; };
 		F1A265CC17E22C9B00D42E8F /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetViewController.h; sourceTree = "<group>"; };

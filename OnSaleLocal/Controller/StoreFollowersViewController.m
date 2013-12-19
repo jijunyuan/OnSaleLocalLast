@@ -588,7 +588,7 @@
     NSDictionary *userInfo = noti.userInfo;
     NSNumber *liked = [userInfo objectForKey:@"liked"];
     if(liked) {
-        NSString * likedOfferId = [[userInfo objectForKey:@"offer"] objectForKey:@"id"];
+        NSString * likedOfferId = [userInfo objectForKey:@"offerId"];
     }
     
     NSNumber *followUser = [userInfo objectForKey:@"followUser"];

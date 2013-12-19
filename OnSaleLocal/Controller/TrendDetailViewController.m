@@ -1151,15 +1151,11 @@
         currImageView = imageView;
         if ([imageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
         {
-            request_like = [WebService UnLikeOffer:[self.dic valueForKey:@"id"]];
-            [self likeUnlike :self.dic :NO :nil];
-            [NSURLConnection connectionWithRequest:request_like delegate:nil];
+            [self likeUnlike :[self.dic valueForKey:@"id"] :NO :nil];
         }
         else
         {
-            request_like = [WebService LikeOffer:[self.dic valueForKey:@"id"]];
-            [self likeUnlike :self.dic :YES :nil];
-            [NSURLConnection connectionWithRequest:request_like delegate:nil];
+            [self likeUnlike :[self.dic valueForKey:@"id"] :YES :nil];
         }
     }
     else
@@ -1186,7 +1182,7 @@
     NSDictionary *userInfo = noti.userInfo;
     NSNumber *liked = [userInfo objectForKey:@"liked"];
     if(liked) {
-        NSString * likedOfferId = [[userInfo objectForKey:@"offer"] objectForKey:@"id"];
+        NSString * likedOfferId = [userInfo objectForKey:@"offerId"];
         [self changeOfferLikeState:likedOfferId liked:[liked boolValue]];
     }
 }

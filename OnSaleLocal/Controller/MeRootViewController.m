@@ -858,23 +858,11 @@
         NSString * idstr = [dict_id valueForKey:[NSString stringWithFormat:@"%d",imageView.tag]];
         if ([imageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
         {
-            request_like = [WebService UnLikeOffer:idstr];
-            [self likeUnlike:[[self.dataArr valueForKey:@"items"] objectAtIndex:itemIndex] :NO :nil];
-            [NSURLConnection connectionWithRequest:request_like delegate:nil];
-            //        NSString * str = self.L_likes.text;
-            //        NSArray * arr = [str componentsSeparatedByString:@" "];
-            //        NSLog(@"arr = %@",arr);
-            //        self.L_likes.text = [NSString stringWithFormat:@"%d likes",[[arr objectAtIndex:0] intValue]-1];
+            [self likeUnlike:[[[self.dataArr valueForKey:@"items"] objectAtIndex:itemIndex] valueForKey:@"id"] :NO :nil];
         }
         else
         {
-            request_like = [WebService LikeOffer:idstr];
-            [self likeUnlike:[[self.dataArr valueForKey:@"items"] objectAtIndex:itemIndex] :YES :nil];
-            [NSURLConnection connectionWithRequest:request_like delegate:nil];
-            //        NSString * str = self.L_likes.text;
-            //        NSArray * arr = [str componentsSeparatedByString:@" "];
-            //        NSLog(@"arr = %@",arr);
-            //        self.L_likes.text = [NSString stringWithFormat:@"%d likes",[[arr objectAtIndex:0] intValue]+1];
+            [self likeUnlike:[[[self.dataArr valueForKey:@"items"] objectAtIndex:itemIndex] valueForKey:@"id"] :YES :nil];
         }
         
     }
@@ -902,7 +890,7 @@
     
     NSNumber *liked = [userInfo objectForKey:@"liked"];
     if(liked) {
-        NSString * likedOfferId = [[userInfo objectForKey:@"offer"] objectForKey:@"id"];
+        NSString * likedOfferId = [userInfo objectForKey:@"offerId"];
         [self changeOfferLikeState:likedOfferId liked:[liked boolValue]];
     }
     
@@ -973,7 +961,8 @@
     self.dataArr = newData;
 
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_ID] isEqualToString:self.userid]) {
-        [self changeNumer:self.userInfo diff:(like?1:-1) forKey:@"likes"];
+        int newLikes = [self changeNumer:self.userInfo diff:(like?1:-1) forKey:@"likes"];
+        NSLog(@"new likes # %d", newLikes);
         self.L_likes.text = [[self.userInfo valueForKey:@"likes"] stringValue];
     }
     

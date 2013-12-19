@@ -896,18 +896,12 @@
             NSString * idstr = [tempDict valueForKey:[NSString stringWithFormat:@"%d",aButton.tag]];
             if ([aButton.imageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
             {
-                [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"refreshRoot" object:nil]];
-                
                 NSString * idstr = [tempDict valueForKey:[NSString stringWithFormat:@"%d",currButton.tag]];
-                request12 = [WebService UnLikeOffer:idstr];
-                [self likeUnlike :[self.dataArr objectAtIndex:currButton.tag-100] :NO :nil];
-                [NSURLConnection connectionWithRequest:request12 delegate:nil];
+                [self likeUnlike :idstr :NO :nil];
             }
             else
             {
-                request12 = [WebService LikeOffer:idstr];
-                [self likeUnlike :[self.dataArr objectAtIndex:currButton.tag-100] :YES :nil];
-                [NSURLConnection connectionWithRequest:request12 delegate:nil];
+                [self likeUnlike :[[self.dataArr objectAtIndex:currButton.tag-100] valueForKey:@"id"] :YES :nil];
             }
         }
         else
@@ -928,18 +922,12 @@
             NSString * idstr = [tempDict valueForKey:[NSString stringWithFormat:@"%d",aButton.tag]];
             if ([aButton.imageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
             {
-                [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"refreshRoot" object:nil]];
-                
                 NSString * idstr = [tempDict valueForKey:[NSString stringWithFormat:@"%d",currButton.tag]];
-                request12 = [WebService UnLikeOffer:idstr];
-                [self likeUnlike :[self.dataArr objectAtIndex:currButton.tag-100] :NO :nil];
-                [NSURLConnection connectionWithRequest:request12 delegate:nil];
+                [self likeUnlike :idstr :NO :nil];
             }
             else
             {
-                request12 = [WebService LikeOffer:idstr];
-                [self likeUnlike :[self.dataArr objectAtIndex:currButton.tag-100] :YES :nil];
-                [NSURLConnection connectionWithRequest:request12 delegate:nil];
+                [self likeUnlike :[[self.dataArr objectAtIndex:currButton.tag-100] valueForKey:@"id"] :YES :nil];
             }
         }
         else
@@ -1239,7 +1227,7 @@
     NSDictionary *userInfo = noti.userInfo;
     NSNumber *liked = [userInfo objectForKey:@"liked"];
     if(liked) {
-        NSString * likedOfferId = [[userInfo objectForKey:@"offer"] objectForKey:@"id"];
+        NSString * likedOfferId = [userInfo objectForKey:@"offerId"];
         [self changeOfferLikeState:likedOfferId liked:[liked boolValue]];
     }
 }
