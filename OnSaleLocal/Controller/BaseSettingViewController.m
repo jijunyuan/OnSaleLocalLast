@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 #import "JASidePanelController.h"
+#import "UIButton+ClickEvent.h"
 
 @interface BaseSettingViewController ()
 
@@ -74,7 +75,7 @@
     [self.view addGestureRecognizer:swipe];
     
 }
--(void)backClick:(UIButton *)aButton
+-(void)backClick:(UITapGestureRecognizer *)gr
 {
     AppDelegate * delegate = [UIApplication sharedApplication].delegate;
     JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;

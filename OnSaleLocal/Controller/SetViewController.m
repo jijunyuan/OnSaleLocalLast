@@ -180,7 +180,6 @@
     }
 
     [self.TV_tableview reloadData];
-    NSLog(@"self.dataArr = %@",self.dataArr);
 }
 -(void)tapClickPhoto:(UITapGestureRecognizer *)aTap
 {

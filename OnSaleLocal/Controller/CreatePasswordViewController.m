@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "SetViewController.h"
 #import "ViewController.h"
+#import "UIButton+ClickEvent.h"
 
 @interface CreatePasswordViewController ()<NSURLConnectionDelegate,UIAlertViewDelegate>
 {
@@ -63,7 +64,7 @@
     self.rightBtn.layer.cornerRadius = 5;
     [self.rightBtn addTarget:self action:@selector(rightClick:) forControlEvents:UIButtonClickEvent];
 }
--(void)rightClick:(UIButton *)aButton
+-(void)rightClick:(UITapGestureRecognizer *)gr
 {
     if (self.TF_email.text.length>0 && self.TF_password.text.length>0 && self.TF_zipcode.text.length>0)
     {

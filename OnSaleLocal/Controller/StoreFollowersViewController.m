@@ -15,6 +15,7 @@
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "UIView+StringTag.h"
+#import "UIButton+ClickEvent.h"
 
 @interface StoreFollowersViewController ()<EGORefreshTableHeaderDelegate,UIAlertViewDelegate>
 {
@@ -123,7 +124,6 @@
                 }];
             }
             
-            NSLog(@"self.dataArr = %@",self.dataArr);
             dispatch_async(dispatch_get_main_queue(), ^{
                [self.TV_tableivew reloadData];
             });
@@ -457,8 +457,9 @@
     }
     return cell;
 }
--(void)unfollowed:(UIButton *)aButton
+-(void)unfollowed:(UITapGestureRecognizer *)gr
 {
+    UIButton *aButton = gr.view;
     tempTag = aButton.tag;
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_STATUS] isEqualToString:@"1"])
     {

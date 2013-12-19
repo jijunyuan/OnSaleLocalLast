@@ -28,6 +28,7 @@
 #import "Container.h"
 #import "CreatePasswordViewController.h"
 #import "LoginViewController.h"
+#import "UIButton+ClickEvent.h"
 
 @interface ViewController ()<WaterFlowViewDelegate,WaterFlowViewDataSource,EGORefreshTableHeaderDelegate,UIScrollViewDelegate,CLLocationManagerDelegate,NSURLConnectionDelegate,UIActionSheetDelegate,UIAlertViewDelegate>
 {
@@ -882,34 +883,25 @@
 //    [self.navigationController popViewControllerAnimated:YES];
     [controller showLeftPanelAnimated:YES];
 }
--(void)likeButtonClick:(UIButton *)aButton
+-(void)likeButtonClick:(UITapGestureRecognizer *)ges
 {
-    NSLog(@"===========like button clicked");
+    UIButton *aButton = ges.view;
     if (self.isFromMeLikes)
     {
         if ([[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_STATUS] isEqualToString:@"1"])
         {
-          
-            
             currButton = aButton;
             button_tag = aButton.tag;
             
             NSString * idstr = [tempDict valueForKey:[NSString stringWithFormat:@"%d",aButton.tag]];
             if ([aButton.imageView.image isEqual:[UIImage imageNamed:@"liked.png"]])
             {
-//                //            request12 = [WebService UnLikeOffer:idstr];
-//                //            [NSURLConnection connectionWithRequest:request12 delegate:self];
-//                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You want Unfollow？" delegate:self cancelButtonTitle:@"Cancle" otherButtonTitles:@"Yes", nil];
-//                alert.tag = 3333;
-//                [alert show];
-                
                 [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"refreshRoot" object:nil]];
                 
                 NSString * idstr = [tempDict valueForKey:[NSString stringWithFormat:@"%d",currButton.tag]];
                 request12 = [WebService UnLikeOffer:idstr];
                 [self likeUnlike :[self.dataArr objectAtIndex:currButton.tag-100] :NO :nil];
                 [NSURLConnection connectionWithRequest:request12 delegate:nil];
-                
             }
             else
             {
@@ -917,7 +909,6 @@
                 [self likeUnlike :[self.dataArr objectAtIndex:currButton.tag-100] :YES :nil];
                 [NSURLConnection connectionWithRequest:request12 delegate:nil];
             }
-
         }
         else
         {
@@ -1123,8 +1114,9 @@
     safe.merchantId = [dic valueForKey:@"merchantId"];
     [self.navigationController pushViewController:safe animated:YES];
 }
--(void)stopClick1:(UIButton *)aButton
+-(void)stopClick1:(UITapGestureRecognizer *)gr
 {
+    UIButton *aButton = gr.view;
     //StorycellView * cellview = (StorycellView *)[[aTap view] superview];
     NSDictionary * dic = [self.dataArr objectAtIndex:aButton.tag];
     
@@ -1141,8 +1133,9 @@
     safe.merchantId = [dic valueForKey:@"merchantId"];
     [self.navigationController pushViewController:safe animated:YES];
 }
--(void)ShareClick:(UIButton *)aButton
+-(void)ShareClick:(UITapGestureRecognizer *)gr
 {
+    UIButton *aButton = gr.view;
     NSLog(@"====================share btn clicked");
     NSDictionary * dic = [self.dataArr objectAtIndex:aButton.tag];
      NSString * linkStr = [NSString stringWithFormat:@"%@/offer/details/index.jsp.oo",DO_MAIN];

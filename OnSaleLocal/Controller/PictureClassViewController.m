@@ -13,6 +13,7 @@
 #import "EGORefreshTableHeaderView.h"
 #import "PictureDetailViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "UIButton+ClickEvent.h"
 
 
 @interface PictureClassViewController ()<CLLocationManagerDelegate,EGORefreshTableHeaderDelegate,UIScrollViewDelegate>
@@ -301,8 +302,9 @@
         currIdOrName = @"";
     }
 }
--(void)buttonClick:(UIButton *)aButton
+-(void)buttonClick:(UITapGestureRecognizer *)gr
 {
+    UIButton *aButton = gr.view;
     if (aButton.imageView.image == nil)
     {
         [aButton setImage:[UIImage imageNamed:@"check.png"] forState:UIControlStateNormal];

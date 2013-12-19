@@ -155,7 +155,6 @@
         {
             [dic setObject:[NSString stringWithFormat:@"%d",[[obj valueForKey:@"myFollowing"] intValue]] forKey:@"myFollower"];
         }
-        NSLog(@"self.dataArr = %@",self.dataArr);
         [self.dataArr addObject:dic];
     }];
     [self.myTableView reloadData];

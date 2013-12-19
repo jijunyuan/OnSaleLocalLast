@@ -27,6 +27,7 @@
 #import "BuyNowViewController.h"
 #import "AppDelegate.h"
 #import "MSLabel.h"
+#import "UIButton+ClickEvent.h"
 
 @interface TrendDetailViewController ()<UITableViewDataSource,UITableViewDelegate,EGORefreshTableHeaderDelegate,NSURLConnectionDelegate,UIAlertViewDelegate,UMSocialUIDelegate>
 {
@@ -398,7 +399,7 @@
     }
     
 }
--(void)ShareClick:(UIButton *)aButton
+-(void)ShareClick:(UITapGestureRecognizer *)gr
 {
     
     NSString * linkStr = [NSString stringWithFormat:@"%@/offer/details/index.jsp.oo?offerId=%@",DO_MAIN,[self.dic valueForKey:@"id"]];

@@ -9,6 +9,7 @@
 #import "PictureDetailViewController.h"
 #import "PictureDoneViewController.h"
 #import "TKHttpRequest.h"
+#import "UIButton+ClickEvent.h"
 
 @interface PictureDetailViewController ()<NSURLConnectionDelegate>
 {
@@ -183,7 +184,7 @@
 
     [request startAsynchronous];
 }
--(void)sendClick:(UIButton *)aButton
+-(void)sendClick:(id)sender
 {
     if (self.TF_Address.text.length>0 && self.TF_store.text.length>0 && self.TF_city.text.length>0 &&self.TF_enddate.text.length>0)
     {

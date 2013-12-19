@@ -16,6 +16,7 @@
 #import "MeRootViewController.h"
 #import "LoginViewController.h"
 #import "UIView+StringTag.h"
+#import "UIButton+ClickEvent.h"
 
 @interface FollowsViewController ()<EGORefreshTableHeaderDelegate,UIAlertViewDelegate>
 {
@@ -230,7 +231,6 @@
 //                self.dataArr = [NSMutableArray arrayWithCapacity:0];
 //            }
             self.dataArr = [[reciveData objectFromJSONData] valueForKey:@"items"];
-            NSLog(@"self.dataArr = %@",self.dataArr);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.myTableView reloadData];
             });
@@ -493,8 +493,9 @@
         }
     }
 }
--(void)buttonClick:(UIButton *)aButton
+-(void)buttonClick:(UITapGestureRecognizer *)gr
 {
+    UIButton *aButton = gr.view;
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_STATUS] isEqualToString:@"1"])
     {
         

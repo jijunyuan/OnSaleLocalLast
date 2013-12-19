@@ -102,6 +102,8 @@
 		E94C0B58185FC9C500004AB0 /* Gotham-Medium_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E94C0B57185FC98400004AB0 /* Gotham-Medium_0.ttf */; };
 		E94C0B5A18602DE100004AB0 /* Gotham-Light_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E94C0B5918602D7200004AB0 /* Gotham-Light_0.ttf */; };
 		E94D2D1918617465008749EE /* avenir-lt-45-book-1361499806.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E94D2D18186173B9008749EE /* avenir-lt-45-book-1361499806.ttf */; };
+		E94D2D221862BB02008749EE /* UIButton+ClickEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D2D211862BB02008749EE /* UIButton+ClickEvent.m */; };
+		E94D2D251862C5AB008749EE /* ClickEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D2D241862C5AB008749EE /* ClickEvent.m */; };
 		E9A8233A1855A1BC00196B41 /* GothamBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9A823391855A1BC00196B41 /* GothamBold.ttf */; };
 		E9A8233B1855A61400196B41 /* Gotham-Bold_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9A823381855A1AF00196B41 /* Gotham-Bold_0.ttf */; };
 		E9F23347185D7DE800DD99D9 /* OslUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F23346185D7DE800DD99D9 /* OslUIViewController.m */; };
@@ -417,6 +419,10 @@
 		E94C0B57185FC98400004AB0 /* Gotham-Medium_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Medium_0.ttf"; sourceTree = "<group>"; };
 		E94C0B5918602D7200004AB0 /* Gotham-Light_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Light_0.ttf"; sourceTree = "<group>"; };
 		E94D2D18186173B9008749EE /* avenir-lt-45-book-1361499806.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "avenir-lt-45-book-1361499806.ttf"; sourceTree = "<group>"; };
+		E94D2D201862BB02008749EE /* UIButton+ClickEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ClickEvent.h"; sourceTree = "<group>"; };
+		E94D2D211862BB02008749EE /* UIButton+ClickEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ClickEvent.m"; sourceTree = "<group>"; };
+		E94D2D231862C5AB008749EE /* ClickEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClickEvent.h; sourceTree = "<group>"; };
+		E94D2D241862C5AB008749EE /* ClickEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClickEvent.m; sourceTree = "<group>"; };
 		E9A823371855A19600196B41 /* Gotham-XLight_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-XLight_0.ttf"; sourceTree = "<group>"; };
 		E9A823381855A1AF00196B41 /* Gotham-Bold_0.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Bold_0.ttf"; sourceTree = "<group>"; };
 		E9A823391855A1BC00196B41 /* GothamBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamBold.ttf; sourceTree = "<group>"; };
@@ -815,6 +821,10 @@
 				4D8D707417F4744F00F19A80 /* StoreOfferView.m */,
 				E9F23353185F509F00DD99D9 /* UIView+StringTag.h */,
 				E9F23354185F509F00DD99D9 /* UIView+StringTag.m */,
+				E94D2D201862BB02008749EE /* UIButton+ClickEvent.h */,
+				E94D2D211862BB02008749EE /* UIButton+ClickEvent.m */,
+				E94D2D231862C5AB008749EE /* ClickEvent.h */,
+				E94D2D241862C5AB008749EE /* ClickEvent.m */,
 			);
 			name = other;
 			sourceTree = "<group>";
@@ -1762,6 +1772,7 @@
 				F149851117E0F61600C1CEC1 /* FMDatabase.m in Sources */,
 				F149851217E0F61600C1CEC1 /* FMDatabaseAdditions.m in Sources */,
 				F149851317E0F61600C1CEC1 /* FMDatabasePool.m in Sources */,
+				E94D2D251862C5AB008749EE /* ClickEvent.m in Sources */,
 				F149851417E0F61600C1CEC1 /* FMDatabaseQueue.m in Sources */,
 				F149851517E0F61600C1CEC1 /* FMResultSet.m in Sources */,
 				F149851B17E0F69F00C1CEC1 /* JSONKit.m in Sources */,
@@ -1807,6 +1818,7 @@
 				F1A4692617EC597E00EAB792 /* BasicMapAnnotation.m in Sources */,
 				F1A4692717EC597E00EAB792 /* CallOutAnnotationVifew.m in Sources */,
 				F1A4692817EC597E00EAB792 /* CalloutMapAnnotation.m in Sources */,
+				E94D2D221862BB02008749EE /* UIButton+ClickEvent.m in Sources */,
 				E9F2334F185E2D8D00DD99D9 /* LikeIconView.m in Sources */,
 				F1A4692917EC597E00EAB792 /* JingDianMapCell.m in Sources */,
 				F19AE89F17EC8AFB006FAE9E /* Map1ViewController.m in Sources */,

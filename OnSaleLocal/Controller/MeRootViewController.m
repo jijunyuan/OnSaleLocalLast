@@ -20,6 +20,7 @@
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "UIButton+ClickEvent.h"
 
 @interface MeRootViewController ()<EGORefreshTableHeaderDelegate,CLLocationManagerDelegate,UIAlertViewDelegate>
 {
@@ -617,7 +618,6 @@
             
             NSArray * allkeys = [dic allKeys];
             __block BOOL isHave = NO;
-            NSLog(@"allkeys = %@",allkeys);
             [allkeys enumerateObjectsUsingBlock:^(NSString * obj, NSUInteger idx, BOOL *stop) {
                 if ([obj isEqualToString:@"img"])
                 {
@@ -656,8 +656,9 @@
     }];
     [request startAsynchronous];
 }
--(void)rightButtonClick:(UIButton *)aButton
+-(void)rightButtonClick:(UITapGestureRecognizer *)gr
 {
+    UIButton *aButton = gr.view;
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_STATUS] isEqualToString:@"1"])
     {
         if ([aButton.currentImage isEqual:[UIImage imageNamed:@"follow.png"]])
@@ -730,7 +731,6 @@
         if ([request responseStatusCode] == 200)
         {
             self.dataArr = [reciveData objectFromJSONData];
-            NSLog(@"self.dataArr = %@",self.dataArr);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self changeUI];
             });
@@ -973,8 +973,8 @@
     self.dataArr = newData;
 
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_ID] isEqualToString:self.userid]) {
-        int newUserLikes = [self.L_likes.text intValue] + (like ? 1 : -1);
-        self.L_likes.text = [NSString stringWithFormat:@"%d", newUserLikes];
+        [self changeNumer:self.userInfo diff:(like?1:-1) forKey:@"likes"];
+        self.L_likes.text = [[self.userInfo valueForKey:@"likes"] stringValue];
     }
     
     for (id subview in [self.myScroll subviews]) {

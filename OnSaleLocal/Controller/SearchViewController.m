@@ -126,7 +126,6 @@
             NSString * strRes = [[NSString alloc] initWithData:(NSData *)reciveData1 encoding:1];
             self.dataArr = (NSMutableArray *)[[strRes objectFromJSONString] valueForKey:@"items"];
 
-            NSLog(@"self.dataArr = %@",self.dataArr);
             if (self.dataArr.count>0)
             {
                 self.IV_result.alpha = 0.0;

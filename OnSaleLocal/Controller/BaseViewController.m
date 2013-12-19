@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "AppDelegate.h"
+#import "UIButton+ClickEvent.h"
 
 @interface BaseViewController ()
 
@@ -70,7 +71,7 @@
     lab.textColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
     [view1 addSubview:lab];
 }
--(void)backClick:(UIButton *)aButton
+-(void)backClick:(UITapGestureRecognizer *)gr
 {
    // [self.navigationController popViewControllerAnimated:YES];
     //AppDelegate * delegate = [UIApplication sharedApplication].delegate;

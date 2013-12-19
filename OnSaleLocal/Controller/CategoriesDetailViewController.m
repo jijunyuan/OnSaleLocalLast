@@ -137,13 +137,11 @@
     }];
     [request3 setCompletionBlock:^{
         [MyActivceView stopAnimatedInView:self.view];
-        NSLog(@"self.dataArr = %@",[[reciveData2 objectFromJSONData] valueForKey:@"items"]);
         if (request3.responseStatusCode == 200)
         {
             self.dataArr = nil;
             self.dataArr = [NSMutableArray arrayWithCapacity:0];
             self.dataArr = [[reciveData2 objectFromJSONData] valueForKey:@"items"];
-            NSLog(@"self.dataArr = %@",self.dataArr);
             if (self.dataArr.count>0)
             {
                 isfirstloading = YES;

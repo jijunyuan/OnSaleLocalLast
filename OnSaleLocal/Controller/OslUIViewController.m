@@ -75,6 +75,7 @@
 
 - (void) likeUnlike:(id)offer :(BOOL)liked :(id)params
 {
+    NSLog(@"---------- likeUnlike");
     NSNumber *num = [NSNumber numberWithBool:liked];
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:offer forKey:@"offer"];
     [userInfo setValue:num forKey:@"liked"];
@@ -86,6 +87,7 @@
 
 - (void) followUnfollowUser:(NSString *)userId :(BOOL)follow :(id)params
 {
+    NSLog(@"---------- followUnfollowUser");
     NSNumber *num = [NSNumber numberWithBool:follow];
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:userId forKey:@"userId"];
     [userInfo setValue:num forKey:@"followUser"];
@@ -134,6 +136,7 @@
 
 - (void) followUnfollowStore:(NSString *)storeId :(BOOL)follow :(id)params
 {
+    NSLog(@"---------- followUnfollowStore");
     NSNumber *num = [NSNumber numberWithBool:follow];
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:storeId forKey:@"storeId"];
     [userInfo setValue:num forKey:@"followStore"];
@@ -221,5 +224,14 @@
 {
     [dic setValue:[NSNumber numberWithBool:value] forKey:key];
 }
+
+- (void)setButtonClickAction:(SEL)action withTarget:(id)target toButton:(UIButton *)btn;
+{
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:target action:action];
+    singleTap.numberOfTapsRequired = 1;
+    singleTap.numberOfTouchesRequired = 1;
+    [btn addGestureRecognizer:singleTap];
+}
+
 @end
 
