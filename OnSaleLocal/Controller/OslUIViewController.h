@@ -24,4 +24,5 @@
 -(int) changeNumer:(NSDictionary *)dic diff:(int)diff forKey:(NSString *)key;
 -(void) setBool:(NSDictionary *)dic value:(BOOL)value forKey:(NSString *)key;
 - (void)setButtonClickAction:(SEL)action withTarget:(id)target toButton:(UIButton *)btn;
+-(BOOL) showCenterViewControllerIfVisible:(Class)cls;
 @end

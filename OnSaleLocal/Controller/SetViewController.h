@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OslUIViewController.h"
 
-@interface SetViewController : UIViewController
+@interface SetViewController : OslUIViewController
 @property (nonatomic,strong) IBOutlet UIImageView * IV_login_name;
 @property (nonatomic,strong) IBOutlet UISearchBar * searchBar;
 @end

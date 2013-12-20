@@ -9,6 +9,7 @@
 #import "OslUIViewController.h"
 #import "WebService.h"
 #import "UIView+StringTag.h"
+#import "AppDelegate.h"
 
 @interface OslUIViewController ()
 
@@ -272,5 +273,15 @@
     [btn addGestureRecognizer:singleTap];
 }
 
+-(BOOL) showCenterViewControllerIfVisible:(Class)cls
+{
+    AppDelegate * delegate = [UIApplication sharedApplication].delegate;
+    if([[delegate.nav_Center visibleViewController] isKindOfClass:cls]) {
+        JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
+        [controller showCenterPanelAnimated:YES];
+        return YES;
+    }
+    return NO;
+}
 @end
 

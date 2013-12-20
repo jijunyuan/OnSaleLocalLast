@@ -665,6 +665,9 @@
     NSString * title = [self.dataArr objectAtIndex:indexPath.row];
     if ([title isEqualToString:@"Trending"])
     {
+        if([self showCenterViewControllerIfVisible:[ViewController class]])
+            return;
+        
         ViewController * trendController;
         if (iPhone5)
         {
@@ -687,6 +690,8 @@
     }
     if ([title isEqualToString:@"Categories"])
     {
+        if([self showCenterViewControllerIfVisible:[CategoriesViewController class]])
+            return;
         CategoriesViewController * categorise;
         if (iPhone5)
         {
@@ -708,6 +713,8 @@
     }
     if ([title isEqualToString:@"Share"])
     {
+        if([self showCenterViewControllerIfVisible:[ShareViewController class]])
+            return;
         ShareViewController * share;
         if (iPhone5)
         {
@@ -730,6 +737,8 @@
     }
     if ([title isEqualToString:@"Change Location"])
     {
+        if([self showCenterViewControllerIfVisible:[ChangeLocationViewController class]])
+            return;
         ChangeLocationViewController * changeLocation;
         if (iPhone5)
         {
@@ -751,6 +760,8 @@
     }
     if ([title isEqualToString:@"About"])
     {
+        if([self showCenterViewControllerIfVisible:[AboutViewController class]])
+            return;
         AboutViewController * about;
         if (iPhone5)
         {
@@ -772,6 +783,8 @@
     }
     if ([title isEqualToString:@"Account Settings"])
     {
+        if([self showCenterViewControllerIfVisible:[AccountSettingViewController class]])
+            return;
         AccountSettingViewController * about;
         if (iPhone5)
         {
@@ -794,6 +807,8 @@
     }
     if ([title isEqualToString:@"Notification"])
     {
+        if([self showCenterViewControllerIfVisible:[NotificationViewController class]])
+            return;
         NotificationViewController * notification;
         if (iPhone5)
         {
@@ -816,6 +831,8 @@
     }
     if ([title isEqualToString:@"Me"])
     {
+        if([self showCenterViewControllerIfVisible:[MeRootViewController class]])
+            return;
         MeRootViewController * me;
         if (iPhone5)
         {
@@ -839,6 +856,8 @@
     }
     if ([title isEqualToString:@"Upload Deal"])
     {
+        if([self showCenterViewControllerIfVisible:[UploadPictureViewController class]])
+            return;
         UploadPictureViewController * upload;
         if (iPhone5)
         {
@@ -860,6 +879,8 @@
     }
     if ([title isEqualToString:@"Sign In"])
     {
+        if([self showCenterViewControllerIfVisible:[LoginViewController class]])
+            return;
         LoginViewController * login;
         if (iPhone5)
         {
