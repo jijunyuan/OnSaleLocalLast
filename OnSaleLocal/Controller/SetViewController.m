@@ -183,6 +183,13 @@
 }
 -(void)tapClickPhoto:(UITapGestureRecognizer *)aTap
 {
+    AppDelegate * delegate = [UIApplication sharedApplication].delegate;
+    if([[delegate.nav_Center visibleViewController] isKindOfClass:[MeRootViewController class]]) {
+        JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
+        [controller showCenterPanelAnimated:YES];
+        return;
+    }
+    
     MeRootViewController * me;
     if (iPhone5)
     {
@@ -194,7 +201,6 @@
     }
     
     me.isFromSetting = YES;
-    AppDelegate * delegate = [UIApplication sharedApplication].delegate;
     JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
     [controller showCenterPanelAnimated:YES];
     CATransition* transition = [CATransition animation];
@@ -203,7 +209,6 @@
     transition.type = kCATransitionFromRight;
     [self.navigationController.view.layer addAnimation:transition forKey:nil];
     [delegate.nav_Center pushViewController:me animated:YES];
-
 }
 - (void)viewDidLoad
 {

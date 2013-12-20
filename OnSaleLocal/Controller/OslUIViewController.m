@@ -37,6 +37,7 @@
 
 - (void)viewDidunload
 {
+    NSLog(@"%@ viewDidunload called", [self class]);
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"dataChanged" object:nil];
     [super viewDidUnload];
 }
