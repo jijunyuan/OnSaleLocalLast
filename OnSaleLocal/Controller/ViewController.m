@@ -1010,9 +1010,21 @@
                 [user setValue:[dic valueForKey:@"lastName"] forKey:LOGIN_LAST_NAME];
                 [user setValue:[dic valueForKey:@"login"] forKey:LOGIN_LOGIN];
                 [user setValue:[dic valueForKey:@"noti"] forKey:LOGIN_NOTI];
-                [user setValue:[dic valueForKey:@"password"] forKey:LOGIN_PASSWORD];
+                
+                if([dic valueForKey:@"password"]) {
+                    NSString * pwdStr = [NSString stringWithFormat:@"%@",[dic valueForKey:LOGIN_GENDER]];
+                    if (![pwdStr isEqualToString:@"(null)"] && ![pwdStr isEqualToString:@"<null>"]) {
+                        [user setValue:pwdStr forKey:LOGIN_PASSWORD];
+                    }
+                }
+                if([dic valueForKey:@"zipcode"]) {
+                    NSString * zipcode = [NSString stringWithFormat:@"%@",[dic valueForKey:LOGIN_ZIPCODE]];
+                    if (![zipcode isEqualToString:@"(null)"] && ![zipcode isEqualToString:@"<null>"]) {
+                        [user setValue:zipcode forKey:LOGIN_ZIPCODE];
+                    }
+                }
+                
                 [user setValue:[dic valueForKey:@"updated"] forKey:LOGIN_UPDATED];
-                [user setValue:[dic valueForKey:@"zipcode"] forKey:LOGIN_ZIPCODE];
                 [user setValue:[dic valueForKey:@"img"] forKey:LOGIN_IMAGE];
                 [user setValue:[dic valueForKey:@"notifications"] forKey:LOGIN_NOTIFICATION];
                 [user setValue:@"1" forKey:LOGIN_STATUS];
