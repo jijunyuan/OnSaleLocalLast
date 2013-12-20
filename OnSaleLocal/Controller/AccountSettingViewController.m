@@ -162,7 +162,7 @@
         });
     }
     self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
-    self.l_navTitle.text = @"Account Settings";
+    self.l_navTitle.text = [@"Account Settings" uppercaseString];
     self.rightBtn.backgroundColor = [UIColor whiteColor];
     self.TF_password.secureTextEntry = YES;
     

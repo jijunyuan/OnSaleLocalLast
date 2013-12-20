@@ -31,7 +31,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
-    self.l_navTitle.text = @"Feedback";
+    self.l_navTitle.text = [@"Feedback" uppercaseString];
     self.myWebView.scrollView.bounces = NO;
     NSString * formatStr = [NSString stringWithFormat:@"%@/contact.html",DO_MAIN];
     NSURLRequest * request= [NSURLRequest requestWithURL:[NSURL URLWithString:formatStr]];

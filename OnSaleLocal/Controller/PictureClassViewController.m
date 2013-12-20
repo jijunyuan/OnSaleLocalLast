@@ -55,7 +55,7 @@
     [super viewDidLoad];
     self.myDicStaus = [NSMutableDictionary dictionaryWithCapacity:0];
     self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
-    self.l_navTitle.text = @"Categories";
+    self.l_navTitle.text = [@"Categories" uppercaseString];
     
     if ([WebService ISIOS7])
     {

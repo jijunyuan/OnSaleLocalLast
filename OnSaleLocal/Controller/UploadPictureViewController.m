@@ -39,7 +39,7 @@
 {
     [super viewDidLoad];
     self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
-    self.l_navTitle.text = @"Upload Picture";
+    self.l_navTitle.text = [@"Upload Picture" uppercaseString];
     self.btn_choose.titleLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
     
     [self.rightBtn setImage:[UIImage imageNamed:@"next.png"] forState:UIControlStateNormal];

@@ -45,7 +45,7 @@
     [self.rightBtn setImage:[UIImage imageNamed:@"send.png"] forState:UIControlStateNormal];
     [self.rightBtn addTarget:self action:@selector(sendClick:) forControlEvents:UIButtonClickEvent];
     self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
-    self.l_navTitle.text = @"Recover Password";
+    self.l_navTitle.text = [@"Recover Password" uppercaseString];
     
     self.TF_email.layer.borderWidth = 1;
     self.TF_email.layer.borderColor = [UIColor colorWithRed:196.0/255.0 green:196.0/255.0 blue:196.0/255.0 alpha:1.0].CGColor;

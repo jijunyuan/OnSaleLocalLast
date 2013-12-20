@@ -580,7 +580,7 @@
             self.userInfo = [NSMutableDictionary dictionaryWithDictionary:dic];
             NSString * name = [[dic valueForKey:@"firstName"] stringByAppendingFormat:@" %@",[dic valueForKey:@"lastName"]];
             self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
-            self.l_navTitle.text = [dic valueForKey:@"firstName"];
+            self.l_navTitle.text = [[dic valueForKey:@"firstName"] uppercaseString];
             
             if (![[dic valueForKey:@"id"] isEqualToString:[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_ID]])
             {

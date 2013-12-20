@@ -51,7 +51,7 @@
     [self.leftButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     self.leftButton.frame = CGRectMake(0, self.leftButton.frame.origin.y+5, 30, 30);
     self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
-    self.l_navTitle.text = self.key;
+    self.l_navTitle.text = [self.key uppercaseString];
     self.IV_result.alpha = 0.0;
     self.L_result.alpha = 0.0;
     self.allSignView.alpha = 0.0;

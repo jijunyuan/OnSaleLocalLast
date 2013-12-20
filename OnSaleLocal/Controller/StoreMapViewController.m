@@ -159,7 +159,7 @@
 {
     [super viewDidLoad];
     self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
-    self.l_navTitle.text = self.name;
+    self.l_navTitle.text = [self.name uppercaseString];
     
     [self.rightBtn setTitle:@"+" forState:UIControlStateNormal];
     [self.rightBtn addTarget:self action:@selector(rightButtonClick) forControlEvents:UIButtonClickEvent];

@@ -536,7 +536,7 @@
 -(void)addUI
 {
     self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
-    self.l_navTitle.text = [self.dic valueForKey:@"title"];
+    self.l_navTitle.text = [[self.dic valueForKey:@"title"] uppercaseString];
     [self.rightBtn setImage:[UIImage imageNamed:@"share.png"] forState:UIControlStateNormal];
     float height1 = [[self.dic valueForKey:@"height"] floatValue];
     float width1 = [[self.dic valueForKey:@"width"] floatValue];

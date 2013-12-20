@@ -33,7 +33,7 @@
     }
     
     self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
-    self.l_navTitle.text = @"About Us";
+    self.l_navTitle.text = [@"About Us" uppercaseString];
     self.myWebView.scrollView.bounces = NO;
     
     NSString * formatStr = [NSString stringWithFormat:@"%@/about.html",DO_MAIN];

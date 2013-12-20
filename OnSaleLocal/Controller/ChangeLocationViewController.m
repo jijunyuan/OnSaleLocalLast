@@ -54,7 +54,7 @@
 {
     [super viewDidLoad];
     self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
-    self.l_navTitle.text = @"Change Location";
+    self.l_navTitle.text = [@"Change Location" uppercaseString];
     self.Btn_setLocation.layer.cornerRadius = 10;
     self.Btn_currLocation.layer.cornerRadius = 10;
     self.IV_currView.layer.cornerRadius = 15;

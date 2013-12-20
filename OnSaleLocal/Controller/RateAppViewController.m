@@ -33,7 +33,7 @@
     }
     
     self.l_navTitle.font = [UIFont fontWithName:AllFontBold size:All_h2_size];
-    self.l_navTitle.text = @"Rate App";
+    self.l_navTitle.text = [@"Rate App" uppercaseString];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *  path = [NSString stringWithFormat:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=%@&pageNumber=0&sortOrdering=1&type=Purple+Software",APP_ID];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:path]];
