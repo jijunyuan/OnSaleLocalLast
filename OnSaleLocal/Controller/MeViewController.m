@@ -243,12 +243,12 @@
         if([userId isEqualToString:[dic objectForKey:@"id"]]) {
             NSMutableDictionary *newdic = [NSMutableDictionary dictionaryWithDictionary:dic];
             [newdic setObject:[NSNumber numberWithBool:followed] forKey:@"myFollowings"];
-            [self changeNumer:dic diff:(followed ? 1 : -1) forKey:@"followers"];
+            [self changeNumer:newdic diff:(followed ? 1 : -1) forKey:@"followers"];
             [self.dataArr replaceObjectAtIndex:i withObject:newdic];
         }
         if([self isLoginUser:[dic objectForKey:@"id"]]) {
             NSMutableDictionary *newdic = [NSMutableDictionary dictionaryWithDictionary:dic];
-            [self changeNumer:dic diff:(followed ? 1 : -1) forKey:@"followings"];
+            [self changeNumer:newdic diff:(followed ? 1 : -1) forKey:@"followings"];
             [self.dataArr replaceObjectAtIndex:i withObject:newdic];
         }
     }
