@@ -79,5 +79,3 @@
 
 #endif
 
-//#define UIButtonClickEvent UIControlEventTouchUpInside
-#define UIButtonClickEvent UIControlEventTouchDown

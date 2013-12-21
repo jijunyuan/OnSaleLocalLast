@@ -11,7 +11,7 @@
 #import "UIImage+UIImageExt.h"
 #import "SetViewController.h"
 #import "AppDelegate.h"
-#import "UIButton+ClickEvent.h"
+
 
 @interface AccountSettingViewController ()<NSURLConnectionDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
@@ -229,7 +229,7 @@
     //    [self.rightBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     //    [self.rightBtn setTitle:@"save" forState:UIControlStateNormal];
     [self.rightBtn setImage:[UIImage imageNamed:@"save.png"] forState:UIControlStateNormal];
-    [self.rightBtn addTarget:self action:@selector(saveClick) forControlEvents:UIButtonClickEvent];
+    [self.rightBtn addTarget:self action:@selector(saveClick) forControlEvents:UIControlEventTouchUpInside];
     // self.rightBtn.backgroundColor = [UIColor whiteColor];
     
     self.IV_photo.userInteractionEnabled = YES;

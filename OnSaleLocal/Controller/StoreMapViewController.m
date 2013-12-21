@@ -11,7 +11,7 @@
 #import "MKAnnotation.h"
 #import "LoginViewController.h"
 #import "AppDelegate.h"
-#import "UIButton+ClickEvent.h"
+
 
 @interface StoreMapViewController ()
 {
@@ -162,7 +162,7 @@
     self.l_navTitle.text = [self.name uppercaseString];
     
     [self.rightBtn setTitle:@"+" forState:UIControlStateNormal];
-    [self.rightBtn addTarget:self action:@selector(rightButtonClick) forControlEvents:UIButtonClickEvent];
+    [self.rightBtn addTarget:self action:@selector(rightButtonClick) forControlEvents:UIControlEventTouchUpInside];
 
     if ([[[self.dic valueForKey:@"storeDetails"] valueForKey:@"following"] intValue] == 0)
     {

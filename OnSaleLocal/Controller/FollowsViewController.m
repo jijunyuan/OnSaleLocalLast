@@ -16,7 +16,7 @@
 #import "MeRootViewController.h"
 #import "LoginViewController.h"
 #import "UIView+StringTag.h"
-#import "UIButton+ClickEvent.h"
+
 
 @interface FollowsViewController ()<EGORefreshTableHeaderDelegate,UIAlertViewDelegate>
 {
@@ -391,7 +391,7 @@
         cell.Btn_follow.alpha = 0.0;
     }
     
-    [cell.Btn_follow addTarget:self action:@selector(buttonClick:) forControlEvents:UIButtonClickEvent];
+    [cell.Btn_follow addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     cell.Btn_follow.tag = indexPath.row;
     return cell;
@@ -495,9 +495,8 @@
         }
     }
 }
--(void)buttonClick:(UITapGestureRecognizer *)gr
+-(void)buttonClick:(UIButton *)aButton
 {
-    UIButton *aButton = gr.view;
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_STATUS] isEqualToString:@"1"])
     {
         

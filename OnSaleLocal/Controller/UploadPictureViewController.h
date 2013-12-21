@@ -10,4 +10,5 @@
 
 @interface UploadPictureViewController : BaseSettingViewController
 @property (nonatomic,strong) IBOutlet UIImageView * imageView;
+@property (nonatomic, strong) UIActionSheet * sheet;
 @end

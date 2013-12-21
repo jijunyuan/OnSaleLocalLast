@@ -7,7 +7,7 @@
 //
 
 #import "FeedBackViewController.h"
-#import "UIButton+ClickEvent.h"
+
 
 @interface FeedBackViewController ()
 @property (nonatomic,strong) IBOutlet UITextField * TF_subject;
@@ -36,7 +36,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     [self.rightBtn setImage:[UIImage imageNamed:@"send.png"] forState:UIControlStateNormal];
-    [self.rightBtn addTarget:self action:@selector(sendClick) forControlEvents:UIButtonClickEvent];
+    [self.rightBtn addTarget:self action:@selector(sendClick) forControlEvents:UIControlEventTouchUpInside];
 }
 -(void)sendClick
 {

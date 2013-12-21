@@ -98,8 +98,6 @@
 		4DF728C41802F1360081AD30 /* CreatePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF728C21802F1360081AD30 /* CreatePasswordViewController.m */; };
 		4DF728C51802F1360081AD30 /* CreatePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF728C31802F1360081AD30 /* CreatePasswordViewController.xib */; };
 		4DF728C71802F1480081AD30 /* CreatePasswordViewController4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF728C61802F1480081AD30 /* CreatePasswordViewController4.xib */; };
-		E94D2D221862BB02008749EE /* UIButton+ClickEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D2D211862BB02008749EE /* UIButton+ClickEvent.m */; };
-		E94D2D251862C5AB008749EE /* ClickEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D2D241862C5AB008749EE /* ClickEvent.m */; };
 		E9F23347185D7DE800DD99D9 /* OslUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F23346185D7DE800DD99D9 /* OslUIViewController.m */; };
 		E9F2334C185D7EF500DD99D9 /* MSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F2334B185D7EF500DD99D9 /* MSLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E9F2334F185E2D8D00DD99D9 /* LikeIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F2334E185E2D8D00DD99D9 /* LikeIconView.m */; };
@@ -409,10 +407,6 @@
 		4DF728C21802F1360081AD30 /* CreatePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePasswordViewController.m; sourceTree = "<group>"; };
 		4DF728C31802F1360081AD30 /* CreatePasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePasswordViewController.xib; sourceTree = "<group>"; };
 		4DF728C61802F1480081AD30 /* CreatePasswordViewController4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePasswordViewController4.xib; sourceTree = "<group>"; };
-		E94D2D201862BB02008749EE /* UIButton+ClickEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ClickEvent.h"; sourceTree = "<group>"; };
-		E94D2D211862BB02008749EE /* UIButton+ClickEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ClickEvent.m"; sourceTree = "<group>"; };
-		E94D2D231862C5AB008749EE /* ClickEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClickEvent.h; sourceTree = "<group>"; };
-		E94D2D241862C5AB008749EE /* ClickEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClickEvent.m; sourceTree = "<group>"; };
 		E9F23345185D7DE800DD99D9 /* OslUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OslUIViewController.h; sourceTree = "<group>"; };
 		E9F23346185D7DE800DD99D9 /* OslUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OslUIViewController.m; sourceTree = "<group>"; };
 		E9F2334A185D7EF500DD99D9 /* MSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSLabel.h; sourceTree = "<group>"; };
@@ -808,10 +802,6 @@
 				4D8D707417F4744F00F19A80 /* StoreOfferView.m */,
 				E9F23353185F509F00DD99D9 /* UIView+StringTag.h */,
 				E9F23354185F509F00DD99D9 /* UIView+StringTag.m */,
-				E94D2D201862BB02008749EE /* UIButton+ClickEvent.h */,
-				E94D2D211862BB02008749EE /* UIButton+ClickEvent.m */,
-				E94D2D231862C5AB008749EE /* ClickEvent.h */,
-				E94D2D241862C5AB008749EE /* ClickEvent.m */,
 			);
 			name = other;
 			sourceTree = "<group>";
@@ -1746,7 +1736,6 @@
 				F149851117E0F61600C1CEC1 /* FMDatabase.m in Sources */,
 				F149851217E0F61600C1CEC1 /* FMDatabaseAdditions.m in Sources */,
 				F149851317E0F61600C1CEC1 /* FMDatabasePool.m in Sources */,
-				E94D2D251862C5AB008749EE /* ClickEvent.m in Sources */,
 				F149851417E0F61600C1CEC1 /* FMDatabaseQueue.m in Sources */,
 				F149851517E0F61600C1CEC1 /* FMResultSet.m in Sources */,
 				F149851B17E0F69F00C1CEC1 /* JSONKit.m in Sources */,
@@ -1792,7 +1781,6 @@
 				F1A4692617EC597E00EAB792 /* BasicMapAnnotation.m in Sources */,
 				F1A4692717EC597E00EAB792 /* CallOutAnnotationVifew.m in Sources */,
 				F1A4692817EC597E00EAB792 /* CalloutMapAnnotation.m in Sources */,
-				E94D2D221862BB02008749EE /* UIButton+ClickEvent.m in Sources */,
 				E9F2334F185E2D8D00DD99D9 /* LikeIconView.m in Sources */,
 				F1A4692917EC597E00EAB792 /* JingDianMapCell.m in Sources */,
 				F19AE89F17EC8AFB006FAE9E /* Map1ViewController.m in Sources */,

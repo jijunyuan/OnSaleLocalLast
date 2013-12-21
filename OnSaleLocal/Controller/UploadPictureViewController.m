@@ -10,7 +10,7 @@
 #import "PictureClassViewController.h"
 #import "UIImage+UIImageExt.h"
 #import "AppDelegate.h"
-#import "UIButton+ClickEvent.h"
+
 
 @interface UploadPictureViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
@@ -43,7 +43,7 @@
     self.btn_choose.titleLabel.font = [UIFont fontWithName:AllFont size:AllContentSize];
     
     [self.rightBtn setImage:[UIImage imageNamed:@"next.png"] forState:UIControlStateNormal];
-    [self.rightBtn addTarget:self action:@selector(nextClick) forControlEvents:UIButtonClickEvent];
+    [self.rightBtn addTarget:self action:@selector(nextClick) forControlEvents:UIControlEventTouchUpInside];
     self.rightBtn.frame = CGRectMake(self.rightBtn.frame.origin.x, self.rightBtn.frame.origin.y, 30, 30);
     
     pickViewController = [[UIImagePickerController alloc]init];
@@ -191,10 +191,9 @@
 
 -(IBAction)choosePictureClick:(id)sender
 {
-    UIActionSheet * sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a picture",@"Choose from album", nil];
-    sheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-    [sheet showFromRect:CGRectMake(0, 100, 320, 300) inView:self.view animated:self];
-    [sheet showInView:[UIApplication sharedApplication].keyWindow];
+    self.sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a picture",@"Choose from album", nil];
+    self.sheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [self.sheet showInView:[UIApplication sharedApplication].keyWindow];
 }
 
 -(void)backIOS7

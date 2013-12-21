@@ -19,7 +19,7 @@
 #import "AppDelegate.h"
 #import "TrendDetailViewController.h"
 #import <CoreLocation/CoreLocation.h>
-#import "UIButton+ClickEvent.h"
+
 
 @interface SafewayViewController ()<EGORefreshTableHeaderDelegate,NSURLConnectionDelegate,UIAlertViewDelegate,CLLocationManagerDelegate>
 {
@@ -411,7 +411,7 @@
 //    UIButton * button1 = [UIButton buttonWithType:UIButtonTypeCustom];
 //    button1.frame = CGRectMake(230, 15, 40, 40);
 //    [button1 setImage:[UIImage imageNamed:@"map_store.png"] forState:UIControlStateNormal];
-//    [button1 addTarget:self action:@selector(mapTapClick) forControlEvents:UIButtonClickEvent];
+//    [button1 addTarget:self action:@selector(mapTapClick) forControlEvents:UIControlEventTouchUpInside];
 //    [imageViewBg addSubview:button1];
     
     
@@ -452,7 +452,7 @@
     
    // self.l_navTitle.text = self.merchanName;
     [self.rightBtn setTitle:@"+" forState:UIControlStateNormal];
-    [self.rightBtn addTarget:self action:@selector(rightButtonClick) forControlEvents:UIButtonClickEvent];
+    [self.rightBtn addTarget:self action:@selector(rightButtonClick) forControlEvents:UIControlEventTouchUpInside];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self getData];
     });

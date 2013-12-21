@@ -15,7 +15,7 @@
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "UIView+StringTag.h"
-#import "UIButton+ClickEvent.h"
+
 
 @interface StoreFollowersViewController ()<EGORefreshTableHeaderDelegate,UIAlertViewDelegate>
 {
@@ -450,16 +450,15 @@
         cell.L_phone.text = [[dic1 valueForKey:@"store"] valueForKey:@"phone"];
         cell.L_name.text = [[dic1 valueForKey:@"store"] valueForKey:@"name"];
         cell.L_homedown.text = [NSString stringWithFormat:@"%@,%@,%@",[[dic1 valueForKey:@"store"] valueForKey:@"address"],[[dic1 valueForKey:@"store"] valueForKey:@"city"],[[dic1 valueForKey:@"store"] valueForKey:@"state"]];
-        [cell.Btn_follow addTarget:self action:@selector(unfollowed:) forControlEvents:UIButtonClickEvent];
+        [cell.Btn_follow addTarget:self action:@selector(unfollowed:) forControlEvents:UIControlEventTouchUpInside];
         cell.Btn_follow.tag = indexPath.row;
         cell.Btn_follow.stringTag = [[dic1 valueForKey:@"store"] valueForKey:@"id"];
         cell.stringTag = [[dic1 valueForKey:@"store"] valueForKey:@"id"];
     }
     return cell;
 }
--(void)unfollowed:(UITapGestureRecognizer *)gr
+-(void)unfollowed:(UIButton *)aButton
 {
-    UIButton *aButton = gr.view;
     tempTag = aButton.tag;
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:LOGIN_STATUS] isEqualToString:@"1"])
     {

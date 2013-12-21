@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 #import "AppDelegate.h"
-#import "UIButton+ClickEvent.h"
+
 
 @interface BaseViewController ()
 
@@ -46,7 +46,7 @@
     UIButton * backBtn1 = [UIButton buttonWithType:UIButtonTypeCustom];
     backBtn1.showsTouchWhenHighlighted = YES;
     self.backBtn = backBtn1;
-    [backBtn1 addTarget:self action:@selector(backClick:) forControlEvents:UIButtonClickEvent];
+    [backBtn1 addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
     backBtn1.showsTouchWhenHighlighted = YES;
     backBtn1.frame = CGRectMake(0, 7, 30, 30);
     backBtn1.backgroundColor = [UIColor clearColor];
@@ -71,7 +71,7 @@
     lab.textColor = [UIColor colorWithRed:178.0/255.0 green:0 blue:0 alpha:1.0];
     [view1 addSubview:lab];
 }
--(void)backClick:(UITapGestureRecognizer *)gr
+-(void)backClick:(id)sender
 {
    // [self.navigationController popViewControllerAnimated:YES];
     //AppDelegate * delegate = [UIApplication sharedApplication].delegate;

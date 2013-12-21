@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 #import "JASidePanelController.h"
-#import "UIButton+ClickEvent.h"
+
 
 @interface BaseSettingViewController ()
 
@@ -45,7 +45,7 @@
     
     UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backBtn.showsTouchWhenHighlighted = YES;
-    [backBtn addTarget:self action:@selector(backClick:) forControlEvents:UIButtonClickEvent];
+    [backBtn addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
     self.leftButton = backBtn;
   //  backBtn.showsTouchWhenHighlighted = YES;
     backBtn.frame = CGRectMake(9, 0, 44, 44);
@@ -75,7 +75,8 @@
     [self.view addGestureRecognizer:swipe];
     
 }
--(void)backClick:(UITapGestureRecognizer *)gr
+
+-(void)backClick:(id)sender
 {
     AppDelegate * delegate = [UIApplication sharedApplication].delegate;
     JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
@@ -88,4 +89,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) viewDidUnload
+{
+    NSLog(@"viewDidUnload %@", self.class);
+}
 @end
