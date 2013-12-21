@@ -80,50 +80,19 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentAddOne:) name:@"commentAddOne" object:nil];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"likeData" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(likedata:) name:@"likeData" object:nil];
     self.navigationController.navigationBarHidden = YES;
     NSLog(@"isRefresh = %d",isRefresh);
     self.myAllSignView = allSignView;
-//    if (self.isLoading)
-//    {
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//            [self getData1];
-//        });
-//    }
 }
 
 -(void) viewDidUnload
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"commentAddOne" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"likeData" object:nil];
-}
-
-- (void) dealloc
-{
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    if([self dataChanged]) {
-//        [waterFlow reloadData];
-        self.dataChangedTime = 0;
-    }
-}
-
--(void) viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
 }
 
 -(void)commentAddOne:(NSNotification *)aNotification
 {
     [self getData1];
-}
-
--(void)likedata:(NSNotification *)aNotification
-{
 }
 
 -(void)emailClick:(UITapGestureRecognizer *)aTap

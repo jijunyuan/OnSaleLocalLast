@@ -29,9 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.dataChangedTime = 0;
-    self.appearTime = 0;
-    self.disappearTime = 0;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataChangedNotificationCallback:) name:@"dataChangedNotification" object:nil];
     NSLog(@"addObserver dataChangedNotification");
 }
@@ -39,7 +36,6 @@
 - (void)viewDidunload
 {
     NSLog(@"%@ viewDidunload called", [self class]);
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"dataChanged" object:nil];
     [super viewDidUnload];
 }
 
@@ -51,28 +47,19 @@
 -(void) viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    self.disappearTime = [[NSDate date] timeIntervalSince1970];
+    if (self.parentViewController == nil) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"dataChanged" object:nil];
+    } else {
+    }
 }
 
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.appearTime = [[NSDate date] timeIntervalSince1970];
-}
-
--(BOOL) isAppearing
-{
-    return self.appearTime > self.disappearTime;
 }
 
 -(void)dataChangedNotificationCallback:(NSNotification *)noti
 {
-    self.dataChangedTime = [[NSDate date] timeIntervalSince1970];
-}
-
--(BOOL) dataChanged
-{
-    return self.dataChangedTime > self.disappearTime;
 }
 
 - (void) likeUnlike:(NSString *)offerId :(BOOL)liked :(id)params
@@ -283,5 +270,6 @@
     }
     return NO;
 }
+
 @end
 

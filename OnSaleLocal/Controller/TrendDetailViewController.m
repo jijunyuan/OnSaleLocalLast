@@ -140,10 +140,7 @@
     }
     return self;
 }
--(void)viewDidDisappear:(BOOL)animated
-{
-    NSLog(@"TrendDetailViewController viewDidDisappear");
-}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     NSLog(@"TrendDetailViewController viewWillAppear");
