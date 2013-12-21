@@ -140,7 +140,6 @@
                 self.TV_tableview.hidden = NO;
                 [self.TV_tableview reloadData];
             });
-            NSLog(@"dataArr =%@",self.dataArr);
         }
         else
         {

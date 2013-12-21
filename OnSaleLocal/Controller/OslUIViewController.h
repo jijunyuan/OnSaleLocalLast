@@ -10,6 +10,8 @@
 
 @interface OslUIViewController : UIViewController
 
+@property (assign, nonatomic) BOOL poped;
+
 - (void) dataChangedNotificationCallback:(NSNotification *)noti;
 - (void) likeUnlike:(NSString *)offerId :(BOOL)liked :(id)params;
 - (void) followUnfollowUser:(NSString *)userId :(BOOL)follow :(id)params;

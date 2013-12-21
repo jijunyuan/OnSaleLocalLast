@@ -83,7 +83,6 @@
 @synthesize Btn_male;
 @synthesize Btn_nosay;
 @synthesize V_iphone4;
-@synthesize setController;
 @synthesize myScrollView;
 @synthesize bt_1;
 @synthesize bt_2;
@@ -582,9 +581,7 @@
     
     if (res.statusCode == 200)
     {
-        // [[NSUserDefaults standardUserDefaults] setValue:[UIImage imageWithData:imageData] forKey:LOGIN_IMAGE];
-        
-        self.setController.IV_login_name.image = [UIImage imageWithData:imageData];
+        // avatar changed. need notification here
     }
     else
     {

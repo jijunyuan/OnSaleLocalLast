@@ -48,14 +48,18 @@
 {
     [super viewDidDisappear:animated];
     if (self.parentViewController == nil) {
+        NSLog(@"pop view controller %@", self.class);
         [[NSNotificationCenter defaultCenter] removeObserver:self name:@"dataChanged" object:nil];
+        self.poped = YES;
     } else {
+        NSLog(@"nav away view controller %@", self.class);
     }
 }
 
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    self.poped = NO;
 }
 
 -(void)dataChangedNotificationCallback:(NSNotification *)noti

@@ -100,7 +100,6 @@
             if (!isLikes)
             {
                 self.dataArr = [NSMutableArray arrayWithArray:[[reciveData objectFromJSONData] valueForKey:@"items"]];
-                NSLog(@"dataArr = %@",self.dataArr);
             }
             else
             {

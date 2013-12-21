@@ -10,5 +10,4 @@
 #import "BaseSettingViewController.h"
 @class SetViewController;
 @interface AccountSettingViewController : BaseSettingViewController
-@property (nonatomic,strong)SetViewController * setController;
 @end
