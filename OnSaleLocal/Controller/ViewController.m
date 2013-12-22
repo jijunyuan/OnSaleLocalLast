@@ -28,6 +28,7 @@
 #import "Container.h"
 #import "CreatePasswordViewController.h"
 #import "LoginViewController.h"
+#import "UIGestureRecognizer+Blocks.h"
 
 
 @interface ViewController ()<WaterFlowViewDelegate,WaterFlowViewDataSource,EGORefreshTableHeaderDelegate,UIScrollViewDelegate,CLLocationManagerDelegate,NSURLConnectionDelegate,UIActionSheetDelegate,UIAlertViewDelegate>
@@ -45,13 +46,10 @@
 -(void)stopClick1:(UIButton *)aButton;
 -(void)ShareClick:(UIButton *)aButton;
 -(void)addWaterfolow;
--(void)commentAddOne:(NSNotification *)aNotification;
 
 
 -(void)emailClick:(UITapGestureRecognizer *)aTap;
 -(void)faceBookClick:(UITapGestureRecognizer *)aTap;
--(void)skipClick:(UITapGestureRecognizer *)aTap;
--(void)likedata:(NSNotification *)aNotification;
 -(void)getData2;
 
 @end
@@ -76,23 +74,9 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"commentAddOne" object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentAddOne:) name:@"commentAddOne" object:nil];
-    
     self.navigationController.navigationBarHidden = YES;
     NSLog(@"isRefresh = %d",isRefresh);
     self.myAllSignView = allSignView;
-}
-
--(void) viewDidUnload
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"commentAddOne" object:nil];
-}
-
--(void)commentAddOne:(NSNotification *)aNotification
-{
-    [self getData1];
 }
 
 -(void)emailClick:(UITapGestureRecognizer *)aTap
@@ -169,11 +153,6 @@
 //    }
 }
 
--(void)skipClick:(UITapGestureRecognizer *)aTap
-{
-    // [self.allSignView removeFromSuperview];
-    self.allSignView.alpha = 0.0;
-}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -269,16 +248,19 @@
             }
         }
         
-        // self.allSignView.alpha = 0.8;
-        UITapGestureRecognizer * tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(skipClick:)];
+        UITapGestureRecognizer * tap1 = [[UITapGestureRecognizer alloc] initWithBlock:^(UIGestureRecognizer * gr){
+            self.allSignView.alpha = 0.0;
+        }];
+        [self.L_skip addGestureRecognizer:tap1];
+        
         UITapGestureRecognizer * tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(faceBookClick:)];
+        [self.IV_facebook addGestureRecognizer:tap2];
+        
         UITapGestureRecognizer * tap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(emailClick:)];
         self.IV_facebook.userInteractionEnabled = YES;
         self.IV_email.userInteractionEnabled = YES;
         self.L_skip.userInteractionEnabled = YES;
         [self.IV_email addGestureRecognizer:tap3];
-        [self.IV_facebook addGestureRecognizer:tap2];
-        [self.L_skip addGestureRecognizer:tap1];
     }
     else
     {
@@ -530,7 +512,8 @@
 
 - (UIView *)waterFlowView:(WaterFlowView *)waterFlowView cellForRowAtIndexPath:(IndexPath *)indexPath
 {
-    //int arrIndex = indexPath.row * waterFlowView.columnCount + indexPath.column;
+    static NSString *CellIdentifier = @"StorycellViewCell";
+    
     int arrIndex = 0;
     if (indexPath.column == 0)
     {
@@ -567,8 +550,15 @@
             tempHeight = 150.0/width*height;
         }
     }
-    StorycellView *view1 = [[StorycellView alloc] initWithFrame:CGRectMake(0, 0, 160.0, tempHeight+150.0) andImageHeight:height andWidth:width];
-    return view1;
+    
+    StorycellView *cell = [[waterFlow.tableviews objectAtIndex:0] dequeueReusableCellWithIdentifier:CellIdentifier];
+    if(!cell) {
+        cell = [[StorycellView alloc] initWithFrame:CGRectMake(0, 0, 160.0, tempHeight+150.0) andImageHeight:height andWidth:width];
+    }
+    else {
+        NSLog(@"reuse cell");
+    }
+    return cell;
 }
 
 
