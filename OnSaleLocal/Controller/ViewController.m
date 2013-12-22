@@ -310,14 +310,9 @@
     [request11 setSecondsToCache:60*60*2];
     [request11 setUseCookiePersistence:YES];
     [request11 buildRequestHeaders];
-    NSMutableData * reciveData1 = [NSMutableData dataWithCapacity:0];
     
     [request11 setStartedBlock:^{
         [MyActivceView startAnimatedInView:self.view];
-    }];
-    [request11 setDataReceivedBlock:^(NSData *data) {
-        [reciveData1 appendData:data];
-        
     }];
     [request11 setCompletionBlock:^{
         [MyActivceView stopAnimatedInView:self.view];
@@ -325,12 +320,8 @@
         if ([request11 responseStatusCode] == 200)
         {
             [self.dataArr removeAllObjects];
-            NSString * strRes = [[NSString alloc] initWithData:(NSData *)reciveData1 encoding:1];
+            NSString * strRes = [[NSString alloc] initWithData:[request11 responseData] encoding:1];
             [self.dataArr addObjectsFromArray:[[strRes objectFromJSONString] valueForKey:@"items"]];
-//            NSLog(@"dataArr = %@", self.dataArr);
-            
-            isfirstloading = YES;
-          //  [self getData1];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [waterFlow reloadData];
                 if (self.dataArr.count==0)
@@ -462,16 +453,12 @@
         [request1 setUseCookiePersistence:YES];
         [request1 buildRequestHeaders];
     }
-    NSMutableData * reciveData3 = [NSMutableData dataWithCapacity:0];
     __weak typeof(self) weakSelf = self;
     [request1 setStartedBlock:^{
         [MyActivceView startAnimatedInView:weakSelf.view];
     }];
-    [request1 setDataReceivedBlock:^(NSData *data) {
-        [reciveData3 appendData:data];
-    }];
     [request1 setCompletionBlock:^{
-        NSString * strRes = [[NSString alloc] initWithData:reciveData3 encoding:1];
+        NSString * strRes = [[NSString alloc] initWithData:[request1 responseData] encoding:1];
         NSMutableArray * arr1 = [[strRes objectFromJSONString] valueForKey:@"items"];
         weakSelf.dataArr = [NSMutableArray arrayWithArray:weakSelf.dataArr];
         [arr1 enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL *stop) {
