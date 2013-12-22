@@ -24,4 +24,5 @@
 - (void) setButtonClickAction:(SEL)action withTarget:(id)target toButton:(UIButton *)btn;
 - (BOOL) showCenterViewControllerIfVisible:(Class)cls;
 - (BOOL) hasViewController:(UIViewController *)controller;
+- (void) releaseMapView:(UIView *)view;
 @end

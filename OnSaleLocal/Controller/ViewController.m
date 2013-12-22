@@ -1190,12 +1190,14 @@
 -(id) searchStorycellViewByTag:(int)tag
 {
     for(UITableView *tv in waterFlow.tableviews) {
-        for (int i=0; i<1000; i++) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow: i inSection: 0];
-            UITableViewCell *cell = [tv cellForRowAtIndexPath:indexPath];
-            for (UIView *view in  cell.contentView.subviews){
-                if ([view isKindOfClass:[StorycellView class]] && view.tag == tag){
-                    return (id)view;
+        for(int sec=0; sec < [tv numberOfSections]; sec++) {
+            for (int i=0; i<[tv numberOfRowsInSection:sec]; i++) {
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow: i inSection: sec];
+                UITableViewCell *cell = [tv cellForRowAtIndexPath:indexPath];
+                for (UIView *view in  cell.contentView.subviews){
+                    if ([view isKindOfClass:[StorycellView class]] && view.tag == tag){
+                        return (id)view;
+                    }
                 }
             }
         }

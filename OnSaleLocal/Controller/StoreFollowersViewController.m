@@ -627,17 +627,19 @@
 - (void) viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     if (self.parentViewController == nil) {
-        for (int i=0; i<1000; i++) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow: i inSection: 0];
-            UIView *cell = [TV_tableivew cellForRowAtIndexPath:indexPath];
-            if(cell) {
-                BOOL isCls = [cell isKindOfClass:[StoreFollowCell class]];
-                if (isCls){
-                    StoreFollowCell *sfc = (StoreFollowCell *) cell;
-                    sfc.mapview.mapType = MKMapTypeStandard;
-                    [sfc.mapview removeFromSuperview];
-                    sfc.mapview.delegate = nil;
-                    sfc.mapview = nil;
+        for(int sec=0; sec < [TV_tableivew numberOfSections]; sec++) {
+            for (int i=0; i<[TV_tableivew numberOfRowsInSection:sec]; i++) {
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow: i inSection: sec];
+                UIView *cell = [TV_tableivew cellForRowAtIndexPath:indexPath];
+                if(cell) {
+                    BOOL isCls = [cell isKindOfClass:[StoreFollowCell class]];
+                    if (isCls){
+                        StoreFollowCell *sfc = (StoreFollowCell *) cell;
+                        sfc.mapview.mapType = MKMapTypeStandard;
+                        [sfc.mapview removeFromSuperview];
+                        sfc.mapview.delegate = nil;
+                        sfc.mapview = nil;
+                    }
                 }
             }
         }

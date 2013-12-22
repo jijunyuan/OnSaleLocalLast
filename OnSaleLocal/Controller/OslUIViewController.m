@@ -10,6 +10,9 @@
 #import "WebService.h"
 #import "UIView+StringTag.h"
 #import "AppDelegate.h"
+#import <QuartzCore/QuartzCore.h>
+#import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface OslUIViewController ()
 
@@ -48,6 +51,7 @@
 {
     [super viewDidDisappear:animated];
     if (self.parentViewController == nil) {
+        [self releaseMapView:self.view];
         NSLog(@"viewDidDisappear pop view controller %@", self.class);
         [[NSNotificationCenter defaultCenter] removeObserver:self name:@"dataChanged" object:nil];
         self.poped = YES;
@@ -221,11 +225,13 @@
 
 -(id) searchTableView:(UITableView *)tv forClass:(Class)cls withTag:(int)tag
 {
-    for (int i=0; i<1000; i++) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow: i inSection: 0];
-        UIView *cell = [tv cellForRowAtIndexPath:indexPath];
-        if ([cell isKindOfClass:cls] && cell.tag == tag){
-            return (id)cell;
+    for(int sec=0; sec < [tv numberOfSections]; sec++) {
+        for (int i=0; i<[tv numberOfRowsInSection:sec]; i++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow: i inSection: sec];
+            UIView *cell = [tv cellForRowAtIndexPath:indexPath];
+            if ([cell isKindOfClass:cls] && cell.tag == tag){
+                return (id)cell;
+            }
         }
     }
     return nil;
@@ -233,13 +239,15 @@
 
 -(id) searchTableView:(UITableView *)tv forClass:(Class)cls withStringTag:(NSString *)tag
 {
-    for (int i=0; i<1000; i++) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow: i inSection: 0];
-        UIView *cell = [tv cellForRowAtIndexPath:indexPath];
-        BOOL isCls = [cell isKindOfClass:cls];
-        NSString *cellTag = cell.stringTag;
-        if (isCls && [tag isEqualToString:cellTag]){
-            return (id)cell;
+    for(int sec=0; sec < [tv numberOfSections]; sec++) {
+        for (int i=0; i<[tv numberOfRowsInSection:sec]; i++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow: i inSection: sec];
+            UIView *cell = [tv cellForRowAtIndexPath:indexPath];
+            BOOL isCls = [cell isKindOfClass:cls];
+            NSString *cellTag = cell.stringTag;
+            if (isCls && [tag isEqualToString:cellTag]){
+                return (id)cell;
+            }
         }
     }
     return nil;
@@ -284,6 +292,28 @@
             return YES;
     }
     return NO;
+}
+
+- (void)releaseMapView:(UIView *)view {
+    if([view isKindOfClass:[MKMapView class]]) {
+        NSLog(@"%@ releases MKMapView", self.class);
+        MKMapView *map = (MKMapView *) view;
+        if(map.mapType == MKMapTypeHybrid)
+            map.mapType = MKMapTypeStandard;
+        else
+            map.mapType = MKMapTypeHybrid;
+        [map removeFromSuperview];
+        map.delegate = nil;
+        return;
+    }
+    
+    NSArray *subviews = [view subviews];
+    
+    if ([subviews count] == 0) return;
+    
+    for (UIView *subview in subviews) {
+        [self releaseMapView:subview];
+    }
 }
 @end
 
