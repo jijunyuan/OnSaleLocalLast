@@ -395,7 +395,9 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    StoreFollowCell * cell = [tableView dequeueReusableCellWithIdentifier:nil];
+    static NSString *cellIdentifier = @"StoreFollowCellId";
+    StoreFollowCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+//    StoreFollowCell * cell = [tableView dequeueReusableCellWithIdentifier:nil];
     if (cell == nil)
     {
         cell = [[StoreFollowCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
@@ -622,5 +624,23 @@
     }
 }
 
-
+- (void) viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    if (self.parentViewController == nil) {
+        for (int i=0; i<1000; i++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow: i inSection: 0];
+            UIView *cell = [TV_tableivew cellForRowAtIndexPath:indexPath];
+            if(cell) {
+                BOOL isCls = [cell isKindOfClass:[StoreFollowCell class]];
+                if (isCls){
+                    StoreFollowCell *sfc = (StoreFollowCell *) cell;
+                    sfc.mapview.mapType = MKMapTypeStandard;
+                    [sfc.mapview removeFromSuperview];
+                    sfc.mapview.delegate = nil;
+                    sfc.mapview = nil;
+                }
+            }
+        }
+    }
+}
 @end
