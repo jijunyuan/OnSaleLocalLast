@@ -18,6 +18,8 @@
 
 #define CURRENT_LOCATION_ANNOTATION @"CurrentLocation1234"
 
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
 #import "MyActivceView.h"
 #import "ASIHTTPRequest.h"
 #import "DataBase.h"

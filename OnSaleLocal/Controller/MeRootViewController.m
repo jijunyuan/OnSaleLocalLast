@@ -1061,7 +1061,6 @@
     {
         store = [[StoreFollowersViewController alloc] initWithNibName:@"StoreFollowersViewController4" bundle:nil];
     }
-    store.meRootController = self;
     store.userid = userid;
     store.isLikes = NO;
     [self.navigationController pushViewController:store animated:YES];
@@ -1197,9 +1196,6 @@
     trend1.meRootController = self;
     [self.navigationController pushViewController:trend1 animated:YES];
 }
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
+
 
 @end

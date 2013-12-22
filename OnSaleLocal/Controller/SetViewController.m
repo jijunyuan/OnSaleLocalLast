@@ -973,9 +973,5 @@
     [request startAsynchronous];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
 
 @end

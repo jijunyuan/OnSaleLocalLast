@@ -657,9 +657,5 @@
     float val;
     return ([scan scanFloat:&val]||[scan scanHexFloat:&val]) && [scan isAtEnd];
 }
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
 
 @end

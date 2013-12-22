@@ -245,10 +245,5 @@
     NSPredicate * zip = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",zipRegex];
     return [zip evaluateWithObject:aZip];
 }
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end

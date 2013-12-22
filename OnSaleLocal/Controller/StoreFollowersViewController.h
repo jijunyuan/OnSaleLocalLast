@@ -12,5 +12,4 @@
 @interface StoreFollowersViewController : BaseViewController
 @property (nonatomic,strong) NSString * userid;
 @property (nonatomic) BOOL isLikes;
-@property (nonatomic,strong) MeRootViewController * meRootController;
 @end

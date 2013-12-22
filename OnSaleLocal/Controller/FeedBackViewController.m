@@ -49,9 +49,5 @@
        // [MyAlert ShowAlertMessage:@"Please fill in the information." title:@""];
     }
 }
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
 
 @end

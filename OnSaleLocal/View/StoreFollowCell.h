@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 
 @interface StoreFollowCell : UITableViewCell
-@property (nonatomic,strong) MKMapView * mapview;
+@property (nonatomic,strong) UIImageView * mapview;
 @property (nonatomic,strong) UILabel * L_name;
 @property (nonatomic,strong) UILabel * L_homedown;
 @property (nonatomic,strong) UIButton * Btn_follow;

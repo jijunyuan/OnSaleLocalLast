@@ -1107,38 +1107,7 @@
                                        delegate:nil];
 }
 
-//    UIActionSheet * sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Share on FaceBook",@"Share via Email",@"Flag as Inappropriate", nil];
-//    [sheet showInView:self.view];
 
-//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-//{
-//    if (buttonIndex == 0)
-//    {
-//        [UMSocialSnsService presentSnsIconSheetView:self
-//                                             appKey:UM_APP_KEY
-//                                          shareText:@"content"
-//                                         shareImage:[UIImage imageNamed:@"icon.png"]
-//                                    shareToSnsNames:[NSArray arrayWithObjects:UMShareToFacebook,nil]
-//                                           delegate:nil];
-//    }
-//    if (buttonIndex == 1)
-//    {
-//        [UMSocialSnsService presentSnsIconSheetView:self
-//                                             appKey:UM_APP_KEY
-//                                          shareText:@"content"
-//                                         shareImage:[UIImage imageNamed:@"icon.png"]
-//                                    shareToSnsNames:[NSArray arrayWithObjects:UMShareToSms,nil]
-//                                           delegate:nil];
-//    }
-//    if (buttonIndex == 2)
-//    {
-//        //flag
-//    }
-//}
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
 
 - (void)changeOfferLikeState:(NSString *)likedOfferId liked:(BOOL)like
 {

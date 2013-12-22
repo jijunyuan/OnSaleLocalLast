@@ -49,7 +49,6 @@
 @synthesize dataArr;
 @synthesize TV_tableivew;
 @synthesize isLikes;
-@synthesize meRootController;
 @synthesize allSignView,IV_email,IV_facebook,L_skip;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -397,7 +396,6 @@
 {
     static NSString *cellIdentifier = @"StoreFollowCellId";
     StoreFollowCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//    StoreFollowCell * cell = [tableView dequeueReusableCellWithIdentifier:nil];
     if (cell == nil)
     {
         cell = [[StoreFollowCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
@@ -417,15 +415,26 @@
         location1.latitude = [[dic1 valueForKey:@"latitude"] floatValue];
         location1.longitude = [[dic1 valueForKey:@"longitude"] floatValue];
     }
-    MKCoordinateRegion region;
-    region.center = location1;
-    MKCoordinateSpan span;
-    span.latitudeDelta = 0.007;
-    span.longitudeDelta = 0.007;
-    region.center = location1;
-    region.span = span;
-    [cell.mapview setRegion:region animated:YES];
-    cell.mapview.userInteractionEnabled = NO;
+    
+    {
+        MKCoordinateRegion region;
+        region.center = location1;
+        MKCoordinateSpan span;
+        span.latitudeDelta = 0.007;
+        span.longitudeDelta = 0.007;
+        region.center = location1;
+        region.span = span;
+        
+        MKMapSnapshotOptions *options = [[MKMapSnapshotOptions alloc] init];
+        options.region = region;
+        options.scale = [UIScreen mainScreen].scale;
+        options.size = cell.mapview.frame.size;
+        
+        MKMapSnapshotter *snapshotter = [[MKMapSnapshotter alloc] initWithOptions:options];
+        [snapshotter startWithCompletionHandler:^(MKMapSnapshot *snapshot, NSError *error) {
+            cell.mapview.image = snapshot.image;
+        }];
+    }
     
     NSString * tempStr1 = [NSString stringWithFormat:@"%@",[dic1 valueForKey:@"myFollowingStore"]];
     if ([tempStr1 isEqualToString:@"1"])
@@ -571,16 +580,6 @@
   //  safe.trend = self;
     [self.navigationController pushViewController:safe animated:YES];
 }
--(void)backClick:(UIButton *)aButton
-{
-    self.meRootController.storefollowsNum = [NSString stringWithFormat:@"%d store followed",self.dataArr.count];
-    [self.navigationController popViewControllerAnimated:YES];
-}
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 -(void)dataChangedNotificationCallback:(NSNotification *)noti
 {
@@ -627,22 +626,31 @@
 - (void) viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     if (self.parentViewController == nil) {
-        for(int sec=0; sec < [TV_tableivew numberOfSections]; sec++) {
-            for (int i=0; i<[TV_tableivew numberOfRowsInSection:sec]; i++) {
-                NSIndexPath *indexPath = [NSIndexPath indexPathForRow: i inSection: sec];
-                UIView *cell = [TV_tableivew cellForRowAtIndexPath:indexPath];
-                if(cell) {
-                    BOOL isCls = [cell isKindOfClass:[StoreFollowCell class]];
-                    if (isCls){
-                        StoreFollowCell *sfc = (StoreFollowCell *) cell;
-                        sfc.mapview.mapType = MKMapTypeStandard;
-                        [sfc.mapview removeFromSuperview];
-                        sfc.mapview.delegate = nil;
-                        sfc.mapview = nil;
-                    }
+        [self releaseMap];
+    }
+}
+
+- (void) releaseMap
+{
+    for(int sec=0; sec < [TV_tableivew numberOfSections]; sec++) {
+        for (int i=0; i<[TV_tableivew numberOfRowsInSection:sec]; i++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow: i inSection: sec];
+            UIView *cell = [TV_tableivew cellForRowAtIndexPath:indexPath];
+            if(cell) {
+                BOOL isCls = [cell isKindOfClass:[StoreFollowCell class]];
+                if (isCls){
+                    NSLog(@"release map view");
+                    StoreFollowCell *sfc = (StoreFollowCell *) cell;
+                    [sfc.mapview removeFromSuperview];
+                    sfc.mapview.image = nil;
+                    sfc.mapview = nil;
+                    [sfc removeFromSuperview];
                 }
             }
         }
     }
+    [self.dataArr removeAllObjects];
+    [TV_tableivew reloadData];
 }
+
 @end

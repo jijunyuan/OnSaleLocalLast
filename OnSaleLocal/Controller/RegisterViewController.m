@@ -256,9 +256,5 @@
     return [zip evaluateWithObject:aZip];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
 
 @end

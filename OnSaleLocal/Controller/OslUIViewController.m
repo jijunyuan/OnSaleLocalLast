@@ -13,6 +13,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "NotificationCell.h"
 
 @interface OslUIViewController ()
 
@@ -45,13 +46,13 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    NSLog(@"memory waring");
 }
 
 -(void) viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
     if (self.parentViewController == nil) {
-        [self releaseMapView:self.view];
         NSLog(@"viewDidDisappear pop view controller %@", self.class);
         [[NSNotificationCenter defaultCenter] removeObserver:self name:@"dataChanged" object:nil];
         self.poped = YES;
@@ -294,26 +295,5 @@
     return NO;
 }
 
-- (void)releaseMapView:(UIView *)view {
-    if([view isKindOfClass:[MKMapView class]]) {
-        NSLog(@"%@ releases MKMapView", self.class);
-        MKMapView *map = (MKMapView *) view;
-        if(map.mapType == MKMapTypeHybrid)
-            map.mapType = MKMapTypeStandard;
-        else
-            map.mapType = MKMapTypeHybrid;
-        [map removeFromSuperview];
-        map.delegate = nil;
-        return;
-    }
-    
-    NSArray *subviews = [view subviews];
-    
-    if ([subviews count] == 0) return;
-    
-    for (UIView *subview in subviews) {
-        [self releaseMapView:subview];
-    }
-}
 @end
 

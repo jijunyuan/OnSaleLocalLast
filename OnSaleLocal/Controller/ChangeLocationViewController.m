@@ -263,9 +263,5 @@
     }
     return position;
 }
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
 
 @end

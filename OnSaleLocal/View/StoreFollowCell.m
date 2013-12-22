@@ -18,7 +18,7 @@
     if (self) {
         self.backgroundColor = [UIColor colorWithRed:242.0/255.0 green:242.0/255.0 blue:242.0/255.0 alpha:1.0];
         
-        MKMapView * mao = [[MKMapView alloc] initWithFrame:CGRectMake(15, 15, 50, 50)];
+        UIImageView * mao = [[UIImageView alloc] initWithFrame:CGRectMake(15, 15, 50, 50)];
         self.mapview = mao;
         [self addSubview:mao];
         

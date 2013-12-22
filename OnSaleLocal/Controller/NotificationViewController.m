@@ -14,7 +14,6 @@
 #import "MeRootViewController.h"
 #import "TrendDetailViewController.h"
 #import <CoreLocation/CoreLocation.h>
-#import <MapKit/MapKit.h>
 #import "AppDelegate.h"
 #import "JASidePanelController.h"
 #import "SetViewController.h"
@@ -217,6 +216,7 @@
         MKMapView * mapview = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
         [mapview setRegion:region animated:YES];
         mapview.userInteractionEnabled = NO;
+        cell.mapview = mapview;
         [cell.IV_imageView addSubview:mapview];
     }
    
@@ -347,10 +347,34 @@
     me.userid = [[dic2 valueForKey:@"user"] valueForKey:@"id"];
     [self.navigationController pushViewController:me animated:YES];
 }
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+
+
+- (void) viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    if (self.parentViewController == nil) {
+        [self releaseMap];
+    }
 }
 
+- (void) releaseMap
+{
+    for(int sec=0; sec < [self.TV_tableview numberOfSections]; sec++) {
+        for (int i=0; i<[self.TV_tableview numberOfRowsInSection:sec]; i++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow: i inSection: sec];
+            UIView *cell = [self.TV_tableview cellForRowAtIndexPath:indexPath];
+            if(cell) {
+                BOOL isCls = [cell isKindOfClass:[NotificationCell class]];
+                if (isCls){
+                    NSLog(@"release map view");
+                    NotificationCell *sfc = (NotificationCell *) cell;
+                    sfc.mapview.mapType = MKMapTypeStandard;
+                    [sfc.mapview removeFromSuperview];
+                    sfc.mapview.delegate = nil;
+                    sfc.mapview = nil;
+                }
+            }
+        }
+    }
+}
 @end

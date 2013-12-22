@@ -525,10 +525,6 @@
     float val;
     return [scan scanFloat:&val] && [scan isAtEnd];
 }
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 @end

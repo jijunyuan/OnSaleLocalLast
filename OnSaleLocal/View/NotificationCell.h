@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface NotificationCell : UITableViewCell
 @property (nonatomic,strong) UIImageView * IV_imageView;
 @property (nonatomic,strong) UILabel * L_name;
 @property (nonatomic,strong) UILabel * L_people;
 @property (nonatomic,strong) UILabel * L_time;
+@property (nonatomic,strong) MKMapView * mapview;
 @end
