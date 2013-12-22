@@ -23,4 +23,5 @@
 - (void) setBool:(NSDictionary *)dic value:(BOOL)value forKey:(NSString *)key;
 - (void) setButtonClickAction:(SEL)action withTarget:(id)target toButton:(UIButton *)btn;
 - (BOOL) showCenterViewControllerIfVisible:(Class)cls;
+- (BOOL) hasViewController:(UIViewController *)controller;
 @end

@@ -48,17 +48,18 @@
 {
     [super viewDidDisappear:animated];
     if (self.parentViewController == nil) {
-        NSLog(@"pop view controller %@", self.class);
+        NSLog(@"viewDidDisappear pop view controller %@", self.class);
         [[NSNotificationCenter defaultCenter] removeObserver:self name:@"dataChanged" object:nil];
         self.poped = YES;
     } else {
-        NSLog(@"nav away view controller %@", self.class);
+        NSLog(@"viewDidDisappear nav away view controller %@", self.class);
     }
 }
 
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    NSLog(@"viewDidAappear  %@", self.class);
     self.poped = NO;
 }
 
@@ -275,5 +276,14 @@
     return NO;
 }
 
+- (BOOL) hasViewController:(UIViewController *)controller
+{
+    AppDelegate * delegate = [UIApplication sharedApplication].delegate;
+    for (UIViewController * c in delegate.nav_Center.viewControllers) {
+        if(c == controller)
+            return YES;
+    }
+    return NO;
+}
 @end
 

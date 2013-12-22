@@ -684,47 +684,21 @@
 {
     NSString * title = [self.dataArr objectAtIndex:indexPath.row];
     AppDelegate * delegate = [UIApplication sharedApplication].delegate;
+    JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
     if ([title isEqualToString:@"Trending"])
     {
         if([self showCenterViewControllerIfVisible:[ViewController class]])
             return;
         
-        if(self.trendViewController && !self.trendViewController.poped) {
-            [delegate.nav_Center popToViewController:self.trendViewController animated:YES];
-            JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-            [controller showCenterPanelAnimated:YES];
-        }
-        else {
-            if(!self.trendViewController) {
-                if (iPhone5)
-                {
-                    self.trendViewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-                }
-                else
-                {
-                   self.trendViewController = [[ViewController alloc] initWithNibName:@"ViewController4" bundle:nil];
-                }
-            }
-            self.trendViewController.isFromeSetting = YES;
-            JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-            [controller showCenterPanelAnimated:YES];
-            CATransition* transition = [CATransition animation];
-            transition.duration = 0.5;
-            transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-            transition.type = kCATransitionFromRight;
-            [self.navigationController.view.layer addAnimation:transition forKey:nil];
-            [delegate.nav_Center pushViewController:self.trendViewController animated:YES];
-        }
+        [delegate.nav_Center popToRootViewControllerAnimated:NO];
     }
     if ([title isEqualToString:@"Categories"])
     {
         if([self showCenterViewControllerIfVisible:[CategoriesViewController class]])
             return;
         
-        if(self.categoriesViewController && !self.categoriesViewController.poped) {
-            [delegate.nav_Center popToViewController:self.categoriesViewController animated:YES];
-            JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-            [controller showCenterPanelAnimated:YES];
+        if(self.categoriesViewController && [self hasViewController:self.categoriesViewController ]) {
+            [delegate.nav_Center popToViewController:self.categoriesViewController animated:NO];
         }
         else {
             if(!self.categoriesViewController) {
@@ -737,15 +711,12 @@
                     self.categoriesViewController = [[CategoriesViewController alloc] initWithNibName:@"CategoriesViewController4" bundle:nil];
                 }
             }
-            AppDelegate * delegate = [UIApplication sharedApplication].delegate;
-            JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-            [controller showCenterPanelAnimated:YES];
             CATransition* transition = [CATransition animation];
             transition.duration = 0.5;
             transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
             transition.type = kCATransitionFromRight;
             [self.navigationController.view.layer addAnimation:transition forKey:nil];
-            [delegate.nav_Center pushViewController:self.categoriesViewController animated:YES];
+            [delegate.nav_Center pushViewController:self.categoriesViewController animated:NO];
         }
     }
     if ([title isEqualToString:@"Share"])
@@ -762,25 +733,20 @@
             share = [[ShareViewController alloc] initWithNibName:@"ShareViewController4" bundle:nil];
         }
         
-        AppDelegate * delegate = [UIApplication sharedApplication].delegate;
-        JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-        [controller showCenterPanelAnimated:YES];
         CATransition* transition = [CATransition animation];
         transition.duration = 0.5;
         transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         transition.type = kCATransitionFromRight;
         [self.navigationController.view.layer addAnimation:transition forKey:nil];
-        [delegate.nav_Center pushViewController:share animated:YES];
+        [delegate.nav_Center pushViewController:share animated:NO];
     }
     if ([title isEqualToString:@"Change Location"])
     {
         if([self showCenterViewControllerIfVisible:[ChangeLocationViewController class]])
             return;
         
-        if(self.changeLocationViewController && !self.changeLocationViewController.poped) {
-            [delegate.nav_Center popToViewController:self.changeLocationViewController animated:YES];
-            JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-            [controller showCenterPanelAnimated:YES];
+        if(self.changeLocationViewController && [self hasViewController:self.changeLocationViewController]) {
+            [delegate.nav_Center popToViewController:self.changeLocationViewController animated:NO];
         }
         else {
             if(!self.changeLocationViewController) {
@@ -793,15 +759,12 @@
                     self.changeLocationViewController = [[ChangeLocationViewController alloc] initWithNibName:@"ChangeLocationViewController4" bundle:nil];
                 }
             }
-            AppDelegate * delegate = [UIApplication sharedApplication].delegate;
-            JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-            [controller showCenterPanelAnimated:YES];
             CATransition* transition = [CATransition animation];
             transition.duration = 0.5;
             transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
             transition.type = kCATransitionFromRight;
             [self.navigationController.view.layer addAnimation:transition forKey:nil];
-            [delegate.nav_Center pushViewController:self.changeLocationViewController animated:YES];
+            [delegate.nav_Center pushViewController:self.changeLocationViewController animated:NO];
         }
     }
     if ([title isEqualToString:@"About"])
@@ -817,24 +780,19 @@
         {
             about = [[AboutViewController alloc] initWithNibName:@"AboutViewController4" bundle:nil];
         }
-        AppDelegate * delegate = [UIApplication sharedApplication].delegate;
-        JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-        [controller showCenterPanelAnimated:YES];
         CATransition* transition = [CATransition animation];
         transition.duration = 0.5;
         transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         transition.type = kCATransitionFromRight;
         [self.navigationController.view.layer addAnimation:transition forKey:nil];
-        [delegate.nav_Center pushViewController:about animated:YES];
+        [delegate.nav_Center pushViewController:about animated:NO];
     }
     if ([title isEqualToString:@"Account Settings"])
     {
         if([self showCenterViewControllerIfVisible:[AccountSettingViewController class]])
             return;
-        if(self.accountSettingViewController && !self.accountSettingViewController.poped) {
-            [delegate.nav_Center popToViewController:self.accountSettingViewController animated:YES];
-            JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-            [controller showCenterPanelAnimated:YES];
+        if(self.accountSettingViewController && [self hasViewController:self.accountSettingViewController ]) {
+            [delegate.nav_Center popToViewController:self.accountSettingViewController animated:NO];
         }
         else {
             if(!self.accountSettingViewController) {
@@ -847,15 +805,12 @@
                     self.accountSettingViewController = [[AccountSettingViewController alloc] initWithNibName:@"AccountSettingViewController4" bundle:nil];
                 }
             }
-            AppDelegate * delegate = [UIApplication sharedApplication].delegate;
-            JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-            [controller showCenterPanelAnimated:YES];
             CATransition* transition = [CATransition animation];
             transition.duration = 0.5;
             transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
             transition.type = kCATransitionFromRight;
             [self.navigationController.view.layer addAnimation:transition forKey:nil];
-            [delegate.nav_Center pushViewController:self.accountSettingViewController animated:YES];
+            [delegate.nav_Center pushViewController:self.accountSettingViewController animated:NO];
         }
     }
     if ([title isEqualToString:@"Notification"])
@@ -863,10 +818,8 @@
         if([self showCenterViewControllerIfVisible:[NotificationViewController class]])
             return;
         
-        if(self.notificationViewController && !self.notificationViewController.poped) {
+        if(self.notificationViewController && [self hasViewController:self.notificationViewController ]) {
             [delegate.nav_Center popToViewController:self.notificationViewController animated:YES];
-            JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-            [controller showCenterPanelAnimated:YES];
         }
         else {
             if(!self.notificationViewController) {
@@ -880,15 +833,12 @@
                 }
             }
             self.notificationViewController.dataArr = tempArr;
-            AppDelegate * delegate = [UIApplication sharedApplication].delegate;
-            JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-            [controller showCenterPanelAnimated:YES];
             CATransition* transition = [CATransition animation];
             transition.duration = 0.5;
             transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
             transition.type = kCATransitionFromRight;
             [self.navigationController.view.layer addAnimation:transition forKey:nil];
-            [delegate.nav_Center pushViewController:self.notificationViewController animated:YES];
+            [delegate.nav_Center pushViewController:self.notificationViewController animated:NO];
         }
     }
     if ([title isEqualToString:@"Me"])
@@ -896,10 +846,8 @@
         if([self showCenterViewControllerIfVisible:[MeRootViewController class]])
             return;
         
-        if(self.meRootViewController && !self.meRootViewController.poped) {
+        if(self.meRootViewController && [self hasViewController:self.meRootViewController ]) {
             [delegate.nav_Center popToViewController:self.meRootViewController animated:YES];
-            JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-            [controller showCenterPanelAnimated:YES];
         }
         else {
             if(!self.meRootViewController) {
@@ -914,15 +862,12 @@
             }
             
             self.meRootViewController.isFromSetting = YES;
-            AppDelegate * delegate = [UIApplication sharedApplication].delegate;
-            JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-            [controller showCenterPanelAnimated:YES];
             CATransition* transition = [CATransition animation];
             transition.duration = 0.5;
             transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
             transition.type = kCATransitionFromRight;
             [self.navigationController.view.layer addAnimation:transition forKey:nil];
-            [delegate.nav_Center pushViewController:self.meRootViewController animated:YES];
+            [delegate.nav_Center pushViewController:self.meRootViewController animated:NO];
         }
     }
     if ([title isEqualToString:@"Upload Deal"])
@@ -930,10 +875,8 @@
         if([self showCenterViewControllerIfVisible:[UploadPictureViewController class]])
             return;
         
-        if(self.uploadPictureViewController && !self.uploadPictureViewController.poped) {
+        if(self.uploadPictureViewController && [self hasViewController:self.uploadPictureViewController ]) {
             [delegate.nav_Center popToViewController:self.uploadPictureViewController animated:YES];
-            JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-            [controller showCenterPanelAnimated:YES];
         }
         else {
             if(!self.uploadPictureViewController) {
@@ -946,15 +889,12 @@
                     self.uploadPictureViewController = [[UploadPictureViewController alloc] initWithNibName:@"UploadPictureViewController4" bundle:nil];
                 }
             }
-            AppDelegate * delegate = [UIApplication sharedApplication].delegate;
-            JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-            [controller showCenterPanelAnimated:YES];
             CATransition* transition = [CATransition animation];
             transition.duration = 0.5;
             transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
             transition.type = kCATransitionFromRight;
             [self.navigationController.view.layer addAnimation:transition forKey:nil];
-            [delegate.nav_Center pushViewController:self.uploadPictureViewController animated:YES];
+            [delegate.nav_Center pushViewController:self.uploadPictureViewController animated:NO];
         }
     }
     if ([title isEqualToString:@"Sign In"])
@@ -972,21 +912,18 @@
         }
         login.isEmail = YES;
         login.isFromSetting = YES;
-        AppDelegate * delegate = [UIApplication sharedApplication].delegate;
-        JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-        [controller showCenterPanelAnimated:YES];
         CATransition* transition = [CATransition animation];
         transition.duration = 0.1;
         transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         transition.type = kCATransitionFromRight;
         [self.navigationController.view.layer addAnimation:transition forKey:nil];
-        [delegate.nav_Center pushViewController:login animated:YES];
- 
+        [delegate.nav_Center pushViewController:login animated:NO];
     }
     if ([title isEqualToString:@"Sign Up with Facebook"])
     {
         [self updateView];
     }
+    [controller showCenterPanelAnimated:YES];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
