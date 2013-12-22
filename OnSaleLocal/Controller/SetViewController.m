@@ -195,16 +195,12 @@
 -(void)tapClickPhoto:(UITapGestureRecognizer *)aTap
 {
     AppDelegate * delegate = [UIApplication sharedApplication].delegate;
-    if([[delegate.nav_Center visibleViewController] isKindOfClass:[MeRootViewController class]]) {
-        JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-        [controller showCenterPanelAnimated:YES];
-        return;
-    }
     
-    if(self.meRootViewController && !self.meRootViewController.poped) {
+    if([self showCenterViewControllerIfVisible:[MeRootViewController class]])
+        return;
+    
+    if(self.meRootViewController && [self hasViewController:self.meRootViewController ]) {
         [delegate.nav_Center popToViewController:self.meRootViewController animated:YES];
-        JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-        [controller showCenterPanelAnimated:YES];
     }
     else {
         if(!self.meRootViewController) {
@@ -219,15 +215,16 @@
         }
         
         self.meRootViewController.isFromSetting = YES;
-        JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
-        [controller showCenterPanelAnimated:YES];
         CATransition* transition = [CATransition animation];
         transition.duration = 0.5;
         transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         transition.type = kCATransitionFromRight;
         [self.navigationController.view.layer addAnimation:transition forKey:nil];
-        [delegate.nav_Center pushViewController:self.meRootViewController animated:YES];
+        [delegate.nav_Center pushViewController:self.meRootViewController animated:NO];
     }
+    
+    JASidePanelController * controller = (JASidePanelController *)delegate.viewController1;
+    [controller showCenterPanelAnimated:YES];
 }
 
 - (void)viewDidLoad
